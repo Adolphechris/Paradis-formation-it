@@ -456,3 +456,167 @@ Routine rapide:
 14. QCM : Objectif final P1 dans PARADIS ?  
     A. CV théorique B. Candidature crédible et alignée C. Score esthétique
 15. Ouverte : Quelle action P1 lancer dès demain matin ?
+
+---
+
+## Validation qualité J2 (anti-superficiel)
+
+### Grille d'évaluation rapide (sur 20)
+| Module | Note /20 | Seuil |
+|---|---|---|
+| HTML | ? | >= 14 |
+| CSS | ? | >= 14 |
+| JavaScript notions | ? | >= 12 |
+| Git/GitHub | ? | >= 14 |
+
+### Seuil global J2
+- **>= 16/20** : acquis opérationnel, passage J3 normal.
+- **12-15/20** : passage J3 avec remédiation ciblée 30 min.
+- **< 12/20** : renforcement J3 obligatoire avant montée de charge.
+
+### Check-lists de validation
+- [ ] Je peux créer une page HTML valide avec structure sémantique (header, main, section, footer)
+- [ ] Je sais appliquer un style CSS cohérent (couleurs, typographie, espacement) avec un fichier externe
+- [ ] Je peux rendre une page responsive (media queries ou approche fluide)
+- [ ] Je maîtrise les bases JavaScript : variables, conditions, boucles, fonctions
+- [ ] Je peux initialiser un dépôt Git, faire un commit avec message clair, et push sur GitHub
+- [ ] Je sais créer une branche, y travailler, et fusionner sans conflit simple
+
+---
+
+## Corrigés guidés — mode tuteur (réponses attendues)
+
+> Tu as raison : ici tu es l'étudiant. Utilise cette section pour t'auto-corriger immédiatement après avoir tenté chaque module.
+
+### A. Corrigé — Module 1 (HTML)
+1. **A** — `<header>` définit l'en-tête d'une page ou section, `<head>` est la balise de métadonnées du document
+2. **B** — La hiérarchie sémantique permet aux moteurs de recherche et lecteurs d'écran de comprendre la structure
+3. **B** — `<nav>` est dédié à lanavigation principale
+4. **A** — `<main>` contenu exclusif à la page, `<section>` regroupe thématiquement, `<article>` est autonome (publiable seul)
+5. **C** — Les attributs `href`, `src`, `alt` permettent d'identifier les ressources liées
+6. **A** — `<p>` pour le paragraphe de texte
+7. **B** — `<h1>` à `<h6>` (6 niveaux)
+8. **C** — `<img alt="description">` est obligatoire pour l'accessibilité et le SEO
+9. **B** — Les éléments sémantiques (header, nav, main, article, section, footer) décrivent le rôle du contenu
+10. **B** — HTML définit la structure et le sens, CSS définit l'apparence et la mise en page
+11. **A** — `<!DOCTYPE html>` déclare le type de document HTML5
+12. **A` — Le texte visible est le contenu, invisible pour le navigateur/lecteur d'écran si pas sémantique
+13. **B** — Un formulaire contient `<form>`, `<input>`, `<label>`, `<button>`
+14. **B** — Pour la cohérence et l'accessibilité
+15. **A** — Un site accessible (sémantique, alt, navigation clavier) est un site utilisable par tous
+
+### B. Corrigé — Module 2 (CSS)
+1. **B** — `margin` crée de l'espace autour de l'élément (extérieur), `padding` crée de l'espace à l'intérieur
+2. **A** — Le fichier CSS externe est le plus approprié pour les styles réutilisables
+3. **B** — `display: flex;` avec `justify-content: center; align-items: center;` centré verticalement et horizontalement
+4. **B** — `background-color: #ff0000;`
+5. **B** — `@media (max-width: 768px) { ... }` cible les écrans de 768px ou moins
+6. **B** — `font-size`, `color`, `margin`, `padding`
+7. **C** — `.classe { ... }` sélectionne tous les éléments ayant cette classe
+8. **B** — Une classe (`.ma-classe`) est réutilisable sur plusieurs éléments, une ID (`#mon-id`) est unique par page
+9. **C** — Un fichier CSS externe (approche recommandée)
+10. **A** — Le sélecteur `#menu li a` cible les `<a>` qui sont enfants de `<li>` qui sont enfants de `#menu`
+11. **B** — `em` et `rem` sont relatifs et s'adaptent, `px` est fixe
+12. **A** — `position: relative; top: 10px; left: 20px;` déplace relativement sa position
+13. **B** — `:hover` s'active au survol de la souris
+14. **A** — Le cascade = règles en conflit → le navigateur choisit selon la spécificité et l'ordre d'apparition
+15. **B** — Le box model = marge + bordure + padding + contenu, comprendre ses dimensions est essentiel pour le rendu
+
+### C. Corrigé — Module 3 (JavaScript notions)
+1. **B** — `let` et `const` (ES6) ont une portée de bloc, `var` a une portée de fonction et peut être redeclaré
+2. **B** — `function monFonction() { ... }` déclare une fonction
+3. **B** — Les commentaires `//` (une ligne) et `/* */` (plusieurs lignes) sont ignorés par l'exécution
+4. **B** — `typeof` retourne le type d'une variable (string, number, boolean, object, undefined)
+5. **A** — `document.getElementById('monId')` sélectionne un élément par son ID
+6. **B** — `===` vérifie égalité de valeur ET de type, `==` fait une conversion implicite
+7. **B** — `if (condition) { ... } else { ... }` conditionnelle, ternary `? :`, et `switch`
+8. **C** — `for (let i = 0; i < 5; i++) { ... }` boucle for, `while`, `do...while`, `forEach`
+9. **B** — Une fonction peut retourner une valeur avec `return`, et une fonction peut en appeler une autre
+10. **C** — `[]` est un tableau (array), `{}` est un objet, `""` est une chaîne de caractères
+11. **B** — Le DOM (Document Object Model) est la représentation en mémoire de la page HTML manipulable par JavaScript
+12. **B** — `addEventListener('click', fonctionHandler)` attache un gestionnaire d'événement
+13. **B** — `==` convertit les types (1 == '1' est true), `===` ne convertit pas (1 === '1' est false)
+14. **B** — `const maListe = [1, 2, 3]; maListe.push(4);` fonctionne (l'objet est modifiable même si la référence est const)
+15. **B** — `===` (strict equality) et `!==` (strict inequality) sont les opérateurs recommandés en JavaScript moderne
+
+### D. Corrigé — Module 4 (Git/GitHub)
+1. **B** — `git clone <url>` télécharge un dépôt distant
+2. **B** — `git status` montre les fichiers modifiés/non suivis
+3. **B** — `git add .` puis `git commit -m "message descriptif"` puis `git push`
+4. **B** — `git checkout -b nom-branche` puis `git push origin nom-branche`
+5. **B** — `main` est la branche protégée, les modifications passent par des branches de travail
+6. **A** — `git merge branche-feature` fusionne la branche dans main
+7. **B** — `git diff` montre les différences entre le travail en cours et le dernier commit
+8. **B** — `git log --oneline` montre l'historique en ligne courte
+9. **A** — Un message de commit clair décrit l'intention du changement : le pourquoi et le quoi
+10. **B** — Un commit décrit un changement logique unique (une fonctionnalité, un fix, pas les deux en même temps)
+11. **A** — `.gitignore` exclut des fichiers du suivi Git (build, node_modules, fichiers d'environnement)
+12. **B** — Les conflits se résolvent en éditant le fichier marqué, en choisissant le bon contenu, puis en faisant `git add` + `git commit`
+13. **A** — `git pull` récupère et fusionne les changements distants, `git fetch` les récupère sans fusionner
+14. **A** — `git remote add origin <url>` et `git push -u origin main`
+15. **B** — Le workflow Git standard : travailler sur une branche, commiter régulièrement, fusionner via pull request (ou merge) sur la branche principale
+
+### E. Corrigé — Module 5 (Banque de questions)
+1. **B** — `<header>` est un élément sémantique HTML5
+2. **B** — `margin: 0 auto;` centre un bloc horizontalement
+3. **B** — `display` contrôle l'affichage (block, inline, flex, none, etc.)
+4. **A** — `const` empêche la réaffectation de la variable
+5. **A** — `addEventListener` relie un événement à une fonction de rappel
+6. **B** — `!==` est strict (ni valeur ni type différents)
+7. **B** — `background-color: blue;` (en CSS) change la couleur de fond
+8. **A** — Un commit est une sauvegarde d'un instantané du projet avec un message décrivant le changement
+9. **A** — La cascade CSS résout les conflits de règles par spécificité et ordre
+10. **B** — Les éléments sémantiques améliorent l'accessibilité (lecteurs d'écran) et le SEO
+11. **B** — `flex-direction: column;` empile verticalement, puis `justify-content: center;` centre
+12. **B** — `border-radius` arrondit les coins d'un élément
+13. **B** — `hover` applique un style au survol de la souris
+14. **A** — Le DOM est l'arbre de représentation du document HTML manipulable par JavaScript
+15. **A** — `let` a une portée de bloc (block scope), contrairement à `var` qui a une portée de fonction
+
+### F. Corrigé — Module 6 (Suivi P1)
+1. **B** — Rappel actif (relancer régulièrement) plutôt que révision passive
+2. Un poste cible est identifié → on extrait les compétences demandées dans l'offre → on cartographie ses preuves (même partielles) → on comble les écarts les plus critiques en priorité
+3. **B** — La combinaison des compétences techniques + preuves + résultats est ce qui distingue un profil crédible
+4. **B** — Prouver que tu as fait x avec outil → résultat mesurable → contexte d'usage
+5. **C** — Le fichier source est la preuve technique (HTML/CSS/JS), le dépôt Git est la preuve de processus
+6. **B** — Prouver la maîtrise, pas la connaissance théorique
+7. **B** — Prouver la compétence, pas la familiarité
+8. **B** — C'est l'action quotidienne la plus concrète qui transforme un portfolio de compétences en un portfolio de preuves
+9. **A** — Cibler les offres réelles et extraire les compétences demandées, plutôt que se former dans le vide
+10. **B** — "Compétences : développement front-end (HTML/CSS/JS), Git workflow, 3 pages statiques déployées" — précis, vérifiable, orienté résultat
+11. **B** — Le pitch doit être concret, basé sur des preuves et orienté vers le résultat métier
+12. **B** — Les 3 pages HTML/CSS/JS + Git = le premier livrable concret du programme, démontrable et testable
+13. **B** — P1 doit démarrer dès le début (J1) pour être utile tout au long du programme
+14. **B** — "J'ai intégré une page responsive avec HTML sémantique et CSS externe, versionnée avec Git et publiée localement" — c'est une preuve technique concrète
+15. **A** — Chaque jour de suivi P1 ajoute une preuve, une compétence cartographiée ou une action de candidature — c'est cumulatif
+
+---
+
+### Nouvelles abréviations rencontrées
+- Aucune nouvelle abréviation technique.
+
+### Banque de questions du module (15)
+1. QCM : Le meilleur moyen de centrer un bloc horizontalement en CSS ?  
+   A. `margin: auto`  B. `text-align: center`  C. `position: center`  
+2. QCM : Quelle balise définit l'en-tête principal d'une page ?  
+   A. `<header>`  B. `<head>`  C. `<top>`  
+3. QCM : `let` vs `var` — laquelle a la portée de bloc ?  
+   A. `var`  B. `let`  C. Aucune  
+4. Ouverte : Quelle est la différence entre un commentaire et une instruction en JavaScript ?  
+5. Ouverte : Pourquoi utiliser un fichier CSS externe plutôt qu'en ligne ?  
+6. QCM : Quel sélecteur cible tous les éléments d'une classe ?  
+   A. `#classe`  B. `.classe`  C. `classe`  
+7. Ouverte : Que fait l'attribut `alt` d'une image ?  
+8. QCM : HTML5 signifie ?  
+   A. version 5 du langage  B. HyperText Markup Language 5 (standard actuel)  C. type de fichier  
+9. Ouverte : Quand utiliser `id` vs `class` en HTML ?  
+10. QCM : Quel est le résultat de `null == undefined` en JavaScript ?  
+    A. false  B. true  C. undefined  
+11. Ouverte : Explique la différence entre pull et fetch dans Git.  
+12. QCM : `@media` en CSS sert à ?  
+    A. importer un fichier  B. définir des styles conditionnels selon l'écran  C. ajouter une animation  
+13. Ouverte : Qu'est-ce que le DOM en JavaScript ?  
+14. QCM : `flexbox` en CSS est utilisé pour ?  
+    A. créer des animations  B. disposer les éléments dans un conteneur  C. styliser le texte  
+15. Ouverte : Donne un exemple où tu as utilisé Git dans une situation professionnelle ou d'apprentissage.
+

@@ -39,6 +39,12 @@ Ajouts notables P0:
 - Niveau pratique et testable (cas, simulation, preuves): **OK**
 - Contradictions de cadrage retirées: **OK**
 
+## Conformité méthodologique anti-superficiel
+- Sections « Validation qualité » (grille /100) ajoutées à J1, J2 et J3 : **OK**
+- Sections « Corrigés guidés — mode tuteur » ajoutées à J1, J2 et J3 : **OK**
+- P0 est désormais cohérent avec la méthodologie P2 et P3-A
+- Lacunes structurelles identifiées et documentées dans la feuille de route (v2.3)
+
 ## Prochaine étape recommandée
 Passer à la validation éditoriale finale (orthographe/style),
 puis ouverture du Tome P2 selon priorités du programme.

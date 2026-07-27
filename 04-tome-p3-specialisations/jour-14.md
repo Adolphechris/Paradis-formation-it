@@ -131,15 +131,15 @@ Points clés:
 5. **Volumes** = stockage persistant indépendant du cycle de vie du conteneur. Sans volume, les données sont perdues à la suppression du conteneur.
 6. **Réseaux Docker** : bridge (par défaut, isolation), host (partage réseau hôte), overlay (multi-hôte). Les conteneurs d'un même réseau bridge communiquent par nom de conteneur.
 7. **Commandes essentielles** : `docker pull`, `docker run`, `docker ps`, `docker stop`, `docker rm`, `docker logs`, `docker exec`, `docker build`, `docker volume`, `docker network`.
-8. **docker-compose** (notion) : outil pour définir et exécuter des applications multi-conteneurs via un fichier YAML.
+8. **docker-compose** (notion) : outil en ligne de commande pour définir et exécuter des applications multi-conteneurs via un fichier `docker-compose.yml`. **Note** : `docker compose` (espace, sans tiret) est la commande moderne intégrée à la CLI Docker depuis 2023 ; `docker-compose` (tiret) était l'outil séparé Python. Les deux syntaxes fonctionnent, mais `docker compose` est recommandé pour les nouveaux projets sur Ubuntu 24.04.
 
 ### Exercices pratiques (avec corrigés)
 1. **Exercice 1 (simple)** : exécuter un conteneur nginx, vérifier qu'il tourne avec `docker ps`, accéder à la page d'accueil via navigateur, puis l'arrêter et le supprimer proprement.
    - **Corrigé détaillé** : `docker run -d -p 8080:80 nginx` → `docker ps` (vérifier statut Up et port mapping) → `curl localhost:8080` (voir HTML nginx) → `docker stop <id>` → `docker rm <id>` → `docker ps -a` (vérifier suppression). Expliquer `-d` (detached), `-p` (port mapping hôte:conteneur).
 2. **Exercice 2 (intermédiaire)** : écrire un Dockerfile pour une application Python Flask simple, builder l'image, lancer le conteneur, et tester l'API.
    - **Corrigé détaillé** : Dockerfile avec `FROM python:3.11-slim`, `WORKDIR /app`, `COPY requirements.txt .`, `RUN pip install -r requirements.txt`, `COPY . .`, `EXPOSE 5000`, `CMD ["python", "app.py"]`. Build avec `docker build -t flask-app .`. Run avec `docker run -d -p 5000:5000 flask-app`. Tester avec `curl localhost:5000`. Expliquer chaque instruction et l'ordre (optimisation du cache).
-3. **Exercice 3 (avancé)** : créer une application 2 services (API + base de données PostgreSQL) avec un réseau Docker dédié et un volume pour les données. Utiliser docker-compose pour orchestrer le tout.
-   - **Corrigé détaillé** : `docker-compose.yml` définissant `services: api (build: ., ports: 5000:5000, depends_on: db, networks: app-net)` et `db (image: postgres:15, volumes: pgdata:/var/lib/postgresql/data, networks: app-net)`. `networks: app-net`, `volumes: pgdata`. `docker-compose up -d` → tester API → vérifier persistance avec `docker-compose down && docker-compose up -d` (données conservées grâce au volume nommé).
+3. **Exercice 3 (avancé)** : créer une application 2 services (API + base de données PostgreSQL) avec un réseau Docker dédié et un volume pour les données. Utiliser `docker compose` (syntaxe moderne, espace) pour orchestrer le tout.
+   - **Corrigé détaillé** : `docker compose.yml` définissant `services: api (build: ., ports: 5000:5000, depends_on: db, networks: app-net)` et `db (image: postgres:15, volumes: pgdata:/var/lib/postgresql/data, networks: app-net)`. `networks: app-net`, `volumes: pgdata`. `docker compose up -d` → tester API → vérifier persistance avec `docker compose down && docker compose up -d` (données conservées grâce au volume nommé).
 
 ### Nouvelles abréviations rencontrées
 - YAML | YAML Ain't Markup Language | Format de configuration lisible par humain | Interagit avec docker-compose, Kubernetes, Ansible, CI/CD

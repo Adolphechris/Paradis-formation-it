@@ -235,6 +235,38 @@ Point clé : P1 (recherche d'emploi) et P5 (préparation entretiens/tests) tourn
 
 ---
 
+## SUIVI QUALITÉ — LACUNES ET POINTS D'ATTENTION IDENTIFIÉS (juillet 2026)
+
+### A. Gap structurel P0
+- **Sections « Validation qualité » et « Corrigés guidés »** ajoutées aux jours J1–J3 pour uniformiser la méthodologie anti-superficielle avec P2 et P3-A.
+- La grille d'évaluation /100 et les check-lists de validation par module renforcent la rigueur du cadrage.
+
+### B. Gap de prérequis P2 → P3-A
+- **Module pont systctl/services Linux** ajouté à J11 (fin P2) pour combler le saut entre P0 CLI basique et P3-A administration de services.
+- Sans ce pont, le passage J12 (Linux avancé : systemctl, systemd) pourrait être abrupt pour l'apprenant.
+
+### C. Lacunes de sécurité dans P0/P2 (à combler en P4)
+Les thèmes suivants ne sont pas couverts dans les tomes actuellement rédigés mais sont essentiels pour le poste visé en contexte bancaire :
+- Sauvegardes et procédures de restauration (PCA/PIA) — prévu P4.
+- Conformité réglementaire appliquée (RGPD, audit trails) — prévu P4.
+- Gestion des accès privilégiés (PAM) — prévu P3-A.
+- Chiffrement données au repos et en transit — prévu P4.
+- Segmentation réseau et Zero Trust — prévu P4.
+
+### D. Clarification Docker/docker-compose dans J14
+- La distinction entre `docker compose` (syntaxe moderne, espace) et `docker-compose` (outil séparé Python, tiret) est désormais explicitée dans J14.
+- Le lab J14 utilise désormais la syntaxe moderne `docker compose` (espace).
+
+### E. Pare-feu enrichi dans J15
+- `ufw` (Ubuntu) et `firewalld` (RHEL/CentOS) ajoutés comme alternatives à `iptables`/`nftables`.
+- `auditd` ajouté à la checklist de durcissement.
+- Note d'installation `nmap` ajoutée à l'exercice de test de pare-feu.
+
+### F. Cohérence inter-tomes P0 → P2 → P3-A
+- P0 couvre un aperçu large (bureautique, web, Git, Linux CLI) mais ne contient pas de modules de validation qualité par section (grille /100) — ceux-ci ont été ajoutés pour renforcer la cohérence.
+- P2 et P3-A disposent déjà de la grille /100 et des corrigés guidés.
+- Le gap est maintenant réduit : P0 est cohérent avec P2/P3-A sur le plan de la méthodologie de validation.
+
 ## Clause de vérité documentaire
 PARADIS est un programme personnel intensif en collaboration méthodologique avec UNISA, orienté vers une trajectoire d'accréditation et vers la réussite professionnelle sur le poste cible.
 

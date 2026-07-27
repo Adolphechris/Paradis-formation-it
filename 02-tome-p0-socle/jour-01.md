@@ -593,6 +593,160 @@ Livrable quotidien minimum :
 
 ---
 
+---
+
+## Validation qualité J1 (anti-superficiel)
+
+### Grille d'évaluation rapide (sur 20)
+| Module | Note /20 | Seuil |
+|---|---|---|
+| Windows environnement pro | ? | >= 14 |
+| Excel avancé | ? | >= 14 |
+| Word/PowerPoint | ? | >= 14 |
+| Outlook | ? | >= 12 |
+| Outils collaboratifs | ? | >= 14 |
+
+### Seuil global J1
+- **>= 16/20** : acquis opérationnel, passage J2 normal.
+- **12-15/20** : passage J2 avec remédiation ciblée 30 min.
+- **< 12/20** : renforcement J2 obligatoire avant montée de charge.
+
+### Check-lists de validation
+- [ ] Je peux diagnostiquer un problème réseau de bout en bout (ipconfig → ping → DNS) sans aide
+- [ ] Je peux expliquer la différence entre un utilisateur standard et administrateur
+- [ ] Je sais créer un tableau croisé dynamique avec au moins 2 champs calculés
+- [ ] Je sais écrire une formule VLOOKUP/XLOOKUP pertinente pour un besoin métier
+- [ ] Je peux structurer un document Word avec styles, table des matières et en-têtes
+- [ ] Je sais créer un canal Teams/Slack avec permissions appropriées
+- [ ] Je peux ouvrir, suivre et fermer un ticket selon le cycle standard (Nouveau → Résolu → Fermé)
+- [ ] Je peux expliquer oralement une action réalisée en 2 minutes, faits + impact
+
+---
+
+## Corrigés guidés — mode tuteur (réponses attendues)
+
+> Tu as raison : ici tu es l'étudiant. Utilise cette section pour t'auto-corriger immédiatement après avoir tenté chaque module.
+
+### A. Corrigé — Module 1 (Windows environnement professionnel)
+1. **B** — `ipconfig /all` affiche la configuration IP complète (adresse, masque, passerelle, DNS)
+2. **C** — Un pare-feu bloque le trafic non autorisé
+3. **B** — Compte standard = droits limités, élévation temporaire pour les actions sensibles
+4. `ipconfig /all` (adresse IP, masque, passerelle, DNS), `ping` (test connectivité), `tracert` (sauts réseau). Ordre : vérifier le local, puis la passerelle, puis l'externe.
+5. **B** — Les droits administrateurs ne doivent être utilisés que pour les tâches d'administration
+6. **A** — Un problème de résolution DNS se manifeste par : ping IP OK mais ping nom_de_domaine FAIL
+7. **B** — 169.254.x.x = adresse APIPA = absence de réponse DHCP = pas de connexion réseau automatique
+8. **C** — Un rapport d'intervention documente symptômes, tests réalisés, correction, résultat et timestamp
+9. **B** — Windows Defender Firewall ou pare-feu réseau (routeur)
+10. **A** — Un compte administrateur ne doit être utilisé que pour l'administration, pas pour le travail quotidien
+11. **B** — Le registre Windows est sensible : une mauvaise modification peut rendre le système instable
+12. **B** — `compmgmt.msc` gère disques, services et utililisateurs en un seul endroit
+13. **A** — Les mises à jour de sécurité corrigent les vulnérabilités exploitables
+14. **C** — L'antivirus ne remplace pas une politique de sécurité (mots de passe, droits, mises à jour)
+15. **B** — Vérifier que le service est actif (`systemctl status` ou via l'interface)
+
+### B. Corrigé — Module 2 (Excel avancé)
+1. **B** — La référence absolue (`$A$1`) ne change pas lors de la copie de la formule
+2. **B** — `VLOOKUP` (vertical lookup) cherche une valeur dans la première colonne d'un tableau et retourne une valeur d'une autre colonne de la même ligne
+3. **B** — `SOMME(A1:A10)` calcule le total d'une plage de cellules
+4. **A** — Un TCD (Tableau Croisé Dynamique) agrège des données pour les analyser par catégorie sans formule manuelle
+5. **B** — `MOYENNE(B2:B100)` calcule la moyenne de la colonne Ventes
+6. **C** — `NB.SI(plage;critère)` compte les cellules répondant à un critère
+7. **B** — `JOUR(A1)` extrait le jour d'une date, `MOIS(A1)` extrait le mois, `ANNEE(A1)` extrait l'année
+8. **A** — Le format conditionnel modifie l'apparence en fonction de la valeur
+9. **A** — Trier par la colonne la plus pertinente (ex: date, montant) d'abord
+10. **A** — Un graphique rend les tendances visuelles et compréhensibles
+11. **C** — Le filtre avancé permet de combiner plusieurs critères simultanément
+12. **B** — La fonction SI (`=SI(condition;valeur_si_vrai;valeur_si_faux)`) permet une logique conditionnelle
+13. **B** — Verrouiller les cellules contenant les formules empêche les modifications accidentelles
+14. **A** — Un graphique combiné (ex: colonne + ligne) montre deux types de données sur un même graphique
+15. **A** — La protection par mot de passe d'un fichier Excel limite la modification non autorisée
+
+### C. Corrigé — Module 3 (Word/PowerPoint)
+1. **B** — Un "Style" (Titre 1, Titre 2, Normal) définit une apparence uniforme réutilisable
+2. **B** — `Références > Table des matières` génère automatiquement la table à partir des styles
+3. **C** — Un en-tête/pièce de page répète des informations (numéro page, titre document) sur chaque page
+4. **B** — Le format PDF préserve la mise en page et les polices sur tout appareil
+5. **B** — Les transitions (apparition, fondu) ne doivent pas être excessives — privilégier la fluidité
+6. **A** — La diapositive titre présente le sujet, le nom, la date, l'organisation
+7. **B** — Le format 16:9 (widescreen) est le standard actuel pour les présentations
+8. **A** — Dans Word, `Créer un document > Nouveau document vierge` ou Ctrl+N
+9. **C** — La règle des 3 points par diapositive : un message, un support visuel, un résumé
+10. **B** — Le mode Présentation permet de voir la diapositive telle que le public la verra
+11. **A** — `Disposition > Marges > Normales` pour des marges standards de 2,5 cm
+12. **B** — Powerpoint est conçu pour les présentations avec diapositives animées
+13. **A** — `Mise en page > Colonnes` divise le texte en plusieurs colonnes
+14. **B** — Un objet SmartArt (organigramme, processus) améliore la lisibilité visuelle
+15. **B** — Le mode Plan permet de réorganiser la structure du document par titres hiérarchiques
+
+### D. Corrigé — Module 4 (Outlook)
+1. **C** — Le courriel est la principale source de perte de temps en environnement pro
+2. **B** — Dossiers classés par projet, date ou type de destinataire
+3. **B** — Le Délai de Rappel (Rappel) notifie à une heure précise si aucune réponse n'est reçue
+4. **B** — Répondre à tous envoie à tous les destinataires initiaux, Répondre seulement à l'expéditeur direct
+5. **B** — Un RDV doit contenir : objet clair, date/heure, lieu/lien, ordre du jour, Participants invités
+6. **C** — Le drapeau rouge indique une action prioritaire à faire rapidement
+7. **A** — Le dossier Boîte de réception est le point central — un email y va puis sort (traité/archivé/supprimé)
+8. **B** — Règle : traiter un email = agir (répondre), archiver ou supprimer — jamais le laisser dans la boîte
+9. **C** — Le filtre automatique (règles de messagerie) trie les emails entrants par critères
+10. **B** — Un email professionnel commence par une salutation, corps concis, formule de politesse, signature
+11. **C** — En pièce jointe utilise toujours le format PDF pour les documents finalisés
+12. **A** — Le Rappel (Rappel de RDV) dans le calendrier notifie à un intervalle configurable avant le RDV
+13. **B** — Le dossier Éléments envoyés sert de preuve écrite des communications
+14. **B** — Planifier des plages horaires dédiées (ex: 9h-9h30 et 16h-16h30) plutôt que de consulter en permanence
+15. **A** — Un email trop long perd le lecteur — les points courts et la structure améliorent la lisibilité
+
+### E. Corrigé — Module 5 (Outils collaboratifs)
+1. **B** — Un canal dédié = un sujet = moins de bruit, plus de traçabilité
+2. **A** — Teams est synchronisé (temps réel), Slack peut être asynchrone selon les canaux configurés
+3. **B** — Évite de mélanger les sujets dans un même canal — chaque canal = un thème
+4. **C** — Le canal est la conversation structurée, le ticket est la demande tracée
+5. **A** — Le nommage doit être explicite : `projet-x-contrats` plutôt que `general` ou `test`
+6. **C** — Le fichier est la source de vérité, les messages dans le canal pointent vers lui
+7. **B** — Un membre Éditeur peut modifier, un Commentateur peut commenter, un Lecteur ne fait que lire
+8. **B** — Chaque message doit contenir : Contexte (quoi), Action (quoi attendre), Échéance (quand)
+9. **C** — Le bon format : `[ACTION requise] Contenu — Réponse attendue avant [date]`
+10. **B** — La visibilité de la progression crée la confiance dans l'équipe
+11. **C** — Une notification par canal pour les messages importants, les réactions pour les confirmations
+12. **A** — Les décisions doivent être résumées dans le canal et archivées (message épinglé)
+13. **B** — Un document orphelin (sans propriétaire ni lien dans un canal) est perdu pour l'équipe
+14. **A** — Un canal d'équipe pour la communication quotidienne, un canal projet pour un projet spécifique
+15. **B** — La traçabilité est le critère numéro 1 en collaboratif professionnel — on doit pouvoir retracer qui a dit quoi et quand
+
+### F. Corrigé — Module 6 (Banque de questions)
+1. **B** — Tester et valider la résolution avant de fermer le ticket
+2. **B** — Parce que la résolution sans preuve n'est pas traçable et risque de se reproduire
+3. **B** — Un rapport horodaté avec les étapes et le résultat
+4. **B** — Il y a une résolution documentée (pas seulement un essai) et une validation (le ticket est Fermé, pas juste Résolu)
+5. **A** — Symptôme observé → test effectué → cause identifiée → correction appliquée → résultat validé
+6. **B** — Une réouverture implique que la correction n'a pas tenue — il faut chercher la cause profonde
+7. **A** — La majorité des incidents ne sont pas des urgences : les classer (P1 critique, P2 urgent, P3 normal, P4 basse) permet de prioriser
+8. **B** — L'observation précède le diagnostic et l'action : on corrige en aveugle si on n'observe pas
+9. **A** — Un diagnostic sans tests est une supposition, pas une résolution
+10. **B** — Un ticket ne doit pas rester ouvert indéfiniment : clôturer après résolution ou escalader
+11. **A** — Documenter les actions et résultats crée un historique utile pour les incidents futurs
+12. **B** — Si un collègue a le même problème, la résolution documentée permet un dépannage plus rapide
+13. **A** — Accuser réception → qualifier → traiter → résoudre → clore. Sauter une étape cause de la confusion et des retours
+14. **B** — L'impact métier justifie la priorité : un serveur ERP en panne = P1, une imprimante en panne isolée = P3/P4
+15. **B** — Traiter un incident sans le documenter = recommencer à zéro la prochaine fois que le même incident se produit
+
+### G. Corrigé — Module 7 (Suivi P1)
+1. **B** — Rappel actif (relancer régulièrement) plutôt que révision passive
+2. **B** — Un poste de travail à jour est un prérequis professionnel que tout recruteur attend
+3. **A** — La combinaison des compétences techniques + preuves + résultats est ce qui distingue un profil crédible
+4. Un poste cible est identifié → on extrait les compétences demandées dans l'offre → on cartographie ses preuves (même partielles) → on comble les écarts les plus critiques en priorité
+5. **B** — Parce que les formulations vagues ("bon en informatique") ne sont ni testables ni vérifiables dans un entretien
+6. **B** — Prouver que tu as fait x avec outil → résultat mesurable → contexte d'usage
+7. **B** — Prouver la maîtrise, pas la connaissance théorique
+8. **B** — C'est l'action quotidienne la plus concrète qui transforme un portfolio de compétences en un portfolio de preuves
+9. **A** — Cibler les offres réelles et extraire les compétences demandées, plutôt que de se former dans le vide
+10. **B** — "Compétences : administration Windows (7 ans d'expérience, 15 serveurs gérés)" — précis, vérifiable, orienté résultat. "Compétences : bon en Windows" — vague, non testable, non crédible
+11. **B** — Le pitch doit être concret, basé sur des preuves et orienté vers le résultat métier
+12. **B** — Le mini-site web statique est le premier livrable concret du programme, il montre une compétence démontrable
+13. **B** — P1 doit démarrer dès le début (J1) pour être utile tout au long du programme
+14. **B** — "J'ai documenté l'utilisation de Teams pour la coordination d'équipe en créant un canal structuré avec 5 messages de décision historisés" — c'est une preuve de communication technique
+15. **A** — Le suivi P1 quotidien crée un avantage cumulatif : chaque jour, le dossier de candidature s'améliore
+
+
 ## Cahier des charges — Projet de fin de Tome P0 (référence J1-J3)
 
 ### Livrables obligatoires
@@ -622,3 +776,4 @@ Livrable quotidien minimum :
 ### Preuves à archiver dans le portfolio
 - Captures d'écran + fichiers sources + exports PDF.
 - Note de synthèse : difficultés rencontrées et comment elles ont été résolues.
+

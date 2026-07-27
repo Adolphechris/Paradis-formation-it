@@ -459,3 +459,134 @@ Routine P1 fin P0:
 14. QCM : Le suivi P1 quotidien sert surtout à...  
     A. Reporter B. Accélérer la conversion vers emploi C. Décorer LinkedIn
 15. Ouverte : Quelle action P1 lancer immédiatement après J3 ?
+
+---
+
+## Validation qualité J3 (anti-superficiel)
+
+### Grille d'évaluation rapide (sur 20)
+| Module | Note /20 | Seuil |
+|---|---|---|
+| Linux CLI (5h) | ? | >= 14 |
+| Linux usage courant avancé (2h) | ? | >= 12 |
+| Auto-diagnostic (2h) | ? | >= 14 |
+| Projet de fin P0 (3h) | ? | >= 12 |
+
+### Seuil global J3
+- **>= 16/20** : acquis opérationnel, passage à P2 normal.
+- **12-15/20** : passage P2 avec remédiation ciblée 1h.
+- **< 12/20** : renforcement P0 avant P2 obligatoire (remédiation 24-48h).
+
+### Check-lists de validation
+- [ ] Je peux naviguer dans l'arborescence Linux (`cd`, `ls -la`, `find`, `pwd`)
+- [ ] Je peux lire un fichier (`cat`, `less`, `head`, `tail`) et chercher dedans (`grep`)
+- [ ] Je peux gérer des utilisateurs et groupes (`useradd`, `usermod`, `id`, `groups`)
+- [ ] Je peux vérifier les permissions (`ls -l`, `chmod`, `chown`) et expliquer les types (rwx)
+- [ ] Je sais exécuter un diagnostic réseau basique (`ping`, `ip addr`, `ss -tlnp`)
+- [ ] Je peux remplir une grille d'auto-diagnostic honnête (0/1/2) avec preuves
+- [ ] Le mini-site web fonctionne localement et le dossier bureautique est complet
+
+---
+
+## Corrigés guidés — mode tuteur (réponses attendues)
+
+> Tu as raison : ici tu es l'étudiant. Utilise cette section pour t'auto-corriger immédiatement après avoir tenté chaque module.
+
+### A. Corrigé — Module 1 (Linux CLI)
+1. **B** — `pwd` affiche le répertoire courant, `ls` liste le contenu, `cd` change de répertoire, `mkdir` crée
+2. **A** — `ls -la` affiche tous les fichiers (y compris cachés) avec détails (droits, propriétaire, taille, date)
+3. **C** — `grep "motif" fichier` recherche le motif dans le fichier
+4. **B** — `less fichier` permet de paginer, `q` quitte, flèches pour naviguer
+5. **A** — `> fichier` écrase/create le fichier, `>> fichier` ajoute à la fin
+6. **B** — `sudo` exécute une commande avec les droits d'un autre utilisateur (par défaut root)
+7. **C** — `useradd -m nouvel_utilisateur` créée l'utilisateur avec son répertoire home
+8. **B** — `usermod -aG groupe utilisateur` ajoute un utilisateur à un groupe supplémentaire
+9. **B** — `id username` affiche l'UID, le GID et les groupes de l'utilisateur
+10. **A** — L'UID 0 = root, UID 1-999 = utilisateurs système, 1000+ = utilisateurs normaux
+11. **A** — `chmod 755 fichier` : propriétaire = rwx (7), groupe = r-x (5), autres = r-x (5)
+12. **B** — `ls -ld /chemin` affiche les permissions du répertoire lui-même (pas de son contenu)
+13. **C** — Lequel de ces éléments n'est PAS un type standard de permission : `x` (exécution) est un type valide. Réponse attendue : tout ce qui n'est pas rwx
+14. **B** — `chown nouvel_utilisateur:nouveau_groupe fichier` change propriétaire et groupe
+15. **A** — Les permissions se lisent de gauche à droite : propriétaire → groupe → autres (rwx pour chacun)
+
+### B. Corrigé — Module 2 (Linux usage courant avancé)
+1. **A** — `top` ou `htop` affichent les processus en temps réel
+2. **B** — `ssh utilisateur@machine` se connecte en SSH à une machine distante
+3. **B** — `IP statique` pour les serveurs (prévisible), `DHCP` pour les postes clients (automatique)
+4. **A** — `ip addr` ou `ifconfig` affiche les interfaces et leurs adresses IP
+5. **C** — `127.0.0.1` est l'adresse de boucle locale (localhost), toujours accessible
+6. **B** — `wget https://exemple.com/fichier` télécharge un fichier depuis le web
+7. **A** — Un système de fichiers Linux organise les répertoires selon le FHS (Filesystem Hierarchy Standard) : `/etc` pour configs, `/var` pour les données variables, `/home` pour les utilisateurs
+8. **B** — `apt update && apt upgrade -y` (Ubuntu/Debian) met à jour les paquets
+9. **A** — `cron` est le planificateur de tâches Unix
+10. **B** — `/home/utilisateur/` est l'emplacement standard de répertoire personnel
+
+### C. Corrigé — Module 3 (Auto-diagnostic)
+1. **B** — Un bon auto-diagnostic repose sur des preuves (captures, commandes), pas sur l'impression
+2. **B** — Une compétence sans preuve doit être notée 1 (fragile) ou 0 (non acquis)
+3. **C** — Honnêteté → identifie les vraies lacunes → plan d'action mesurable → progrès vérifiable
+4. **B** — Priorité basée sur impact sur le test d'embauche et le poste visé
+5. **B** — Revoir le module concerné et refaire les exercices
+6. **B** — Un KPI doit être mesurable (un chiffre, un fait vérifiable)
+7. **B** — 1 = fragile (a entendu/essayé sans pouvoir reproduire seul), 0 = non acquis du tout
+8. Un niveau fragile est acquis de manière théorique ou partiellement pratique ; un niveau opérationnel signifie que l'apprenant peut reproduire seul, en situation réelle ou simulée, avec un résultat vérifiable
+9. **A** — Prioriser les lacunes qui ont l'impact le plus direct sur le poste visé
+10. **B** — "J'ai X preuves (captures/codes/fichiers), mon score de test est Y, et mon plan d'amélioration vise Z" — précis, mesurable, crédible
+11. **B** — Changer de méthode (varier les exercices, demander feedback ciblé) plutôt que simplement recommencer
+12. **B** — Pour ancrer l'erreur tant que le contexte mental est frais et corriger la compréhension
+13. **B** — Revoir la base théorique + varier les exercices + demander à un pair de vérifier
+14. **B** — Finaliser un script/projet propre, le publier sur Git, et préparer 3 phrases de présentation pour l'entretien
+15. **A** — Le mini-site web + dossier bureautique constituent les premières preuves tangibles du programme
+
+### D. Corrigé — Module 4 (Projet de fin P0)
+1. **B** — Le site doit être accessible localement (pas besoin de serveur en ligne), utiliser HTML sémantique, CSS responsive et JS pour les interactions
+2. **B** — Un fichier Excel de 2 pages contenant le tableau brut, les formules clés et le TCD avec synthèse
+3. **A** — Une présentation de 5-8 slides : contexte, méthode, résultats, compétences démontrées
+4. **B** — Captures d'écran du site + fichiers sources (HTML, CSS, JS) + exports PDF du rapport et du fichier Excel
+5. **B** — Un projet bien expliqué est une preuve bien plus forte qu'une liste de technologies en vrac : structure = problème, ce que tu as fait, résultat mesurable
+6. **B** — Le site fonctionne sans erreur visible, l'Excel contient au moins 3 formules pertinentes et 1 TCD, le rapport et la présentation sont structurés et professionnels
+7. **A** — Captures + fichiers sources + exports PDF + note de synthèse (difficultés rencontrées et résolution)
+8. **B** — Un portfolio publié (même imparfait) est visible et crédible pour un recruteur ; un portfolio non publié est invisible
+9. **A** — La mise en production locale montre que tu sais déployer et que le livrable fonctionne réellement, pas seulement sur ton poste
+10. **B** — "Site web statique déployé localement avec 3 pages (HTML/CSS/JS), dossier Excel (formules + TCD + rapport PDF), présentation PDF (5 slides)" — chaque élément est une preuve concrète, démontrable et testable
+11. **A** — Le site fonctionne sans erreur visible sur navigation basique : chaque lien, formulaire et interaction peut être vérifié par le recruteur en temps réel
+12. **B** — "J'ai conçu et déployé un site web statique (HTML/CSS/JS) et produit un dossier bureautique complet (Excel + Word + PowerPoint)" — factuel, orienté preuve, orienté résultat
+13. **A** — "J'ai rencontré un problème de CSS responsive sur mobile, diagnostiqué avec les outils de dev du navigateur, corrigé avec une media query, et validé sur 3 tailles d'écran différentes" — problème → méthode → solution → preuve
+14. **B** — La note finale du projet sur 20 : Fonctionnalité (8) + Qualité documentaire (5) + Clarté (4) + Cohérence avec le poste (3)
+15. **A** — C'est le premier livrable concret et complet du programme : il démontre une capacité opérationnelle multi-technologies (web, bureautique, structuration de projet)
+
+### E. Corrigé — Module 5 (Banque de questions du jour)
+1. **B** — Linux est un système d'exploitation serveur dominant, Excel est de la bureautique, Python est un langage (pas un OS), et Docker est de la conteneurisation (pas un OS dans ce contexte)
+2. **A** — `cd ..` remonte d'un niveau, `cd` seul va au home, `ls` liste le contenu
+3. **B** — `sudo` élève temporairement les droits le temps de la commande, c'est la bonne pratique
+4. **A** — `ls -la` montre les permissions (rwx) de chaque fichier
+5. **B** — `grep` recherche du texte dans un fichier, `find` recherche des fichiers par nom ou critère
+6. **C** — `useradd -m nouvel_utilisateur` crée l'utilisateur avec son répertoire home
+7. **B** — Pour garantir qu'un changement est traçable et réversible si nécessaire
+8. **A** — `chmod 644 fichier` : owner=rw (6), group=r (4), others=r (4)
+9. **C** — L'ordre de lecture : `user` → `group` → `others` (de gauche à droite)
+10. **A** — Un système de fichiers organise les fichiers et répertoires sur le disque selon des règles standardisées
+11. **B** — `wget` télécharge depuis le web, `scp` transfère via SSH, `ssh` se connecte à distance
+12. **C** — L'auto-diagnostic évite l'illusion de compétence et structure le plan d'amélioration
+13. **B** — `/home/utilisateur/` est le répertoire personnel standard pour les utilisateurs réguliers
+14. **A** — `top` ou `htop` affichent les processus en temps réel avec leur consommation CPU/RAM
+15. **A** — SSH (Secure Shell) permet la connexion à distance sécurisée, ce qui est le cœur de l'administration Linux distante
+
+### F. Corrigé — Module 6 (Suivi P1)
+1. **B** — Candidater avec les preuves P0 disponibles (même imparfaites) plutôt que d'attendre d'être "prêt"
+2. **B** — Un mini-site web statique + un dossier bureautique complet = 2 preuves concrètes démontrables
+3. **B** — "Fait vérifiable" car les fichiers sources, captures et exports PDF peuvent être montrés et testés par le recruteur
+4. **B** — "J'ai créé un site web statique (HTML/CSS/JS) fonctionnel, un tableau Excel avec TCD et formules, et une présentation PowerPoint structurée — le tout versionné avec Git" — précis, vérifiable, orienté résultat métier
+5. **B** — Chaque compétence doit être reliée à une preuve concrète (un fichier, une capture, un résultat)
+6. **B** — Finaliser un premier site web déployé localement et commencer à candidater avec ces preuves P0 — le poste "Support technique / Assistant IT débutant" a une barrière d'entrée relativement accessible
+7. **B** — Prouver que tu as fait x avec outil → résultat mesurable → contexte d'usage
+8. **B** — Les 3 pages + Excel TCD + présentation = le premier livrable complet du programme, démontrable et vérifiable
+9. **A** — "J'ai réalisé un site web statique en HTML/CSS/JS versionné avec Git et un dossier bureautique Excel avec TCD" est une preuve de progression concrète et vérifiable
+10. **B** — Prouver la maîtrise technique, pas la simple présence dans un cursus
+11. **B** — Les 3 pages du mini-site sont les preuves les plus directes des compétences P0 en web : structure (HTML), style (CSS), interactivité (JS)
+12. **B** — La maîtrise de l'environnement professionnel (Windows bureautique + Excel TCD + Word structuré + Outlook + collaboratifs) est la compétence la plus immédiatement opérationnelle pour un poste de support technique
+13. **B** — Publier le portfolio (même imparfait) le rend visible et crédible pour un recruteur
+14. **B** — Un poste de support technique en banque/institution est la porte d'entrée la plus réaliste : barrière d'entrée basse, forte utilité institutionnelle
+15. **A** — "J'ai complété P0 — 3 jours intensifs bureautique + web + Git/Linux — et produit mes premiers livrables vérifiables (site web, Excel, Word, PowerPoint)" — structure = preuve, compétence, résultat
+
+

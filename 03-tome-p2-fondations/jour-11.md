@@ -59,6 +59,18 @@ Minimum attendu:
 - RCA | Root Cause Analysis | Analyse de cause racine d'un incident/problème | Interagit avec diagnostic, amélioration continue, support
 - SOP | Standard Operating Procedure | Procédure opérationnelle standard réutilisable | Interagit avec runbooks, qualité de service, transmission d'équipe
 
+### Exercice 6 (transversal — pont vers P3-A) — Linux services (30 min)
+- **Objectif** : effectuer le pont entre Bash/Python (P2) et l'administration Linux services (P3-A J12).
+- **Consigné** : sur une machine de lab, identifier les services actifs, vérifier leur état (`systemctl is-active`), et écrire un script Bash qui automatise la vérification d'un service et écrit le résultat dans un fichier log.
+- **Corrigé détaillé** :
+  1. `systemctl list-units --type=service --state=running` → lister les services actifs.
+  2. `systemctl is-active <nom-service>` → vérifier l'état d'un service précis.
+  3. Script Bash : `#!/bin/bash; SERVICE=$1; if systemctl is-active --quiet "$SERVICE"; then echo "$(date): $SERVICE est actif" >> /tmp/verif-services.log; else echo "$(date): $SERVICE est INACTIF" >> /tmp/verif-services.log; fi`
+  4. Tester avec `bash verif.sh ssh` et `bash verif.sh docker` (si absent).
+  5. Justifier pourquoi cette automatisation est utile en production (monitoring proactif).
+- **Lien P3-A** : ce script est un précurseur direct de la supervision J16 (Zabbix/Prometheus) — l'idée de vérification automatisée d'un service est le même principe, juste exécuté manuellement ici et via un agent demain.
+
+
 ### Banque de questions du module (15)
 1. QCM : Objectif principal du projet J11 ?  
    A. Théorie B. Intégration opérationnelle C. Design
@@ -459,3 +471,4 @@ Routine:
 13. Respiration, plan de réponse, exemple réel court.  
 14. **B**  
 15. Publier preuve P2 finale et fixer objectif P3-J12 n°1.
+
