@@ -10,10 +10,19 @@
 
 ## 1) Diagnostic des points faibles (2h)
 
-### Objectifs
+### Objectifs d'apprentissage
 - Consolider les scores des 5 jours de test (J36-J40).
 - Identifier les 2 domaines les plus faibles nécessitant une remédiation.
 - Prioriser les actions de révision.
+
+### Contenu pédagogique
+- Diagnostiquer les faiblesses de la préparation aux tests.
+- Organiser une remédiation structurée fondée sur des données de performance.
+- Mettre en place un plan d'action pour renforcer les domaines prioritaires.
+
+### Exercices
+- Remplir le tableau de synthèse des scores.
+- Appliquer la méthode de remédiation pour au moins deux domaines faibles.
 
 ### Tableau de synthèse des scores P5
 

@@ -11,6 +11,20 @@
 
 ## 1) Test technique final — conditions réelles (4h)
 
+### Objectifs d'apprentissage
+- Valider les acquis PARADIS dans une simulation finale.
+- Identifier les points faibles finaux et documenter la remédiation nécessaire.
+- Vérifier l'état de préparation du portfolio et des documents de candidature.
+
+### Contenu pédagogique
+- Appliquer une épreuve complète de 150 questions sur tous les domaines.
+- Analyser les résultats pour distinguer force et faiblesse.
+- Préparer une clôture professionnelle du programme.
+
+### Exercices
+- Réaliser le test technique complet de 150 questions.
+- Documenter les réponses et les zones d'amélioration.
+
 ### Consignes strictes (simule le jour J)
 - 150 questions sur tous les domaines PARADIS. 4h chronométrées, pas de pause, pas de documentation.
 - Format : 60% QCM, 25% ouvertes courtes, 15% cas pratiques.

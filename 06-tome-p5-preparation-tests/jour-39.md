@@ -10,11 +10,20 @@
 
 ## 1) Banque ciblée poste visé — QCM (4h)
 
-### Objectifs
+### Objectifs d'apprentissage
 - Tester les connaissances spécifiques au poste de **Professionnel du numérique** en contexte bancaire/institutionnel.
 - 200 QCM couvrant tous les domaines du programme.
 - Format : 4 choix, 1 seule bonne réponse.
 - Chronomètre : 4h (1 min 12 sec/question).
+
+### Contenu pédagogique
+- Appliquer les connaissances PARADIS dans un format de QCM orienté poste visé.
+- Travailler la rapidité et la précision sur des questions métier et des situations techniques.
+- Identifier les points faibles avant la simulation finale J40.
+
+### Exercices
+- Compléter 200 QCM et 50 questions ouvertes/mises en situation.
+- Analyser chaque réponse et noter les zones d'amélioration.
 
 ---
 

@@ -13,6 +13,20 @@
 
 ## 1) Simulation d'entretien technique final (1h)
 
+### Objectifs d'apprentissage
+- Se préparer à un entretien technique final structuré et professionnel.
+- Travailler la présentation personnelle, la clarté et la précision des réponses.
+- Simuler la posture d'un candidat opérationnel en contexte institutionnel.
+
+### Contenu pédagogique
+- Comprendre le déroulement d'un entretien technique de recrutement.
+- Anticiper les questions techniques, de mise en situation et comportementales.
+- Organiser ses idées pour répondre de manière concise et structurée.
+
+### Exercices
+- Jouer le rôle du candidat dans un entretien simulé enregistré.
+- Évaluer sa communication et son argumentaire technique.
+
 ### Format (le plus proche possible d'un vrai entretien)
 
 **Phase 1 — Accueil et présentation (5 min)**
@@ -183,6 +197,19 @@ Tirage de 8 questions couvrant tous les domaines. Exemples :
 - [ ] Profil LinkedIn : photo, titre, compétences, projets
 - [ ] GitHub : tous les repos propres, README complets, pas de secrets commités
 - [ ] Scores P5 documentés (preuve de niveau technique)
+
+---
+
+## Validation qualité J45
+
+### Critères de clôture
+- Portfolio complet et fonctionnel
+- CV et documents de candidature finalisés
+- Simulation entretien technique menée et évaluée
+- Plan de progression post-PARADIS défini
+
+### Résultat attendu
+- La clôture est validée si toutes les cases de la checklist sont cochées et si la simulation finale présente un discours clair, des réponses techniques précises et une posture professionnelle.
 
 ---
 

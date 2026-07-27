@@ -10,6 +10,20 @@
 
 ## 1) Simulation test complet en conditions réelles (4h)
 
+### Objectifs d'apprentissage
+- Réaliser un test technique final complet dans des conditions réelles.
+- Évaluer la capacité à répondre correctement sur tous les domaines PARADIS.
+- Préparer l'épreuve d'entretien technique final.
+
+### Contenu pédagogique
+- Comprendre la structure et la stratégie d'une évaluation de 150 questions.
+- Appliquer des techniques de gestion du temps et de réponse efficace.
+- Analyser les résultats de façon disciplinée et pragmatique.
+
+### Exercices
+- Réaliser le test de 150 questions selon la répartition de domaines.
+- Se chronométrer et noter les réponses en condition d'examen.
+
 ### Consignes strictes (simulation examen)
 - **150 questions** tirées aléatoirement des banques P0 à P4.
 - **4h chronométrées**, pas de pause, pas de documentation.

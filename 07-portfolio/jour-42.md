@@ -16,6 +16,15 @@
 - Organiser les preuves de compétences par domaine.
 - Hiérarchiser les projets (principal, secondaires, complémentaires).
 
+### Contenu pédagogique
+- Tri et sélection des projets selon leur pertinence métier.
+- Construction d'éléments de preuve clairs et valorisants.
+- Organisation du portfolio pour un parcours lecteur fluide et professionnel.
+
+### Exercices
+- Compléter le tableau d'inventaire de projets.
+- Rédiger les fiches projet et préparer la publication en ligne.
+
 ### Inventaire des projets réalisés dans PARADIS
 
 | Tome | Projet | Domaine | Complexité | Portfolio ? |

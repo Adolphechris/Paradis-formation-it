@@ -16,6 +16,15 @@
 - Mettre en avant les compétences acquises via PARADIS de façon crédible.
 - Adapter le CV au format attendu par les recruteurs (bancaire/institutionnel).
 
+### Contenu pédagogique
+- Structurer un CV orienté compétence et projet.
+- Mettre en valeur les réalisations techniques et méthodologiques.
+- Préparer un argumentaire cohérent pour les recruteurs.
+
+### Exercices
+- Rédiger et mettre en forme un CV professionnel.
+- Sélectionner les points forts du parcours PARADIS à présenter en priorité.
+
 ### Structure du CV recommandée
 
 **En-tête :**
@@ -93,6 +102,15 @@ Microsoft Office (Excel avancé, Word, PowerPoint, Outlook), Google Workspace, I
 - Construire un discours crédible sur le parcours PARADIS et sa valeur.
 - Expliquer la collaboration méthodologique avec UNISA.
 - Présenter la trajectoire d'accréditation comme un objectif institutionnel sérieux.
+
+### Contenu pédagogique
+- Structurer les messages clés autour des partenaires, des compétences et de l'accréditation.
+- Présenter PARADIS comme un parcours méthodique et professionnel.
+- Anticiper les questions du recruteur et y répondre de manière précise.
+
+### Exercices
+- Préparer des réponses aux questions anticipées et les répéter à voix haute.
+- Rédiger un argumentaire synthétique de 2-3 phrases sur la valeur de PARADIS.
 
 ### Points clés de l'argumentaire
 

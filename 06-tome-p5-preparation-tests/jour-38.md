@@ -10,6 +10,15 @@
 
 ## 1) Révision P3-C — Développement web (5h)
 
+### Objectifs d'apprentissage
+- Résumer les compétences clés acquises en développement web et en déploiement.
+- Réviser les concepts essentiels de JavaScript, React, Node.js/Express, Prisma et architecture web.
+- Préparer la réussite du test chronométré P3-C/P4.
+
+### Contenu pédagogique
+- Synthèse structurée des connaissances techniques de J23 à J28.
+- Rappel des bonnes pratiques de développement, sécurité et déploiement.
+
 ### Synthèse des points clés P3-C (J23-J28)
 
 **JavaScript ES6+ (J23) :**
@@ -60,6 +69,10 @@
 - SOLID, MVC (Model-View-Controller), Clean Architecture (Domain/Application/Infra/Presentation).
 - ADR (Architecture Decision Records).
 - Projet TaskFlow : React + Express + Prisma + PostgreSQL, JWT auth, déployé Vercel+Render.
+
+### Exercices
+- Répondre à 50 questions ciblées P3-C pour mesurer la maîtrise des concepts de développement web.
+- Revoir les corrections et noter les points à approfondir avant P4.
 
 ### Banque ciblée P3-C (50 questions)
 
