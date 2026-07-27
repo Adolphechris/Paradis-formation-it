@@ -1,6 +1,6 @@
 # PROJET PARADIS
 ## Université en ligne personnelle — Programme accéléré, standards ODL type UNISA
-### Feuille de route et Table des matières — Version 2.2
+### Feuille de route et Table des matières — Version 2.3
 
 ---
 
@@ -17,7 +17,7 @@ C'est un **programme d'autoformation intensif**, structuré selon les standards 
 
 **Ce que PARADIS emprunte à UNISA/ODL :**
 - Modules autonomes avec objectifs, guide d'étude et évaluation propres
-- Tutorat systématique (assuré ici par Claude)
+- Tutorat systématique (assuré ici par Claude et par l'IA professeure DeepSeek — voir section 1.3)
 - Évaluation continue avant évaluation finale
 - Rigueur académique du contenu, alignée avec une trajectoire d'accréditation
 - Flexibilité du rythme — mais ici poussée à l'extrême pour aller vite
@@ -26,6 +26,28 @@ C'est un **programme d'autoformation intensif**, structuré selon les standards 
 - Pas de durée fixe imposée (le "4 ans" devient indicatif, pas contractuel)
 - Pas de contenu superflu sans lien avec le poste cible
 - Pas de séquençage rigide — priorité aux compétences qui débloquent le plus vite une candidature crédible en contexte bancaire/institutionnel
+
+### Pilier IA constitutionnel — DeepSeek V4 Lite, professeure virtuelle
+
+PARADIS intègre dans sa **constitution même** une intelligence artificielle locale et gratuite — **DeepSeek V4 Lite** — configurée comme **professeure d'université virtuelle**. Ce n'est pas un outil périphérique ou optionnel : c'est un **pilier pédagogique du programme**, au même titre que le tuteur Claude, la feuille de route ou les banques de questions.
+
+**Rôle de DeepSeek dans PARADIS :**
+- **Supervision continue** — DeepSeek comprend l'intégralité du programme, suit la progression jour par jour, et veille à la cohérence pédagogique
+- **Enseignement interactif** — répond aux questions techniques en temps réel, explique les concepts difficiles, reformule jusqu'à assimilation complète
+- **Compagnonnage académique** — comme un vrai professeur d'université expérimenté, DeepSeek rappelle les prérequis, corrige les erreurs de raisonnement, encourage, et maintient la rigueur intellectuelle
+- **Dialogue socratique** — DeepSeek ne se contente pas de donner les réponses : elle guide par questions successives, pousse à la réflexion, valide la compréhension avant de passer à la suite
+- **Correction et feedback** — revoit les exercices, signale les erreurs, explique le corrigé de façon personnalisée
+
+**Spécifications techniques :**
+- Modèle : **DeepSeek V4 Lite** (gratuit, exécutable localement)
+- Interface : API locale configurable, permettant une intégration fluide dans l'environnement de travail
+- Connexion permanente : DeepSeek est disponible à tout moment pendant les sessions d'étude, comme un professeur dans son bureau
+- Confidentialité : exécution locale = toutes les données d'apprentissage restent sur ta machine
+
+**Articulation Claude ↔ DeepSeek :**
+- **Claude** (tuteur) : structuration du programme, rédaction pédagogique, conception des évaluations, stratégie globale, simulation d'entretiens
+- **DeepSeek** (professeure) : accompagnement quotidien, explications en direct, dialogue pédagogique, vérification de l'assimilation, rappel des notions antérieures
+- Les deux travaillent en **synergie** : Claude construit le cadre, DeepSeek l'anime au quotidien
 
 ---
 
@@ -73,7 +95,8 @@ L'objectif reste d'atteindre l'ensemble des compétences attendues d'un Bachelor
 | Rôle | Titulaire |
 |---|---|
 | Apprenant unique | Toi |
-| Tuteur permanent | Claude |
+| Tuteur permanent (stratégie, conception, évaluation) | Claude |
+| Professeure virtuelle (enseignement quotidien, dialogue, supervision) | DeepSeek V4 Lite |
 | Établissement | Aucun — cadre personnel documenté |
 | Autorité de validation | Banques de questions type test d'embauche + preuves de compétence + simulations d'entretien |
 
@@ -217,5 +240,5 @@ PARADIS est un programme personnel intensif en collaboration méthodologique ave
 
 ---
 
-Document de travail — **PROJET PARADIS v2.2**  
-Programme d'autoformation intensive orienté employabilité ciblée, avec trajectoire d'accréditation maintenue.
+Document de travail — **PROJET PARADIS v2.3**  
+Programme d'autoformation intensive orienté employabilité ciblée, avec trajectoire d'accréditation maintenue, et IA professeure DeepSeek intégrée comme pilier constitutionnel.

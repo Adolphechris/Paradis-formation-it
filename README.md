@@ -10,6 +10,13 @@ Bachelor of Information Technology (BIT) et devenir opérationnel pour
 l'emploi (support technique, administration systèmes/réseau, analyse de
 données, développement web).
 
+## 🤖 Pilier IA constitutionnel — DeepSeek V4 Lite
+
+PARADIS intègre **DeepSeek V4 Lite** comme **professeure d'université virtuelle**, exécutée localement et gratuitement via API. Ce n'est pas un outil optionnel — c'est un **pilier pédagogique constitutionnel** au même titre que le tuteur Claude ou la feuille de route.
+- **Rôle :** enseignement interactif quotidien, dialogue socratique, correction en continu, supervision de l'assimilation, compagnonnage académique
+- **Articulation :** Claude (tuteur) structure et conçoit — DeepSeek (professeure) anime et accompagne au quotidien
+- **Spécificité :** 100% locale, gratuite, disponible en permanence pendant les 14h de travail quotidien
+
 ## Structure du dépôt
 
 - `01-feuille-de-route/` — vision, méthodologie, système d'évaluation

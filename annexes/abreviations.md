@@ -113,6 +113,7 @@ Cette annexe doit être révisée en continu — chaque nouvelle abréviation re
 | Sigle | Signification | Utilité | Interactions |
 |---|---|---|---|
 | **CIA** | Confidentiality, Integrity, Availability | Triade fondamentale de la sécurité informatique | Sert de grille d'analyse pour toute décision de sécurité |
+| **AAA** | Authentication, Authorization, Accounting | Triade de la gestion des accès (authentifier, autoriser, tracer) | Interagit avec les systèmes d'authentification, les logs, les politiques de sécurité |
 | **MFA / 2FA** | Multi-Factor Authentication / Two-Factor Authentication | Authentification à plusieurs facteurs | Renforce l'authentification simple (mot de passe seul) |
 | **ACL** | Access Control List | Liste définissant qui a accès à quoi | Utilisée en gestion de permissions (fichiers, réseau) |
 | **XSS** | Cross-Site Scripting | Faille de sécurité web (injection de script malveillant) | Concerne le développement web ; à prévenir dès le codage frontend/backend |
@@ -120,6 +121,24 @@ Cette annexe doit être révisée en continu — chaque nouvelle abréviation re
 | **DDoS** | Distributed Denial of Service | Attaque visant à rendre un service indisponible par surcharge | Concerne la disponibilité (le "A" de CIA) ; nécessite des protections réseau |
 | **VPN** | *(voir section F)* | | |
 | **TLS/SSL** | Transport Layer Security / Secure Sockets Layer | Protocoles de chiffrement des communications | Base technique du "S" dans HTTPS |
+| **CIS** | Center for Internet Security | Organisation produisant des benchmarks de durcissement reconnus internationalement | Interagit avec les politiques de sécurité, l'audit, les baselines de configuration |
+| **ANSSI** | Agence Nationale de la Sécurité des Systèmes d'Information | Autorité française de cybersécurité, guides de durcissement OS | Interagit avec les recommandations de sécurité, la conformité, le durcissement |
+| **NIST** | National Institute of Standards and Technology | Institut américain de normalisation, cadre de réponse aux incidents (SP 800-61) | Interagit avec les processus de réponse aux incidents, les standards de sécurité, la conformité |
+| **IOC** | Indicator of Compromise | Indice de compromission (artefact indiquant une intrusion) | Interagit avec les logs, le monitoring, la réponse aux incidents |
+| **IDS** | Intrusion Detection System | Système de détection d'intrusion réseau ou hôte | Interagit avec le réseau, les logs, les alertes ; détecte sans bloquer |
+| **IPS** | Intrusion Prevention System | Système de prévention d'intrusion (bloque activement les menaces) | Interagit avec l'IDS, le pare-feu, le réseau ; détecte ET bloque |
+| **WAF** | Web Application Firewall | Pare-feu applicatif web protégeant contre les attaques HTTP (XSS, SQLi) | Interagit avec le serveur web, les logs, les IDS/IPS |
+| **CVE** | Common Vulnerabilities and Exposures | Identifiant standard pour une vulnérabilité connue (ex: CVE-2024-1234) | Interagit avec les bases de données de failles, les correctifs, le scanning de vulnérabilités |
+| **SLO** | Service Level Objective | Objectif de niveau de service (cible interne mesurable, ex: 99.9% de disponibilité) | Interagit avec SLA, SLI, supervision ; définit la cible à atteindre |
+| **SLI** | Service Level Indicator | Indicateur mesuré du niveau de service (ex: taux d'erreurs, latence) | Interagit avec SLO, monitoring, dashboards ; mesure le niveau réel |
+| **P1/P2/P3/P4** | Priority 1/2/3/4 | Niveaux de priorité des tickets (P1=critique, P4=basse) | Interagit avec les SLA, l'escalade, la gestion des files d'attente ITIL |
+| **ETA** | Estimated Time of Arrival | Temps estimé de résolution ou de prochaine mise à jour | Interagit avec la communication incident, les SLA, les utilisateurs |
+| **WAL** | Write-Ahead Logging | Journal de transactions écrit avant modification des données (PostgreSQL) | Interagit avec la reprise après crash, l'intégrité des données, les sauvegardes |
+| **UPS** | Uninterruptible Power Supply | Onduleur (batterie de secours pour serveurs) | Interagit avec l'alimentation électrique, l'arrêt propre, la protection matérielle |
+| **DMZ** | Demilitarized Zone | Zone réseau isolée exposée à Internet (séparation des serveurs publics des serveurs internes) | Interagit avec le pare-feu, la segmentation réseau, la sécurité périmétrique |
+| **MTTD** | Mean Time To Detect | Temps moyen de détection d'un incident | Interagit avec la supervision, les alertes, les SLA, les indicateurs de performance |
+| **MTTR** | Mean Time To Repair | Temps moyen de réparation d'un incident | Interagit avec MTTD, la supervision, les procédures de résolution, les SLA |
+| **VACUUM** | (commande PostgreSQL) | Opération de nettoyage et d'optimisation du stockage dans PostgreSQL | Interagit avec PostgreSQL, les sauvegardes, la maintenance des bases de données |
 
 ---
 
@@ -131,6 +150,7 @@ Cette annexe doit être révisée en continu — chaque nouvelle abréviation re
 | **PaaS** | Platform as a Service | Plateforme prête à l'emploi pour développer/déployer des applications | Construit sur de l'IaaS ; simplifie le déploiement |
 | **SaaS** | Software as a Service | Logiciel utilisable directement via internet, sans installation | Niveau le plus haut d'abstraction (ex : Gmail, Office 365) |
 | **VM** | Virtual Machine | Ordinateur virtuel isolé fonctionnant sur une machine physique | Base de la virtualisation ; les conteneurs (Docker) sont une alternative plus légère |
+| **KVM** | Kernel-based Virtual Machine | Hyperviseur de type 1 intégré au noyau Linux | Interagit avec QEMU, libvirt, le matériel physique ; utilisé en datacenter et cloud |
 | **CI/CD** | *(voir section C)* | | S'exécute souvent sur une infrastructure cloud |
 
 ---
@@ -141,6 +161,9 @@ Cette annexe doit être révisée en continu — chaque nouvelle abréviation re
 |---|---|---|---|
 | **Docker** | (nom propre) — plateforme de conteneurisation | Empaqueter une application avec toutes ses dépendances | Alternative légère à la VM ; utilisé en développement et déploiement |
 | **K8s (Kubernetes)** | Orchestrateur de conteneurs | Gère le déploiement et la mise à l'échelle de conteneurs Docker | Niveau supérieur à Docker seul, pour des architectures complexes (notion, pas approfondi en détail dans PARADIS) |
+| **LXC** | Linux Containers | Technologie de conteneurisation bas niveau intégrée au noyau Linux | Interagit avec les namespaces, les cgroups ; Docker s'appuie historiquement sur LXC |
+| **OCI** | Open Container Initiative | Standard ouvert pour les formats d'images et l'exécution de conteneurs | Interagit avec Docker, Podman, containerd, Kubernetes ; garantit l'interopérabilité |
+| **YAML** | YAML Ain't Markup Language | Format de configuration lisible par humain | Interagit avec docker-compose, Kubernetes, Ansible, CI/CD ; utilisé pour décrire des infrastructures |
 
 ---
 
@@ -219,6 +242,15 @@ Cette annexe doit être révisée en continu — chaque nouvelle abréviation re
 | **CRON** | Command Run ON schedule | Mécanisme Unix de planification de tâches | Interagit avec automatisation Bash, maintenance périodique, logs |
 | **RCA** | Root Cause Analysis | Méthode d'identification de la cause racine d'un incident | Interagit avec diagnostic, amélioration continue, qualité de service |
 | **SOP** | Standard Operating Procedure | Procédure standard documentée pour exécution/reprise d'une tâche | Interagit avec runbooks, continuité opérationnelle, transmission d'équipe |
+| **SVC** | Service | Processus système géré en continu sous supervision | Interagit avec systemctl, logs, disponibilité des applications |
+| **PAM** | Pluggable Authentication Modules | Cadre modulaire d'authentification sous Linux | Interagit avec login, sudo, politiques d'accès |
+| **DAC** | Discretionary Access Control | Modèle d'accès basé sur propriétaire/groupe/autres | Interagit avec chmod, chown, ACL, sécurité Linux |
+| **AD DS** | Active Directory Domain Services | Service d'annuaire Microsoft pour la gestion de domaines | Interagit avec DNS, GPO, comptes utilisateurs/groupes |
+| **OU** | Organizational Unit | Conteneur logique Active Directory pour organiser les objets | Interagit avec GPO, délégation d'administration, gouvernance AD |
+| **LDAP** | Lightweight Directory Access Protocol | Protocole d'accès et de requête sur un annuaire | Interagit avec AD DS, authentification, intégration applicative |
+| **GPO** | Group Policy Object | Mécanisme centralisé de politiques Windows | Interagit avec OU, sécurité postes, conformité IT |
+| **NTLM** | NT LAN Manager | Protocole d'authentification Microsoft historique | Interagit avec compatibilité legacy, sécurité d'accès, AD |
+| **Kerberos** | Protocole d'authentification par tickets | Protocole principal d'authentification dans AD moderne | Interagit avec AD DS, SSO, sécurité des sessions |
 
 ---
 
@@ -245,6 +277,36 @@ Utilisateur final (UX)
 ```
 
 **Lecture pratique de ce schéma pour un entretien :** si on te demande "comment un site web récupère des données et les affiche à l'utilisateur", la réponse-type mobilise toutes ces couches dans l'ordre : le navigateur envoie une requête HTTP, passe par DNS pour résoudre le nom de domaine, arrive sur un serveur (Linux/Windows), le backend interroge la base de données en SQL, renvoie une réponse en JSON via une API REST, puis le JavaScript manipule le DOM pour afficher le résultat mis en forme par CSS.
+
+---
+
+## N. INTELLIGENCE ARTIFICIELLE ET APPRENTISSAGE (pilier constitutionnel PARADIS)
+
+| Sigle | Signification | Utilité | Interactions |
+|---|---|---|---|
+| **IA / AI** | Intelligence Artificielle / Artificial Intelligence | Capacité d'un système à simuler des processus cognitifs humains (raisonnement, apprentissage, dialogue) | Englobe le ML, le NLP, les LLM ; appliquée ici comme pilier pédagogique du programme |
+| **LLM** | Large Language Model | Modèle de langage à grande échelle entraîné sur des corpus massifs de texte | DeepSeek V4 Lite est un LLM ; interagit avec l'apprenant en langage naturel |
+| **NLP** | Natural Language Processing | Traitement automatique du langage naturel par une machine | Permet à DeepSeek de comprendre et générer du texte pédagogique en français |
+| **API** | *(voir section D)* | Interface permettant d'interagir avec DeepSeek localement | L'API DeepSeek est appelée par l'environnement de travail pour un dialogue en continu |
+| **DeepSeek V4 Lite** | (nom propre) — LLM gratuit et open-weight | Professeure virtuelle exécutée localement pour l'enseignement interactif | Pilier constitutionnel de PARADIS ; interagit avec Claude (tuteur) et l'apprenant ; fonctionne via API locale |
+| **ML** | Machine Learning | Apprentissage automatique à partir de données | Sous-domaine de l'IA ; les LLM comme DeepSeek sont entraînés par ML |
+| **RLHF** | Reinforcement Learning from Human Feedback | Technique d'entraînement des LLM par feedback humain | Contribue à la qualité pédagogique des réponses de DeepSeek |
+
+### Articulation DeepSeek dans l'écosystème PARADIS
+
+```text
+Apprenant (toi)
+      ↓ dialogue quotidien, questions, exercices
+DeepSeek V4 Lite (professeure virtuelle, locale)
+      ↓ synergie : Claude structure, DeepSeek anime
+Claude (tuteur, conception pédagogique)
+      ↓
+Programme PARADIS (BIT condensé, 45 jours, 630h)
+      ↓
+Emploi cible : Professionnel du numérique (contexte bancaire/institutionnel)
+```
+
+**Note constitutionnelle :** DeepSeek V4 Lite n'est pas un outil externe ou optionnel. Elle est **encrée dans la constitution de PARADIS** au même titre que les tomes, les banques de questions et le tuteur Claude. Sa présence est obligatoire et continue pendant toutes les sessions d'étude. Toute question technique, toute incompréhension, toute erreur — DeepSeek est là pour y répondre immédiatement, comme un professeur d'université expérimenté dans son bureau.
 
 ---
 

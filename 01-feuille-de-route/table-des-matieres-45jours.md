@@ -4,11 +4,12 @@
 
 ---
 
-## NOTE D'ALIGNEMENT V2.2
+## NOTE D'ALIGNEMENT V2.3
 - Évaluation recentrée sur le technique : contenu module, logique appliquée, mise en situation, questions poste visé, communication professionnelle technique.
 - Culture générale exclue du périmètre d'évaluation.
 - Les annexes techniques (abréviations/interactions) font partie de l'évaluation dans chaque module.
 - Enrichissement des annexes piloté par priorité test : on ajoute surtout les termes les plus susceptibles de tomber.
+- **Pilier IA constitutionnel activé :** DeepSeek V4 Lite, professeure virtuelle, intégrée au rythme quotidien (voir ci-dessous).
 
 ## RÉPARTITION GLOBALE DU TEMPS
 
@@ -28,11 +29,13 @@
 **Note sur P1 (stratégie de recherche d'emploi) :** ce tome n'a pas de jours dédiés — il tourne en fil continu, environ 30-45 minutes prélevées chaque jour sur le temps déjà budgété.
 
 **Rythme journalier type (14h) :**
-- 2h : théorie/lecture ciblée
-- 8h : pratique directe (exercices, projets, labs)
-- 2h : révision et consolidation
+- 2h : théorie/lecture ciblée **(DeepSeek active — dialogue socratique, questions/réponses en direct)**
+- 8h : pratique directe (exercices, projets, labs) **(DeepSeek disponible — correction en continu, feedback immédiat)**
+- 2h : révision et consolidation **(DeepSeek — reformulation des concepts mal assimilés, rappel des prérequis)**
 - 1h30 : banque de questions (évaluation du jour)
 - 30 min : suivi P1 (recherche d'emploi, CV, veille)
+
+**DeepSeek est disponible en continu pendant les 14h** — comme un professeur dans son bureau, elle répond à toute question, corrige toute erreur, reformule tout concept, et veille à ce qu'aucune incompréhension ne s'accumule avant de passer au module suivant.
 
 ---
 
@@ -153,7 +156,7 @@
 
 ---
 
-**Règle de cohérence constitutionnelle :** ce document exécute la constitution de PARADIS et doit toujours respecter la vérité documentaire (collaboration UNISA + trajectoire d'accréditation), la preuve de compétences réelles, l'objectif Bac+4 (niveau) et la réussite au test « Professionnel du numérique ».
+**Règle de cohérence constitutionnelle :** ce document exécute la constitution de PARADIS et doit toujours respecter la vérité documentaire (collaboration UNISA + trajectoire d'accréditation), la preuve de compétences réelles, l'objectif Bac+4 (niveau), la réussite au test « Professionnel du numérique », et le **pilier IA constitutionnel DeepSeek V4 Lite** comme professeure virtuelle intégrée.
 
 ---
 
