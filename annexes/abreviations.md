@@ -198,6 +198,13 @@ Cette annexe doit être révisée en continu — chaque nouvelle abréviation re
 | **HDFS** | Hadoop Distributed File System | Système de fichiers distribué pour le stockage Big Data | Interagit avec Hadoop, Spark, les clusters de stockage |
 | **PySpark** | Python API for Apache Spark | Interface Python pour le traitement distribué Spark | Interagit avec Spark, HDFS, les DataFrames distribués |
 | **Z-score** | (standardisation) | Nombre d'écarts-types entre une valeur et la moyenne | Interagit avec la normalisation, la détection d'outliers, le machine learning |
+| **ES6/ES2015** | ECMAScript 6 / ECMAScript 2015 | Version majeure de JavaScript (classes, arrow functions, modules, promesses) | Interagit avec tous les frameworks modernes, Node.js, les navigateurs |
+| **SPA** | Single Page Application | Application web monopage (navigation sans rechargement, routage côté client) | Interagit avec React, Vue, Angular, le DOM, les APIs REST |
+| **HMR** | Hot Module Replacement | Remplacement de modules à chaud (rafraîchit l'application sans recharger la page) | Interagit avec Vite, Webpack, le développement frontend |
+| **npm** | Node Package Manager | Gestionnaire de paquets JavaScript (dépendances, scripts, publication) | Interagit avec Node.js, package.json, les bundlers, le build |
+| **SOLID** | 5 principes de conception (Single Responsibility, Open/Closed, Liskov, Interface Segregation, Dependency Inversion) | Améliorent la maintenabilité et la testabilité du code | Interagit avec l'architecture logicielle, les design patterns, les tests |
+| **MVC** | Model-View-Controller | Pattern architectural séparant données (Model), interface (View), orchestration (Controller) | Interagit avec Express/React, l'architecture web, la séparation des responsabilités |
+| **ADR** | Architecture Decision Record | Document justifiant une décision d'architecture (contexte, décision, conséquences) | Interagit avec la documentation, la gouvernance technique, l'onboarding |
 
 ---
 
