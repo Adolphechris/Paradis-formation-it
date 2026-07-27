@@ -185,6 +185,19 @@ Cette annexe doit être révisée en continu — chaque nouvelle abréviation re
 | **BI** | Business Intelligence | Ensemble des outils/méthodes d'analyse de données pour la décision | Englobe les outils de visualisation (Power BI, etc.) et les processus ETL |
 | **ETL** | *(voir section E)* | | |
 | **KPI** | *(voir section J)* | | Les analyses de données servent souvent à calculer des KPI |
+| **IQR** | Interquartile Range | Écart entre Q3 et Q1, mesure la dispersion des 50% centraux | Interagit avec les quartiles, la détection d'outliers, les boxplots |
+| **P95/P99** | 95th/99th Percentile | Valeur seuil en dessous de laquelle se trouvent 95%/99% des données | Interagit avec les SLA, les performances, la détection d'anomalies |
+| **TCD** | Tableau Croisé Dynamique | Outil Excel de synthèse et croisement de données multidimensionnelles | Interagit avec les exports CSV, les bases de données, les rapports |
+| **R²** | Coefficient de détermination | Mesure la qualité d'une régression (proportion de variance expliquée, 0 à 1) | Interagit avec la corrélation, les courbes de tendance, la prédiction |
+| **NaN** | Not a Number | Valeur manquante ou non définie dans un jeu de données | Interagit avec pandas, le nettoyage de données, les calculs statistiques |
+| **r** | Coefficient de corrélation de Pearson | Mesure de la force et direction d'une relation linéaire entre deux variables (-1 à +1) | Interagit avec les nuages de points, la régression, les prédictions |
+| **OLAP** | Online Analytical Processing | Traitement analytique en ligne (requêtes multidimensionnelles, agrégations) | Interagit avec les fonctions fenêtres, ROLLUP/CUBE, les data warehouses, les schémas en étoile |
+| **OLTP** | Online Transaction Processing | Base de données optimisée pour les transactions rapides (écritures) | Interagit avec la normalisation 3NF, les SGBD, les applications métier |
+| **SCD** | Slowly Changing Dimension | Dimension dont les attributs changent lentement dans le temps (ex: adresse client) | Interagit avec les schémas en étoile, l'historisation, l'ETL |
+| **DAX** | Data Analysis Expressions | Langage de formules Power BI pour les mesures et colonnes calculées | Interagit avec le modèle de données, les visuels, les filtres, l'intelligence temporelle |
+| **HDFS** | Hadoop Distributed File System | Système de fichiers distribué pour le stockage Big Data | Interagit avec Hadoop, Spark, les clusters de stockage |
+| **PySpark** | Python API for Apache Spark | Interface Python pour le traitement distribué Spark | Interagit avec Spark, HDFS, les DataFrames distribués |
+| **Z-score** | (standardisation) | Nombre d'écarts-types entre une valeur et la moyenne | Interagit avec la normalisation, la détection d'outliers, le machine learning |
 
 ---
 
