@@ -14,7 +14,7 @@
 ### Objectifs d'apprentissage
 - Appliquer une politique de durcissement de base sur un serveur Linux et un serveur Windows.
 - Identifier et désactiver les services inutiles exposés.
-- Configurer un pare-feu hôte minimal (iptables/nftables Linux, Windows Defender Firewall).
+- Configurer un pare-feu hôte minimal (iptables/nftables, ufw, firewalld Linux ; Windows Defender Firewall).
 - Appliquer les mises à jour de sécurité de façon maîtrisée et documentée.
 - Expliquer le concept de surface d'attaque et comment le durcissement la réduit.
 
@@ -24,16 +24,16 @@ Le durcissement (hardening) consiste à réduire la surface d'attaque d'un syst�
 Points clés:
 1. **Surface d'attaque** = ensemble des points d'entrée exploitables (ports ouverts, services, comptes, applications). Plus elle est petite, plus le système est difficile à compromettre.
 2. **Principe de base** : désactiver/désinstaller tout ce qui n'est pas utilisé. Chaque service actif est un risque potentiel.
-3. **Linux** : `systemctl list-units --type=service` → désactiver les services inutiles ; `ss -tlnp` → lister les ports ouverts ; `iptables`/`nftables` → pare-feu avec politique par défaut DROP ; `unattended-upgrades` → mises à jour automatiques de sécurité.
+3. **Linux** : `systemctl list-units --type=service` → désactiver les services inutiles ; `ss -tlnp` → lister les ports ouverts ; `iptables`/`nftables` → pare-feu avec politique par défaut DROP ; `ufw` (Ubuntu, plus simple) ou `firewalld` (RHEL/CentOS) comme alternative ; `auditd` → audit système et traçabilité des actions ; `unattended-upgrades` → mises à jour automatiques de sécurité.
 4. **Windows** : `Get-Service` → auditer les services ; Windows Defender Firewall → bloquer le trafic entrant non sollicité ; Windows Update → appliquer les correctifs critiques ; désactiver SMBv1, NetBIOS si non utilisé.
-5. **Checklist de durcissement minimale** : (a) inventaire des services et ports, (b) suppression des services inutiles, (c) pare-feu restrictif, (d) mises à jour, (e) comptes : suppression des comptes inactifs, verrouillage après N tentatives, (f) SSH : désactiver root login, utiliser des clés.
+5. **Checklist de durcissement minimale** : (a) inventaire des services et ports, (b) suppression des services inutiles, (c) pare-feu restrictif (iptables/nftables ou ufw/firewalld), (d) mises à jour, (e) auditd activé et configuré pour les actions critiques, (f) comptes : suppression des comptes inactifs, verrouillage après N tentatives, (g) SSH : désactiver root login, utiliser des clés.
 6. **Bonnes pratiques** : toujours tester le durcissement sur un environnement de test avant la production ; documenter chaque modification pour permettre le rollback ; utiliser des baselines de sécurité reconnues (CIS Benchmarks, ANSSI).
 
 ### Exercices pratiques (avec corrigés)
 1. **Exercice 1 (simple)** : lister les services actifs et les ports ouverts sur ta machine Linux de lab. Proposer la désactivation d'au moins 3 services non essentiels et justifier.
    - **Corrigé détaillé** : `systemctl list-units --type=service --state=running` + `ss -tlnp`. Exemples : cups (impression, inutile sur serveur), avahi-daemon (zero-conf, risque info leakage), bluetooth (inutile sur serveur). Justifier chaque désactivation par l'absence de besoin métier.
 2. **Exercice 2 (intermédiaire)** : configurer un pare-feu iptables avec politique par défaut DROP, n'autoriser que SSH (port 22), HTTP (80) et HTTPS (443) en entrée, et tout le trafic sortant. Tester la configuration.
-   - **Corrigé détaillé** : `iptables -P INPUT DROP` ; `iptables -A INPUT -p tcp --dport 22 -j ACCEPT` ; `iptables -A INPUT -p tcp --dport 80 -j ACCEPT` ; `iptables -A INPUT -p tcp --dport 443 -j ACCEPT` ; `iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT` ; `iptables -P OUTPUT ACCEPT`. Tester : `curl localhost:80` OK, `nmap` externe ne voit que 22/80/443.
+   - **Corrigé détaillé** : `iptables -P INPUT DROP` ; `iptables -A INPUT -p tcp --dport 22 -j ACCEPT` ; `iptables -A INPUT -p tcp --dport 80 -j ACCEPT` ; `iptables -A INPUT -p tcp --dport 443 -j ACCEPT` ; `iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT` ; `iptables -P OUTPUT ACCEPT`. Tester : `curl localhost:80` OK, `nmap` externe ne voit que 22/80/443. Note : installer `nmap` avec `sudo apt install nmap` si absent.
 3. **Exercice 3 (avancé)** : rédiger une procédure de durcissement pour un nouveau serveur Linux de production comprenant 10 points de contrôle. Justifier chaque point par le risque qu'il adresse.
    - **Corrigé détaillé** : 1) Désactiver root SSH → empêche brute force root. 2) Authentification par clé SSH uniquement → élimine les attaques par mot de passe. 3) Pare-feu restrictif → limite la surface réseau. 4) Mises à jour automatiques de sécurité → réduit la fenêtre de vulnérabilité. 5) Désactiver les services inutiles → réduit les points d'entrée. 6) Configurer fail2ban → bloque les IP après N échecs. 7) Utiliser sudo avec logs → traçabilité. 8) Désactiver IPv6 si non utilisé → réduit la surface. 9) Partition /tmp en noexec → empêche l'exécution de malwares. 10) Monitoring des logs → détection précoce.
 
@@ -52,6 +52,7 @@ Points clés:
 8. Ouverte: pourquoi tester le durcissement avant la production ?
 9. Cas: après durcissement, une application legacy ne fonctionne plus. Approche ?
 10. QCM: fail2ban sert à... A) bloquer les IP après échecs répétés B) accélérer le réseau C) remplacer le pare-feu
+11. QCM: `ufw` est un... A) éditeur de texte B) pare-feu simplifié pour Ubuntu C) gestionnaire de paquets
 11. Ouverte: différence entre mise à jour de sécurité et mise à jour fonctionnelle.
 12. Cas: un pentester trouve 3 ports ouverts inattendus. Priorité ?
 13. QCM: un benchmark CIS est... A) un standard de durcissement B) un outil de monitoring C) un langage
