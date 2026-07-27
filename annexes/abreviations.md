@@ -165,7 +165,33 @@ Cette annexe doit être révisée en continu — chaque nouvelle abréviation re
 
 ---
 
-## L. TABLEAU DES INTERACTIONS PRINCIPALES (vue d'ensemble)
+## L. AJOUTS CIBLÉS — P0 / JOUR 01
+
+| Sigle | Signification | Utilité | Interactions |
+|---|---|---|---|
+| **UAC** | User Account Control | Contrôle l'élévation de privilèges sous Windows | Interagit avec OS, comptes utilisateurs, sécurité poste |
+| **NTFS** | New Technology File System | Système de fichiers Windows avec permissions avancées | Interagit avec ACL, sécurité des fichiers, administration poste |
+| **CSV** | Comma-Separated Values | Format d'échange tabulaire simple | Interagit avec Excel, SQL, ETL, import/export |
+| **PDF** | Portable Document Format | Format de diffusion stable de documents | Interagit avec Word/PowerPoint, portfolio, candidatures |
+| **SMTP** | Simple Mail Transfer Protocol | Protocole d'envoi d'emails | Interagit avec Outlook, TCP/IP, sécurité mail |
+| **IMAP** | Internet Message Access Protocol | Protocole de synchronisation d'accès aux emails | Interagit avec Outlook, serveur de messagerie, travail multi-appareils |
+| **SSO** | Single Sign-On | Authentification unique sur plusieurs outils | Interagit avec gestion d'identité, sécurité des accès, outils collaboratifs |
+| **ITSM** | IT Service Management | Gestion structurée des services et incidents IT | Interagit avec tickets, SLA, supervision, support |
+| **MMC** | Microsoft Management Console | Console d'administration avancée sous Windows | Interagit avec services système, utilisateurs, disques, dépannage |
+| **APIPA** | Automatic Private IP Addressing | Adresse d'auto-attribution (169.254.x.x) en absence de DHCP | Interagit avec IP, DHCP, diagnostic réseau |
+| **TVA** | Taxe sur la Valeur Ajoutée | Taux fiscal utilisé dans les calculs de prix et commissions | Interagit avec Excel, formules absolues, reporting financier |
+| **SEO** | Search Engine Optimization | Optimisation de visibilité d'une page web | Interagit avec HTML sémantique, performance CSS/JS, UX |
+| **WCAG** | Web Content Accessibility Guidelines | Référentiel d'accessibilité des interfaces web | Interagit avec HTML, formulaires, UX, qualité front-end |
+| **PAT** | Personal Access Token | Jeton d'authentification GitHub pour opérations sécurisées | Interagit avec Git, GitHub, HTTPS, gestion des accès |
+| **PID** | Process Identifier | Identifiant unique d'un processus système | Interagit avec `ps`, `top`, `kill`, supervision système |
+| **UID** | User Identifier | Identifiant numérique d'un utilisateur Linux | Interagit avec permissions, comptes, sécurité Linux |
+| **GID** | Group Identifier | Identifiant numérique d'un groupe Linux | Interagit avec gestion des groupes, droits d'accès, collaboration |
+| **SFTP** | SSH File Transfer Protocol | Transfert de fichiers chiffré via SSH | Interagit avec SSH, administration distante, sécurité des échanges |
+| **MVP** | Minimum Viable Product | Version minimale fonctionnelle d'un livrable | Interagit avec priorisation, gestion du temps, livrables de projet |
+
+---
+
+## M. TABLEAU DES INTERACTIONS PRINCIPALES (vue d'ensemble)
 
 Ce tableau montre comment les couches s'articulent entre elles, du plus bas niveau (infrastructure) au plus haut niveau (utilisateur) :
 
