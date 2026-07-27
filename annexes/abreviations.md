@@ -188,6 +188,37 @@ Cette annexe doit être révisée en continu — chaque nouvelle abréviation re
 | **GID** | Group Identifier | Identifiant numérique d'un groupe Linux | Interagit avec gestion des groupes, droits d'accès, collaboration |
 | **SFTP** | SSH File Transfer Protocol | Transfert de fichiers chiffré via SSH | Interagit avec SSH, administration distante, sécurité des échanges |
 | **MVP** | Minimum Viable Product | Version minimale fonctionnelle d'un livrable | Interagit avec priorisation, gestion du temps, livrables de projet |
+| **IPO** | Input Process Output | Modèle logique d'analyse entrée-traitement-sortie | Interagit avec algorithmique, résolution de problèmes, structuration de scripts |
+| **REPL** | Read Eval Print Loop | Console interactive pour exécuter/tester du code en direct | Interagit avec apprentissage Python, validation rapide, débogage |
+| **PEP 8** | Python Enhancement Proposal 8 | Guide officiel de style Python | Interagit avec lisibilité, maintenabilité, revue de code |
+| **VENV** | Virtual Environment | Environnement Python isolé par projet | Interagit avec pip, dépendances, reproductibilité |
+| **PIP** | Pip Installs Packages | Gestionnaire de paquets Python | Interagit avec venv, librairies tierces, configuration de projet |
+| **STDLIB** | Standard Library | Bibliothèque standard livrée avec Python | Interagit avec `csv`, `json`, `pathlib`, scripts sans dépendances externes |
+| **FIFO** | First In First Out | Politique de file d'attente (premier entré, premier sorti) | Interagit avec scheduling, files de tickets, traitement ordonné |
+| **LIFO** | Last In First Out | Politique de pile (dernier entré, premier sorti) | Interagit avec pile d'appels, historique d'actions, backtracking |
+| **BIG-O** | Big O Notation | Mesure de croissance du coût algorithmique | Interagit avec structures de données, performance et scalabilité |
+| **DDL** | Data Definition Language | Sous-ensemble SQL pour définir/modifier la structure de la base | Interagit avec tables, schémas, colonnes, contraintes |
+| **DML** | Data Manipulation Language | Sous-ensemble SQL pour insérer/modifier/supprimer des lignes | Interagit avec CRUD, opérations métier quotidiennes |
+| **DQL** | Data Query Language | Sous-ensemble SQL pour interroger les données | Interagit avec reporting, analyses, extraction |
+| **PK** | Primary Key | Clé primaire identifiant de façon unique chaque ligne | Interagit avec intégrité des données et indexation |
+| **FK** | Foreign Key | Clé étrangère référant une clé primaire d'une autre table | Interagit avec relations, jointures, cohérence référentielle |
+| **CTE** | Common Table Expression | Bloc temporaire nommé dans une requête SQL (`WITH`) | Interagit avec lisibilité, maintenance et débogage des requêtes complexes |
+| **ERD** | Entity Relationship Diagram | Schéma visuel des entités et relations d'une base | Interagit avec modélisation, PK/FK, conception SQL |
+| **1NF** | First Normal Form | Première forme normale: colonnes atomiques | Interagit avec qualité des données et requêtage fiable |
+| **2NF** | Second Normal Form | Deuxième forme normale: dépendance complète à la clé | Interagit avec réduction des redondances |
+| **3NF** | Third Normal Form | Troisième forme normale: suppression des dépendances transitives | Interagit avec cohérence et maintenabilité |
+| **ACID** | Atomicity Consistency Isolation Durability | Propriétés garantissant la fiabilité des transactions | Interagit avec intégrité métier, concurrence et persistance |
+| **TCL** | Transaction Control Language | Commandes SQL de contrôle transactionnel (`BEGIN`, `COMMIT`, `ROLLBACK`) | Interagit avec DML, gestion d'erreurs, sécurité des opérations |
+| **CIDR** | Classless Inter-Domain Routing | Notation de sous-réseaux IP (`/24`, `/16`) | Interagit avec adressage IP, masque, routage |
+| **UDP** | User Datagram Protocol | Protocole de transport léger non orienté connexion | Interagit avec DNS, flux temps réel, performance réseau |
+| **ICMP** | Internet Control Message Protocol | Protocole de messages de contrôle réseau (utilisé par `ping`) | Interagit avec diagnostic, supervision, routage |
+| **RTT** | Round Trip Time | Temps aller-retour d'un paquet entre source et destination | Interagit avec latence, QoS perçue, troubleshooting réseau |
+| **STDIN** | Standard Input | Flux d'entrée standard d'un processus | Interagit avec pipes, scripts Bash, redirections |
+| **STDOUT** | Standard Output | Flux de sortie standard d'un processus | Interagit avec logs, redirections, chaînage de commandes |
+| **STDERR** | Standard Error | Flux de sortie d'erreur d'un processus | Interagit avec débogage, supervision, redirection `2>` |
+| **CRON** | Command Run ON schedule | Mécanisme Unix de planification de tâches | Interagit avec automatisation Bash, maintenance périodique, logs |
+| **RCA** | Root Cause Analysis | Méthode d'identification de la cause racine d'un incident | Interagit avec diagnostic, amélioration continue, qualité de service |
+| **SOP** | Standard Operating Procedure | Procédure standard documentée pour exécution/reprise d'une tâche | Interagit avec runbooks, continuité opérationnelle, transmission d'équipe |
 
 ---
 

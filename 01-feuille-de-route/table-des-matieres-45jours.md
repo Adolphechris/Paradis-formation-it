@@ -157,4 +157,4 @@
 
 ---
 
-Annexe liée : [ABREVIATIONS.md](/home/adolphe/PARADIS/Paradis-formation-it.worktrees/greeting-bonjour/ANNEXES/ABREVIATIONS.md).
+Annexe liée : [abreviations.md](/home/adolphe/PARADIS/Paradis-formation-it.worktrees/greeting-bonjour/annexes/abreviations.md).
