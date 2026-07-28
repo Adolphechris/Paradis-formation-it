@@ -1,109 +1,147 @@
-/* ==========================================================================
-   PARADIS IT — Dynamic Markdown Parser Engine
-   ========================================================================== */
+/**
+ * PARADIS — Markdown Parser
+ * Uses Marked.js (CDN) for robust Markdown → HTML rendering.
+ * Applies DOMPurify sanitization before injecting into the DOM.
+ * Falls back to basic text extraction if Marked.js is unavailable.
+ */
+(function () {
+    'use strict';
 
-class MarkdownParser {
-  static parse(md) {
-    if (!md) return '';
+    let markedReady = false;
+    let purifyReady = false;
 
-    let html = md;
+    /**
+     * Load Marked.js dynamically from CDN if not already loaded.
+     * @returns {Promise<Function>} — marked.parse function
+     */
+    async function loadMarked() {
+        if (markedReady && window.marked && typeof window.marked.parse === 'function') {
+            return window.marked.parse;
+        }
 
-    // Normalize line endings
-    html = html.replace(/\r\n/g, '\n');
+        try {
+            await import('https://cdn.jsdelivr.net/npm/marked@14/dist/marked.umd.min.js');
+            if (window.marked && typeof window.marked.parse === 'function') {
+                markedReady = true;
+                return window.marked.parse;
+            }
+        } catch (err) {
+            console.warn('Marked.js CDN unavailable:', err.message);
+        }
 
-    // Code Blocks (fenced)
-    html = html.replace(/```(\w+)?\n([\s\S]*?)```/g, (match, lang, code) => {
-      const language = lang || 'text';
-      const escapedCode = MarkdownParser.escapeHtml(code.trim());
-      return `<div class="code-block-wrapper">
-        <div class="code-block-header">
-          <span class="code-lang">${language}</span>
-          <button class="btn-copy-code" onclick="MarkdownParser.copyCode(this)">Copier</button>
-        </div>
-        <pre><code class="language-${language}">${escapedCode}</code></pre>
-      </div>`;
-    });
+        return null;
+    }
 
-    // Inline Code
-    html = html.replace(/`([^`]+)`/g, (match, code) => {
-      return `<code>${MarkdownParser.escapeHtml(code)}</code>`;
-    });
+    /**
+     * Load DOMPurify dynamically from CDN if not already loaded.
+     * @returns {Promise<Function|null>} — DOMPurify.sanitize function or null
+     */
+    async function loadDOMPurify() {
+        if (purifyReady && window.DOMPurify && typeof window.DOMPurify.sanitize === 'function') {
+            return window.DOMPurify.sanitize;
+        }
 
-    // Callouts / Alerts (> [!NOTE], > [!IMPORTANT], > [!WARNING], > [!TIP])
-    html = html.replace(/^>\s*\[!(NOTE|IMPORTANT|WARNING|TIP)\]\s*\n([\s\S]*?)(?=\n\n|\n[^\>]|$)/gmi, (match, type, content) => {
-      const calloutType = type.toLowerCase();
-      const cleanContent = content.replace(/^>\s*/gm, '').trim();
-      return `<div class="callout callout-${calloutType}">
-        <strong class="callout-title">${type}</strong>
-        <p>${cleanContent}</p>
-      </div>`;
-    });
+        try {
+            await import('https://cdn.jsdelivr.net/npm/dompurify@3/dist/purify.es.min.js');
+            if (window.DOMPurify && typeof window.DOMPurify.sanitize === 'function') {
+                purifyReady = true;
+                return window.DOMPurify.sanitize;
+            }
+        } catch (err) {
+            console.warn('DOMPurify CDN unavailable:', err.message);
+        }
 
-    // Blockquotes
-    html = html.replace(/^>\s*(.+)$/gm, '<blockquote>$1</blockquote>');
+        return null;
+    }
 
-    // Headers
-    html = html.replace(/^### (.*$)/gmi, '<h3>$1</h3>');
-    html = html.replace(/^## (.*$)/gmi, '<h2>$1</h2>');
-    html = html.replace(/^# (.*$)/gmi, '<h1>$1</h1>');
+    /**
+     * Sanitize HTML string using DOMPurify or basic escaping.
+     * @param {string} html
+     * @returns {string}
+     */
+    async function sanitize(html) {
+        const purify = await loadDOMPurify();
+        if (purify) {
+            return purify(html, {
+                ALLOWED_TAGS: [
+                    'p', 'br', 'strong', 'em', 'b', 'i', 'u', 's',
+                    'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
+                    'ul', 'ol', 'li', 'dl', 'dt', 'dd',
+                    'a', 'img', 'table', 'thead', 'tbody', 'tr', 'th', 'td',
+                    'blockquote', 'pre', 'code', 'hr', 'div', 'span', 'sub', 'sup',
+                    'details', 'summary', 'input'
+                ],
+                ALLOWED_ATTR: ['href', 'src', 'alt', 'title', 'class', 'id', 'target', 'rel', 'checked', 'disabled', 'readonly', 'placeholder'],
+                ALLOW_DATA_ATTR: false,
+                ADD_ATTR: ['target', 'rel']
+            });
+        }
+        // Fallback: basic text escaping
+        return html
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;');
+    }
 
-    // Bold & Italic
-    html = html.replace(/\*\*\*(.*?)\*\*\*/g, '<strong><em>$1</em></strong>');
-    html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-    html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
+    /**
+     * Render Markdown to safe HTML.
+     * @param {string} markdown — raw Markdown text
+     * @returns {Promise<string>} — sanitized HTML
+     */
+    async function render(markdown) {
+        if (!markdown || typeof markdown !== 'string') return '';
 
-    // Unordered Lists
-    html = html.replace(/^\s*[\-\*]\s+(.*)$/gm, '<li>$1</li>');
-    html = html.replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>');
+        const parse = await loadMarked();
+        if (parse) {
+            const html = parse(markdown);
+            return await sanitize(html);
+        }
 
-    // Simple Tables parser
-    html = MarkdownParser.parseTables(html);
+        // Fallback: convert basic Markdown manually with escaping
+        return await sanitize(escapeHtml(markdown));
+    }
 
-    // Paragraphs
-    const paragraphs = html.split(/\n\n+/);
-    html = paragraphs.map(p => {
-      p = p.trim();
-      if (p.startsWith('<h') || p.startsWith('<div') || p.startsWith('<ul') || p.startsWith('<ol') || p.startsWith('<blockquote') || p.startsWith('<table')) {
-        return p;
-      }
-      return p ? `<p>${p}</p>` : '';
-    }).join('\n');
+    /**
+     * Render Markdown synchronously (best-effort, no async).
+     * Use when you can await renderAsync().
+     * @param {string} markdown
+     * @returns {string}
+     */
+    function renderSync(markdown) {
+        if (!markdown || typeof markdown !== 'string') return '';
 
-    return html;
-  }
+        if (window.marked && typeof window.marked.parse === 'function') {
+            const html = window.marked.parse(markdown);
+            // No DOMPurify in sync path — use basic escaping
+            return escapeHtml(html);
+        }
 
-  static escapeHtml(str) {
-    return str
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#039;');
-  }
+        return escapeHtml(markdown);
+    }
 
-  static parseTables(text) {
-    const tableRegex = /\|(.+)\|[\r\n]+\|([-:]+[-| :]*)\|[\r\n]+((?:\|.+\|[\r\n]*)+)/g;
-    return text.replace(tableRegex, (match, headerLine, alignLine, bodyLines) => {
-      const headers = headerLine.split('|').map(h => h.trim()).filter(h => h);
-      const rows = bodyLines.trim().split('\n').map(row => {
-        return row.split('|').map(c => c.trim()).filter(c => c);
-      });
+    /**
+     * Async version for proper rendering.
+     * @param {string} markdown
+     * @returns {Promise<string>}
+     */
+    async function renderAsync(markdown) {
+        return render(markdown);
+    }
 
-      let headerHtml = '<tr>' + headers.map(h => `<th>${h}</th>`).join('') + '</tr>';
-      let bodyHtml = rows.map(r => '<tr>' + r.map(c => `<td>${c}</td>`).join('') + '</tr>').join('');
+    /**
+     * Basic HTML entity escaping for fallback path.
+     * @param {string} text
+     * @returns {string}
+     */
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.appendChild(document.createTextNode(text));
+        return div.innerHTML;
+    }
 
-      return `<table><thead>${headerHtml}</thead><tbody>${bodyHtml}</tbody></table>`;
-    });
-  }
+    // Expose globally
+    window.ParadisMarkdown = { render, renderSync, renderAsync, sanitize };
 
-  static copyCode(btn) {
-    const pre = btn.parentElement.nextElementSibling;
-    const code = pre.querySelector('code').innerText;
-    navigator.clipboard.writeText(code).then(() => {
-      btn.innerText = 'Copié !';
-      setTimeout(() => { btn.innerText = 'Copier'; }, 2000);
-    });
-  }
-}
-
-window.MarkdownParser = MarkdownParser;
+    console.log('PARADIS Markdown Parser initialized (Marked.js + DOMPurify)');
+})();
