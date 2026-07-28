@@ -65,6 +65,8 @@ extra_javascript:
   - js/progress-tracker.js
   - js/quiz-engine.js
   - js/search-engine.js
+  - js/supabase-config.js
+  - js/supabase-client.js
   - js/radar-chart.js
   - js/pdf-export.js
   - js/chat-widget.js

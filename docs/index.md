@@ -14,6 +14,11 @@ Plateforme d'apprentissage intensif pour acquérir en **45 jours** les compéten
   <p>Chargement de la progression...</p>
 </div>
 
+<div class="admonition note" id="supabase-status-widget">
+  <p><strong>Synchronisation Supabase :</strong> <span id="supabase-status">Initialisation…</span></p>
+  <p id="supabase-status-detail">Le site est prêt à se connecter à Supabase dès que l’URL du projet et la clé anon sont configurées.</p>
+</div>
+
 ---
 
 ## 🛤️ Parcours rapide
