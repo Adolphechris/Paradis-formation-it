@@ -106,6 +106,7 @@ extra_javascript:
   - js/accessibility-controls.js
   - js/keyboard-shortcuts.js
   - js/theme-switcher.js
+  - js/perf-monitor.js
 
 extra:
   social:
