@@ -91,6 +91,7 @@ extra_javascript:
   - js/notes-drawer.js
   - js/bookmarks-manager.js
   - js/exam-simulator.js
+  - js/qcm-bank.js
 
 extra:
   social:
