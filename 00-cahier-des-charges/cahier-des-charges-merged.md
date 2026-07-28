@@ -6,7 +6,7 @@ Auteur: Copilot CLI (fusion v2.0 + compléments infra)
 
 ---
 
-But: Ce document fusionne et complète le cahier des charges v2.0 présent dans le dossier `00-cahier-des-charges` avec des précisions techniques, opérationnelles et des alternatives gratuites/locales. Il privilégie une approche « local‑first » (fonctionnement principalement sur ta machine) tout en laissant ouvertes des options cloud gratuites ou peu coûteuses si besoin.
+But: Ce document fusionne et complète le cahier des charges v2.0 présent dans le dossier `00-cahier-des-charges` avec des précisions techniques, opérationnelles et des alternatives adaptées au travail collaboratif. Il privilégie une approche hybride orientée collaboration — Firestore (free tier) comme solution cloud préférée pour le travail en équipe avec Antigravity — tout en conservant un fallback local‑first (IndexedDB) pour usage hors‑ligne et sauvegarde personnelle.
 
 Objectifs de ce document
 - Proposer une spécification détaillée, exécutable et vérifiable pour construire une plateforme d’apprentissage PARADIS IT centrée sur un usage local et gratuit.
@@ -14,16 +14,17 @@ Objectifs de ce document
 - Fournir une roadmap sprintable, une checklist d’acceptation et des alternatives techniques avec leurs tradeoffs.
 
 Contexte et contraintes
-- Usage principal : utilisation sur une machine locale (desktop). L’usage mobile est optionnel et secondaire.
-- Budget : aucun coût récurrent à prévoir au lancement. Favoriser solutions gratuites et open source.
+- Usage principal : usage sur ta machine (desktop) mais la plateforme doit permettre une collaboration multi‑utilisateurs via Firestore (free tier) pour synchronisation et backups. L’usage mobile reste optionnel.
+- Budget : priorité aux solutions gratuites ou au free tier (Firestore free plan, GitHub). Éviter services payants au lancement.
 - Contenu : 45 jours (J1–J45) rédigés dans le dépôt GitHub du projet.
-- Exigence pédagogique : préparer aussi bien à l’employabilité qu’à des concours (module BCC inclus dans v2.0).
+- Collaboration : intégration avec Antigravity nécessite un backend cloud partagé — Firestore est recommandé comme première solution.
 
 
 1. Synthèse des choix techniques (recommandation)
-- Frontend / site de cours : Docusaurus (React + MDX) — choisi par défaut pour sa souplesse, richesse d’intégration (widgets, chat), et facilité à produire un site agréable. MkDocs (Python) est documenté en alternative légère.
-- Persistance local‑first : IndexedDB (via idb library) pour contenus, progrès et notes. Service Worker + manifest pour PWA et mode offline.
-- Synchronisation optionnelle : Git (push vers GitHub) pour sauvegarde et versioning ; synchronisation manuelle ou via un bouton « sync » qui crée/merge un commit. Firestore documenté comme option cloud si besoin ultérieur.
+- Frontend / site de cours : Docusaurus (React + MDX) — recommandé par défaut pour richesse d'intégration et UX. MkDocs documenté comme alternative légère.
+- Persistance & synchronisation (préférence) : Cloud Firestore (Firebase) comme stockage principal pour collaboration et synchronisation multi‑utilisateur (utiliser le free tier d'abord). Firestore offre authentification managée, règles de sécurité et sync realtime.
+- Fallback local‑first : IndexedDB (via idb library) pour cache, lecture offline et usage hors‑ligne. Une couche d'abstraction 'storage adapter' doit permettre d'échanger Firestore <-> IndexedDB sans changements métier.
+- Synchronisation optionnelle : Git (push vers GitHub) pour sauvegarde et versioning complémentaire ; workflow de synchronisation manuelle documenté.
 - QCM & évaluations : moteur natif léger (JSON/Markdown) + possibilité d’intégrer H5P pour activités interactives si besoin. Les QCM restent exportables/importables (CSV/JSON).
 - Stockage fichiers utilisateur (screenshots projets) : stockage local (.paradis/uploads) et export ZIP ; option push vers GitHub repos privés pour portfolio.
 - Tuteur IA : prototype via widget chat connecté à une API (OpenAI/compatible) — fonctionnera en ligne. En mode local‑first, tuteur IA peut être dégradé vers une FAQ locale (search sur Markdown) si pas d’accès API.
@@ -31,18 +32,18 @@ Contexte et contraintes
 
 
 2. Périmètre fonctionnel consolidé (inclus / exclus)
-Inclus (MVP local‑first gratuit)
+Inclus (MVP hybride, Firestore preferred)
 - Lecture jour par jour (45 J) avec sections Objectifs / Contenu / Exercices / Validation.
-- Marquage et suivi local de la progression (IndexedDB).
-- QCM et tests auto‑corrigés (moteur natif). Examen blanc configurable (100 Q, chrono strict).
-- Portfolio local (fiches projets + liens GitHub) et export PDF du rapport d’employabilité.
+- Marquage et suivi de la progression : stockage principal Cloud Firestore (realtime, multi‑device). IndexedDB utilisé comme cache local pour offline et performance.
+- QCM et tests auto‑corrigés (moteur natif) : stockage des tentatives dans Firestore quand connecté, sinon en IndexedDB et synchronisation automatique.
+- Portfolio (fiches projets + liens GitHub) synchronisé via Firestore; export PDF du rapport d’employabilité disponible localement.
 - PWA (installable) pour consultation hors‑ligne ; service worker et IndexedDB pour contenu et scores.
 - Interface agréable (design system minimal) : typographie Inter, palette définie, images optimisées.
-- Option de synchronisation manuelle via Git/GitHub (gratuit) pour backup et partage.
+- Option de synchronisation manuelle via Git/GitHub (gratuit) pour backup et partage complémentaire.
 
 Exclus du MVP
-- Hébergement cloud payant, services managés (Firestore avec coût), vector DB hébergée pour IA.
-- Système d’autograding avancé en cloud (possible ultérieurement).
+- Vector DB hébergée pour IA (possible ultérieurement).
+- Services payants non essentiels — les fonctionnalités cloud doivent rester dans les quotas gratuits initialement.
 
 
 3. Spécifications détaillées
@@ -96,9 +97,9 @@ Exclus du MVP
 
 
 6. Tradeoffs : Firestore vs Local‑First
-- Firestore (avantages) : realtime sync, authentication managée, backups managés, easier multi‑device. (Inconvénient) : lock‑in, potential costs at scale, data residency constraints.
-- Local‑First (avantages) : zéro coût, contrôle total, fonctionne offline, simplicité. (Inconvénient) : synchronisation multi‑machines manuelle, limitations sécurité pure client.
-- Recommandation : démarrer local‑first. Documenter et garder abstraction de stockage (storage adapter) pour later swap to Firestore if budget/need.
+- Firestore (avantages) : realtime sync, authentication managée, backups managés, facilité de collaboration multi‑device; le free tier convient pour un usage initial collaboratif avec Antigravity. (Inconvénient) : lock‑in potentiel, facturation si usage important, contraintes de résidence des données — surveiller la consommation et mettre des quotas.
+- Local‑First (avantages) : zéro coût immédiat, contrôle total, fonctionne offline. (Inconvénient) : synchronisation multi‑machines manuelle, limites de sécurité côté client.
+- Recommandation : démarrer en mode hybride avec Firestore comme stockage principal pour la collaboration (utiliser le free tier et règles de sécurité strictes), tout en implémentant un fallback IndexedDB et une abstraction storage adapter pour une bascule transparente si nécessaire.
 
 
 7. Tests, QA et pipeline (MVP)
@@ -148,8 +149,8 @@ Checklist d'acceptation MVP
 
 
 11. Recommandations opérationnelles finales
-- Start local‑first with Docusaurus and IndexedDB. Use GitHub for backup only (manual) to avoid cost.
-- Maintain storage adapter layer so that swap to Firestore / Supabase is simple later.
+- Start hybrid with Docusaurus and Cloud Firestore (use free tier) as primary for sync/collaboration; IndexedDB remains fallback for offline and cache. Use GitHub for versioned backups and PR workflow.
+- Maintain a storage adapter layer so swapping or supporting multiple storage backends (Firestore, Supabase, local IndexedDB) is straightforward.
 - Implement sanitization and CSP early to avoid XSS issues.
 - Prioritize UX polish: typography, spacing and images — user experience is a major motivation factor.
 
