@@ -102,6 +102,7 @@ extra_javascript:
   - js/pwa-installer.js
   - js/offline-resync.js
   - js/accessibility-controls.js
+  - js/keyboard-shortcuts.js
 
 extra:
   social:
