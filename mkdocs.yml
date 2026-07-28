@@ -68,6 +68,7 @@ extra_javascript:
   - js/supabase-config.js
   # 3. Client Supabase (Auth & API)
   - js/supabase-client.js
+  - js/auth-modal.js
   # 4. Storage Adapter Local-First (IndexedDB)
   - js/storage-adapter.js
   # 5. Modules fonctionnels (ordre : core → features)
