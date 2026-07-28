@@ -408,3 +408,57 @@ graph TD
 | **Phase V** | PWA Avancé & Tests E2E | 6 Sprints (S31 - S36) | 9 à 12 jours ouvrés |
 | **Phase VI** | Hardening, SEO & Go-Live | 6 Sprints (S37 - S42) | 9 à 12 jours ouvrés |
 | **TOTAL** | **42 Sprints Granulaires** | **42 Sprints** | **~60 à 84 jours d'effort** |
+
+---
+
+## Sprint Owners & Estimations
+
+Ci-dessous la table qui attribue un owner principal (Kilo pour le dev & QA initial, AI assistant pour scaffolding et PR templates) et l'estimation pour chaque sprint.
+
+| Sprint | Titre court | Owner (principal) | Estimation |
+| :--- | :--- | :--- | :--- |
+| S01 | Injection secrets CI & config runtime | Kilo (Dev/QA), AI (scaffold) | 1 jour |
+| S02 | Storage Adapter IndexedDB | Kilo, AI | 1 jour |
+| S03 | Interface Connexion & Inscription | Kilo, AI | 1-2 jours |
+| S04 | Sync Profil & ensureProfile | Kilo, AI | 1 jour |
+| S05 | Sauvegarde locale progression | Kilo, AI | 1 jour |
+| S06 | Bridge sync push | Kilo, AI | 1-2 jours |
+| S07 | Sync pull & merge au login | Kilo, AI | 1 jour |
+| S08 | Audit RLS & vues privileges | Kilo, AI | 1 jour |
+| S09 | Composant lecteur Markdown HD | Kilo, AI | 1 jour |
+| S10 | Coloration syntaxique & Copier le Code | Kilo, AI | 1 jour |
+| S11 | Minuteur 14h & planning quotidien | Kilo, AI | 1-2 jours |
+| S12 | Cartes paliers & badges | Kilo, AI | 1 jour |
+| S13 | Moteur recherche client-side | Kilo, AI | 1 jour |
+| S14 | Barre statut synchro & force-sync | Kilo, AI | 0.5-1 jour |
+| S15 | Pipeline seeding QCM | Kilo, AI | 2 jours |
+| S16 | Interface quiz quotidien | Kilo, AI | 1-2 jours |
+| S17 | Persistance tentatives QCM | Kilo, AI | 1-2 jours |
+| S18 | Mode examen strict 2h | Kilo, AI | 2 jours |
+| S19 | Module correction & remédiation | Kilo, AI | 1 jour |
+| S20 | Scoring pondéré & analytics | Kilo, AI | 1-2 jours |
+| S21 | Simulateur BCC 100 questions | Kilo, AI | 2 jours |
+| S22 | Vues SQL analyse difficulté | Kilo, AI | 1 jour |
+| S23 | Éditeur de notes Markdown | Kilo, AI | 1-2 jours |
+| S24 | Radar compétences & rendu | Kilo, AI | 1 jour |
+| S25 | Bucket Storage portfolio-artifacts | Kilo, AI | 0.5-1 jour |
+| S26 | Page portfolio & upload | Kilo, AI | 1-2 jours |
+| S27 | Export & snapshot backup JSON | Kilo, AI | 1 jour |
+| S28 | Rétention & purge backups | Kilo, AI | 1 jour |
+| S29 | Outils métriques & admin read-only | Kilo, AI | 1-2 jours |
+| S30 | Rapport employabilité PDF | Kilo, AI | 1-2 jours |
+| S31 | Manifest PWA & installable | Kilo, AI | 0.5-1 jour |
+| S32 | Service Worker & cache-first | Kilo, AI | 1-2 jours |
+| S33 | Background Sync API | Kilo, AI | 1-2 jours |
+| S34 | Algorithme 3-way merge conflits | Kilo, AI | 2 jours |
+| S35 | Tests intégration offline/online | Kilo, AI | 1-2 jours |
+| S36 | Playwright E2E en CI | Kilo, AI | 2-3 jours |
+| S37 | Optimisation performance Core Web Vitals | Kilo, AI | 2 jours |
+| S38 | Audit accessibilité WCAG 2.1 AA | Kilo, AI | 1-2 jours |
+| S39 | SEO sitemap & OpenGraph | Kilo, AI | 1 jour |
+| S40 | Audit sécurité & CSP | Kilo, AI | 1-2 jours |
+| S41 | Monitoring & Runbook exploitation | Kilo, AI | 1-2 jours |
+| S42 | Revue finale & Go-Live | Kilo, AI | 1-2 jours |
+
+---
+
