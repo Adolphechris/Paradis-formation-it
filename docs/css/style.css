@@ -43,6 +43,56 @@
   
   --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-smooth: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Phase V — Tokens centralisés (Sprint 40) */
+  /* Utilisés par : pwa-installer, accessibility-controls, theme-switcher,
+     error-boundary, perf-monitor, offline-resync, keyboard-shortcuts */
+  --paradis-accent: #06b6d4;          /* accent dynamique (surchargé par theme-switcher) */
+  --paradis-toast-bg: rgba(17, 24, 39, 0.96);
+  --paradis-toast-radius: 10px;
+  --paradis-modal-bg: rgba(10, 15, 29, 0.88);
+  --paradis-modal-backdrop: blur(10px);
+  --paradis-badge-radius: 12px;
+  --paradis-success: #10b981;
+  --paradis-warning: #f59e0b;
+  --paradis-error: #ef4444;
+  --paradis-offline: #4b5563;
+}
+
+/* ── Sprint 40 : Règles d'impression communes (Print Media) ─────────────────
+   Centralise les règles auparavant dispersées dans pdf-export.js
+   afin que le build CSS soit la source de vérité pour l'impression. */
+@media print {
+  .md-header,
+  .md-sidebar,
+  .md-footer,
+  .paradis-notes-trigger-btn,
+  .paradis-chat-trigger,
+  .paradis-completion-card,
+  .paradis-pdf-btn,
+  #paradis-lesson-nav,
+  #paradis-version-badge,
+  #paradis-perf-badge,
+  #paradis-theme-badge,
+  #paradis-a11y-badge,
+  #paradis-kbd-badge,
+  #paradis-pwa-install-btn,
+  .paradis-quiz-card { display: none !important; }
+
+  .md-content {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 11pt !important;
+  }
+
+  h1, h2, h3 { page-break-after: avoid; }
+  pre, blockquote { page-break-inside: avoid; }
 }
 
 /* Global resets & typography */

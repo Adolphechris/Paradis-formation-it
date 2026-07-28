@@ -1,0 +1,26 @@
+{
+  "name": "paradis-formation-it",
+  "version": "5.0.0",
+  "description": "Plateforme e-learning d'apprentissage intensif pour officiers IT bancaires (BCC)",
+  "private": true,
+  "scripts": {
+    "test": "node scripts/test-suite.js",
+    "build": ".venv/bin/mkdocs build --strict",
+    "serve": ".venv/bin/mkdocs serve",
+    "deploy": ".venv/bin/mkdocs gh-deploy --force",
+    "check": "node scripts/test-suite.js && .venv/bin/mkdocs build --strict"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "e-learning",
+    "formation-it",
+    "banking",
+    "bcc",
+    "mkdocs",
+    "supabase"
+  ],
+  "author": "Adolphe Chris",
+  "license": "MIT"
+}
