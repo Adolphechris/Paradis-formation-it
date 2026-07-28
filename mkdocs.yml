@@ -74,6 +74,7 @@ extra_javascript:
   - js/storage-adapter.js
   # 5. Modules fonctionnels (ordre : core → features)
   - js/progress-tracker.js
+  - js/day-completion-widget.js
   - js/quiz-engine.js
   - js/search-engine.js
   - js/radar-chart.js
