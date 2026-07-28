@@ -95,6 +95,7 @@ extra_javascript:
   - js/qcm-history.js
   - js/qcm-dashboard.js
   - js/flashcard-engine.js
+  - js/certification-generator.js
 
 extra:
   social:
