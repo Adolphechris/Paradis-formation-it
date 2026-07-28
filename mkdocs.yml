@@ -98,6 +98,7 @@ extra_javascript:
   - js/certification-generator.js
   - js/analytics-dashboard.js
   - js/portfolio-generator.js
+  - js/skill-radar.js
 
 extra:
   social:
