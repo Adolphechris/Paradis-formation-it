@@ -66,6 +66,8 @@ extra_javascript:
   - js/supabase-env.js
   # 2. Lecteur de config — lit window.__PARADIS_CONFIG__ et expose window.PARADIS_SUPABASE
   - js/supabase-config.js
+  # 2b. Error Boundary global — doit être chargé tôt pour couvrir tous les modules suivants
+  - js/error-boundary.js
   # 3. Client Supabase (Auth & API)
   - js/supabase-client.js
   - js/auth-modal.js
