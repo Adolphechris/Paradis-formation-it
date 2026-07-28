@@ -100,6 +100,7 @@ extra_javascript:
   - js/portfolio-generator.js
   - js/skill-radar.js
   - js/pwa-installer.js
+  - js/offline-resync.js
 
 extra:
   social:
