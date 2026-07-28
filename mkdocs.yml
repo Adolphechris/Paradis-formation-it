@@ -107,6 +107,8 @@ extra_javascript:
   - js/keyboard-shortcuts.js
   - js/theme-switcher.js
   - js/perf-monitor.js
+  # DERNIER — orchestrateur & rapport de santé global (doit rester en dernière position)
+  - js/paradis-init.js
 
 extra:
   social:
