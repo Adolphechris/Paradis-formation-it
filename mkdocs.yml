@@ -89,6 +89,7 @@ extra_javascript:
   - js/schedule-timer.js
   - js/employability-badge.js
   - js/notes-drawer.js
+  - js/bookmarks-manager.js
 
 extra:
   social:
