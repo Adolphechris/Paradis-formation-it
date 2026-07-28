@@ -1,1 +1,1 @@
-../../docs/tome-p0/source/jour-01.md
+../../02-tome-p0-socle/jour-01.md
