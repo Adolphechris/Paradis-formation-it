@@ -99,6 +99,7 @@ extra_javascript:
   - js/analytics-dashboard.js
   - js/portfolio-generator.js
   - js/skill-radar.js
+  - js/pwa-installer.js
 
 extra:
   social:
