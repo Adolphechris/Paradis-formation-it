@@ -155,14 +155,32 @@
         navContainer.id = 'paradis-lesson-nav';
         navContainer.className = 'paradis-lesson-nav';
 
+        // Déterminer la navigation basée sur la sidebar MkDocs (robuste et tous niveaux de dossiers)
+        const sidebarLinks = Array.from(document.querySelectorAll('.md-nav__link'))
+            .filter(link => {
+                const href = link.getAttribute('href') || '';
+                return href.includes('jour-');
+            });
+
+        let prevUrl = null;
+        let nextUrl = null;
+
+        for (let i = 0; i < sidebarLinks.length; i++) {
+            const href = sidebarLinks[i].getAttribute('href') || '';
+            if (href.includes(`jour-${dayNum < 10 ? '0' + dayNum : dayNum}`)) {
+                if (i > 0) prevUrl = sidebarLinks[i - 1].getAttribute('href');
+                if (i < sidebarLinks.length - 1) nextUrl = sidebarLinks[i + 1].getAttribute('href');
+                break;
+            }
+        }
+
         // Calcule le lien du jour précédent
         let prevHTML = '<div></div>';
         if (dayNum > 1) {
             const prevNum = dayNum - 1;
-            const prevPadded = prevNum < 10 ? '0' + prevNum : prevNum;
-            const prevUrl = `../jour-${prevPadded}/`;
+            const targetUrl = prevUrl || `../jour-${prevNum < 10 ? '0' + prevNum : prevNum}/`;
             prevHTML = `
-                <a href="${prevUrl}" class="paradis-nav-card prev">
+                <a href="${targetUrl}" class="paradis-nav-card prev">
                     <span class="paradis-nav-card-label">⬅️ Leçon Précédente</span>
                     <span class="paradis-nav-card-title">Jour ${prevNum}</span>
                 </a>
@@ -173,10 +191,9 @@
         let nextHTML = '<div></div>';
         if (dayNum < 45) {
             const nextNum = dayNum + 1;
-            const nextPadded = nextNum < 10 ? '0' + nextNum : nextNum;
-            const nextUrl = `../jour-${nextPadded}/`;
+            const targetUrl = nextUrl || `../jour-${nextNum < 10 ? '0' + nextNum : nextNum}/`;
             nextHTML = `
-                <a href="${nextUrl}" class="paradis-nav-card next">
+                <a href="${targetUrl}" class="paradis-nav-card next">
                     <span class="paradis-nav-card-label">Leçon Suivante ➡️</span>
                     <span class="paradis-nav-card-title">Jour ${nextNum}</span>
                 </a>
