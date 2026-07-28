@@ -1,0 +1,100 @@
+site_name: PARADIS — Plateforme d'Autoformation IT
+site_url: https://adolphechris.github.io/Paradis-formation-it/
+repo_url: https://github.com/Adolphechris/Paradis-formation-it
+repo_name: Adolphechris/Paradis-formation-it
+
+theme:
+  name: material
+  language: fr
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: "#0B5FFF"
+      accent: "#2EC4B6"
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: "#0B5FFF"
+      accent: "#2EC4B6"
+  font:
+    text: "Inter"
+    code: "JetBrains Mono"
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.tabs.link
+    - header.autohide
+
+plugins:
+  - search:
+      lang: fr
+      separator: '[\s\-]+'
+  - tags:
+
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: true
+      toc_depth: 4
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.snippets:
+      base_path: docs
+  - attr_list
+  - md_in_html
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+extra_css:
+  - css/style.css
+
+extra_javascript:
+  - js/markdown-parser.js
+  - js/progress-tracker.js
+  - js/quiz-engine.js
+  - js/search-engine.js
+  - js/radar-chart.js
+  - js/pdf-export.js
+  - js/chat-widget.js
+  - js/backup.js
+
+extra:
+  social:
+    - icon: simple/github
+      link: https://github.com/Adolphechris/Paradis-formation-it
+  analytics:
+    provider: null
+  generator: false
+  copyright: "© 2026 PARADIS IT — Tous droits réservés"
+
+nav:
+  - Accueil: index.md
+  - Aperçu du programme: apercu.md
+  - Feuille de route: feuille-de-route.md
+  - Table des matières (45 jours): table-des-matieres.md
+  - Tome P0 — Socle Support: tome-p0.md
+  - Tome P2 — Fondations: tome-p2.md
+  - Tome P3A — Administration Système: tome-p3a.md
+  - Tome P3B — Base de Données & Analytique: tome-p3b.md
+  - Tome P3C — Développement Web: tome-p3c.md
+  - Tome P4 — Cloud & Sécurité: tome-p4.md
+  - Tome P5 — Préparation Tests: tome-p5.md
+  - Tome P6 — Portfolio & Soutenance: tome-p6.md
+  - Exercices et QCM: qcm.md
+  - Examen Blanc BCC: examen-blanc.md
+  - Portfolio & Employabilité: portfolio.md
+  - Radar de Compétences: radar.md
+  - Annexe — Abréviations: annexes.md
+  - Tuteur IA: tuteur-ia.md

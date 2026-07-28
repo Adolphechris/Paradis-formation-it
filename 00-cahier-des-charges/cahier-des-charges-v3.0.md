@@ -25,7 +25,6 @@
 > Annexe technique companion : Pour les aspects opérationnels, la version technique complémentaire est disponible dans `00-cahier-des-charges/cahier-des-charges-merged.md`. Ce document ("merged") contient les recommandations d'implémentation, le plan CI/CD, les tests automatisés et les options de déploiement (hybride Firestore + IndexedDB). Conserver les deux documents permet de séparer la vision produit (v3.0) et les détails opérationnels réutilisables lors du chantier.
 
 
-
 ### 1.1. Vision du projet
 Construire une plateforme d'apprentissage en ligne **PELP** (PARADIS E-Learning Platform) qui couvre l'intégralité du programme **PARADIS IT** — 45 jours d'autoformation intensive (630 heures) répartis en 7 tomes (P0–P6) préparant au Bachelor of IT et à l'emploi dans les institutions bancaires/centrales de la RDC.
 
