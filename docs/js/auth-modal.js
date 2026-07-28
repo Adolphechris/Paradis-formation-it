@@ -443,12 +443,13 @@
                     👤 ${name}
                 </div>
             `;
-            navWidget.querySelector('.paradis-nav-user-pill').onclick = async () => {
-                if (confirm('Voulez-vous vous déconnecter ?')) {
+            navWidget.querySelector('.paradis-nav-user-pill').onclick = () => {
+                if (window.ParadisProfile && typeof window.ParadisProfile.openDrawer === 'function') {
+                    window.ParadisProfile.openDrawer();
+                } else if (confirm('Voulez-vous vous déconnecter ?')) {
                     if (typeof clientApi.signOut === 'function') {
-                        await clientApi.signOut();
+                        clientApi.signOut().then(() => updateNavbarUI());
                     }
-                    updateNavbarUI();
                 }
             };
         } else {

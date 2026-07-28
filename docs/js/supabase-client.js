@@ -127,24 +127,33 @@
         return supabase.auth.signOut();
     }
 
-    async function ensureProfile() {
+    async function ensureProfile(overrides = {}) {
         const supabase = await getClient();
-        if (!supabase) return null;
         const session = await getSession();
         if (!session?.user) return null;
 
         const profilePayload = {
             id: session.user.id,
-            display_name: session.user.user_metadata?.full_name || session.user.email || 'Utilisateur PARADIS',
+            display_name: overrides.display_name || session.user.user_metadata?.full_name || session.user.email?.split('@')[0] || 'Utilisateur PARADIS',
             email: session.user.email || '',
-            target_role: 'fullstack',
+            target_role: overrides.target_role || 'bcc_it_officer',
             updated_at: new Date().toISOString()
         };
 
+        if (window.ParadisStorage && typeof window.ParadisStorage.saveLocal === 'function') {
+            try {
+                await window.ParadisStorage.saveLocal('user_profile', { key: 'current_user', ...profilePayload });
+            } catch (err) {
+                console.warn('[SupabaseClient] Storage local error:', err);
+            }
+        }
+
+        if (!supabase) return profilePayload;
+
         const { data, error } = await supabase.from('profiles').upsert(profilePayload, { onConflict: 'id' }).select().single();
         if (error) {
-            console.warn('Unable to sync profile:', error.message);
-            return null;
+            console.warn('Unable to sync profile to Supabase:', error.message);
+            return profilePayload;
         }
         return data;
     }
