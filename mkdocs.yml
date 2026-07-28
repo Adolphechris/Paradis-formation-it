@@ -87,6 +87,7 @@ extra_javascript:
   - js/lesson-reader.js
   - js/code-highlighter.js
   - js/schedule-timer.js
+  - js/employability-badge.js
 
 extra:
   social:
