@@ -84,6 +84,7 @@ extra_javascript:
   - js/chat-widget.js
   - js/backup.js
   - js/markdown-parser.js
+  - js/lesson-reader.js
 
 extra:
   social:
