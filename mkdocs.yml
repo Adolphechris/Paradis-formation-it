@@ -101,6 +101,7 @@ extra_javascript:
   - js/skill-radar.js
   - js/pwa-installer.js
   - js/offline-resync.js
+  - js/accessibility-controls.js
 
 extra:
   social:
