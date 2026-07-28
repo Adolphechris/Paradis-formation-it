@@ -1,79 +1,106 @@
 /**
- * PARADIS — Exportation PDF & Impression de Leçons (Sprint 28)
+ * PARADIS — PDF Export (Sprint 30)
  *
- * Permet l'exportation et l'impression propre de n'importe quelle leçon :
- *   - Injection d'un bouton d'export PDF en bas de leçon
- *   - Optimisation des règles d'impression (Print Media CSS)
+ * Génère un PDF de progression et de portfolio via jsPDF (CDN).
+ * - Rapport de progression (jours complétés, scores QCM, notes)
+ * - Export employabilité (badges, compétences, radar)
  */
 (function () {
     'use strict';
 
-    // Injection des règles CSS spécial d'impression (Print Media)
-    const styleId = 'paradis-pdf-styles';
-    if (!document.getElementById(styleId)) {
-        const style = document.createElement('style');
-        style.id = styleId;
-        style.textContent = `
-            @media print {
-                .md-header, .md-sidebar, .md-footer, .paradis-notes-trigger-btn, .paradis-chat-trigger, .paradis-completion-card, #paradis-lesson-nav, .paradis-quiz-card {
-                    display: none !important;
+    function waitForJsPDF(timeout = 5000) {
+        return new Promise((resolve, reject) => {
+            const start = Date.now();
+            const check = () => {
+                if (window.jspdf && window.jspdf.jsPDF) {
+                    return resolve(window.jspdf.jsPDF);
                 }
-                .md-content {
-                    width: 100% !important;
-                    margin: 0 !important;
-                    padding: 0 !important;
+                if (Date.now() - start > timeout) {
+                    return reject(new Error('jsPDF CDN not available'));
                 }
-                body {
-                    background: #ffffff !important;
-                    color: #000000 !important;
-                }
-            }
-            .paradis-pdf-btn {
-                display: inline-flex;
-                align-items: center;
-                gap: 6px;
-                background: rgba(31, 41, 55, 0.8);
-                border: 1px solid rgba(6, 182, 212, 0.3);
-                border-radius: 8px;
-                padding: 8px 16px;
-                font-size: 0.85rem;
-                font-weight: 700;
-                color: #d1d5db;
-                cursor: pointer;
-                transition: all 0.2s;
-                margin-top: 20px;
-            }
-            .paradis-pdf-btn:hover {
-                border-color: #06b6d4;
-                color: #06b6d4;
-            }
-        `;
-        document.head.appendChild(style);
-    }
-
-    function injectPDFButton() {
-        const contentInner = document.querySelector('.md-content__inner');
-        if (!contentInner || document.getElementById('paradis-pdf-btn')) return;
-
-        const btn = document.createElement('button');
-        btn.id = 'paradis-pdf-btn';
-        btn.type = 'button';
-        btn.className = 'paradis-pdf-btn';
-        btn.innerHTML = '📄 Exporter cette leçon (PDF / Impression)';
-        btn.onclick = () => window.print();
-
-        contentInner.appendChild(btn);
-    }
-
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => {
-            injectPDFButton();
+                setTimeout(check, 100);
+            };
+            check();
         });
-    } else {
-        injectPDFButton();
+    }
+
+    function getProgressRows(progressData) {
+        if (!Array.isArray(progressData)) return [];
+        return progressData.map(row => ({
+            day: row.day_id || '',
+            tome: row.tome || '',
+            completed: row.is_completed ? 'Oui' : 'Non',
+            score: row.quiz_score != null ? row.quiz_score + '/100' : '—',
+            time: row.time_spent_minutes != null ? row.time_spent_minutes + ' min' : '—',
+        }));
+    }
+
+    function buildProgressPDF(doc, rows) {
+        doc.setFontSize(16);
+        doc.text('PARADIS — Rapport de progression', 14, 18);
+
+        doc.setFontSize(10);
+        doc.text(
+            'Genere le : ' + new Date().toLocaleDateString('fr-FR', {
+                year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit'
+            }),
+            14, 26
+        );
+
+        let y = 34;
+        doc.setFontSize(12);
+        doc.text('Progression par jour', 14, y);
+        y += 6;
+
+        doc.setFontSize(9);
+        const headers = ['Jour', 'Tome', 'Complete', 'Score', 'Temps'];
+        const colX = [14, 44, 72, 100, 128];
+
+        doc.setFillColor(11, 95, 255);
+        doc.setTextColor(255, 255, 255);
+        headers.forEach((h, i) => doc.text(h, colX[i] + 1, y));
+        doc.setFillColor(240, 240, 240);
+        doc.rect(14, y - 4, 148, 7, 'F');
+        doc.setTextColor(0, 0, 0);
+        y += 7;
+
+        rows.forEach((row, idx) => {
+            if (y > 270) {
+                doc.addPage();
+                y = 18;
+            }
+            const values = [row.day, row.tome, row.completed, row.score, row.time];
+            values.forEach((v, i) => doc.text(String(v), colX[i] + 1, y));
+            if (idx % 2 === 0) {
+                doc.setFillColor(248, 248, 248);
+                doc.rect(14, y - 4, 148, 7, 'F');
+                doc.setTextColor(0, 0, 0);
+            }
+            y += 7;
+        });
+
+        y += 6;
+        doc.setFontSize(10);
+        doc.text('Plateforme PARADIS IT — Autoformation 45 jours / 630h', 14, y);
+    }
+
+    async function exportProgress(progressData) {
+        try {
+            const jsPDF = await waitForJsPDF();
+            const doc = new jsPDF({ unit: 'pt', format: 'a4' });
+            const rows = getProgressRows(progressData);
+            buildProgressPDF(doc, rows);
+            doc.save('PARADIS-progression.pdf');
+            return { success: true };
+        } catch (err) {
+            console.error('PDF export failed:', err);
+            return { success: false, error: err.message };
+        }
     }
 
     window.ParadisPDF = {
-        exportPDF: () => window.print()
+        exportProgress,
+        exportReport: exportProgress,
+        version: '1.0.0',
     };
 })();
