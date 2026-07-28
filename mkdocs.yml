@@ -61,7 +61,12 @@ extra_css:
   - css/style.css
 
 extra_javascript:
-  - js/markdown-parser.js
+  # 1. Credentials Supabase — généré par CI (secrets) ou scripts/inject-config.js (local)
+  #    Ce fichier définit window.__PARADIS_CONFIG__ AVANT que supabase-config.js le lise
+  - js/supabase-env.js
+  # 2. Lecteur de config — lit window.__PARADIS_CONFIG__ et expose window.PARADIS_SUPABASE
+  - js/supabase-config.js
+  # 3. Modules fonctionnels (ordre : core → features)
   - js/progress-tracker.js
   - js/quiz-engine.js
   - js/search-engine.js
@@ -69,6 +74,7 @@ extra_javascript:
   - js/pdf-export.js
   - js/chat-widget.js
   - js/backup.js
+  - js/markdown-parser.js
 
 extra:
   social:
