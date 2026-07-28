@@ -76,6 +76,7 @@ extra_javascript:
   - js/progress-tracker.js
   - js/day-completion-widget.js
   - js/sync-bridge.js
+  - js/sync-pull-engine.js
   - js/quiz-engine.js
   - js/search-engine.js
   - js/radar-chart.js
