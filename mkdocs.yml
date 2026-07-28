@@ -90,6 +90,7 @@ extra_javascript:
   - js/employability-badge.js
   - js/notes-drawer.js
   - js/bookmarks-manager.js
+  - js/exam-simulator.js
 
 extra:
   social:
