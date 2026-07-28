@@ -4,7 +4,7 @@
 
 Le fichier [abreviations.md](annexes/abreviations.md) répertorie tous les acronymes techniques utilisés dans les tomes P0 à P5.
 
-Lien direct : [annexes/abreviations.md](../annexes/abreviations.md)
+Lien direct : [annexes/abreviations.md](annexes/abreviations.md)
 
 ## Glossaire
 

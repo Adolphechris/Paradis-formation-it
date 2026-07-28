@@ -2,7 +2,6 @@ site_name: PARADIS — Plateforme d'Autoformation IT
 site_url: https://adolphechris.github.io/Paradis-formation-it/
 repo_url: https://github.com/Adolphechris/Paradis-formation-it
 repo_name: Adolphechris/Paradis-formation-it
-edit_uri: ""
 
 theme:
   name: material
@@ -12,21 +11,13 @@ theme:
       scheme: default
       primary: "#0B5FFF"
       accent: "#2EC4B6"
-      toggle:
-        icon: material/brightness-high
-        name: Passer au mode sombre
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       primary: "#0B5FFF"
       accent: "#2EC4B6"
-      toggle:
-        icon: material/brightness-4
-        name: Passer au mode clair
   font:
     text: "Inter"
     code: "JetBrains Mono"
-  icon:
-    logo: "school"
   features:
     - navigation.tabs
     - navigation.sections
@@ -36,19 +27,15 @@ theme:
     - content.code.copy
     - content.tabs.link
     - header.autohide
-    - footer.copyright
 
 plugins:
   - search:
       lang: fr
       separator: '[\s\-]+'
-      prebuild_index: true
   - tags:
-      separate_tags: true
 
 markdown_extensions:
   - admonition
-  - admonition.emoji
   - codehilite:
       guess_lang: false
   - toc:
