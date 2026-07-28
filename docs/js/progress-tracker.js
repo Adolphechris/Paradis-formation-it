@@ -54,6 +54,52 @@
     }
 
     /**
+     * Sync a progress record to Supabase when the client is configured.
+     * @param {string} dayId
+     * @param {Object} record
+     * @returns {Promise<Object>}
+     */
+    async function syncProgressWithSupabase(dayId, record) {
+        const supabaseApi = window.ParadisSupabase;
+        if (!supabaseApi || typeof supabaseApi.isConfigured !== 'function' || !supabaseApi.isConfigured()) {
+            return { enabled: false, status: 'not-configured' };
+        }
+
+        try {
+            if (typeof supabaseApi.saveProgress !== 'function') {
+                return { enabled: false, status: 'missing-bridge' };
+            }
+
+            const result = await supabaseApi.saveProgress(dayId, record);
+            if (result?.error) {
+                throw result.error;
+            }
+            return { enabled: true, status: 'synced' };
+        } catch (err) {
+            console.warn('Progress sync to Supabase failed:', err.message || err);
+            return { enabled: true, status: 'failed', error: err };
+        }
+    }
+
+    /**
+     * Load progress from Supabase into the local cache when available.
+     * @returns {Promise<Object>}
+     */
+    async function loadProgressFromSupabase() {
+        const supabaseApi = window.ParadisSupabase;
+        if (!supabaseApi || typeof supabaseApi.loadProgress !== 'function') {
+            return { enabled: false, status: 'not-configured' };
+        }
+
+        const result = await supabaseApi.loadProgress();
+        if (result?.error) {
+            throw result.error;
+        }
+
+        return { enabled: true, status: 'loaded', rows: result.data || [] };
+    }
+
+    /**
      * Save progress record for a specific day.
      * @param {string} dayId — e.g. "jour-01"
      * @param {Object} data  — { tome, dayNumber, isCompleted, quizScore, timeSpentMinutes, notes, bookmarked }
@@ -74,7 +120,11 @@
 
             request.onsuccess = () => { /* resolve handled by tx.oncomplete */ };
             request.onerror = () => reject(request.error);
-            tx.oncomplete = () => resolve();
+            tx.oncomplete = () => {
+                syncProgressWithSupabase(dayId, record)
+                    .then(() => resolve())
+                    .catch((err) => reject(err));
+            };
             tx.onerror = (e) => {
                 const err = e.target?.error || new Error('Transaction error');
                 reject(err);
@@ -217,7 +267,9 @@
         getAllProgress,
         deleteProgress,
         computeStreak,
-        computeRadar
+        computeRadar,
+        syncProgressWithSupabase,
+        loadProgressFromSupabase
     };
 
     console.log('PARADIS Progress Tracker initialized');
