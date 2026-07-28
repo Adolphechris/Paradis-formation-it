@@ -97,6 +97,7 @@ extra_javascript:
   - js/flashcard-engine.js
   - js/certification-generator.js
   - js/analytics-dashboard.js
+  - js/portfolio-generator.js
 
 extra:
   social:
