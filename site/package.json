@@ -1,0 +1,9 @@
+{
+  "name": "paradis-site",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "echo 'Run `npm install` then `npm run start` inside site to start Docusaurus'",
+    "build": "echo 'Run `npm install` then `npm run build` inside site to build Docusaurus'"
+  }
+}
