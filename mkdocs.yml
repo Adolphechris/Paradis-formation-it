@@ -92,6 +92,7 @@ extra_javascript:
   - js/bookmarks-manager.js
   - js/exam-simulator.js
   - js/qcm-bank.js
+  - js/qcm-history.js
 
 extra:
   social:
