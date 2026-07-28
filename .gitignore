@@ -55,3 +55,4 @@ supabase/.temp/
 # === PLAYWRIGHT / TESTS ===
 playwright-report/
 test-results/
+site/
