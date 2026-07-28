@@ -103,6 +103,7 @@ extra_javascript:
   - js/offline-resync.js
   - js/accessibility-controls.js
   - js/keyboard-shortcuts.js
+  - js/theme-switcher.js
 
 extra:
   social:
