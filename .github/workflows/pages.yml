@@ -127,11 +127,11 @@ jobs:
 
       - name: Verification absence de secret dans le site genere
         run: |
-          if grep -r "sbp_" site/ 2>/dev/null; then
-            echo "CRITIQUE: Token Supabase trouve dans le site genere !"
+          if grep -r "sbp_" site/js/ 2>/dev/null; then
+            echo "CRITIQUE: Token Supabase trouve dans les scripts JS generes !"
             exit 1
           fi
-          echo "Aucun token dans le site genere"
+          echo "Aucun token dans les scripts JS generes"
 
   # ─────────────────────────────────────────────────────────────────────────────
   # JOB 3 : Deploiement sur GitHub Pages

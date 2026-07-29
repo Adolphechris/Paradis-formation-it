@@ -27,7 +27,7 @@ Date : 2026-07-28 | Branche worktree : `agents/greeting-bonjour`
   - Tests : `playwright-report/`, `test-results/`
 
 ### A2 — supabase-config.js assaini
-- **Ancien** : URL `https://iwwohgdbdrlodhhgewut.supabase.co` + anonKey `sbp_publishable_...` en dur
+- **Ancien** : URL Supabase + anonKey en dur
 - **Nouveau** : placeholders vides (`''`) + commentaires indiquant l'injection CI/CD
 - **Note** : en production, c'est `docs/js/supabase-env.js` (auto-généré par CI) qui fournit les valeurs
 

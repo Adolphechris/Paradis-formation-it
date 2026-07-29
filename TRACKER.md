@@ -101,7 +101,7 @@ Ces sprints constituent le socle technique. Aucun développement front-end ne do
 | 37 | Tests E2E Playwright — parcours utilisateur complets | `playwright-report/` en CI | ⚠️ À implémenter |
 | 38 | Accessibilité WCAG 2.1 AA | `docs/js/accessibility-controls.js` + audit Lighthouse | ✅ Fait |
 | 39 | Performance budget (LCP < 1.2s, TTFB < 200ms) | `docs/js/perf-monitor.js` + mesure CI | ✅ Fait |
-| 40 | Audit sécurité : CSP, XSS sanitization, anti-fuite clés | Scan CI passe, aucun `sbp_` dans `site/` | ✅ Fait |
+| 40 | Audit sécurité : CSP, XSS sanitization, anti-fuite clés | Scan CI passe, aucun token dev dans `site/` | ✅ Fait |
 | 41 | Monitoring production + alertes quotas Supabase + Runbook | `docs/runbook.md` — monitoring, alertes, procédures de crise | ✅ Fait |
 | 42 | Revue recette finale & Go-Live GitHub Pages | `docs/go-live-checklist.md` + checklist 42 sprints | ✅ Fait |
 

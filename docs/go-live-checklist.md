@@ -151,7 +151,7 @@ Cible de déploiement : GitHub Pages (`https://adolphechris.github.io/Paradis-fo
 | `supabase-config.js` assaini | ✅ Placeholders |
 | `scripts/inject-config.js` | ✅ Existe |
 | `docs/js/supabase-env.js` gitignoré | ✅ |
-| Token `sbp_49f3c98af...` | ⚠️ À révoquer par l'utilisateur |
+| Token Supabase (développement) | ⚠️ À révoquer par l'utilisateur |
 | `run-supabase.sh` | ⚠️ Contient token — utilisateur gère |
 | Scan anti-secrets dans CI | ✅ Dans `deploy.yml` job test |
 
@@ -176,7 +176,7 @@ Cible de déploiement : GitHub Pages (`https://adolphechris.github.io/Paradis-fo
 
 | # | Bloqueur | Responsable | Action |
 |:---:|:---|:---:|:---|
-| 1 | Token Supabase `sbp_49f3c98af...` non révoqué | Utilisateur | Révoquer dans dashboard Supabase |
+| 1 | Token Supabase dev non révoqué | Utilisateur | Révoquer dans dashboard Supabase |
 | 2 | Worktree non commité/poussé | Utilisateur | `git add -A && git commit && git push` |
 | 3 | `agents/greeting-bonjour` pas mergé dans `main` | Utilisateur | `git merge agents/greeting-bonjour && git push origin main` |
 | 4 | GitHub Pages pas activé | Utilisateur | Settings → Pages → Source: GitHub Actions |
