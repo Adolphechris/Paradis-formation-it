@@ -351,11 +351,49 @@
         alertEl.className = `paradis-auth-alert ${type}`;
     }
 
+    async function getActiveStudentSession() {
+        const clientApi = window.ParadisSupabase;
+        // 1. Essayer Supabase Session
+        if (clientApi && typeof clientApi.getSession === 'function') {
+            try {
+                const session = await clientApi.getSession();
+                if (session && session.user) {
+                    const email = session.user.email || '';
+                    const name = session.user.user_metadata?.full_name || session.user.user_metadata?.display_name || email.split('@')[0] || 'Étudiant';
+                    return { email, name, isCloud: true, user: session.user };
+                }
+            } catch (e) {}
+        }
+
+        // 2. Essayer Local Session
+        try {
+            const localSess = localStorage.getItem('paradis_active_session');
+            if (localSess) {
+                const parsed = JSON.parse(localSess);
+                if (parsed && parsed.email) {
+                    return { email: parsed.email, name: parsed.display_name || parsed.email.split('@')[0] || 'Étudiant', isCloud: false };
+                }
+            }
+        } catch (e) {}
+
+        // 3. Essayer IndexedDB user_profile
+        if (window.ParadisStorage && typeof window.ParadisStorage.getLocal === 'function') {
+            try {
+                const prof = await window.ParadisStorage.getLocal('user_profile', 'current_user');
+                if (prof && prof.email) {
+                    return { email: prof.email, name: prof.display_name || prof.email.split('@')[0] || 'Étudiant', isCloud: false };
+                }
+            } catch (e) {}
+        }
+
+        return null;
+    }
+
     async function handleSubmit(e) {
         e.preventDefault();
         const email = document.getElementById('auth-email').value.trim();
         const password = document.getElementById('auth-password').value;
-        const displayName = document.getElementById('auth-display-name').value.trim();
+        const displayName = document.getElementById('auth-display-name').value.trim() || email.split('@')[0];
         const submitBtn = document.getElementById('paradis-auth-submit-btn');
 
         if (!email || !password) {
@@ -369,104 +407,94 @@
         }
 
         submitBtn.disabled = true;
-        submitBtn.textContent = 'Patientez...';
+        submitBtn.textContent = 'Création du compte...';
 
         const clientApi = window.ParadisSupabase;
         const isConfigured = clientApi && typeof clientApi.isConfigured === 'function' && clientApi.isConfigured();
 
-        if (!isConfigured) {
-            // Mode hors-ligne : sauvegarder localement et continuer
-            if (activeTab === 'signup') {
-                const guestProfile = {
-                    email,
-                    display_name: displayName || email.split('@')[0],
-                    mode: 'local',
-                    created_at: new Date().toISOString()
-                };
+        // 1. Profil Étudiant Local (Créé immédiatement pour garantir l'accès sans blocage)
+        const localProfile = {
+            key: 'current_user',
+            id: 'std_' + Date.now(),
+            email: email,
+            display_name: displayName,
+            target_role: 'bcc_it_officer',
+            status: 'active',
+            created_at: new Date().toISOString(),
+            updated_at: new Date().toISOString()
+        };
+
+        // Sauvegarde locale immédiate
+        if (window.ParadisStorage && typeof window.ParadisStorage.saveLocal === 'function') {
+            try {
+                await window.ParadisStorage.saveLocal('user_profile', localProfile);
+            } catch(e) {}
+        }
+        try {
+            localStorage.setItem('paradis_active_session', JSON.stringify({
+                user_id: localProfile.id,
+                email: email,
+                display_name: displayName,
+                logged_in: true,
+                created_at: localProfile.created_at
+            }));
+        } catch(e) {}
+
+        if (activeTab === 'signup') {
+            if (isConfigured) {
                 try {
-                    localStorage.setItem('paradis_guest_profile', JSON.stringify(guestProfile));
-                } catch(e) { /* ignore */ }
-                showAlert('✅ Profil local créé ! Votre progression sera sauvegardée sur cet appareil. Connectez-vous à Internet pour activer la synchronisation cloud.', 'success');
-            } else {
-                const existing = localStorage.getItem('paradis_guest_profile');
-                if (existing) {
-                    showAlert('✅ Bienvenue ! Votre profil local a été trouvé. Continuez votre formation.', 'success');
-                } else {
-                    showAlert('ℹ️ Aucun compte cloud configuré. Utilisez le mode Invité pour continuer localement, ou contactez l\'administrateur pour activer Supabase.');
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = activeTab === 'login' ? 'Se connecter' : 'Créer mon compte';
-                    return;
+                    const { data, error } = await clientApi.signUpWithPassword(email, password, displayName);
+                    if (error) {
+                        const msg = error.message || '';
+                        if (msg.includes('User already registered') || msg.includes('already registered')) {
+                            showAlert('⚠️ Cet email est déjà enregistré sur le cloud. Basculement sur votre compte local.', 'success');
+                        } else {
+                            console.warn('[AuthModal] Supabase signup error:', msg);
+                        }
+                    } else if (typeof clientApi.ensureProfile === 'function') {
+                        await clientApi.ensureProfile(localProfile);
+                    }
+                } catch(err) {
+                    console.warn('[AuthModal] Supabase sync fallback to local mode:', err);
                 }
             }
+
+            showAlert(`🎓 Compte Étudiant créé avec succès ! Bienvenue ${displayName} dans PARADIS IT.`, 'success');
             setTimeout(() => {
                 closeModal();
                 updateNavbarUI();
-            }, 2000);
-            submitBtn.disabled = false;
-            submitBtn.textContent = activeTab === 'login' ? 'Se connecter' : 'Créer mon compte';
-            return;
-        }
-
-        try {
-            if (activeTab === 'login') {
-                const { data, error } = await clientApi.signInWithPassword(email, password);
-                if (error) throw error;
-                showAlert('✅ Connexion réussie ! Bienvenue dans PARADIS IT...', 'success');
-                if (typeof clientApi.ensureProfile === 'function') {
-                    await clientApi.ensureProfile();
-                }
-                setTimeout(() => {
-                    closeModal();
-                    updateNavbarUI();
-                }, 1200);
-            } else {
-                const { data, error } = await clientApi.signUpWithPassword(email, password);
-                if (error) throw error;
-
-                // Vérifier si l'utilisateur est immédiatement connecté ou en attente de confirmation email
-                const needsEmailConfirm = data && data.user && !data.session;
-                if (needsEmailConfirm) {
-                    showAlert('📧 Compte créé ! Un email de confirmation a été envoyé à ' + email + '. Cliquez sur le lien dans votre email pour activer votre compte.', 'success');
-                } else {
-                    showAlert('✅ Compte créé avec succès ! Bienvenue dans PARADIS IT.', 'success');
-                    if (typeof clientApi.ensureProfile === 'function') {
-                        await clientApi.ensureProfile();
+            }, 1200);
+        } else {
+            // Connexion
+            if (isConfigured) {
+                try {
+                    const { data, error } = await clientApi.signInWithPassword(email, password);
+                    if (error) {
+                        const msg = error.message || '';
+                        if (msg.includes('Invalid login credentials')) {
+                            showAlert('❌ Email ou mot de passe incorrect.');
+                            submitBtn.disabled = false;
+                            submitBtn.textContent = 'Se connecter';
+                            return;
+                        }
+                    } else {
+                        if (typeof clientApi.ensureProfile === 'function') {
+                            await clientApi.ensureProfile({ email, display_name: displayName });
+                        }
                     }
-                    setTimeout(() => {
-                        closeModal();
-                        updateNavbarUI();
-                    }, 1500);
+                } catch(err) {
+                    console.warn('[AuthModal] Cloud login error, using local session:', err);
                 }
             }
-        } catch (err) {
-            console.error('[AuthModal] Erreur Auth :', err);
-            // Traduction des erreurs Supabase en français
-            const msg = err.message || '';
-            let friendlyMsg;
-            if (msg.includes('Invalid login credentials') || msg.includes('invalid_credentials')) {
-                friendlyMsg = '❌ Email ou mot de passe incorrect. Vérifiez vos informations.';
-            } else if (msg.includes('Email not confirmed')) {
-                friendlyMsg = '📧 Votre email n\'est pas encore confirmé. Vérifiez votre boîte mail et cliquez sur le lien de confirmation.';
-            } else if (msg.includes('User already registered') || msg.includes('already registered')) {
-                friendlyMsg = '⚠️ Cette adresse email est déjà utilisée. Utilisez l\'onglet "Connexion" pour vous connecter.';
-            } else if (msg.includes('Password should be at least') || msg.includes('password')) {
-                friendlyMsg = '🔒 Mot de passe trop court. Il doit contenir au moins 8 caractères.';
-            } else if (msg.includes('Unable to validate email') || msg.includes('invalid email')) {
-                friendlyMsg = '📧 Adresse email invalide. Vérifiez le format (ex: nom@domaine.com).';
-            } else if (msg.includes('rate limit') || msg.includes('too many')) {
-                friendlyMsg = '⏳ Trop de tentatives. Attendez quelques secondes puis réessayez.';
-            } else if (msg.includes('network') || msg.includes('fetch') || msg.includes('Failed to fetch')) {
-                friendlyMsg = '🌐 Erreur réseau. Vérifiez votre connexion internet et réessayez.';
-            } else if (msg.includes('signup disabled') || msg.includes('Signups not allowed')) {
-                friendlyMsg = '⛔ Les inscriptions sont temporairement désactivées. Contactez l\'administrateur.';
-            } else {
-                friendlyMsg = '⚠️ Erreur : ' + (msg || 'Une erreur inattendue s\'est produite. Réessayez.');
-            }
-            showAlert(friendlyMsg);
-        } finally {
-            submitBtn.disabled = false;
-            submitBtn.textContent = activeTab === 'login' ? 'Se connecter' : 'Créer mon compte';
+            showAlert(`✅ Connexion réussie ! Bienvenue ${displayName}...`, 'success');
+            setTimeout(() => {
+                closeModal();
+                updateNavbarUI();
+            }, 1200);
         }
+
+        submitBtn.disabled = false;
+        submitBtn.textContent = activeTab === 'login' ? 'Se connecter' : 'Créer mon compte';
     }
 
     /**
@@ -485,37 +513,40 @@
             headerInner.appendChild(navWidget);
         }
 
-        const clientApi = window.ParadisSupabase;
-        let session = null;
+        const student = await getActiveStudentSession();
 
-        if (clientApi && typeof clientApi.getSession === 'function') {
-            session = await clientApi.getSession();
-        }
-
-        if (session && session.user) {
-            const userEmail = session.user.email || 'Apprenant';
-            const name = userEmail.split('@')[0];
+        if (student && student.email) {
+            const displayName = student.name || student.email.split('@')[0];
+            const badgeType = student.isCloud ? '☁️' : '🎓';
             navWidget.innerHTML = `
-                <div class="paradis-nav-user-pill" title="${userEmail}">
-                    👤 ${name}
+                <div class="paradis-nav-user-pill" title="${student.email} (${student.isCloud ? 'Cloud Sync' : 'Session Locale'})">
+                    ${badgeType} ${displayName}
                 </div>
             `;
-            navWidget.querySelector('.paradis-nav-user-pill').onclick = () => {
-                if (window.ParadisProfile && typeof window.ParadisProfile.openDrawer === 'function') {
-                    window.ParadisProfile.openDrawer();
-                } else if (confirm('Voulez-vous vous déconnecter ?')) {
-                    if (typeof clientApi.signOut === 'function') {
-                        clientApi.signOut().then(() => updateNavbarUI());
+            const pillEl = navWidget.querySelector('.paradis-nav-user-pill');
+            if (pillEl) {
+                pillEl.onclick = () => {
+                    if (window.ParadisProfile && typeof window.ParadisProfile.openDrawer === 'function') {
+                        window.ParadisProfile.openDrawer();
+                    } else if (confirm(`Compte Étudiant : ${displayName} (${student.email})\n\nVoulez-vous vous déconnecter ?`)) {
+                        const clientApi = window.ParadisSupabase;
+                        if (clientApi && typeof clientApi.signOut === 'function') {
+                            clientApi.signOut().then(() => updateNavbarUI());
+                        } else {
+                            localStorage.removeItem('paradis_active_session');
+                            updateNavbarUI();
+                        }
                     }
-                }
-            };
+                };
+            }
         } else {
             navWidget.innerHTML = `
                 <button type="button" class="paradis-nav-login-btn">
-                    🔑 Connexion
+                    🔑 Connexion / Inscription
                 </button>
             `;
-            navWidget.querySelector('.paradis-nav-login-btn').onclick = openModal;
+            const btnEl = navWidget.querySelector('.paradis-nav-login-btn');
+            if (btnEl) btnEl.onclick = openModal;
         }
     }
 
@@ -533,6 +564,7 @@
     window.ParadisAuth = {
         openModal,
         closeModal,
-        updateNavbarUI
+        updateNavbarUI,
+        getActiveStudentSession
     };
 })();

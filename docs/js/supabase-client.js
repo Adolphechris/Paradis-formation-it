@@ -115,42 +115,83 @@
         return supabase.auth.signInWithPassword({ email, password });
     }
 
-    async function signUpWithPassword(email, password) {
+    async function signUpWithPassword(email, password, displayName = '') {
         const supabase = await getClient();
         if (!supabase) return { error: new Error('Supabase not configured') };
-        return supabase.auth.signUp({ email, password });
+        return supabase.auth.signUp({
+            email,
+            password,
+            options: {
+                data: {
+                    full_name: displayName,
+                    display_name: displayName
+                }
+            }
+        });
     }
 
     async function signOut() {
+        try {
+            localStorage.removeItem('paradis_active_session');
+            localStorage.removeItem('paradis_user_profile');
+            localStorage.removeItem('paradis_guest_profile');
+            if (window.ParadisStorage && typeof window.ParadisStorage.deleteLocal === 'function') {
+                await window.ParadisStorage.deleteLocal('user_profile', 'current_user');
+            }
+        } catch (e) {
+            console.warn('[SupabaseClient] Error clearing local session:', e);
+        }
+
         const supabase = await getClient();
-        if (!supabase) return { error: new Error('Supabase not configured') };
+        if (!supabase) return { error: null };
         return supabase.auth.signOut();
     }
 
     async function ensureProfile(overrides = {}) {
         const supabase = await getClient();
         const session = await getSession();
-        if (!session?.user) return null;
+
+        const userEmail = overrides.email || session?.user?.email || '';
+        const userId = session?.user?.id || overrides.id || 'usr_' + Date.now();
+        const displayName = overrides.display_name || session?.user?.user_metadata?.full_name || session?.user?.user_metadata?.display_name || userEmail.split('@')[0] || 'Utilisateur PARADIS';
 
         const profilePayload = {
-            id: session.user.id,
-            display_name: overrides.display_name || session.user.user_metadata?.full_name || session.user.email?.split('@')[0] || 'Utilisateur PARADIS',
-            email: session.user.email || '',
+            key: 'current_user',
+            id: userId,
+            display_name: displayName,
+            email: userEmail,
             target_role: overrides.target_role || 'bcc_it_officer',
             updated_at: new Date().toISOString()
         };
 
         if (window.ParadisStorage && typeof window.ParadisStorage.saveLocal === 'function') {
             try {
-                await window.ParadisStorage.saveLocal('user_profile', { key: 'current_user', ...profilePayload });
+                await window.ParadisStorage.saveLocal('user_profile', profilePayload);
             } catch (err) {
                 console.warn('[SupabaseClient] Storage local error:', err);
             }
         }
 
-        if (!supabase) return profilePayload;
+        try {
+            localStorage.setItem('paradis_active_session', JSON.stringify({
+                user_id: userId,
+                email: userEmail,
+                display_name: displayName,
+                logged_in: true,
+                updated_at: new Date().toISOString()
+            }));
+        } catch (e) {}
 
-        const { data, error } = await supabase.from('profiles').upsert(profilePayload, { onConflict: 'id' }).select().single();
+        if (!supabase || !session?.user) return profilePayload;
+
+        const { data, error } = await supabase.from('profiles').upsert({
+            id: userId,
+            display_name: displayName,
+            email: userEmail,
+            target_role: profilePayload.target_role,
+            updated_at: profilePayload.updated_at
+        }, { onConflict: 'id' }).select().single();
+
         if (error) {
             console.warn('Unable to sync profile to Supabase:', error.message);
             return profilePayload;
