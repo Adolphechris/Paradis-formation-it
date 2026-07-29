@@ -82,7 +82,7 @@
     function computeStreak(progressRecords) {
         if (!Array.isArray(progressRecords)) return 0;
         const sorted = progressRecords
-            .filter(r => r.is_completed || r.isCompleted)
+            .filter(r => (r.is_completed || r.isCompleted || r.study_status === 'completed') && (r.quiz_score !== undefined && r.quiz_score !== null ? r.quiz_score >= 75 : true))
             .map(r => ({
                 dayNumber: r.day_number || r.dayNumber || Number((r.id || r.day_id || '').replace(/[^0-9]/g, ''))
             }))

@@ -202,7 +202,7 @@
     // Rendu : Étudiant connecté avec données de progression
     // ------------------------------------------------------------------
     function renderStudent(container, session, progressRecords) {
-        const completedDays = progressRecords.filter(r => r.is_completed || r.isCompleted).length;
+        const completedDays = progressRecords.filter(r => (r.is_completed || r.isCompleted || r.study_status === 'completed') && (r.quiz_score !== undefined && r.quiz_score !== null ? r.quiz_score >= 75 : true)).length;
         const pct = Math.round((completedDays / TOTAL_DAYS) * 100);
         const name = session.display_name || session.email.split('@')[0] || 'Étudiant';
 

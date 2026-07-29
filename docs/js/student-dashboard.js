@@ -321,7 +321,9 @@
     function getStatusIcon(record) {
         if (!record) return '⚪';
         const st = record.study_status;
-        if (record.is_completed || st === 'completed') return '✅';
+        const score = record.quiz_score ?? null;
+        if ((record.is_completed || st === 'completed') && (score === null || score >= 75)) return '✅';
+        if (score !== null && score < 75) return '🔒';
         if (st === 'in_progress') return '🔵';
         if (st === 'paused') return '⏸️';
         return '⚪';
@@ -330,7 +332,9 @@
     function getCardClass(record) {
         if (!record) return '';
         const st = record.study_status;
-        if (record.is_completed || st === 'completed') return 'completed';
+        const score = record.quiz_score ?? null;
+        if ((record.is_completed || st === 'completed') && (score === null || score >= 75)) return 'completed';
+        if (score !== null && score < 75) return 'paused';
         if (st === 'in_progress') return 'in-progress';
         if (st === 'paused') return 'paused';
         return '';
@@ -354,7 +358,7 @@
         const progressRecords = await getAllProgress();
         const progressMap = buildProgressMap(progressRecords);
 
-        const completed = progressRecords.filter(r => r.is_completed || r.study_status === 'completed').length;
+        const completed = progressRecords.filter(r => (r.is_completed || r.study_status === 'completed') && (r.quiz_score === undefined || r.quiz_score === null || r.quiz_score >= 75)).length;
         const pct = Math.round((completed / 45) * 100);
         const streak = computeStreak(progressRecords);
         const totalMin = progressRecords.reduce((a, r) => a + (r.time_spent_minutes || 0), 0);
