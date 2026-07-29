@@ -70,12 +70,12 @@ extra_javascript:
   - js/supabase-config.js
   # 2b. Error Boundary global — doit être chargé tôt pour couvrir tous les modules suivants
   - js/error-boundary.js
-  # 3. Client Supabase (Auth & API)
+  # 3. Storage Adapter Local-First (IndexedDB)
+  - js/storage-adapter.js
+  # 4. Client Supabase (Auth & API)
   - js/supabase-client.js
   - js/auth-modal.js
   - js/profile-widget.js
-  # 4. Storage Adapter Local-First (IndexedDB)
-  - js/storage-adapter.js
   # 5. Modules fonctionnels (ordre : core → features)
   - js/progress-tracker.js
   - js/day-completion-widget.js

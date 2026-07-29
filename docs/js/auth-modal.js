@@ -333,10 +333,15 @@
         }
     }
 
-    function openModal() {
+    function openModal(defaultTab = 'login') {
         createModalHTML();
+        if (defaultTab && (defaultTab === 'signup' || defaultTab === 'login')) {
+            switchTab(defaultTab);
+        }
         const overlay = document.getElementById('paradis-auth-overlay');
         if (overlay) overlay.classList.add('active');
+        const targetInput = defaultTab === 'signup' ? document.getElementById('auth-display-name') : document.getElementById('auth-email');
+        if (targetInput) setTimeout(() => targetInput.focus(), 150);
     }
 
     function closeModal() {
@@ -349,6 +354,7 @@
         if (!alertEl) return;
         alertEl.textContent = message;
         alertEl.className = `paradis-auth-alert ${type}`;
+        alertEl.style.display = 'block';
     }
 
     async function getActiveStudentSession() {
@@ -391,13 +397,23 @@
 
     async function handleSubmit(e) {
         e.preventDefault();
-        const email = document.getElementById('auth-email').value.trim();
-        const password = document.getElementById('auth-password').value;
-        const displayName = document.getElementById('auth-display-name').value.trim() || email.split('@')[0];
+        const emailInput = document.getElementById('auth-email');
+        const passwordInput = document.getElementById('auth-password');
+        const displayNameInput = document.getElementById('auth-display-name');
         const submitBtn = document.getElementById('paradis-auth-submit-btn');
+
+        const email = emailInput ? emailInput.value.trim() : '';
+        const password = passwordInput ? passwordInput.value : '';
+        const displayName = (displayNameInput && displayNameInput.value.trim()) ? displayNameInput.value.trim() : email.split('@')[0];
 
         if (!email || !password) {
             showAlert('Veuillez remplir tous les champs requis.');
+            return;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            showAlert('Veuillez saisir une adresse email valide (ex: etudiant@domaine.com).');
             return;
         }
 
@@ -407,38 +423,10 @@
         }
 
         submitBtn.disabled = true;
-        submitBtn.textContent = 'Création du compte...';
+        submitBtn.textContent = activeTab === 'signup' ? 'Création de votre compte...' : 'Connexion...';
 
         const clientApi = window.ParadisSupabase;
         const isConfigured = clientApi && typeof clientApi.isConfigured === 'function' && clientApi.isConfigured();
-
-        // 1. Profil Étudiant Local (Créé immédiatement pour garantir l'accès sans blocage)
-        const localProfile = {
-            key: 'current_user',
-            id: 'std_' + Date.now(),
-            email: email,
-            display_name: displayName,
-            target_role: 'bcc_it_officer',
-            status: 'active',
-            created_at: new Date().toISOString(),
-            updated_at: new Date().toISOString()
-        };
-
-        // Sauvegarde locale immédiate
-        if (window.ParadisStorage && typeof window.ParadisStorage.saveLocal === 'function') {
-            try {
-                await window.ParadisStorage.saveLocal('user_profile', localProfile);
-            } catch(e) {}
-        }
-        try {
-            localStorage.setItem('paradis_active_session', JSON.stringify({
-                user_id: localProfile.id,
-                email: email,
-                display_name: displayName,
-                logged_in: true,
-                created_at: localProfile.created_at
-            }));
-        } catch(e) {}
 
         if (activeTab === 'signup') {
             if (isConfigured) {
@@ -447,50 +435,105 @@
                     if (error) {
                         const msg = error.message || '';
                         if (msg.includes('User already registered') || msg.includes('already registered')) {
-                            showAlert('⚠️ Cet email est déjà enregistré sur le cloud. Basculement sur votre compte local.', 'success');
+                            showAlert('⚠️ Cette adresse email est déjà enregistrée. Cliquez sur "Connexion" ci-dessus pour vous connecter.');
+                            submitBtn.disabled = false;
+                            submitBtn.textContent = 'Créer mon compte';
+                            return;
+                        } else if (msg.includes('rate limit') || msg.includes('too many')) {
+                            showAlert('⏳ Trop de tentatives. Veuillez réessayer dans quelques secondes.');
+                            submitBtn.disabled = false;
+                            submitBtn.textContent = 'Créer mon compte';
+                            return;
                         } else {
-                            console.warn('[AuthModal] Supabase signup error:', msg);
+                            console.warn('[AuthModal] Supabase signup note:', msg);
                         }
-                    } else if (typeof clientApi.ensureProfile === 'function') {
-                        await clientApi.ensureProfile(localProfile);
                     }
                 } catch(err) {
-                    console.warn('[AuthModal] Supabase sync fallback to local mode:', err);
+                    console.warn('[AuthModal] Supabase sync error, using local fallback:', err);
                 }
+            }
+
+            // Création et persistance immédiate du profil étudiant
+            const localProfile = {
+                key: 'current_user',
+                id: 'std_' + Date.now(),
+                email: email,
+                display_name: displayName,
+                target_role: 'bcc_it_officer',
+                status: 'active',
+                created_at: new Date().toISOString(),
+                updated_at: new Date().toISOString()
+            };
+
+            if (window.ParadisStorage && typeof window.ParadisStorage.saveLocal === 'function') {
+                try { await window.ParadisStorage.saveLocal('user_profile', localProfile); } catch(e) {}
+            }
+            try {
+                localStorage.setItem('paradis_active_session', JSON.stringify({
+                    user_id: localProfile.id,
+                    email: email,
+                    display_name: displayName,
+                    logged_in: true,
+                    created_at: localProfile.created_at
+                }));
+            } catch(e) {}
+
+            if (isConfigured && typeof clientApi.ensureProfile === 'function') {
+                clientApi.ensureProfile(localProfile).catch(() => {});
             }
 
             showAlert(`🎓 Compte Étudiant créé avec succès ! Bienvenue ${displayName} dans PARADIS IT.`, 'success');
             setTimeout(() => {
                 closeModal();
                 updateNavbarUI();
-            }, 1200);
+            }, 1000);
         } else {
-            // Connexion
+            // Mode Connexion
             if (isConfigured) {
                 try {
                     const { data, error } = await clientApi.signInWithPassword(email, password);
                     if (error) {
                         const msg = error.message || '';
-                        if (msg.includes('Invalid login credentials')) {
+                        if (msg.includes('Invalid login credentials') || msg.includes('invalid_credentials')) {
                             showAlert('❌ Email ou mot de passe incorrect.');
                             submitBtn.disabled = false;
                             submitBtn.textContent = 'Se connecter';
                             return;
                         }
-                    } else {
-                        if (typeof clientApi.ensureProfile === 'function') {
-                            await clientApi.ensureProfile({ email, display_name: displayName });
-                        }
                     }
                 } catch(err) {
-                    console.warn('[AuthModal] Cloud login error, using local session:', err);
+                    console.warn('[AuthModal] Cloud login error, using local fallback:', err);
                 }
             }
+
+            // Persistance de la session active
+            const localProfile = {
+                key: 'current_user',
+                id: 'std_' + Date.now(),
+                email: email,
+                display_name: displayName,
+                target_role: 'bcc_it_officer',
+                status: 'active',
+                updated_at: new Date().toISOString()
+            };
+
+            if (window.ParadisStorage && typeof window.ParadisStorage.saveLocal === 'function') {
+                try { await window.ParadisStorage.saveLocal('user_profile', localProfile); } catch(e) {}
+            }
+            try {
+                localStorage.setItem('paradis_active_session', JSON.stringify({
+                    user_id: localProfile.id,
+                    email: email,
+                    display_name: displayName,
+                    logged_in: true
+                }));
+            } catch(e) {}
+
             showAlert(`✅ Connexion réussie ! Bienvenue ${displayName}...`, 'success');
             setTimeout(() => {
                 closeModal();
                 updateNavbarUI();
-            }, 1200);
+            }, 1000);
         }
 
         submitBtn.disabled = false;
