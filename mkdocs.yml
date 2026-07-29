@@ -109,6 +109,8 @@ extra_javascript:
   - js/keyboard-shortcuts.js
   - js/theme-switcher.js
   - js/perf-monitor.js
+  # Widget de progression (page d'accueil) — avant l'orchestrateur
+  - js/progress-widget.js
   # DERNIER — orchestrateur & rapport de santé global (doit rester en dernière position)
   - js/paradis-init.js
 

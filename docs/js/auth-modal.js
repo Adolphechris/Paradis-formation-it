@@ -486,6 +486,7 @@
             setTimeout(() => {
                 closeModal();
                 updateNavbarUI();
+                window.dispatchEvent(new CustomEvent('paradis:session-changed'));
             }, 1000);
         } else {
             // Mode Connexion
@@ -533,6 +534,7 @@
             setTimeout(() => {
                 closeModal();
                 updateNavbarUI();
+                window.dispatchEvent(new CustomEvent('paradis:session-changed'));
             }, 1000);
         }
 
