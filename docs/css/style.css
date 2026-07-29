@@ -1082,3 +1082,615 @@ body {
     font-size: 1.8rem;
   }
 }
+
+/* ==========================================================================
+   PARADIS — Homepage Hero & Sections (Design System v3)
+   ========================================================================== */
+
+/* ── Hero Section ─────────────────────────────────────────────────────────── */
+.paradis-hero-section {
+  position: relative;
+  padding: 4rem 2rem 3rem;
+  text-align: center;
+  overflow: hidden;
+  margin: -1rem -1rem 0;
+}
+
+.paradis-hero-bg-orbs {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.35;
+  animation: orbFloat 8s ease-in-out infinite;
+}
+
+.orb-1 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, #06b6d4, transparent);
+  top: -200px;
+  left: -100px;
+  animation-delay: 0s;
+}
+
+.orb-2 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, #8b5cf6, transparent);
+  top: -150px;
+  right: -100px;
+  animation-delay: -3s;
+}
+
+.orb-3 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, #3b82f6, transparent);
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation-delay: -6s;
+}
+
+@keyframes orbFloat {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-30px) scale(1.05); }
+}
+
+.paradis-hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.paradis-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(6, 182, 212, 0.12);
+  border: 1px solid rgba(6, 182, 212, 0.35);
+  color: #67e8f9;
+  padding: 6px 16px;
+  border-radius: 30px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.badge-dot {
+  width: 7px;
+  height: 7px;
+  background: #06b6d4;
+  border-radius: 50%;
+  animation: badgePulse 1.8s ease infinite;
+}
+
+@keyframes badgePulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.5); }
+  50% { opacity: 0.7; box-shadow: 0 0 0 5px rgba(6, 182, 212, 0); }
+}
+
+.paradis-hero-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 800;
+  line-height: 1.1;
+  color: #f1f5f9;
+  margin: 0 0 1.25rem;
+  letter-spacing: -1px;
+}
+
+.paradis-hero-title-accent {
+  background: linear-gradient(135deg, #06b6d4, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.paradis-hero-subtitle {
+  font-size: 1.05rem;
+  color: #94a3b8;
+  line-height: 1.7;
+  margin: 0 auto 2rem;
+  max-width: 600px;
+}
+
+.paradis-hero-subtitle strong {
+  color: #e2e8f0;
+}
+
+.paradis-hero-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.paradis-btn-hero-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #06b6d4, #3b82f6);
+  color: #fff;
+  border: none;
+  padding: 0.85rem 1.8rem;
+  border-radius: 12px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 8px 25px rgba(6, 182, 212, 0.35);
+  text-decoration: none;
+}
+
+.paradis-btn-hero-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(6, 182, 212, 0.55);
+}
+
+.paradis-btn-hero-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #e2e8f0;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0.85rem 1.8rem;
+  border-radius: 12px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.paradis-btn-hero-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(6, 182, 212, 0.4);
+  color: #fff;
+}
+
+/* Hero Stats Bar */
+.paradis-hero-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: wrap;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 1.25rem 2rem;
+  gap: 1rem;
+}
+
+.hero-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 0 1.5rem;
+}
+
+.hero-stat-number {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #06b6d4, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+
+.hero-stat-label {
+  font-size: 0.72rem;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+}
+
+.hero-stat-divider {
+  width: 1px;
+  height: 40px;
+  background: rgba(255,255,255,0.08);
+}
+
+/* ── Section Title ─────────────────────────────────────────────────────────── */
+.paradis-section-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #f1f5f9;
+  margin: 0 0 1.5rem;
+}
+
+/* ── Progress Widget ──────────────────────────────────────────────────────── */
+.paradis-progress-section {
+  margin: 1rem 0;
+}
+
+.paradis-progress-widget {
+  background: rgba(26, 34, 52, 0.5);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 16px;
+  padding: 2rem;
+  min-height: 80px;
+}
+
+.progress-loading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.progress-loading-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(6, 182, 212, 0.2);
+  border-top-color: #06b6d4;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Curriculum Grid ──────────────────────────────────────────────────────── */
+.paradis-curriculum-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.paradis-tome-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(26, 34, 52, 0.6);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 14px;
+  padding: 1.25rem 1rem 1.25rem 1.25rem;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.paradis-tome-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.25s;
+  border-radius: 14px;
+}
+
+.paradis-tome-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255,255,255,0.15);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  text-decoration: none;
+  color: inherit;
+}
+
+.paradis-tome-card:hover::before {
+  opacity: 1;
+}
+
+/* Couleurs par tome */
+.tome-p0::before { background: linear-gradient(135deg, rgba(6, 182, 212, 0.08), transparent); }
+.tome-p0:hover { border-color: rgba(6, 182, 212, 0.3); }
+
+.tome-p2::before { background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), transparent); }
+.tome-p2:hover { border-color: rgba(59, 130, 246, 0.3); }
+
+.tome-p3a::before { background: linear-gradient(135deg, rgba(139, 92, 246, 0.08), transparent); }
+.tome-p3a:hover { border-color: rgba(139, 92, 246, 0.3); }
+
+.tome-p3b::before { background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), transparent); }
+.tome-p3b:hover { border-color: rgba(16, 185, 129, 0.3); }
+
+.tome-p3c::before { background: linear-gradient(135deg, rgba(245, 158, 11, 0.08), transparent); }
+.tome-p3c:hover { border-color: rgba(245, 158, 11, 0.3); }
+
+.tome-p4::before { background: linear-gradient(135deg, rgba(244, 63, 94, 0.08), transparent); }
+.tome-p4:hover { border-color: rgba(244, 63, 94, 0.3); }
+
+.tome-p5::before { background: linear-gradient(135deg, rgba(6, 182, 212, 0.08), transparent); }
+.tome-p5:hover { border-color: rgba(6, 182, 212, 0.3); }
+
+.tome-p6::before { background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), transparent); }
+.tome-p6:hover { border-color: rgba(245, 158, 11, 0.4); }
+
+.tome-card-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+  width: 52px;
+  text-align: center;
+}
+
+.tome-card-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.tome-card-phase {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 3px;
+}
+
+.tome-card-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #f1f5f9;
+  margin: 0 0 4px;
+}
+
+.tome-card-desc {
+  font-size: 0.8rem;
+  color: #64748b;
+  margin: 0 0 8px;
+  line-height: 1.4;
+}
+
+.tome-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.tome-tag {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: #94a3b8;
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
+.tome-card-arrow {
+  font-size: 1.2rem;
+  color: #374151;
+  flex-shrink: 0;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.paradis-tome-card:hover .tome-card-arrow {
+  color: #06b6d4;
+  transform: translateX(4px);
+}
+
+/* ── Features Grid ────────────────────────────────────────────────────────── */
+.paradis-features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.paradis-feature-card {
+  background: rgba(26, 34, 52, 0.5);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 14px;
+  padding: 1.5rem;
+  transition: all 0.2s;
+}
+
+.paradis-feature-card:hover {
+  border-color: rgba(6, 182, 212, 0.25);
+  background: rgba(26, 34, 52, 0.8);
+  transform: translateY(-2px);
+}
+
+.feature-icon {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.paradis-feature-card h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #e2e8f0;
+  margin: 0 0 0.5rem;
+}
+
+.paradis-feature-card p {
+  font-size: 0.85rem;
+  color: #64748b;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ── Search Container ─────────────────────────────────────────────────────── */
+.paradis-search-container {
+  margin: 0.5rem 0 1rem;
+}
+
+.paradis-search-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.paradis-search-icon {
+  position: absolute;
+  left: 16px;
+  color: #64748b;
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+.paradis-search-input {
+  width: 100%;
+  background: rgba(26, 34, 52, 0.8);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 14px 90px 14px 48px;
+  color: #f1f5f9;
+  font-size: 0.95rem;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.paradis-search-input:focus {
+  border-color: #06b6d4;
+  box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.15);
+}
+
+.paradis-search-input::placeholder {
+  color: #374151;
+}
+
+.paradis-search-kbd {
+  position: absolute;
+  right: 14px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: #4b5563;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.72rem;
+  padding: 3px 8px;
+  border-radius: 6px;
+  pointer-events: none;
+}
+
+.paradis-search-results {
+  margin-top: 8px;
+}
+
+/* ── Platforms Row ────────────────────────────────────────────────────────── */
+.paradis-platforms-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.platform-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 6px;
+  padding: 1.25rem 1rem;
+  background: rgba(26, 34, 52, 0.4);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+  transition: border-color 0.2s;
+}
+
+.platform-item:hover {
+  border-color: rgba(6, 182, 212, 0.2);
+}
+
+.platform-icon {
+  font-size: 1.75rem;
+  margin-bottom: 4px;
+}
+
+.platform-item strong {
+  font-size: 0.9rem;
+  color: #e2e8f0;
+  font-weight: 600;
+}
+
+.platform-item span {
+  font-size: 0.78rem;
+  color: #4b5563;
+  line-height: 1.4;
+}
+
+/* ── Footer Tech ──────────────────────────────────────────────────────────── */
+.paradis-footer-tech {
+  text-align: center;
+  padding: 2rem 1rem 1rem;
+  color: #374151;
+  font-size: 0.82rem;
+}
+
+.paradis-footer-tech strong {
+  color: #4b5563;
+}
+
+.paradis-footer-version {
+  margin-top: 4px;
+  font-size: 0.75rem;
+  color: #1f2937;
+}
+
+/* ── Responsive Hero ──────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .paradis-hero-section {
+    padding: 2.5rem 1rem 2rem;
+  }
+
+  .paradis-hero-stats {
+    gap: 0.5rem;
+    padding: 1rem;
+  }
+
+  .hero-stat {
+    padding: 0 0.75rem;
+  }
+
+  .hero-stat-number {
+    font-size: 1.35rem;
+  }
+
+  .hero-stat-divider {
+    height: 30px;
+  }
+
+  .paradis-curriculum-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .paradis-features-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .paradis-platforms-row {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .paradis-hero-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .paradis-features-grid,
+  .paradis-platforms-row {
+    grid-template-columns: 1fr;
+  }
+}
+

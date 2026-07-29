@@ -372,8 +372,36 @@
         submitBtn.textContent = 'Patientez...';
 
         const clientApi = window.ParadisSupabase;
-        if (!clientApi || typeof clientApi.signInWithPassword !== 'function') {
-            showAlert('Service d’authentification cloud non configuré. Vous pouvez continuer en mode invité local.');
+        const isConfigured = clientApi && typeof clientApi.isConfigured === 'function' && clientApi.isConfigured();
+
+        if (!isConfigured) {
+            // Mode hors-ligne : sauvegarder localement et continuer
+            if (activeTab === 'signup') {
+                const guestProfile = {
+                    email,
+                    display_name: displayName || email.split('@')[0],
+                    mode: 'local',
+                    created_at: new Date().toISOString()
+                };
+                try {
+                    localStorage.setItem('paradis_guest_profile', JSON.stringify(guestProfile));
+                } catch(e) { /* ignore */ }
+                showAlert('✅ Profil local créé ! Votre progression sera sauvegardée sur cet appareil. Connectez-vous à Internet pour activer la synchronisation cloud.', 'success');
+            } else {
+                const existing = localStorage.getItem('paradis_guest_profile');
+                if (existing) {
+                    showAlert('✅ Bienvenue ! Votre profil local a été trouvé. Continuez votre formation.', 'success');
+                } else {
+                    showAlert('ℹ️ Aucun compte cloud configuré. Utilisez le mode Invité pour continuer localement, ou contactez l\'administrateur pour activer Supabase.');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = activeTab === 'login' ? 'Se connecter' : 'Créer mon compte';
+                    return;
+                }
+            }
+            setTimeout(() => {
+                closeModal();
+                updateNavbarUI();
+            }, 2000);
             submitBtn.disabled = false;
             submitBtn.textContent = activeTab === 'login' ? 'Se connecter' : 'Créer mon compte';
             return;
