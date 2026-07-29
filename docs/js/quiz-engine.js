@@ -66,6 +66,44 @@
                 correct_index: 1,
                 explanation: 'Une adresse 169.254.x.x (APIPA) indique que le poste n’a pas réussi à joindre le serveur DHCP pour obtenir une vraie adresse réseau.'
             }
+        ],
+        'jour-02': [
+            {
+                id: 'j2-q1',
+                question: 'Quel est le rôle principal du langage HTML5 dans une application web ?',
+                choices: [
+                    'Créer des animations 3D et des calculs scientifiques complexes',
+                    'Définir la structure sémantique et le squelette du document web',
+                    'Gérer la base de données relationnelle du serveur',
+                    'Chiffrer les requêtes HTTPS entre le client et le serveur'
+                ],
+                correct_index: 1,
+                explanation: 'HTML5 définit la structure et le squelette du contenu (titres, paragraphes, formulaires, sections).'
+            },
+            {
+                id: 'j2-q2',
+                question: 'Pourquoi relie-t-on toujours une balise <label> à son champ <input> avec for et id ?',
+                choices: [
+                    'Pour accélérer la vitesse d’affichage CSS',
+                    'Pour garantir l’accessibilité numérique et la clarté d’utilisation du formulaire',
+                    'Parce que Windows l’exige pour enregistrer le fichier',
+                    'Pour empêcher la saisie de majuscules'
+                ],
+                correct_index: 1,
+                explanation: 'Relier les labels et inputs garantit l’accessibilité pour les lecteurs d’écran et améliore le confort de clic.'
+            },
+            {
+                id: 'j2-q3',
+                question: 'Quelle commande Git permet d’enregistrer une photo instantanée du projet avec un message descriptif ?',
+                choices: [
+                    'git init',
+                    'git push',
+                    'git commit -m "Message"',
+                    'git checkout'
+                ],
+                correct_index: 2,
+                explanation: 'git commit enregistre un point de sauvegarde (snapshot) qualifié par un message clair.'
+            }
         ]
     };
 
