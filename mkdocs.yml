@@ -109,6 +109,10 @@ extra_javascript:
   - js/keyboard-shortcuts.js
   - js/theme-switcher.js
   - js/perf-monitor.js
+  # Espace Étudiant & Studio d'apprentissage
+  - js/study-session.js
+  - js/lesson-enhancer.js
+  - js/student-dashboard.js
   # Widget de progression (page d'accueil) — avant l'orchestrateur
   - js/progress-widget.js
   # DERNIER — orchestrateur & rapport de santé global (doit rester en dernière position)
@@ -125,6 +129,7 @@ extra:
 
 nav:
   - Accueil: index.md
+  - 🎓 Espace Étudiant: espace-etudiant.md
   - Aperçu du programme: apercu.md
   - Feuille de route: feuille-de-route.md
   - Table des matières (45 jours): table-des-matieres.md
