@@ -160,7 +160,8 @@ jobs:
               });
               core.setOutput('enabled', 'true');
             } catch (error) {
-              if (error.status === 404) {
+              const status = error?.status ?? error?.response?.status;
+              if (status === 404) {
                 core.warning('GitHub Pages n’est pas activé sur ce dépôt. Déploiement ignoré.');
                 core.setOutput('enabled', 'false');
                 return;
@@ -172,9 +173,3 @@ jobs:
         id: deployment
         if: steps.pages_status.outputs.enabled == 'true'
         uses: actions/deploy-pages@v4
-
-      - name: 📢 Notification de déploiement réussi
-        if: steps.pages_status.outputs.enabled == 'true'
-        run: |
-          echo "🎉 Déploiement PARADIS IT réussi !"
-          echo "   URL : ${{ steps.deployment.outputs.page_url }}"
