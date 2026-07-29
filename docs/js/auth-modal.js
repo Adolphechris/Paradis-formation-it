@@ -411,29 +411,58 @@
             if (activeTab === 'login') {
                 const { data, error } = await clientApi.signInWithPassword(email, password);
                 if (error) throw error;
-                showAlert('Connexion réussie ! Initialisation...', 'success');
+                showAlert('✅ Connexion réussie ! Bienvenue dans PARADIS IT...', 'success');
                 if (typeof clientApi.ensureProfile === 'function') {
                     await clientApi.ensureProfile();
                 }
                 setTimeout(() => {
                     closeModal();
                     updateNavbarUI();
-                }, 1000);
+                }, 1200);
             } else {
                 const { data, error } = await clientApi.signUpWithPassword(email, password);
                 if (error) throw error;
-                showAlert('Compte créé ! Vérifiez votre boîte mail si la confirmation est requise.', 'success');
-                if (typeof clientApi.ensureProfile === 'function') {
-                    await clientApi.ensureProfile();
+
+                // Vérifier si l'utilisateur est immédiatement connecté ou en attente de confirmation email
+                const needsEmailConfirm = data && data.user && !data.session;
+                if (needsEmailConfirm) {
+                    showAlert('📧 Compte créé ! Un email de confirmation a été envoyé à ' + email + '. Cliquez sur le lien dans votre email pour activer votre compte.', 'success');
+                } else {
+                    showAlert('✅ Compte créé avec succès ! Bienvenue dans PARADIS IT.', 'success');
+                    if (typeof clientApi.ensureProfile === 'function') {
+                        await clientApi.ensureProfile();
+                    }
+                    setTimeout(() => {
+                        closeModal();
+                        updateNavbarUI();
+                    }, 1500);
                 }
-                setTimeout(() => {
-                    closeModal();
-                    updateNavbarUI();
-                }, 1500);
             }
         } catch (err) {
             console.error('[AuthModal] Erreur Auth :', err);
-            showAlert(err.message || 'Une erreur est survenue lors de l’authentification.');
+            // Traduction des erreurs Supabase en français
+            const msg = err.message || '';
+            let friendlyMsg;
+            if (msg.includes('Invalid login credentials') || msg.includes('invalid_credentials')) {
+                friendlyMsg = '❌ Email ou mot de passe incorrect. Vérifiez vos informations.';
+            } else if (msg.includes('Email not confirmed')) {
+                friendlyMsg = '📧 Votre email n\'est pas encore confirmé. Vérifiez votre boîte mail et cliquez sur le lien de confirmation.';
+            } else if (msg.includes('User already registered') || msg.includes('already registered')) {
+                friendlyMsg = '⚠️ Cette adresse email est déjà utilisée. Utilisez l\'onglet "Connexion" pour vous connecter.';
+            } else if (msg.includes('Password should be at least') || msg.includes('password')) {
+                friendlyMsg = '🔒 Mot de passe trop court. Il doit contenir au moins 8 caractères.';
+            } else if (msg.includes('Unable to validate email') || msg.includes('invalid email')) {
+                friendlyMsg = '📧 Adresse email invalide. Vérifiez le format (ex: nom@domaine.com).';
+            } else if (msg.includes('rate limit') || msg.includes('too many')) {
+                friendlyMsg = '⏳ Trop de tentatives. Attendez quelques secondes puis réessayez.';
+            } else if (msg.includes('network') || msg.includes('fetch') || msg.includes('Failed to fetch')) {
+                friendlyMsg = '🌐 Erreur réseau. Vérifiez votre connexion internet et réessayez.';
+            } else if (msg.includes('signup disabled') || msg.includes('Signups not allowed')) {
+                friendlyMsg = '⛔ Les inscriptions sont temporairement désactivées. Contactez l\'administrateur.';
+            } else {
+                friendlyMsg = '⚠️ Erreur : ' + (msg || 'Une erreur inattendue s\'est produite. Réessayez.');
+            }
+            showAlert(friendlyMsg);
         } finally {
             submitBtn.disabled = false;
             submitBtn.textContent = activeTab === 'login' ? 'Se connecter' : 'Créer mon compte';
