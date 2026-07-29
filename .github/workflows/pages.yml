@@ -173,10 +173,6 @@ jobs:
         if: steps.pages_status.outputs.enabled == 'true'
         uses: actions/deploy-pages@v4
 
-      - name: ℹ️ Déploiement ignoré (GitHub Pages désactivé)
-        if: steps.pages_status.outputs.enabled != 'true'
-        run: echo "⚠️ GitHub Pages n'est pas activé pour ce dépôt ; aucun déploiement effectué."
-
       - name: 📢 Notification de déploiement réussi
         if: steps.pages_status.outputs.enabled == 'true'
         run: |
