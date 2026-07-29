@@ -9,6 +9,8 @@
 *.local.js
 docs/js/supabase-env.js
 supabase-env.js
+docs/js/ai-config.js
+ai-config.js
 
 # === PYTHON / MkDocs BUILD ===
 site/

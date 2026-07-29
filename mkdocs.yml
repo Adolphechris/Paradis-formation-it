@@ -61,6 +61,8 @@ extra_css:
   - css/style.css
 
 extra_javascript:
+  # 0. Config Google AI (Gemini) — généré par CI depuis GOOGLE_AI_API_KEY secret
+  - js/ai-config.js
   # 1. Credentials Supabase — généré par CI (secrets) ou scripts/inject-config.js (local)
   #    Ce fichier définit window.__PARADIS_CONFIG__ AVANT que supabase-config.js le lise
   - js/supabase-env.js
