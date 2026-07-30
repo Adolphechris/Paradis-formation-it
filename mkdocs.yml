@@ -9,12 +9,12 @@ theme:
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: "#0B5FFF"
-      accent: "#2EC4B6"
+      primary: "#1B365D"
+      accent: "#D97706"
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: "#0B5FFF"
-      accent: "#2EC4B6"
+      primary: "#1E3A8A"
+      accent: "#38BDF8"
   font:
     text: "Inter"
     code: "JetBrains Mono"

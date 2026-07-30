@@ -30,9 +30,9 @@
 
         /* ── Carte de bienvenue ── */
         .sdb-welcome-card {
-            background: linear-gradient(135deg, rgba(6,182,212,0.12) 0%, rgba(139,92,246,0.12) 100%);
-            border: 1px solid rgba(6,182,212,0.25);
-            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.2) 0%, rgba(30, 41, 59, 0.8) 100%);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-radius: 16px;
             padding: 28px 32px;
             display: flex;
             align-items: center;
@@ -46,20 +46,20 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(ellipse at 80% 50%, rgba(139,92,246,0.08), transparent 60%);
+            background: radial-gradient(ellipse at 80% 50%, rgba(2, 132, 199, 0.06), transparent 60%);
             pointer-events: none;
         }
         .sdb-avatar {
             width: 64px;
             height: 64px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #06b6d4, #8b5cf6);
+            background: linear-gradient(135deg, #1e3a8a, #0284c7);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.8rem;
             flex-shrink: 0;
-            box-shadow: 0 0 0 4px rgba(6,182,212,0.15);
+            box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.15);
         }
         .sdb-welcome-text { flex: 1; min-width: 200px; }
         .sdb-welcome-greeting {
@@ -84,19 +84,19 @@
             align-items: center;
             gap: 8px;
             padding: 12px 24px;
-            background: linear-gradient(135deg, #06b6d4, #3b82f6);
+            background: linear-gradient(135deg, #1e3a8a, #0284c7);
             color: #fff;
-            border-radius: 12px;
+            border-radius: 10px;
             text-decoration: none;
             font-weight: 700;
             font-size: 0.9rem;
             transition: all 0.2s;
-            box-shadow: 0 4px 15px rgba(6,182,212,0.3);
+            box-shadow: 0 4px 14px rgba(2, 132, 199, 0.25);
             flex-shrink: 0;
         }
         .sdb-resume-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(6,182,212,0.5);
+            box-shadow: 0 6px 20px rgba(2, 132, 199, 0.35);
             color: #fff;
             text-decoration: none;
         }

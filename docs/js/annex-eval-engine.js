@@ -220,12 +220,12 @@
         style.id = 'annex-eval-styles';
         style.textContent = `
             .annex-eval-hero {
-                background: linear-gradient(135deg, rgba(11, 95, 255, 0.15), rgba(46, 196, 182, 0.1));
-                border: 1px solid rgba(11, 95, 255, 0.3);
+                background: linear-gradient(135deg, rgba(30, 58, 138, 0.2), rgba(30, 41, 59, 0.8));
+                border: 1px solid rgba(56, 189, 248, 0.2);
                 border-radius: 16px;
                 padding: 24px;
                 margin-bottom: 24px;
-                backdrop-filter: blur(10px);
+                backdrop-filter: blur(8px);
             }
             .annex-badge-container {
                 display: flex;
@@ -234,7 +234,7 @@
                 margin-bottom: 12px;
             }
             .annex-badge {
-                background: #0B5FFF;
+                background: #1e3a8a;
                 color: #fff;
                 padding: 4px 12px;
                 border-radius: 20px;
@@ -242,9 +242,9 @@
                 font-weight: 700;
             }
             .annex-status-pill {
-                background: rgba(46, 196, 182, 0.2);
-                color: #2EC4B6;
-                border: 1px solid #2EC4B6;
+                background: rgba(5, 150, 105, 0.15);
+                color: #34d399;
+                border: 1px solid #059669;
                 padding: 4px 12px;
                 border-radius: 20px;
                 font-size: 0.8rem;

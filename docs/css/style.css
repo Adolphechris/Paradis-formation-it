@@ -5,63 +5,59 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
 
 :root {
-  /* Color Palette - Obsidian Banking Theme */
-  --bg-primary: #0a0d14;
-  --bg-secondary: #121824;
-  --bg-tertiary: #1a2234;
-  --bg-glass: rgba(18, 24, 36, 0.75);
-  --bg-glass-card: rgba(26, 34, 52, 0.6);
-  --bg-glass-hover: rgba(36, 48, 74, 0.8);
+  /* Color Palette - TÉLUQ & Antigravity Academic Theme (Soft, Natural, Professional) */
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-tertiary: #334155;
+  --bg-glass: rgba(30, 41, 59, 0.85);
+  --bg-glass-card: rgba(30, 41, 59, 0.7);
+  --bg-glass-hover: rgba(51, 65, 85, 0.9);
   
-  --text-main: #f1f5f9;
-  --text-muted: #94a3b8;
-  --text-dim: #64748b;
+  --text-main: #f8fafc;
+  --text-muted: #cbd5e1;
+  --text-dim: #94a3b8;
   
-  --accent-cyan: #06b6d4;
-  --accent-cyan-glow: rgba(6, 182, 212, 0.25);
-  --accent-purple: #8b5cf6;
-  --accent-purple-glow: rgba(139, 92, 246, 0.25);
-  --accent-blue: #3b82f6;
-  --accent-emerald: #10b981;
-  --accent-amber: #f59e0b;
-  --accent-rose: #f43f5e;
+  --accent-cyan: #0284c7;
+  --accent-cyan-glow: rgba(2, 132, 199, 0.12);
+  --accent-purple: #6366f1;
+  --accent-purple-glow: rgba(99, 102, 241, 0.12);
+  --accent-blue: #2563eb;
+  --accent-emerald: #059669;
+  --accent-amber: #d97706;
+  --accent-rose: #e11d48;
   
   --border-color: rgba(255, 255, 255, 0.08);
-  --border-highlight: rgba(6, 182, 212, 0.4);
+  --border-highlight: rgba(56, 189, 248, 0.25);
 
   --font-title: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-code: 'Fira Code', monospace;
   
   --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 20px;
-  --radius-xl: 28px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
   
-  --shadow-main: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-  --shadow-glow: 0 0 25px rgba(6, 182, 212, 0.15);
+  --shadow-main: 0 4px 20px -2px rgba(15, 23, 42, 0.2);
+  --shadow-glow: 0 4px 14px rgba(2, 132, 199, 0.1);
   
   --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-smooth: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
-  /* Phase V — Tokens centralisés (Sprint 40) */
-  /* Utilisés par : pwa-installer, accessibility-controls, theme-switcher,
-     error-boundary, perf-monitor, offline-resync, keyboard-shortcuts */
-  --paradis-accent: #06b6d4;          /* accent dynamique (surchargé par theme-switcher) */
-  --paradis-toast-bg: rgba(17, 24, 39, 0.96);
+  /* Tokens centralisés */
+  --paradis-accent: #0284c7;
+  --paradis-toast-bg: rgba(30, 41, 59, 0.96);
   --paradis-toast-radius: 10px;
-  --paradis-modal-bg: rgba(10, 15, 29, 0.88);
-  --paradis-modal-backdrop: blur(10px);
+  --paradis-modal-bg: rgba(15, 23, 42, 0.92);
+  --paradis-modal-backdrop: blur(8px);
   --paradis-badge-radius: 12px;
-  --paradis-success: #10b981;
-  --paradis-warning: #f59e0b;
-  --paradis-error: #ef4444;
-  --paradis-offline: #4b5563;
+  --paradis-success: #059669;
+  --paradis-warning: #d97706;
+  --paradis-error: #e11d48;
+  --paradis-offline: #64748b;
 }
 
-/* ── Sprint 40 : Règles d'impression communes (Print Media) ─────────────────
-   Centralise les règles auparavant dispersées dans pdf-export.js
-   afin que le build CSS soit la source de vérité pour l'impression. */
+/* ── Sprint 40 : Règles d'impression communes (Print Media) ───────────────── */
 @media print {
   .md-header,
   .md-sidebar,
@@ -106,12 +102,12 @@ body {
   background-color: var(--bg-primary);
   color: var(--text-main);
   font-family: var(--font-body);
-  line-height: 1.6;
+  line-height: 1.65;
   overflow-x: hidden;
   min-height: 100vh;
 }
 
-/* Background Animated Gradient Mesh */
+/* Background Soft Ambient Vignette (Natural & Non-Abrasive) */
 .bg-glow-mesh {
   position: fixed;
   top: 0;
@@ -121,9 +117,8 @@ body {
   z-index: -1;
   pointer-events: none;
   background: 
-    radial-gradient(circle at 15% 20%, rgba(6, 182, 212, 0.08) 0%, transparent 40%),
-    radial-gradient(circle at 85% 80%, rgba(139, 92, 246, 0.08) 0%, transparent 40%),
-    radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.9) 0%, var(--bg-primary) 100%);
+    radial-gradient(circle at 50% 0%, rgba(30, 58, 138, 0.12) 0%, transparent 60%),
+    radial-gradient(circle at 100% 100%, rgba(15, 23, 42, 0.9) 0%, var(--bg-primary) 100%);
 }
 
 /* Layout App Container */
