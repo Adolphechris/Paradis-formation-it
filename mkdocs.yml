@@ -113,6 +113,7 @@ extra_javascript:
   - js/study-session.js
   - js/lesson-enhancer.js
   - js/student-dashboard.js
+  - js/annex-eval-engine.js
   # Widget de progression (page d'accueil) — avant l'orchestrateur
   - js/progress-widget.js
   # DERNIER — orchestrateur & rapport de santé global (doit rester en dernière position)
@@ -130,6 +131,7 @@ extra:
 nav:
   - Accueil: index.md
   - 🎓 Espace Étudiant: espace-etudiant.md
+  - 🧪 Espace Évaluation Annexes: espace-evaluation.md
   - Aperçu du programme: apercu.md
   - Feuille de route: feuille-de-route.md
   - Table des matières (45 jours): table-des-matieres.md
@@ -147,3 +149,4 @@ nav:
   - Radar de Compétences: radar.md
   - Annexe — Abréviations: annexes.md
   - Tuteur IA: tuteur-ia.md
+

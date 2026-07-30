@@ -1,34 +1,43 @@
-# Annexes
+# Annexes & Fiches de Révision
 
-## Abréviations et Acronymes
-
-Le fichier [abreviations.md](annexes/abreviations.md) répertorie tous les acronymes techniques utilisés dans les tomes P0 à P5.
-
-Lien direct : [annexes/abreviations.md](annexes/abreviations.md)
-
-## Glossaire
-
-| Terme | Définition |
-| :--- | :--- |
-| **BCC** | Banque Centrale du Congo — institution monétaire de la RDC |
-| **PWA** | Progressive Web Application — application web installable |
-| **IndexedDB** | Base de données client-side dans le navigateur |
-| **QLM** | Question à Choix Multiples |
-| **SWIFT** | Society for Worldwide Interbank Financial Telecommunication |
-| **RTGS** | Real-Time Gross Settlement — règlement brut en temps réel |
-| **ITIL** | Information Technology Infrastructure Library |
-| **ISO 27001** | Norme internationale de gestion de la sécurité de l'information |
-| **PCA** | Plan de Continuité d'Activité |
-| **PRA** | Plan de Reprise d'Activité |
-| **ODL** | Open and Distance Learning — enseignement ouvert et à distance |
-| **UNISA** | University of South Africa — modèle méthodologique de référence |
-
-## Références utiles
-
-- [Feuille de route](./feuille-de-route.md)
-- [Table des matières](./table-des-matieres.md)
-- [Aperçu du programme](./apercu.md)
+> [!IMPORTANT]
+> Les annexes et fiches de révision regroupent l'ensemble du matériel de référence (dictionnaires d'acronymes, glossaires bancaires et fiches de synthèse technique) indispensable pour la réussite des concours et la pratique professionnelle à la **Banque Centrale du Congo (BCC)**.
 
 ---
 
-*La révision régulière de ce glossaire fait partie intégrante de la préparation aux concours BCC.*
+## 🚀 Accès Direct à l'Espace Évaluation
+
+Vous souhaitez évaluer vos connaissances et mémoriser les annexes ?
+👉 **[Accéder à l'Espace Évaluation des Annexes](espace-evaluation.md)** (Flashcards 3D, QCM par thèmes et Sprint Chrono).
+
+---
+
+## 📑 Sommaire des Fiches & Références
+
+### 1. [Dictionnaire des Acronymes & Glossaire IT/Banque](annexes/abreviations.md)
+Répertoire complet des termes techniques, réglementations et acronymes bancaires (BCC, SWIFT, RTGS, ITIL, ISO 27001, PCA/PRA).
+
+### 2. [Fiches Aide-Mémoire & Synthèses Techniques](annexes/fiches-aide-memoire.md)
+Fiches de révision condensées :
+- **Linux & Shell Bash** (Commandes CLI, Permissions 755/600, Systemd, Logs)
+- **Python & POO** (Syntaxe, Dictionnaires, Try/Except, Classes)
+- **SQL & PostgreSQL** (SELECT, JOINs, Indexes, EXPLAIN ANALYZE)
+- **Réseaux & Security** (Ports TCP 22/53/80/443/5432, Modèle OSI, Subnetting)
+- **Git & DevOps** (Branching, Merging, Rebase, Docker Compose)
+
+---
+
+## 📌 Aperçu du Glossaire Institutionnel
+
+| Terme | Définition & Contexte BCC |
+| :--- | :--- |
+| **BCC** | Banque Centrale du Congo — institution monétaire nationale |
+| **SWIFT** | Messagerie sécurisée internationale pour transferts interbancaires |
+| **RTGS** | Règlement brut en temps réel des transactions à valeur élevée |
+| **ITIL** | Référentiel international de gestion des services informatiques |
+| **ISO 27001** | Norme internationale de management de la sécurité de l'information |
+| **PCA / PRA** | Plan de Continuité d'Activité / Plan de Reprise d'Activité en cas de crise |
+
+---
+
+*La révision régulière de cet espace et la validation des tests d'évaluation des annexes garantissent un niveau d'excellence technique.*
