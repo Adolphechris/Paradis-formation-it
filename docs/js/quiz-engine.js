@@ -435,6 +435,10 @@
                 await window.ParadisStorage.saveLocal('progress', progressRecord);
 
                 window.dispatchEvent(new CustomEvent('paradis:session-changed'));
+                window.dispatchEvent(new CustomEvent('paradis:study-status-changed'));
+                if (window.ParadisDayCompletion && typeof window.ParadisDayCompletion.decorateSidebar === 'function') {
+                    window.ParadisDayCompletion.decorateSidebar();
+                }
             } catch (err) {
                 console.error('[QuizEngine] Erreur sauvegarde score :', err);
             }

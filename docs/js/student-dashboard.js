@@ -318,18 +318,38 @@
         return `../${folder}/${dayId}/`;
     }
 
-    function getStatusIcon(record) {
+    function isDayValidated(dayNum, progressMap) {
+        if (dayNum < 1) return true;
+        const dayId = 'jour-' + String(dayNum).padStart(2, '0');
+        const rec = progressMap[dayId];
+        if (!rec) return false;
+        const score = rec.quiz_score ?? null;
+        const completed = Boolean(rec.is_completed || rec.study_status === 'completed');
+        if (score !== null && score !== undefined) {
+            return score >= 75;
+        }
+        return completed;
+    }
+
+    function isDayUnlocked(dayNum, progressMap) {
+        if (dayNum <= 1) return true;
+        return isDayValidated(dayNum - 1, progressMap);
+    }
+
+    function getStatusIcon(record, isUnlocked) {
+        if (!isUnlocked) return '🔒';
         if (!record) return '⚪';
         const st = record.study_status;
         const score = record.quiz_score ?? null;
         if ((record.is_completed || st === 'completed') && (score === null || score >= 75)) return '✅';
-        if (score !== null && score < 75) return '🔒';
+        if (score !== null && score < 75) return '⚠️';
         if (st === 'in_progress') return '🔵';
         if (st === 'paused') return '⏸️';
         return '⚪';
     }
 
-    function getCardClass(record) {
+    function getCardClass(record, isUnlocked) {
+        if (!isUnlocked) return 'locked';
         if (!record) return '';
         const st = record.study_status;
         const score = record.quiz_score ?? null;
@@ -358,15 +378,40 @@
         const progressRecords = await getAllProgress();
         const progressMap = buildProgressMap(progressRecords);
 
-        const completed = progressRecords.filter(r => (r.is_completed || r.study_status === 'completed') && (r.quiz_score === undefined || r.quiz_score === null || r.quiz_score >= 75)).length;
+        // Compte uniquement les jours validés avec score >= 75%
+        let completed = 0;
+        for (let d = 1; d <= 45; d++) {
+            if (isDayValidated(d, progressMap)) {
+                completed++;
+            }
+        }
+
         const pct = Math.round((completed / 45) * 100);
         const streak = computeStreak(progressRecords);
         const totalMin = progressRecords.reduce((a, r) => a + (r.time_spent_minutes || 0), 0);
-        const inProgress = progressRecords.find(r => r.study_status === 'in_progress' || r.study_status === 'paused');
-        const nextDayId = inProgress ? (inProgress.id || inProgress.day_id) :
-            (progressRecords.length > 0 ? ('jour-' + String(completed + 1).padStart(2, '0')) : 'jour-01');
+
+        // Déterminer le prochain jour valide déverrouillé non complété
+        let nextNum = 1;
+        for (let d = 1; d <= 45; d++) {
+            if (!isDayValidated(d, progressMap)) {
+                nextNum = d;
+                break;
+            }
+        }
+        // Vérifier s'il est bien déverrouillé
+        if (!isDayUnlocked(nextNum, progressMap)) {
+            // Si le premier non-validé est verrouillé, prendre le dernier déverrouillé
+            for (let d = 45; d >= 1; d--) {
+                if (isDayUnlocked(d, progressMap)) {
+                    nextNum = d;
+                    break;
+                }
+            }
+        }
+
+        const nextDayId = 'jour-' + String(nextNum).padStart(2, '0');
         const nextUrl = getLessonUrl(nextDayId);
-        const nextNum = parseInt(nextDayId.replace('jour-', ''), 10) || 1;
+        const inProgress = progressRecords.find(r => r.study_status === 'in_progress' || r.study_status === 'paused');
 
         // ── HTML ──
         let html = '';
@@ -395,7 +440,7 @@
                 <p class="sdb-welcome-sub">Formation BCC · Agent IT · 45 jours · Banque Centrale du Congo</p>
             </div>
             <a href="${nextUrl}" class="sdb-resume-btn">
-                ${inProgress ? '▶ Reprendre' : '▶ Commencer'} — Jour ${nextNum}
+                ${isDayValidated(nextNum, progressMap) ? '▶ Revoir' : '▶ Continuer'} — Jour ${nextNum}
             </a>
         </div>`;
 
@@ -405,7 +450,7 @@
             <div class="sdb-stat-card">
                 <div class="sdb-stat-icon">📅</div>
                 <div class="sdb-stat-val">${completed}<span style="font-size:1rem;color:#64748b">/45</span></div>
-                <div class="sdb-stat-lbl">Jours validés</div>
+                <div class="sdb-stat-lbl">Jours validés (75% min)</div>
             </div>
             <div class="sdb-stat-card">
                 <div class="sdb-stat-icon">🔥</div>
@@ -449,11 +494,7 @@
         ];
 
         for (const phase of PHASES) {
-            const phaseDone = phase.days.filter(n => {
-                const id = 'jour-' + String(n).padStart(2, '0');
-                const rec = progressMap[id];
-                return rec && (rec.is_completed || rec.study_status === 'completed');
-            }).length;
+            const phaseDone = phase.days.filter(n => isDayValidated(n, progressMap)).length;
             const phaseTotal = phase.days.length;
             const allDone = phaseDone === phaseTotal;
             const hasStarted = phaseDone > 0 || phase.days.some(n => {
@@ -462,7 +503,7 @@
                 return rec && (rec.study_status === 'in_progress' || rec.study_status === 'paused');
             });
             const badgeClass = allDone ? 'done' : hasStarted ? 'active' : 'locked';
-            const badgeLabel = allDone ? `✅ Terminée` : hasStarted ? `🔵 En cours (${phaseDone}/${phaseTotal})` : `⚪ Non commencée`;
+            const badgeLabel = allDone ? `✅ Terminée` : hasStarted ? `🔵 En cours (${phaseDone}/${phaseTotal})` : `🔒 Verrouillée`;
 
             html += `
             <div class="sdb-phase-section">
@@ -477,17 +518,21 @@
                 const dayId = 'jour-' + String(dayNum).padStart(2, '0');
                 const rec = progressMap[dayId];
                 const meta = engine.LESSON_META[dayId] || {};
-                const icon = getStatusIcon(rec);
-                const cardCls = getCardClass(rec);
-                const url = getLessonUrl(dayId);
+                const unlocked = isDayUnlocked(dayNum, progressMap);
+                const icon = getStatusIcon(rec, unlocked);
+                const cardCls = getCardClass(rec, unlocked);
+                const url = unlocked ? getLessonUrl(dayId) : 'javascript:void(0)';
                 const shortTitle = meta.title ? meta.title.replace(/^Jour \d+ — /, '') : dayId;
+                const score = rec ? (rec.quiz_score ?? null) : null;
 
                 html += `
-                <a href="${url}" class="sdb-day-card ${cardCls}">
+                <a href="${url}" class="sdb-day-card ${cardCls}" ${!unlocked ? `data-day="${dayNum}" data-prev="${dayNum - 1}"` : ''}>
                     <span class="sdb-day-status-icon">${icon}</span>
                     <div class="sdb-day-info">
                         <div class="sdb-day-num">Jour ${dayNum}</div>
                         <div class="sdb-day-title">${shortTitle}</div>
+                        ${!unlocked ? `<div style="font-size:0.68rem;color:#ef4444;margin-top:2px;">🔒 Requis: Jour ${dayNum - 1} (75%)</div>` :
+                          (score !== null ? `<div style="font-size:0.68rem;color:${score>=75?'#34d399':'#f59e0b'};margin-top:2px;">QCM: ${score}%</div>` : '')}
                     </div>
                 </a>`;
             }
@@ -496,6 +541,16 @@
         }
 
         anchor.innerHTML = html;
+
+        // Écouteurs de clic sur les cartes verrouillées
+        anchor.querySelectorAll('.sdb-day-card.locked').forEach(card => {
+            card.addEventListener('click', (e) => {
+                e.preventDefault();
+                const d = card.getAttribute('data-day');
+                const p = card.getAttribute('data-prev');
+                alert(`🔒 ACCÈS VERROUILLÉ\n\nLe Jour ${d} est actuellement cadenassé.\nVous devez d'abord réussir l'évaluation QCM du Jour ${p} avec un score d'au moins 75% !`);
+            });
+        });
 
         // Animation barre de progression
         requestAnimationFrame(() => {
