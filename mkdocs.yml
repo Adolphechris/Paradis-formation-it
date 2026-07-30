@@ -7,17 +7,17 @@ theme:
   name: material
   language: fr
   palette:
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
-      primary: "#1B365D"
-      accent: "#D97706"
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: "#1E3A8A"
-      accent: "#38BDF8"
+      primary: "black"
+      accent: "blue grey"
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: "blue grey"
+      accent: "blue grey"
   font:
     text: "Inter"
-    code: "JetBrains Mono"
+    code: "Fira Code"
   features:
     - navigation.tabs
     - navigation.sections
