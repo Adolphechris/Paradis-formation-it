@@ -1,90 +1,74 @@
-# Table des Matières — 45 Jours
-
-## P0 — Socle Support (42h)
-
-| Jour | Titre | Durée |
-| :--- | :--- | :---: |
-| J1 | Configuration de l'environnement de travail | 14h |
-| J2 | Bureautique et outils collaboratifs | 14h |
-| J3 | Introduction au Web front-end et Git | 14h |
-
-## P2 — Fondations (112h)
-
-| Jour | Titre | Durée |
-| :--- | :--- | :---: |
-| J4 | Python — Variables, types, opérateurs | 14h |
-| J5 | Python — Structures de contrôle | 14h |
-| J6 | Python — Fonctions et modules | 14h |
-| J7 | Python — Structures de données | 14h |
-| J8 | SQL — Bases de données relationnelles | 14h |
-| J9 | Réseaux — TCP/IP, DNS, HTTP | 14h |
-| J10 | Bash scripting — Automatisation | 14h |
-| J11 | Linux — systemctl et services | 14h |
-
-## P3A — Administration Système (42h)
-
-| Jour | Titre | Durée |
-| :--- | :--- | :---: |
-| J12 | Gestion des utilisateurs et permissions | 7h |
-| J13 | Cron et tâches planifiées | 7h |
-| J14 | systemd et gestion des services | 7h |
-| J15 | Firewall et gestion du trafic réseau | 7h |
-| J16 | Monitoring et surveillance système | 7h |
-| J17 | Scripts d'automatisation avancés | 7h |
-
-## P3B — Base de Données & Analytique (35h)
-
-| Jour | Titre | Durée |
-| :--- | :--- | :---: |
-| J18 | PostgreSQL — Installation et configuration | 7h |
-| J19 | Modélisation relationnelle | 7h |
-| J20 | Requêtes SQL avancées | 7h |
-| J21 | Indexation et optimisation des requêtes | 7h |
-| J22 | Analyse de données avec SQL | 7h |
-
-## P3C — Développement Web (42h)
-
-| Jour | Titre | Durée |
-| :--- | :--- | :---: |
-| J23 | HTML5 et sémantique | 7h |
-| J24 | CSS3 — Layouts, Flexbox, Grid | 7h |
-| J25 | JavaScript — Fondamentaux | 7h |
-| J26 | JavaScript — DOM et événements | 7h |
-| J27 | API REST — Construction et consommation | 7h |
-| J28 | Déploiement web et sécurité applicative | 7h |
-
-## P4 — Cloud & Sécurité (98h)
-
-| Jour | Titre | Durée |
-| :--- | :--- | :---: |
-| J29 | Introduction au Cloud Computing | 14h |
-| J30 | Infrastructure as Code (Terraform) | 14h |
-| J31 | Conteneurisation — Docker | 14h |
-| J32 | Orchestration — Docker Compose | 14h |
-| J33 | Architecture cloud avancée | 14h |
-| J34 | Cybersécurité — Concepts fondamentaux | 14h |
-| J35 | Sécurité des systèmes — Audit et hardening | 14h |
-
-## P5 — Préparation Tests (84h)
-
-| Jour | Titre | Durée |
-| :--- | :--- | :---: |
-| J36 | Banque de QCM — Support & Bureautique | 14h |
-| J37 | Banque de QCM — Systèmes & Réseaux | 14h |
-| J38 | Banque de QCM — Développement & Data | 14h |
-| J39 | Banque de QCM — Cloud & Sécurité | 14h |
-| J40 | Simulations d'entretien techniques | 14h |
-| J41 | Examen blanc BCC (100Q, chrono 2h) | 14h |
-
-## P6 — Portfolio & Soutenance (56h)
-
-| Jour | Titre | Durée |
-| :--- | :--- | :---: |
-| J42 | Projet Portfolio n°1 | 14h |
-| J43 | Projet Portfolio n°2 | 14h |
-| J44 | Rapport d'employabilité et révision générale | 14h |
-| J45 | Simulation finale de soutenance orale | 14h |
+# Table des Matières — 600 Jours
+**Double Diplôme : Bachelor in Information Technology (BIT — Bac+3) & Master Cybersécurité (Bac+5)**
 
 ---
 
-*Voir `01-feuille-de-route/feuille-de-route-v2.2.md` pour la version détaillée jour par jour.*
+## 🎓 CYCLE 1 — BACHELOR IN INFORMATION TECHNOLOGY (BIT — Bac+3)
+
+### Semestre 1 — Socle Système (J001 - J050)
+- Prise en main Linux CLI (arborescence, permissions, gestion fichiers/processus)
+- Architecture matérielle essentielle (CPU, RAM, HDD/SSD, bus)
+- Administration Windows 11 & Windows Server 2025 (Active Directory, PowerShell)
+
+### Semestre 2 — Réseaux & Télécoms (J051 - J100)
+- Modèle TCP/IP appliqué au diagnostic réseau
+- Adressage IPv4/IPv6, CIDR, sous-réseaux, routage inter-VLAN
+- Service DNS, DHCP, NAT, ARP, VPN IPSec/OpenVPN, Wireshark
+
+### Semestre 3 — Python, Bash & Compréhension du Code (J101 - J150)
+- Python : lecture, analyse, compréhension et adaptation de scripts
+- Scripting Bash : automatisation système et surveillance
+- Git / GitHub avancé & inspection de code malveillant / scripts suspects
+
+### Semestre 4 — Bases de Données, SQL & Data (J151 - J200)
+- PostgreSQL / MySQL : architecture SGBD, types de données, contraintes
+- SQL avancé : SELECT, JOIN, sous-requêtes, vues, procédures stockées, triggers
+- Entrepôts de données (ETL basique, Power BI) & prévention des injections SQL
+
+### Semestre 5 — Web Full-Stack & APIs REST (J201 - J250)
+- HTML5/CSS3 modernes, JavaScript ES6+ (DOM, Events, Async/Await)
+- Node.js / Express : APIs RESTful & authentification JWT
+- React.js basique & ateliers OWASP Top 10 sur DVWA
+
+### Semestre 6 — Cloud, DevOps & Grand Projet Bachelor (J251 - J300)
+- Conteneurisation Docker & orchestration Kubernetes basique
+- Cloud AWS / Azure : IaaS, VPC, EC2/VM, S3/Blob, IAM Cloud
+- **Grand Projet Synthétique Bachelor BIT** & Examen Massif de Fin de Cycle 1
+
+---
+
+## 🛡️ CYCLE 2 — MASTER CYBERSÉCURITÉ (Bac+5)
+
+### Semestre 7 — Fondations Cybersécurité & Offensive Security (J301 - J350)
+- CIA Triad, défense en profondeur, modélisation des menaces (STRIDE)
+- OWASP Top 10 approfondi & Pentest Web/Réseau (Nmap, Burp Suite, Metasploit)
+- Analyse de vulnérabilités CVE, CVSS scoring et rapports d'audit
+
+### Semestre 8 — Blue Team, SOC, SIEM & Threat Hunting (J351 - J400)
+- Architecture SOC & déploiement Wazuh SIEM / Elastic Stack
+- Surveillance réseau IDS/IPS Suricata & Threat Intelligence (IOC, YARA, Sigma)
+- Détection d'incidents, analyse de logs et gestion des accès IAM/MFA
+
+### Semestre 9 — Cryptographie, PKI & Sécurité des Paiements (J401 - J450)
+- Cryptographie appliquée : AES, RSA, SHA, signatures numériques
+- Infrastructures PKI & certificats X.509, SSL/TLS handshake
+- Conformité bancaire & normes financières (PCI-DSS, SWIFT CSP)
+
+### Semestre 10 — DFIR & Reverse Engineering (J451 - J500)
+- Forensics Numérique (DFIR) & procédure de réponse à incident PRIS
+- Memory Forensics (Volatility) & Network Forensics (Wireshark)
+- Reverse Engineering avec Ghidra (lecture de code compilé/malware)
+
+### Semestre 11 — DevSecOps, Hardening CIS & Sécurité Cloud (J501 - J550)
+- Durcissement OS Linux/Windows selon CIS Benchmarks
+- Architecture Zero Trust, micro-segmentation et sécurité des conteneurs
+- DevSecOps : intégration de la sécurité dans la CI/CD (SAST/DAST)
+
+### Semestre 12 — Gouvernance, Grand Projet Synthétique & Portfolio (J551 - J600)
+- Cadres de gouvernance : NIST CSF, ISO 27001, EBIOS RM, PCA/PRA
+- **Grand Projet Final Synthétique** (Architecture + Hardening + SOC + DFIR)
+- Rédaction du mémoire de soutenance, Portfolio de Preuves final & préparation aux entretiens
+
+---
+
+*Chaque Semestre comporte 50 Jours d'étude avec un examen massif de synthèse exigeant 75% minimum.*
