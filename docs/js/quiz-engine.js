@@ -170,351 +170,435 @@
         "jour-04": [
             {
                 id: "j4-q1",
-                question: "Quel est le concept cl\u00e9 au c\u0153ur de la le\u00e7on du Jour 04 (Python Fondamentaux) ?",
+                question: "Quelle commande affiche les processus de tous les utilisateurs avec des informations d\u00e9taill\u00e9es ?",
                 choices: [
-                    "La ma\u00eetrise pratique de variables, types de donn\u00e9es, boucles et conditions",
-                    "La m\u00e9morisation purement th\u00e9orique des d\u00e9finitions",
-                    "L\u2019inactivation des fonctionnalit\u00e9s de s\u00e9curit\u00e9",
-                    "L\u2019ex\u00e9cution al\u00e9atoire de commandes syst\u00e8me",
+                    "ps -d",
+                    "ps aux",
+                    "top -a",
+                    "pstree -all    **R\u00e9ponse : B**",
                 ],
-                correct_index: 0,
-                explanation: "La le\u00e7on du Jour 04 est ax\u00e9e sur la ma\u00eetrise op\u00e9rationnelle de variables, types de donn\u00e9es, boucles et conditions."
+                correct_index: 1,
+                explanation: "Explication p\u00e9dagogique : La bonne option r\u00e9pond directement aux exigences du cours."
             },
             {
                 id: "j4-q2",
-                question: "Quelle est la premi\u00e8re action recommand\u00e9e lors de la mise en pratique du Jour 04 ?",
+                question: "Que signifie l'\u00e9tat \"Z\" dans la colonne STAT de `ps` ?",
                 choices: [
-                    "Modifier directement les fichiers sans sauvegarde",
-                    "Inspecter l\u2019\u00e9tat du syst\u00e8me et v\u00e9rifier les pr\u00e9requis techniques",
-                    "Ignorer les messages d\u2019erreur du terminal",
-                    "Supprimer les comptes d\u2019acc\u00e8s administrateur",
+                    "Zipp\u00e9",
+                    "Zone prot\u00e9g\u00e9e",
+                    "Zombie",
+                    "pstree -all    **R\u00e9ponse : B**",
                 ],
                 correct_index: 1,
-                explanation: "Une inspection rigoureuse et la v\u00e9rification des pr\u00e9requis permettent d\u2019\u00e9viter les erreurs de configuration."
+                explanation: "Explication p\u00e9dagogique : La bonne option r\u00e9pond directement aux exigences du cours."
             },
             {
                 id: "j4-q3",
-                question: "En cas de dysfonctionnement sur un outil vu au Jour 04, quel r\u00e9flexe adopter ?",
+                question: "Quel signal est envoy\u00e9 par d\u00e9faut lorsqu'on utilise la commande `kill` sans option ?",
                 choices: [
-                    "Consulter les logs pertinents et analyser le code de retour",
-                    "Fermer la session et ignorer le probl\u00e8me",
-                    "R\u00e9installer int\u00e9gralement le syst\u00e8me d\u2019exploitation",
-                    "D\u00e9sactiver le pare-feu et les contr\u00f4les d\u2019acc\u00e8s",
+                    "1 (SIGHUP)",
+                    "9 (SIGKILL)",
+                    "15 (SIGTERM)",
+                    "pstree -all    **R\u00e9ponse : B**",
                 ],
-                correct_index: 0,
-                explanation: "L\u2019analyse factuelle des logs et codes d\u2019erreur est l\u2019attitude requise pour un diagnostic professionnel."
+                correct_index: 1,
+                explanation: "Explication p\u00e9dagogique : La bonne option r\u00e9pond directement aux exigences du cours."
             },
             {
                 id: "j4-q4",
-                question: "Quel r\u00e9sultat valide la ma\u00eetrise de la journ\u00e9e du Jour 04 ?",
+                question: "Comment suspendre une t\u00e2che en cours d'ex\u00e9cution dans le terminal ?",
                 choices: [
-                    "Un score de 75% minimum au QCM et des exercices pratiques compl\u00e9t\u00e9s",
-                    "La simple consultation de la page sans r\u00e9pondre aux questions",
-                    "Un passage automatique bas\u00e9 sur le temps pass\u00e9",
-                    "Une r\u00e9ponse donn\u00e9e au hasard sans justification",
+                    "Ctrl+C",
+                    "Ctrl+D",
+                    "Ctrl+Z",
+                    "Alt+S    **R\u00e9ponse : C**",
                 ],
-                correct_index: 0,
-                explanation: "Le seuil exigeant de 75% combin\u00e9 aux livrables pratiques garantit une vraie mont\u00e9e en comp\u00e9tences."
+                correct_index: 1,
+                explanation: "Explication p\u00e9dagogique : La bonne option r\u00e9pond directement aux exigences du cours."
+            },
+            {
+                id: "j4-q5",
+                question: "Quelle commande permet de relancer en arri\u00e8re-plan une t\u00e2che suspendue ?",
+                choices: [
+                    "fg",
+                    "back",
+                    "bg",
+                    "jobs    **R\u00e9ponse : C**",
+                ],
+                correct_index: 1,
+                explanation: "Explication p\u00e9dagogique : La bonne option r\u00e9pond directement aux exigences du cours."
             }
         ],
         "jour-05": [
             {
                 id: "j5-q1",
-                question: "Quel est le concept cl\u00e9 au c\u0153ur de la le\u00e7on du Jour 05 (Python Interm\u00e9diaire & POO) ?",
+                question: "Quel descripteur de fichier correspond \u00e0 la sortie d'erreur standard (stderr) ?",
                 choices: [
-                    "La ma\u00eetrise pratique de fonctions, modules, gestion de fichiers et classes",
-                    "La m\u00e9morisation purement th\u00e9orique des d\u00e9finitions",
-                    "L\u2019inactivation des fonctionnalit\u00e9s de s\u00e9curit\u00e9",
-                    "L\u2019ex\u00e9cution al\u00e9atoire de commandes syst\u00e8me",
+                    "0",
+                    "1",
+                    "2",
+                    "3    **R\u00e9ponse : C**",
                 ],
-                correct_index: 0,
-                explanation: "La le\u00e7on du Jour 05 est ax\u00e9e sur la ma\u00eetrise op\u00e9rationnelle de fonctions, modules, gestion de fichiers et classes."
+                correct_index: 1,
+                explanation: "Explication p\u00e9dagogique : La bonne option r\u00e9pond directement aux exigences du cours."
             },
             {
                 id: "j5-q2",
-                question: "Quelle est la premi\u00e8re action recommand\u00e9e lors de la mise en pratique du Jour 05 ?",
+                question: "Quelle commande \u00e9crase le contenu de `fichier.txt` avec le mot \"Test\" ?",
                 choices: [
-                    "Modifier directement les fichiers sans sauvegarde",
-                    "Inspecter l\u2019\u00e9tat du syst\u00e8me et v\u00e9rifier les pr\u00e9requis techniques",
-                    "Ignorer les messages d\u2019erreur du terminal",
-                    "Supprimer les comptes d\u2019acc\u00e8s administrateur",
+                    "echo \"Test\" >> fichier.txt",
+                    "echo \"Test\" > fichier.txt",
+                    "echo \"Test\" | fichier.txt",
+                    "3    **R\u00e9ponse : C**",
                 ],
                 correct_index: 1,
-                explanation: "Une inspection rigoureuse et la v\u00e9rification des pr\u00e9requis permettent d\u2019\u00e9viter les erreurs de configuration."
+                explanation: "Explication p\u00e9dagogique : La bonne option r\u00e9pond directement aux exigences du cours."
             },
             {
                 id: "j5-q3",
-                question: "En cas de dysfonctionnement sur un outil vu au Jour 05, quel r\u00e9flexe adopter ?",
+                question: "\u00c0 quoi sert le symbole `|` (pipe) ?",
                 choices: [
-                    "Consulter les logs pertinents et analyser le code de retour",
-                    "Fermer la session et ignorer le probl\u00e8me",
-                    "R\u00e9installer int\u00e9gralement le syst\u00e8me d\u2019exploitation",
-                    "D\u00e9sactiver le pare-feu et les contr\u00f4les d\u2019acc\u00e8s",
+                    "\u00c0 lancer deux commandes en parall\u00e8le.",
+                    "\u00c0 connecter la sortie standard d'une commande \u00e0 l'entr\u00e9e d'une autre.",
+                    "\u00c0 rediriger l'erreur standard vers le trou noir.",
+                    "3    **R\u00e9ponse : C**",
                 ],
-                correct_index: 0,
-                explanation: "L\u2019analyse factuelle des logs et codes d\u2019erreur est l\u2019attitude requise pour un diagnostic professionnel."
+                correct_index: 1,
+                explanation: "Explication p\u00e9dagogique : La bonne option r\u00e9pond directement aux exigences du cours."
             },
             {
                 id: "j5-q4",
-                question: "Quel r\u00e9sultat valide la ma\u00eetrise de la journ\u00e9e du Jour 05 ?",
+                question: "Quelle option de `grep` permet de rechercher sans tenir compte de la casse ?",
                 choices: [
-                    "Un score de 75% minimum au QCM et des exercices pratiques compl\u00e9t\u00e9s",
-                    "La simple consultation de la page sans r\u00e9pondre aux questions",
-                    "Un passage automatique bas\u00e9 sur le temps pass\u00e9",
-                    "Une r\u00e9ponse donn\u00e9e au hasard sans justification",
+                    "-v",
+                    "-r",
+                    "-c",
+                    "-i    **R\u00e9ponse : D**",
                 ],
-                correct_index: 0,
-                explanation: "Le seuil exigeant de 75% combin\u00e9 aux livrables pratiques garantit une vraie mont\u00e9e en comp\u00e9tences."
+                correct_index: 1,
+                explanation: "Explication p\u00e9dagogique : La bonne option r\u00e9pond directement aux exigences du cours."
+            },
+            {
+                id: "j5-q5",
+                question: "Pourquoi faut-il utiliser `sort` avant `uniq` ?",
+                choices: [
+                    "Parce que `uniq` est trop lent sinon.",
+                    "Parce que `uniq` ne d\u00e9tecte que les doublons cons\u00e9cutifs (c\u00f4te \u00e0 c\u00f4te).",
+                    "C'est faux, on peut utiliser `uniq` seul.",
+                    "Pour \u00e9viter les erreurs de casse.    **R\u00e9ponse : B**",
+                ],
+                correct_index: 1,
+                explanation: "Explication p\u00e9dagogique : La bonne option r\u00e9pond directement aux exigences du cours."
             }
         ],
         "jour-06": [
             {
                 id: "j6-q1",
-                question: "Quel est le concept cl\u00e9 au c\u0153ur de la le\u00e7on du Jour 06 (SQL & SGBD Relationnels) ?",
+                question: "Quelle commande t\u00e9l\u00e9charge la nouvelle liste des logiciels disponibles depuis les d\u00e9p\u00f4ts ?",
                 choices: [
-                    "La ma\u00eetrise pratique de requ\u00eates SELECT, JOIN, INSERT, UPDATE et DELETE",
-                    "La m\u00e9morisation purement th\u00e9orique des d\u00e9finitions",
-                    "L\u2019inactivation des fonctionnalit\u00e9s de s\u00e9curit\u00e9",
-                    "L\u2019ex\u00e9cution al\u00e9atoire de commandes syst\u00e8me",
+                    "apt upgrade",
+                    "apt install",
+                    "apt update",
+                    "apt list    **R\u00e9ponse : C**",
                 ],
-                correct_index: 0,
-                explanation: "La le\u00e7on du Jour 06 est ax\u00e9e sur la ma\u00eetrise op\u00e9rationnelle de requ\u00eates SELECT, JOIN, INSERT, UPDATE et DELETE."
+                correct_index: 1,
+                explanation: "Explication p\u00e9dagogique : La bonne option r\u00e9pond directement aux exigences du cours."
             },
             {
                 id: "j6-q2",
-                question: "Quelle est la premi\u00e8re action recommand\u00e9e lors de la mise en pratique du Jour 06 ?",
+                question: "Comment configurer un service (ex: ssh) pour qu'il d\u00e9marre automatiquement au lancement de la machine ?",
                 choices: [
-                    "Modifier directement les fichiers sans sauvegarde",
-                    "Inspecter l\u2019\u00e9tat du syst\u00e8me et v\u00e9rifier les pr\u00e9requis techniques",
-                    "Ignorer les messages d\u2019erreur du terminal",
-                    "Supprimer les comptes d\u2019acc\u00e8s administrateur",
+                    "systemctl start ssh",
+                    "systemctl enable ssh",
+                    "systemctl boot ssh",
+                    "apt list    **R\u00e9ponse : C**",
                 ],
                 correct_index: 1,
-                explanation: "Une inspection rigoureuse et la v\u00e9rification des pr\u00e9requis permettent d\u2019\u00e9viter les erreurs de configuration."
+                explanation: "Explication p\u00e9dagogique : La bonne option r\u00e9pond directement aux exigences du cours."
             },
             {
                 id: "j6-q3",
-                question: "En cas de dysfonctionnement sur un outil vu au Jour 06, quel r\u00e9flexe adopter ?",
+                question: "Quelle commande utiliser si vous modifiez la configuration d'un service web et voulez appliquer les changements sans d\u00e9connecter les utilisateurs actuels ?",
                 choices: [
-                    "Consulter les logs pertinents et analyser le code de retour",
-                    "Fermer la session et ignorer le probl\u00e8me",
-                    "R\u00e9installer int\u00e9gralement le syst\u00e8me d\u2019exploitation",
-                    "D\u00e9sactiver le pare-feu et les contr\u00f4les d\u2019acc\u00e8s",
+                    "systemctl restart",
+                    "systemctl kill",
+                    "systemctl reload",
+                    "apt list    **R\u00e9ponse : C**",
                 ],
-                correct_index: 0,
-                explanation: "L\u2019analyse factuelle des logs et codes d\u2019erreur est l\u2019attitude requise pour un diagnostic professionnel."
+                correct_index: 1,
+                explanation: "Explication p\u00e9dagogique : La bonne option r\u00e9pond directement aux exigences du cours."
             },
             {
                 id: "j6-q4",
-                question: "Quel r\u00e9sultat valide la ma\u00eetrise de la journ\u00e9e du Jour 06 ?",
+                question: "Quelle commande permet de suivre en temps r\u00e9el les logs d'un service sp\u00e9cifique ?",
                 choices: [
-                    "Un score de 75% minimum au QCM et des exercices pratiques compl\u00e9t\u00e9s",
-                    "La simple consultation de la page sans r\u00e9pondre aux questions",
-                    "Un passage automatique bas\u00e9 sur le temps pass\u00e9",
-                    "Une r\u00e9ponse donn\u00e9e au hasard sans justification",
+                    "journalctl -u nginx -f",
+                    "systemctl logs nginx -f",
+                    "cat /var/log/nginx -f",
+                    "grep nginx /var/log/syslog    **R\u00e9ponse : A**",
                 ],
-                correct_index: 0,
-                explanation: "Le seuil exigeant de 75% combin\u00e9 aux livrables pratiques garantit une vraie mont\u00e9e en comp\u00e9tences."
+                correct_index: 1,
+                explanation: "Explication p\u00e9dagogique : La bonne option r\u00e9pond directement aux exigences du cours."
+            },
+            {
+                id: "j6-q5",
+                question: "Quelle est la diff\u00e9rence entre `apt` et `dpkg` ?",
+                choices: [
+                    "dpkg t\u00e9l\u00e9charge sur internet, apt installe des paquets locaux.",
+                    "apt g\u00e8re les d\u00e9pendances et les d\u00e9p\u00f4ts distants, dpkg agit localement sur des .deb.",
+                    "apt est obsol\u00e8te, dpkg est le nouvel outil.",
+                    "Il n'y a aucune diff\u00e9rence.    **R\u00e9ponse : B**",
+                ],
+                correct_index: 1,
+                explanation: "Explication p\u00e9dagogique : La bonne option r\u00e9pond directement aux exigences du cours."
             }
         ],
         "jour-07": [
             {
                 id: "j7-q1",
-                question: "Quel est le concept cl\u00e9 au c\u0153ur de la le\u00e7on du Jour 07 (R\u00e9seaux TCP/IP) ?",
+                question: "Quelle est la fonction principale du bus PCIe ?",
                 choices: [
-                    "La ma\u00eetrise pratique de mod\u00e8le OSI/TCP-IP, adressage IP, masques, DNS et DHCP",
-                    "La m\u00e9morisation purement th\u00e9orique des d\u00e9finitions",
-                    "L\u2019inactivation des fonctionnalit\u00e9s de s\u00e9curit\u00e9",
-                    "L\u2019ex\u00e9cution al\u00e9atoire de commandes syst\u00e8me",
+                    "Stocker les donn\u00e9es de fa\u00e7on permanente",
+                    "Relier le CPU aux composants \u00e0 haute vitesse (GPU, NVMe)",
+                    "Refroidir le processeur",
+                    "Remplacer la RAM *R\u00e9ponse : B*",
                 ],
-                correct_index: 0,
-                explanation: "La le\u00e7on du Jour 07 est ax\u00e9e sur la ma\u00eetrise op\u00e9rationnelle de mod\u00e8le OSI/TCP-IP, adressage IP, masques, DNS et DHCP."
+                correct_index: 1,
+                explanation: "Explication p\u00e9dagogique : La bonne option r\u00e9pond directement aux exigences du cours."
             },
             {
                 id: "j7-q2",
-                question: "Quelle est la premi\u00e8re action recommand\u00e9e lors de la mise en pratique du Jour 07 ?",
+                question: "Quel format de table de partition permet des disques de plus de 2 To ?",
                 choices: [
-                    "Modifier directement les fichiers sans sauvegarde",
-                    "Inspecter l\u2019\u00e9tat du syst\u00e8me et v\u00e9rifier les pr\u00e9requis techniques",
-                    "Ignorer les messages d\u2019erreur du terminal",
-                    "Supprimer les comptes d\u2019acc\u00e8s administrateur",
+                    "FAT32",
+                    "MBR",
+                    "NTFS",
+                    "Remplacer la RAM *R\u00e9ponse : B*",
                 ],
                 correct_index: 1,
-                explanation: "Une inspection rigoureuse et la v\u00e9rification des pr\u00e9requis permettent d\u2019\u00e9viter les erreurs de configuration."
+                explanation: "Explication p\u00e9dagogique : La bonne option r\u00e9pond directement aux exigences du cours."
             },
             {
                 id: "j7-q3",
-                question: "En cas de dysfonctionnement sur un outil vu au Jour 07, quel r\u00e9flexe adopter ?",
+                question: "Comment v\u00e9rifier la quantit\u00e9 de m\u00e9moire vive (RAM) disponible sous Linux ?",
                 choices: [
-                    "Consulter les logs pertinents et analyser le code de retour",
-                    "Fermer la session et ignorer le probl\u00e8me",
-                    "R\u00e9installer int\u00e9gralement le syst\u00e8me d\u2019exploitation",
-                    "D\u00e9sactiver le pare-feu et les contr\u00f4les d\u2019acc\u00e8s",
+                    "`lsram`",
+                    "`free -m`",
+                    "`df -h`",
+                    "Remplacer la RAM *R\u00e9ponse : B*",
                 ],
-                correct_index: 0,
-                explanation: "L\u2019analyse factuelle des logs et codes d\u2019erreur est l\u2019attitude requise pour un diagnostic professionnel."
+                correct_index: 1,
+                explanation: "Explication p\u00e9dagogique : La bonne option r\u00e9pond directement aux exigences du cours."
             },
             {
                 id: "j7-q4",
-                question: "Quel r\u00e9sultat valide la ma\u00eetrise de la journ\u00e9e du Jour 07 ?",
+                question: "Quel est le r\u00f4le de la commande `modprobe` ?",
                 choices: [
-                    "Un score de 75% minimum au QCM et des exercices pratiques compl\u00e9t\u00e9s",
-                    "La simple consultation de la page sans r\u00e9pondre aux questions",
-                    "Un passage automatique bas\u00e9 sur le temps pass\u00e9",
-                    "Une r\u00e9ponse donn\u00e9e au hasard sans justification",
+                    "Formater un disque",
+                    "Recompiler le noyau",
+                    "Charger ou d\u00e9charger intelligemment un module du noyau",
+                    "Remplacer la RAM *R\u00e9ponse : B*",
                 ],
-                correct_index: 0,
-                explanation: "Le seuil exigeant de 75% combin\u00e9 aux livrables pratiques garantit une vraie mont\u00e9e en comp\u00e9tences."
+                correct_index: 1,
+                explanation: "Explication p\u00e9dagogique : La bonne option r\u00e9pond directement aux exigences du cours."
+            },
+            {
+                id: "j7-q5",
+                question: "Quel r\u00e9pertoire contient g\u00e9n\u00e9ralement les fichiers de boot et le noyau Linux ?",
+                choices: [
+                    "`/etc`",
+                    "`/sys`",
+                    "`/boot`",
+                    "`/var` *R\u00e9ponse : C*",
+                ],
+                correct_index: 1,
+                explanation: "Explication p\u00e9dagogique : La bonne option r\u00e9pond directement aux exigences du cours."
             }
         ],
         "jour-08": [
             {
                 id: "j8-q1",
-                question: "Quel est le concept cl\u00e9 au c\u0153ur de la le\u00e7on du Jour 08 (Scripting Bash) ?",
+                question: "Quelle console permet de g\u00e9rer les disques, les utilisateurs et l'observateur d'\u00e9v\u00e9nements au m\u00eame endroit ?",
                 choices: [
-                    "La ma\u00eetrise pratique de automatisation syst\u00e8me, variables, boucles et crontab",
-                    "La m\u00e9morisation purement th\u00e9orique des d\u00e9finitions",
-                    "L\u2019inactivation des fonctionnalit\u00e9s de s\u00e9curit\u00e9",
-                    "L\u2019ex\u00e9cution al\u00e9atoire de commandes syst\u00e8me",
+                    "`regedit.exe`",
+                    "`compmgmt.msc`",
+                    "`taskmgr.exe`",
+                    "correspondant au dernier d\u00e9marrage du service de temps (Windows Time). Ensuite, cr\u00e9ez un compte local nomm\u00e9 `AuditAdmin` et placez-le dans le groupe `Administrateurs`. - **Livrables \u00e0 produire** : Capture d'\u00e9cran de l'Event Viewer avec le filtre appliqu\u00e9. Capture d'\u00e9cran du terminal apr\u00e8s les commandes. - **Corrig\u00e9 d\u00e9taill\u00e9 & Guid\u00e9** :   1. Win+R -> `eventvwr.msc`   2. Syst\u00e8me -> Filtrer le journal actuel -> Source des \u00e9v\u00e9nements : `Time-Service`.   3. En console Admin : `net user AuditAdmin \"AdminP@ss!\" /add`   4. `net localgroup Administrateurs AuditAdmin /add`",
                 ],
-                correct_index: 0,
-                explanation: "La le\u00e7on du Jour 08 est ax\u00e9e sur la ma\u00eetrise op\u00e9rationnelle de automatisation syst\u00e8me, variables, boucles et crontab."
+                correct_index: 1,
+                explanation: "Explication p\u00e9dagogique : La bonne option r\u00e9pond directement aux exigences du cours."
             },
             {
                 id: "j8-q2",
-                question: "Quelle est la premi\u00e8re action recommand\u00e9e lors de la mise en pratique du Jour 08 ?",
+                question: "Que signifie HKLM dans la base de registre ?",
                 choices: [
-                    "Modifier directement les fichiers sans sauvegarde",
-                    "Inspecter l\u2019\u00e9tat du syst\u00e8me et v\u00e9rifier les pr\u00e9requis techniques",
-                    "Ignorer les messages d\u2019erreur du terminal",
-                    "Supprimer les comptes d\u2019acc\u00e8s administrateur",
+                    "HKEY_LOCAL_MACHINE",
+                    "HIGH_KEY_LOCAL_MANAGER",
+                    "HKEY_LIST_MAIN",
+                    "correspondant au dernier d\u00e9marrage du service de temps (Windows Time). Ensuite, cr\u00e9ez un compte local nomm\u00e9 `AuditAdmin` et placez-le dans le groupe `Administrateurs`. - **Livrables \u00e0 produire** : Capture d'\u00e9cran de l'Event Viewer avec le filtre appliqu\u00e9. Capture d'\u00e9cran du terminal apr\u00e8s les commandes. - **Corrig\u00e9 d\u00e9taill\u00e9 & Guid\u00e9** :   1. Win+R -> `eventvwr.msc`   2. Syst\u00e8me -> Filtrer le journal actuel -> Source des \u00e9v\u00e9nements : `Time-Service`.   3. En console Admin : `net user AuditAdmin \"AdminP@ss!\" /add`   4. `net localgroup Administrateurs AuditAdmin /add`",
                 ],
                 correct_index: 1,
-                explanation: "Une inspection rigoureuse et la v\u00e9rification des pr\u00e9requis permettent d\u2019\u00e9viter les erreurs de configuration."
+                explanation: "Explication p\u00e9dagogique : La bonne option r\u00e9pond directement aux exigences du cours."
             },
             {
                 id: "j8-q3",
-                question: "En cas de dysfonctionnement sur un outil vu au Jour 08, quel r\u00e9flexe adopter ?",
+                question: "Quel est le r\u00f4le de l'UAC (User Account Control) ?",
                 choices: [
-                    "Consulter les logs pertinents et analyser le code de retour",
-                    "Fermer la session et ignorer le probl\u00e8me",
-                    "R\u00e9installer int\u00e9gralement le syst\u00e8me d\u2019exploitation",
-                    "D\u00e9sactiver le pare-feu et les contr\u00f4les d\u2019acc\u00e8s",
+                    "Bloquer les virus par signature",
+                    "Demander une confirmation explicite avant d'utiliser les droits d'administrateur",
+                    "Mettre \u00e0 jour Windows",
+                    "correspondant au dernier d\u00e9marrage du service de temps (Windows Time). Ensuite, cr\u00e9ez un compte local nomm\u00e9 `AuditAdmin` et placez-le dans le groupe `Administrateurs`. - **Livrables \u00e0 produire** : Capture d'\u00e9cran de l'Event Viewer avec le filtre appliqu\u00e9. Capture d'\u00e9cran du terminal apr\u00e8s les commandes. - **Corrig\u00e9 d\u00e9taill\u00e9 & Guid\u00e9** :   1. Win+R -> `eventvwr.msc`   2. Syst\u00e8me -> Filtrer le journal actuel -> Source des \u00e9v\u00e9nements : `Time-Service`.   3. En console Admin : `net user AuditAdmin \"AdminP@ss!\" /add`   4. `net localgroup Administrateurs AuditAdmin /add`",
                 ],
-                correct_index: 0,
-                explanation: "L\u2019analyse factuelle des logs et codes d\u2019erreur est l\u2019attitude requise pour un diagnostic professionnel."
+                correct_index: 1,
+                explanation: "Explication p\u00e9dagogique : La bonne option r\u00e9pond directement aux exigences du cours."
             },
             {
                 id: "j8-q4",
-                question: "Quel r\u00e9sultat valide la ma\u00eetrise de la journ\u00e9e du Jour 08 ?",
+                question: "Quelle commande en ligne permet de lister les membres du groupe Administrateurs local ?",
                 choices: [
-                    "Un score de 75% minimum au QCM et des exercices pratiques compl\u00e9t\u00e9s",
-                    "La simple consultation de la page sans r\u00e9pondre aux questions",
-                    "Un passage automatique bas\u00e9 sur le temps pass\u00e9",
-                    "Une r\u00e9ponse donn\u00e9e au hasard sans justification",
+                    "`Get-Admin`",
+                    "`lsgroup admin`",
+                    "`net localgroup Administrateurs`",
+                    "`services.msc` *R\u00e9ponse : B*",
                 ],
-                correct_index: 0,
-                explanation: "Le seuil exigeant de 75% combin\u00e9 aux livrables pratiques garantit une vraie mont\u00e9e en comp\u00e9tences."
+                correct_index: 1,
+                explanation: "Explication p\u00e9dagogique : La bonne option r\u00e9pond directement aux exigences du cours."
+            },
+            {
+                id: "j8-q5",
+                question: "Sous quel format Windows stocke-t-il les param\u00e8tres d'application et de syst\u00e8me ?",
+                choices: [
+                    "Des fichiers `.conf` texte uniquement",
+                    "La Base de Registre",
+                    "Le dossier System32",
+                    "L'Observateur d'\u00e9v\u00e9nements *R\u00e9ponse : B*",
+                ],
+                correct_index: 1,
+                explanation: "Explication p\u00e9dagogique : La bonne option r\u00e9pond directement aux exigences du cours."
             }
         ],
         "jour-09": [
             {
                 id: "j9-q1",
-                question: "Quel est le concept cl\u00e9 au c\u0153ur de la le\u00e7on du Jour 09 (Linux Avanc\u00e9 & Systemd) ?",
+                question: "Quelle est la diff\u00e9rence fondamentale entre Bash et PowerShell ?",
                 choices: [
-                    "La ma\u00eetrise pratique de logs systemd, services, s\u00e9curit\u00e9 des utilisateurs et cron",
-                    "La m\u00e9morisation purement th\u00e9orique des d\u00e9finitions",
-                    "L\u2019inactivation des fonctionnalit\u00e9s de s\u00e9curit\u00e9",
-                    "L\u2019ex\u00e9cution al\u00e9atoire de commandes syst\u00e8me",
+                    "Bash est plus r\u00e9cent",
+                    "Bash manipule du texte, PowerShell manipule des objets .NET",
+                    "PowerShell ne marche que sans interface graphique",
+                    "PowerShell ne g\u00e8re pas le r\u00e9seau *R\u00e9ponse : B*",
                 ],
-                correct_index: 0,
-                explanation: "La le\u00e7on du Jour 09 est ax\u00e9e sur la ma\u00eetrise op\u00e9rationnelle de logs systemd, services, s\u00e9curit\u00e9 des utilisateurs et cron."
+                correct_index: 1,
+                explanation: "Explication p\u00e9dagogique : La bonne option r\u00e9pond directement aux exigences du cours."
             },
             {
                 id: "j9-q2",
-                question: "Quelle est la premi\u00e8re action recommand\u00e9e lors de la mise en pratique du Jour 09 ?",
+                question: "\u00c0 quoi sert `Get-Member` ?",
                 choices: [
-                    "Modifier directement les fichiers sans sauvegarde",
-                    "Inspecter l\u2019\u00e9tat du syst\u00e8me et v\u00e9rifier les pr\u00e9requis techniques",
-                    "Ignorer les messages d\u2019erreur du terminal",
-                    "Supprimer les comptes d\u2019acc\u00e8s administrateur",
+                    "Afficher les membres du groupe Administrateurs",
+                    "D\u00e9couvrir les propri\u00e9t\u00e9s et m\u00e9thodes de l'objet pass\u00e9 dans le pipeline",
+                    "T\u00e9l\u00e9charger des paquets",
+                    "PowerShell ne g\u00e8re pas le r\u00e9seau *R\u00e9ponse : B*",
                 ],
                 correct_index: 1,
-                explanation: "Une inspection rigoureuse et la v\u00e9rification des pr\u00e9requis permettent d\u2019\u00e9viter les erreurs de configuration."
+                explanation: "Explication p\u00e9dagogique : La bonne option r\u00e9pond directement aux exigences du cours."
             },
             {
                 id: "j9-q3",
-                question: "En cas de dysfonctionnement sur un outil vu au Jour 09, quel r\u00e9flexe adopter ?",
+                question: "Quel op\u00e9rateur logique signifie \"\u00e9gal \u00e0\" en PowerShell ?",
                 choices: [
-                    "Consulter les logs pertinents et analyser le code de retour",
-                    "Fermer la session et ignorer le probl\u00e8me",
-                    "R\u00e9installer int\u00e9gralement le syst\u00e8me d\u2019exploitation",
-                    "D\u00e9sactiver le pare-feu et les contr\u00f4les d\u2019acc\u00e8s",
+                    "`==`",
+                    "`=`",
+                    "`-eq`",
+                    "PowerShell ne g\u00e8re pas le r\u00e9seau *R\u00e9ponse : B*",
                 ],
-                correct_index: 0,
-                explanation: "L\u2019analyse factuelle des logs et codes d\u2019erreur est l\u2019attitude requise pour un diagnostic professionnel."
+                correct_index: 1,
+                explanation: "Explication p\u00e9dagogique : La bonne option r\u00e9pond directement aux exigences du cours."
             },
             {
                 id: "j9-q4",
-                question: "Quel r\u00e9sultat valide la ma\u00eetrise de la journ\u00e9e du Jour 09 ?",
+                question: "Comment d\u00e9bloquer l'ex\u00e9cution des scripts locaux sur un PC Windows ?",
                 choices: [
-                    "Un score de 75% minimum au QCM et des exercices pratiques compl\u00e9t\u00e9s",
-                    "La simple consultation de la page sans r\u00e9pondre aux questions",
-                    "Un passage automatique bas\u00e9 sur le temps pass\u00e9",
-                    "Une r\u00e9ponse donn\u00e9e au hasard sans justification",
+                    "`chmod +x script.ps1`",
+                    "`Set-ExecutionPolicy RemoteSigned`",
+                    "Il n'y a pas besoin, c'est actif par d\u00e9faut",
+                    "`Unlock-PowerShell` *R\u00e9ponse : B*",
                 ],
-                correct_index: 0,
-                explanation: "Le seuil exigeant de 75% combin\u00e9 aux livrables pratiques garantit une vraie mont\u00e9e en comp\u00e9tences."
+                correct_index: 1,
+                explanation: "Explication p\u00e9dagogique : La bonne option r\u00e9pond directement aux exigences du cours."
+            },
+            {
+                id: "j9-q5",
+                question: "Dans un pipeline PowerShell, que repr\u00e9sente la variable `$_` ?",
+                choices: [
+                    "La fin du fichier",
+                    "Le dernier processus arr\u00eat\u00e9",
+                    "L'objet courant transmis \u00e0 travers le pipeline",
+                    "Une variable d'environnement syst\u00e8me *R\u00e9ponse : C*",
+                ],
+                correct_index: 1,
+                explanation: "Explication p\u00e9dagogique : La bonne option r\u00e9pond directement aux exigences du cours."
             }
         ],
         "jour-10": [
             {
                 id: "j10-q1",
-                question: "Quel est le concept cl\u00e9 au c\u0153ur de la le\u00e7on du Jour 10 (Git Avanc\u00e9 & CI/CD) ?",
+                question: "Que fait la commande `>>` sous Bash ?",
                 choices: [
-                    "La ma\u00eetrise pratique de branches, pull requests, conflits et GitHub Actions",
-                    "La m\u00e9morisation purement th\u00e9orique des d\u00e9finitions",
-                    "L\u2019inactivation des fonctionnalit\u00e9s de s\u00e9curit\u00e9",
-                    "L\u2019ex\u00e9cution al\u00e9atoire de commandes syst\u00e8me",
+                    "Elle supprime le fichier",
+                    "Elle \u00e9crase le fichier avec de nouvelles donn\u00e9es",
+                    "Elle ajoute la sortie \u00e0 la fin du fichier existant",
+                    "Elle met en pause le script *R\u00e9ponse : C*",
                 ],
-                correct_index: 0,
-                explanation: "La le\u00e7on du Jour 10 est ax\u00e9e sur la ma\u00eetrise op\u00e9rationnelle de branches, pull requests, conflits et GitHub Actions."
+                correct_index: 1,
+                explanation: "Explication p\u00e9dagogique : La bonne option r\u00e9pond directement aux exigences du cours."
             },
             {
                 id: "j10-q2",
-                question: "Quelle est la premi\u00e8re action recommand\u00e9e lors de la mise en pratique du Jour 10 ?",
+                question: "En PowerShell, comment r\u00e9cup\u00e9rer proprement les informations d\u00e9taill\u00e9es du syst\u00e8me d'exploitation ?",
                 choices: [
-                    "Modifier directement les fichiers sans sauvegarde",
-                    "Inspecter l\u2019\u00e9tat du syst\u00e8me et v\u00e9rifier les pr\u00e9requis techniques",
-                    "Ignorer les messages d\u2019erreur du terminal",
-                    "Supprimer les comptes d\u2019acc\u00e8s administrateur",
+                    "`Get-OS`",
+                    "`Get-CimInstance Win32_OperatingSystem`",
+                    "`cat /etc/os-release`",
+                    "Elle met en pause le script *R\u00e9ponse : C*",
                 ],
                 correct_index: 1,
-                explanation: "Une inspection rigoureuse et la v\u00e9rification des pr\u00e9requis permettent d\u2019\u00e9viter les erreurs de configuration."
+                explanation: "Explication p\u00e9dagogique : La bonne option r\u00e9pond directement aux exigences du cours."
             },
             {
                 id: "j10-q3",
-                question: "En cas de dysfonctionnement sur un outil vu au Jour 10, quel r\u00e9flexe adopter ?",
+                question: "Pourquoi utilise-t-on `awk` conjointement avec `free -h` sous Linux ?",
                 choices: [
-                    "Consulter les logs pertinents et analyser le code de retour",
-                    "Fermer la session et ignorer le probl\u00e8me",
-                    "R\u00e9installer int\u00e9gralement le syst\u00e8me d\u2019exploitation",
-                    "D\u00e9sactiver le pare-feu et les contr\u00f4les d\u2019acc\u00e8s",
+                    "Pour installer plus de RAM",
+                    "Pour colorer la sortie",
+                    "Pour filtrer et formater des colonnes sp\u00e9cifiques du texte en sortie",
+                    "Elle met en pause le script *R\u00e9ponse : C*",
                 ],
-                correct_index: 0,
-                explanation: "L\u2019analyse factuelle des logs et codes d\u2019erreur est l\u2019attitude requise pour un diagnostic professionnel."
+                correct_index: 1,
+                explanation: "Explication p\u00e9dagogique : La bonne option r\u00e9pond directement aux exigences du cours."
             },
             {
                 id: "j10-q4",
-                question: "Quel r\u00e9sultat valide la ma\u00eetrise de la journ\u00e9e du Jour 10 ?",
+                question: "Quel param\u00e8tre faut-il ajouter \u00e0 `Out-File` en PowerShell pour ne pas \u00e9craser le contenu pr\u00e9c\u00e9dent ?",
                 choices: [
-                    "Un score de 75% minimum au QCM et des exercices pratiques compl\u00e9t\u00e9s",
-                    "La simple consultation de la page sans r\u00e9pondre aux questions",
-                    "Un passage automatique bas\u00e9 sur le temps pass\u00e9",
-                    "Une r\u00e9ponse donn\u00e9e au hasard sans justification",
+                    "`-Force`",
+                    "`-NoClobber`",
+                    "`-Add`",
+                    "`-Append` *R\u00e9ponse : D*",
                 ],
-                correct_index: 0,
-                explanation: "Le seuil exigeant de 75% combin\u00e9 aux livrables pratiques garantit une vraie mont\u00e9e en comp\u00e9tences."
+                correct_index: 1,
+                explanation: "Explication p\u00e9dagogique : La bonne option r\u00e9pond directement aux exigences du cours."
+            },
+            {
+                id: "j10-q5",
+                question: "Quel est l'\u00e9quivalent de `chmod +x` sous Windows PowerShell ?",
+                choices: [
+                    "`Set-ExecutionPolicy`",
+                    "`Attrib +x`",
+                    "Les scripts `.ps1` sont toujours ex\u00e9cutables par d\u00e9faut",
+                    "`Takeown` *R\u00e9ponse : A*",
+                ],
+                correct_index: 1,
+                explanation: "Explication p\u00e9dagogique : La bonne option r\u00e9pond directement aux exigences du cours."
             }
         ],
         "jour-11": [

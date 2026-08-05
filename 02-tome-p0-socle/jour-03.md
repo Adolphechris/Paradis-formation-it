@@ -1,284 +1,185 @@
-# TOME P0 — Jour 03 (14h) : Linux Ubuntu, Ligne de Commande & Mini-Projet P0
+# SEMESTRE 1 — Jour 03 (6h) : Permissions Linux & Gestion des Utilisateurs
 
 > [!NOTE]
-> **Objectif de la journée** : Maîtriser l'environnement Linux en ligne de commande — le système d'exploitation des serveurs du monde entier — et finaliser votre premier projet professionnel de la formation. À la fin de ce cours, vous naviguerez avec assurance dans un terminal Linux, gérerez des fichiers et des permissions, et livrerez un mini-projet complet.
+> **Objectif de la journée** : Comprendre le modèle d'identités locales de Linux, attribuer des droits stricts sur les fichiers (modèle POSIX), et exécuter des tâches administratives en appliquant le principe du moindre privilège (sudo).
+> **Compétences visées** : `BIT-02` (Niveau Cible: A), `SEC-03` (Niveau Cible: A) — Contrôle d'accès et permissions Linux.
 
 ---
 
-## 1) Introduction à Linux : L'OS des Serveurs (1h)
+## 1) Gestionnaires d'identités locaux (1h30)
 
-### 📖 1.1 Pourquoi Linux ? L'OS Invisible qui Fait Tourner le Monde
+### 📖 1.1 Narration & Intuition
+Sous Linux, un ordinateur est comme un immeuble sécurisé. Chaque résident a un badge (UID - User ID) et appartient à une ou plusieurs familles (GID - Group ID). Le gardien de l'immeuble est le système, qui vérifie trois gros registres :
+1. Qui habite ici ? (`/etc/passwd`)
+2. Quels sont leurs mots de passe secrets ? (`/etc/shadow`)
+3. Quelles sont les familles/équipes ? (`/etc/group`)
+L'utilisateur suprême (le promoteur de l'immeuble) est `root` (UID 0), qui a tous les droits, partout.
 
-Vous ne l'avez peut-être jamais vu, mais Linux est partout. Les serveurs de Google, Facebook, Amazon, les supercalculateurs de la NASA, les serveurs de la Banque Centrale du Congo et 96% des serveurs web dans le monde tournent sous Linux.
+### 🔍 1.2 Anatomie Technique
+- `useradd` / `usermod` / `userdel` : Créer, modifier, supprimer un utilisateur.
+- `passwd` : Définir ou changer un mot de passe.
+- `id` : Afficher son UID, son GID primaire et ses groupes secondaires.
+- `su` (Substitute User) : Permet de changer d'identité dans le shell. `su - utilisateur` lance un environnement propre (login shell).
 
-Pourquoi ? Parce que Linux est :
-- **Gratuit et open-source** : Pas de licence à payer pour chaque serveur.
-- **Stable et fiable** : Les serveurs Linux peuvent tourner pendant des années sans redémarrage.
-- **Sécurisé** : Son architecture de permissions stricte le rend très résistant aux virus.
-- **Puissant en ligne de commande** : Vous pouvez gérer entièrement un serveur distant sans interface graphique, uniquement via du texte.
+### 🛠️ 1.3 Atelier Pratique Hands-on
+```bash
+# Voir sa propre identité
+id
 
-> [!TIP]
-> **Analogie** : Si Windows est une voiture automatique confortable, Linux est un véhicule de course avec boîte manuelle. Plus complexe à prendre en main, mais infiniment plus performant et contrôlable une fois maîtrisé.
+# Lire le registre des utilisateurs (remarquez les utilisateurs systèmes)
+cat /etc/passwd
+
+# Tenter de lire le fichier des mots de passe (Doit renvoyer Permission Denied sans sudo)
+cat /etc/shadow
+
+# Créer un utilisateur 'stagiaire' (nécessite les privilèges root)
+sudo useradd -m -s /bin/bash stagiaire
+
+# Lui attribuer un mot de passe
+sudo passwd stagiaire
+
+# Changer d'identité pour devenir 'stagiaire'
+su - stagiaire
+whoami
+exit
+```
+
+### 🚑 1.4 Diagnostic & Réflexes Terrain
+- **Symptôme** : On lance un script ou on édite un fichier et on obtient "Permission denied".
+- **Diagnostic** : Votre utilisateur actuel (vérifié avec `whoami`) n'a pas les droits, ou le processus n'est pas lancé par le bon UID.
+- **Réflexe** : Toujours utiliser `id` et `ls -l` pour comparer qui on est et à qui appartient le fichier.
 
 ---
 
-## 2) La Ligne de Commande Linux : Naviguer dans le Système (3h)
+## 2) Le Modèle de Permissions POSIX & Calcul Octal (1h30)
 
-### 📖 2.1 Le Terminal : Votre Cockpit de Pilotage
+### 📖 2.1 Narration & Intuition
+Chaque fichier et dossier sur Linux possède un cadenas à trois chiffres (Octal).
+Les trois parties du cadenas correspondent à :
+1. Le propriétaire (`u` - user)
+2. Le groupe (`g` - group)
+3. Tous les autres (`o` - others / le reste du monde)
+Chaque partie autorise 3 actions : Lire (`r` = Read = 4), Écrire (`w` = Write = 2), et Exécuter (`x` = eXecute = 1).
+On additionne ces valeurs ! Par exemple, Lire(4) + Écrire(2) = 6.
 
-Le **Terminal** (aussi appelé Shell, Bash, Invite de commandes Linux) est l'interface texte pure de Linux. Vous tapez une commande, appuyez sur `Entrée`, et Linux l'exécute immédiatement.
+### 🔍 2.2 Anatomie Technique
+- Format texte (ex: `rwxr-xr--`) vs Format Octal (ex: `754`).
+- `chmod` (Change Mode) : Modifie les permissions.
+- `chown` (Change Owner) : Modifie le propriétaire et le groupe (`chown user:group fichier`).
+- **Pour un fichier** : `r` = voir le contenu, `w` = modifier/supprimer le contenu, `x` = exécuter comme un programme.
+- **Pour un dossier** : `r` = lister le contenu (`ls`), `w` = créer/supprimer des fichiers dedans, `x` = traverser le dossier (`cd`).
 
-Pour ouvrir un terminal sous Ubuntu : `Ctrl + Alt + T`
+### 🛠️ 2.3 Atelier Pratique Hands-on
+```bash
+# Créer un fichier de script
+touch script.sh
 
-Le curseur qui s'affiche ressemble à ceci :
+# Voir les permissions par défaut
+ls -l script.sh
+
+# Donner tous les droits au propriétaire (7), lecture+exécution au groupe (5), et rien aux autres (0)
+chmod 750 script.sh
+ls -l script.sh
+
+# Syntaxe symbolique équivalente : ajouter l'exécution pour l'utilisateur
+chmod u+x script.sh
+
+# Changer le propriétaire (nécessite sudo)
+sudo chown root:root script.sh
 ```
-adolphe@ubuntu-server:~$
-```
-- `adolphe` = votre nom d'utilisateur
-- `ubuntu-server` = le nom de la machine
-- `~` = vous êtes dans votre dossier personnel (`/home/adolphe`)
-- `$` = vous êtes un utilisateur standard (pas root/admin)
 
-### 🔍 2.2 L'Architecture du Système de Fichiers Linux
-
-Linux organise ses fichiers dans une arborescence unique à partir d'une racine `/` :
-
-```
-/                    ← Racine absolue de tout le système
-├── home/            ← Dossiers personnels des utilisateurs
-│   └── adolphe/     ← Votre espace personnel (~ dans le terminal)
-├── etc/             ← Fichiers de configuration système
-├── var/             ← Logs et données variables (logs serveur ici)
-├── tmp/             ← Fichiers temporaires (effacés au redémarrage)
-├── usr/             ← Logiciels installés par l'utilisateur
-└── bin/             ← Commandes système essentielles (ls, cp, mv...)
-```
-
-> [!IMPORTANT]
-> Contrairement à Windows (`C:\Users\`), Linux utilise des `/` (slash) et non des `\` (antislash). La casse est également sensible : `Fichier.txt` ≠ `fichier.txt`.
+### 🚑 2.4 Diagnostic & Réflexes Terrain
+- **Symptôme** : "Permission denied" en essayant de faire `cd` dans un dossier où l'on a pourtant les droits de lecture (`r`).
+- **Diagnostic** : Sur un répertoire, la lecture ne suffit pas. L'exécution (`x`) est indispensable pour "entrer" ou "traverser" un dossier.
+- **Réflexe** : Faire un `chmod +x` sur le répertoire.
 
 ---
 
-### 🛠️ 2.3 Les Commandes de Navigation Essentielles
+## 3) Sécurité et Moindre Privilège avec sudo (2h00)
 
-#### Savoir où vous êtes — `pwd`
+### 📖 3.1 Narration & Intuition
+Le compte `root` est dangereux : il peut détruire tout le serveur en une commande (`rm -rf /`). La bonne pratique (le "Moindre Privilège") consiste à se connecter avec un utilisateur standard et de demander exceptionnellement les pouvoirs de `root` uniquement pour la commande qui le nécessite. C'est le rôle de `sudo` (SuperUser DO). C'est comme le passe-partout du gardien, prêté temporairement, et tracé dans les logs.
+
+### 🔍 3.2 Anatomie Technique
+- `/etc/sudoers` : Fichier de configuration définissant qui peut utiliser `sudo`. **Ne jamais éditer avec vim/nano directement !** Toujours utiliser la commande `visudo` qui vérifie la syntaxe avant d'enregistrer pour éviter de verrouiller le système.
+- Syntaxe type : `utilisateur ALL=(ALL:ALL) ALL`.
+- `sudo -i` ou `sudo su -` : Permet d'ouvrir un shell interactif root (à éviter si possible).
+
+### 🛠️ 3.3 Atelier Pratique Hands-on
 ```bash
-pwd
-# Résultat : /home/adolphe
-```
-`pwd` signifie **P**rint **W**orking **D**irectory. Il affiche votre position exacte dans l'arborescence.
-
-#### Lister le contenu d'un dossier — `ls`
-```bash
-ls                    # Liste simple des fichiers
-ls -l                 # Liste détaillée avec permissions, taille, date
-ls -la                # Inclut les fichiers cachés (commencent par un .)
-ls -lh                # Tailles en format lisible (Ko, Mo, Go)
-```
-
-#### Se déplacer — `cd`
-```bash
-cd /etc               # Aller dans le dossier /etc (chemin absolu)
-cd Documents          # Aller dans le sous-dossier Documents (chemin relatif)
-cd ..                 # Remonter d'un niveau
-cd ~                  # Revenir directement à votre dossier personnel
-cd -                  # Retourner au dossier précédent (pratique !)
-```
-
----
-
-## 3) Gestion de Fichiers et Permissions (3h)
-
-### 🛠️ 3.1 Créer, Copier, Déplacer, Supprimer
-
-```bash
-# Créer un dossier
-mkdir rapport-it
-mkdir -p projets/2026/rapport-it   # Crée toute la hiérarchie d'un coup
-
-# Créer un fichier vide
-touch notes.txt
-
-# Copier un fichier
-cp notes.txt copie-notes.txt
-
-# Déplacer ou renommer un fichier
-mv notes.txt documents/notes-bcc.txt
-
-# Supprimer — ATTENTION : IRRÉVERSIBLE sous Linux !
-rm fichier.txt
-rm -rf dossier/    # Supprime récursivement tout un dossier et son contenu
-```
-
-> [!WARNING]
-> La commande `rm -rf /` effacerait **TOUT le système**. Ne jamais taper cela. Linux ne vous demandera pas de confirmation.
-
-### 🔍 3.2 Le Système de Permissions Linux
-
-Chaque fichier sous Linux a 3 niveaux de permissions pour 3 types d'acteurs :
-
-```bash
-ls -l rapport.txt
-# -rw-r--r-- 1 adolphe staff 4096 2026-07-30 rapport.txt
-#  │││││││││
-#  │││╰╴╴╴╴╴ Permissions des autres utilisateurs (r--)
-#  │││
-#  │╰╴╴╴╴╴╴╴ Permissions du groupe (r--)
-#  │
-#  ╰╴╴╴╴╴╴╴╴ Permissions du propriétaire (rw-)
-```
-
-- `r` = read (lire)
-- `w` = write (écrire/modifier)
-- `x` = execute (exécuter comme programme)
-- `-` = permission non accordée
-
-```bash
-# Donner le droit d'exécution au propriétaire
-chmod u+x mon-script.sh
-
-# Notation numérique (très courante) : r=4, w=2, x=1
-chmod 755 mon-script.sh   # rwxr-xr-x
-chmod 644 rapport.txt     # rw-r--r--
-```
-
----
-
-## 4) Processus, Paquets & Maintenance Système (2h)
-
-### 🛠️ 4.1 Surveiller et Gérer les Processus
-
-```bash
-# Voir tous les processus actifs
-ps aux
-
-# Moniteur interactif en temps réel (comme le Gestionnaire des tâches Windows)
-top
-# Appuyer sur 'q' pour quitter
-
-# Tuer un processus bloqué par son PID (numéro d'identification)
-kill 1234
-
-# Forcer la fermeture
-kill -9 1234
-```
-
-### 🛠️ 4.2 Gestionnaire de Paquets APT (Installation de Logiciels)
-
-Sous Linux, on n'installe pas de logiciels en téléchargeant des `.exe`. On utilise un **gestionnaire de paquets** qui télécharge et installe depuis des dépôts officiels sécurisés.
-
-```bash
-# Toujours commencer par mettre à jour la liste des paquets disponibles
+# Exécuter une commande en tant que root
 sudo apt update
 
-# Puis installer un logiciel (ex: l'éditeur de texte nano)
-sudo apt install nano
+# Ajouter un utilisateur au groupe sudo (sous Ubuntu/Debian, le groupe est 'sudo', sous CentOS/RHEL c'est 'wheel')
+sudo usermod -aG sudo stagiaire
 
-# Mettre à jour tous les logiciels installés
-sudo apt upgrade
+# Vérifier que l'utilisateur appartient au groupe
+id stagiaire
 
-# Supprimer un logiciel
-sudo apt remove nano
+# Regarder les tentatives d'utilisation de sudo (Logs de sécurité)
+sudo tail /var/log/auth.log | grep sudo
 ```
 
-> [!TIP]
-> **`sudo`** signifie **S**uper **U**ser **DO**. Il vous permet d'exécuter une commande avec les droits d'administrateur (root) de manière temporaire et contrôlée, sans rester connecté en tant que root.
+### 🚑 3.4 Diagnostic & Réflexes Terrain
+- **Symptôme** : "stagiaire is not in the sudoers file. This incident will be reported."
+- **Diagnostic** : L'utilisateur essaie de taper `sudo` mais n'a pas été autorisé par l'administrateur (il n'est pas dans le groupe sudo ou dans `/etc/sudoers`).
+- **Réflexe** : Se connecter avec un compte administrateur légitime et l'ajouter au groupe sudo via `usermod -aG sudo <user>`.
 
 ---
 
-## 5) Mini-Projet de Fin de Tome P0 (3h)
+## 🏧️ Exercices Pratiques (Preuves de Portfolio)
 
-### 🎯 Objectif : Créer un Portail d'Assistance IT Banque Centrale
-
-Vous allez créer un site web statique professionnel (HTML5 + CSS3 + JS) représentant un portail d'assistance informatique pour la Banque Centrale.
-
-#### Livrable Attendu :
-```
-portail-bcc/
-├── index.html          ← Page d'accueil avec formulaire de ticket
-├── css/
-│   └── style.css       ← Styles professionnels (dark mode, responsive)
-├── js/
-│   └── app.js          ← Validation de formulaire + compteur tickets
-└── README.md           ← Documentation Git du projet
-```
-
-#### Structure de base de `index.html` :
-```html
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Portail IT — Banque Centrale du Congo</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <header>
-        <h1>🏛️ Banque Centrale du Congo — Support IT</h1>
-        <p>Système de gestion des incidents informatiques</p>
-    </header>
-    <main>
-        <form id="ticket-form">
-            <label for="nom">Nom complet :</label>
-            <input type="text" id="nom" name="nom" required>
-
-            <label for="email">Email professionnel :</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="type">Type d'incident :</label>
-            <select id="type" name="type">
-                <option>Problème réseau</option>
-                <option>Imprimante défectueuse</option>
-                <option>Compte bloqué</option>
-            </select>
-
-            <label for="description">Description :</label>
-            <textarea id="description" rows="4" required></textarea>
-
-            <button type="submit">Ouvrir le Ticket</button>
-        </form>
-    </main>
-    <script src="js/app.js"></script>
-</body>
-</html>
-```
-
-#### Versioning Git du projet :
+### Exercice 1 : Auditer et Sécuriser un dossier
+- **Consigne** :
+  1. En tant que votre utilisateur standard, créez un dossier `/tmp/top_secret`.
+  2. Modifiez les droits pour que vous seul puissiez lister, lire et écrire dedans, et que personne d'autre (groupe ou autres) n'ait aucun accès.
+  3. Créez un fichier `rapport.txt` à l'intérieur.
+  4. Donnez la propriété de ce fichier à `root` (en utilisant `sudo`).
+- **Livrables à produire** : Capture d'écran montrant l'exécution des commandes, suivie d'un `ls -ld /tmp/top_secret` et d'un `ls -l /tmp/top_secret/rapport.txt`.
+- **Corrigé détaillé & Guidé** :
 ```bash
-cd portail-bcc
-git init
-git add .
-git commit -m "feat: initialisation portail IT BCC - Version 1.0"
+mkdir /tmp/top_secret
+chmod 700 /tmp/top_secret
+ls -ld /tmp/top_secret
+touch /tmp/top_secret/rapport.txt
+sudo chown root:root /tmp/top_secret/rapport.txt
+ls -l /tmp/top_secret/rapport.txt
 ```
 
 ---
 
-## 🏋️ Exercices Pratiques & Corrigés
+## ❓ Banque de Questions QCM (Évaluation 75% minimum)
+1. **Dans quel fichier sont stockés de manière sécurisée les hachages des mots de passe ?**
+   A) `/etc/passwd`
+   B) `/etc/shadow`
+   C) `/etc/security`
+   D) `/var/log/auth.log`
+   *Réponse : B*
 
-### Exercice 1 : Navigation et Structure
-Créez l'arborescence suivante en une seule commande :
-```
-formation-bcc/j3/{docs,scripts,logs}
-```
-- **Corrigé** :
-  ```bash
-  mkdir -p formation-bcc/j3/{docs,scripts,logs}
-  touch formation-bcc/j3/docs/notes.txt formation-bcc/j3/scripts/backup.sh formation-bcc/j3/logs/journal.log
-  ls -R formation-bcc/j3
-  ```
+2. **Quelle est la valeur octale correspondante aux droits symboliques `rwxr-xr--` ?**
+   A) 754
+   B) 774
+   C) 755
+   D) 644
+   *Réponse : A*
 
-### Exercice 2 : Permissions
-Créez un fichier `rapport-confidentiel.txt` et configurez-le pour que seul son propriétaire puisse le lire et l'écrire (aucun accès pour le groupe et les autres).
-- **Corrigé** :
-  ```bash
-  touch rapport-confidentiel.txt
-  chmod 600 rapport-confidentiel.txt
-  ls -l rapport-confidentiel.txt
-  # Résultat attendu : -rw------- 1 adolphe adolphe ...
-  ```
+3. **Quelle autorisation est absolument requise pour pouvoir faire `cd` dans un répertoire ?**
+   A) Lecture (r)
+   B) Écriture (w)
+   C) Exécution (x)
+   D) setuid (s)
+   *Réponse : C*
 
----
+4. **Quelle commande doit-on TOUJOURS utiliser pour modifier le fichier sudoers ?**
+   A) `nano /etc/sudoers`
+   B) `chmod 777 /etc/sudoers`
+   C) `visudo`
+   D) `sudo edit`
+   *Réponse : C*
 
-## ❓ Banque de Questions & Test du Jour 03
-
-*(Le composant d'évaluation exigeant 75% minimum s'affiche ci-dessous)*
+5. **Comment changer le propriétaire d'un fichier "document.txt" pour qu'il appartienne à l'utilisateur "alice" et au groupe "rh" ?**
+   A) `chmod alice:rh document.txt`
+   B) `chown alice:rh document.txt`
+   C) `usermod alice rh document.txt`
+   D) `chgrp alice document.txt`
+   *Réponse : B*
