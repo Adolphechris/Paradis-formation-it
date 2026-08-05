@@ -380,19 +380,20 @@
 
         // Compte uniquement les jours validés avec score >= 75%
         let completed = 0;
-        for (let d = 1; d <= 45; d++) {
+        const TOTAL_DAYS = 600;
+        for (let d = 1; d <= TOTAL_DAYS; d++) {
             if (isDayValidated(d, progressMap)) {
                 completed++;
             }
         }
 
-        const pct = Math.round((completed / 45) * 100);
+        const pct = Math.round((completed / TOTAL_DAYS) * 100);
         const streak = computeStreak(progressRecords);
         const totalMin = progressRecords.reduce((a, r) => a + (r.time_spent_minutes || 0), 0);
 
         // Déterminer le prochain jour valide déverrouillé non complété
         let nextNum = 1;
-        for (let d = 1; d <= 45; d++) {
+        for (let d = 1; d <= TOTAL_DAYS; d++) {
             if (!isDayValidated(d, progressMap)) {
                 nextNum = d;
                 break;
@@ -401,7 +402,7 @@
         // Vérifier s'il est bien déverrouillé
         if (!isDayUnlocked(nextNum, progressMap)) {
             // Si le premier non-validé est verrouillé, prendre le dernier déverrouillé
-            for (let d = 45; d >= 1; d--) {
+            for (let d = TOTAL_DAYS; d >= 1; d--) {
                 if (isDayUnlocked(d, progressMap)) {
                     nextNum = d;
                     break;
@@ -437,7 +438,7 @@
             <div class="sdb-welcome-text">
                 <p class="sdb-welcome-greeting">Bienvenue sur votre espace d'étude</p>
                 <h2 class="sdb-welcome-name">${displayName}</h2>
-                <p class="sdb-welcome-sub">Formation BCC · Agent IT · 45 jours · Banque Centrale du Congo</p>
+                <p class="sdb-welcome-sub">Double Diplôme PARADIS IT · Bachelor BIT & Master Cybersécurité · 600 jours · Marché Nord-Américain</p>
             </div>
             <a href="${nextUrl}" class="sdb-resume-btn">
                 ${isDayValidated(nextNum, progressMap) ? '▶ Revoir' : '▶ Continuer'} — Jour ${nextNum}
@@ -449,7 +450,7 @@
         <div class="sdb-stats-row">
             <div class="sdb-stat-card">
                 <div class="sdb-stat-icon">📅</div>
-                <div class="sdb-stat-val">${completed}<span style="font-size:1rem;color:#64748b">/45</span></div>
+                <div class="sdb-stat-val">${completed}<span style="font-size:1rem;color:#64748b">/600</span></div>
                 <div class="sdb-stat-lbl">Jours validés (75% min)</div>
             </div>
             <div class="sdb-stat-card">
@@ -473,7 +474,7 @@
         html += `
         <div class="sdb-progress-section">
             <div class="sdb-progress-header">
-                <span class="sdb-progress-title">Progression du programme</span>
+                <span class="sdb-progress-title">Progression du programme (600 Jours)</span>
                 <span class="sdb-progress-pct">${pct}%</span>
             </div>
             <div class="sdb-progress-track">
@@ -481,35 +482,55 @@
             </div>
         </div>`;
 
-        // Phases
-        const PHASES = [
-            { id: 'P0',  icon: '🖥️',  title: 'Phase P0 — Fondamentaux', days: [1,2,3] },
-            { id: 'P2',  icon: '🐍',  title: 'Phase P2 — Fondations IT', days: [4,5,6,7,8,9,10,11] },
-            { id: 'P3A', icon: '⚙️',  title: 'Phase P3A — Admin Système', days: [12,13,14,15,16,17] },
-            { id: 'P3B', icon: '🗄️',  title: 'Phase P3B — Bases de Données', days: [18,19,20,21,22] },
-            { id: 'P3C', icon: '🌐',  title: 'Phase P3C — Développement Web', days: [23,24,25,26,27,28] },
-            { id: 'P4',  icon: '☁️',  title: 'Phase P4 — Cloud & Sécurité', days: [29,30,31,32,33,34,35] },
-            { id: 'P5',  icon: '📝',  title: 'Phase P5 — Tests & Révisions', days: [36,37,38,39,40,41] },
-            { id: 'P6',  icon: '🏆',  title: 'Phase P6 — Portfolio & Soutenance', days: [42,43,44,45] },
+        // 12 Semestres
+        const makeRange = (start, end) => Array.from({length: end - start + 1}, (_, i) => start + i);
+
+        const SEMESTRES = [
+            // CYCLE 1 — BACHELOR BIT
+            { id: 'S1',  cycle: 'Cycle 1 — Bachelor BIT', icon: '🖥️',  title: 'Semestre 1 — Socle Système (Linux, Hardware, Windows)', days: makeRange(1, 50) },
+            { id: 'S2',  cycle: 'Cycle 1 — Bachelor BIT', icon: '🌐',  title: 'Semestre 2 — Réseaux & Télécoms (TCP/IP, VLANs, Routers)', days: makeRange(51, 100) },
+            { id: 'S3',  cycle: 'Cycle 1 — Bachelor BIT', icon: '🐍',  title: 'Semestre 3 — Python, Bash & Compréhension du Code', days: makeRange(101, 150) },
+            { id: 'S4',  cycle: 'Cycle 1 — Bachelor BIT', icon: '🗄️',  title: 'Semestre 4 — Bases de Données, SQL & Data Engineering', days: makeRange(151, 200) },
+            { id: 'S5',  cycle: 'Cycle 1 — Bachelor BIT', icon: '⚡',  title: 'Semestre 5 — Développement Web Full-Stack & APIs REST', days: makeRange(201, 250) },
+            { id: 'S6',  cycle: 'Cycle 1 — Bachelor BIT', icon: '☁️',  title: 'Semestre 6 — Cloud, DevOps (Docker/K8s) & Grand Projet Bachelor', days: makeRange(251, 300) },
+            // CYCLE 2 — MASTER CYBERSÉCURITÉ
+            { id: 'S7',  cycle: 'Cycle 2 — Master Cybersécurité', icon: '🛡️',  title: 'Semestre 7 — Fondations Cybersécurité & Offensive Security', days: makeRange(301, 350) },
+            { id: 'S8',  cycle: 'Cycle 2 — Master Cybersécurité', icon: '🦅',  title: 'Semestre 8 — Blue Team, SOC, SIEM & Threat Hunting', days: makeRange(351, 400) },
+            { id: 'S9',  cycle: 'Cycle 2 — Master Cybersécurité', icon: '🔐',  title: 'Semestre 9 — Cryptographie, PKI & Sécurité des Paiements', days: makeRange(401, 450) },
+            { id: 'S10', cycle: 'Cycle 2 — Master Cybersécurité', icon: '🔬',  title: 'Semestre 10 — DFIR, Reverse Engineering & Malware Analysis', days: makeRange(451, 500) },
+            { id: 'S11', cycle: 'Cycle 2 — Master Cybersécurité', icon: '⚙️',  title: 'Semestre 11 — DevSecOps, Hardening CIS & Sécurité Cloud', days: makeRange(501, 550) },
+            { id: 'S12', cycle: 'Cycle 2 — Master Cybersécurité', icon: '🏆',  title: 'Semestre 12 — Gouvernance, Grand Projet Synthétique & Portfolio', days: makeRange(551, 600) },
         ];
 
-        for (const phase of PHASES) {
-            const phaseDone = phase.days.filter(n => isDayValidated(n, progressMap)).length;
-            const phaseTotal = phase.days.length;
+        let currentCycleHeader = '';
+
+        for (const sem of SEMESTRES) {
+            if (sem.cycle !== currentCycleHeader) {
+                currentCycleHeader = sem.cycle;
+                html += `
+                <div style="margin: 36px 0 18px 0; padding-bottom: 8px; border-bottom: 2px solid #06b6d4;">
+                    <h3 style="margin:0; font-family:'Outfit',sans-serif; color:#06b6d4; font-size:1.3rem; text-transform:uppercase; letter-spacing:0.05em;">
+                        ${currentCycleHeader}
+                    </h3>
+                </div>`;
+            }
+
+            const phaseDone = sem.days.filter(n => isDayValidated(n, progressMap)).length;
+            const phaseTotal = sem.days.length;
             const allDone = phaseDone === phaseTotal;
-            const hasStarted = phaseDone > 0 || phase.days.some(n => {
+            const hasStarted = phaseDone > 0 || sem.days.some(n => {
                 const id = 'jour-' + String(n).padStart(2, '0');
                 const rec = progressMap[id];
                 return rec && (rec.study_status === 'in_progress' || rec.study_status === 'paused');
             });
             const badgeClass = allDone ? 'done' : hasStarted ? 'active' : 'locked';
-            const badgeLabel = allDone ? `✅ Terminée` : hasStarted ? `🔵 En cours (${phaseDone}/${phaseTotal})` : `🔒 Verrouillée`;
+            const badgeLabel = allDone ? `✅ Terminé` : hasStarted ? `🔵 En cours (${phaseDone}/${phaseTotal})` : `🔒 Verrouillé`;
 
             html += `
             <div class="sdb-phase-section">
                 <div class="sdb-phase-header">
-                    <span class="sdb-phase-icon">${phase.icon}</span>
-                    <span class="sdb-phase-title">${phase.title}</span>
+                    <span class="sdb-phase-icon">${sem.icon}</span>
+                    <span class="sdb-phase-title">${sem.title}</span>
                     <span class="sdb-phase-badge ${badgeClass}">${badgeLabel}</span>
                 </div>
                 <div class="sdb-days-grid">`;

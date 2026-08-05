@@ -75,7 +75,7 @@
             return {
                 totalMinutes,
                 completedCount: completed.length,
-                percent: Math.min(100, Math.round((completed.length / 45) * 100))
+                percent: Math.min(100, Math.round((completed.length / 600) * 100))
             };
         } catch (e) {
             return { totalMinutes: 0, completedCount: 0, percent: 0 };
@@ -111,7 +111,7 @@
                     </div>
                     <div class="paradis-metric-box">
                         <div style="font-size: 0.8rem; color: #9ca3af;">Jours Validés</div>
-                        <div class="paradis-metric-value">${metrics.completedCount} / 45</div>
+                        <div class="paradis-metric-value">${metrics.completedCount} / 600</div>
                     </div>
                     <div class="paradis-metric-box">
                         <div style="font-size: 0.8rem; color: #9ca3af;">Taux de Complétion</div>
@@ -120,7 +120,7 @@
                 </div>
 
                 <div style="padding: 14px; background: rgba(31, 41, 55, 0.5); border-radius: 8px; font-size: 0.85rem; color: #d1d5db; line-height: 1.5;">
-                    📌 <strong>Analyse d'Assiduité :</strong> Vous maintenez un rythme régulier conforme aux exigences de formation de 14h/jour. Continuez à valider les leçons quotidiennes pour atteindre le statut d'Expert IT Officer BCC.
+                    📌 <strong>Analyse d'Assiduité :</strong> Vous maintenez un rythme régulier conforme aux exigences de formation de 6h/jour. Continuez à valider les leçons quotidiennes pour obtenir le double diplôme Bachelor BIT & Master Cybersécurité.
                 </div>
             </div>
         `;
