@@ -160,6 +160,11 @@ nav:
           - J263 — Infrastructure-as-Code Security (Checkov, TFSec, Terrascan, Drift Detection): tome-p6/jour-263.md
           - J264 — Purple Team Automation (Atomic Red Team, Caldera, Prelude Operator): tome-p6/jour-264.md
           - J265 — Projet Intégrateur S6 Partie 3 (DevSecOps Cloud Native & EDR Evasion): tome-p6/jour-265.md
+          - J266 — SOC Architecture & SIEM Correlation (Elastic SIEM, Splunk, Detection Engineering): tome-p6/jour-266.md
+          - J267 — Advanced Threat Hunting (KQL Queries, Hunting Hypotheses, Beaconing Detection): tome-p6/jour-267.md
+          - J268 — SOAR & Incident Response Automation (Shuffle, Cortex XSOAR, Automated Playbooks): tome-p6/jour-268.md
+          - J269 — Forensique Mémoire Avancée (Volatility3 Linux/Windows Kernels, Malfind, Code Injection): tome-p6/jour-269.md
+          - J270 — Projet Intégrateur S6 Partie 4 (SOC Operations, Threat Hunting & SOAR Response): tome-p6/jour-270.md
       - Semestre 7 — Fondations Cybersécurité & Offensive (J301-J350): tome-p5.md
       - Semestre 8 — Blue Team, SOC & SIEM (J351-J400): tome-p6.md
       - Semestre 9 — Cryptographie & PKI (J401-J450): qcm.md
