@@ -155,6 +155,11 @@ nav:
           - J258 — Sécurité des APIs GraphQL & gRPC: tome-p6/jour-258.md
           - J259 — Pentest Wifi & BLE (WPA3, PMKID, BLE Sniffing): tome-p6/jour-259.md
           - J260 — Projet Intégrateur S6 Partie 2: tome-p6/jour-260.md
+          - J261 — EDR Evasion & AMSI Bypass (Memory Injection, Unhooking, Obfuscation): tome-p6/jour-261.md
+          - J262 — Cloud Security Posture Management (CSPM, Wiz/Prowler, Misconfigurations): tome-p6/jour-262.md
+          - J263 — Infrastructure-as-Code Security (Checkov, TFSec, Terrascan, Drift Detection): tome-p6/jour-263.md
+          - J264 — Purple Team Automation (Atomic Red Team, Caldera, Prelude Operator): tome-p6/jour-264.md
+          - J265 — Projet Intégrateur S6 Partie 3 (DevSecOps Cloud Native & EDR Evasion): tome-p6/jour-265.md
       - Semestre 7 — Fondations Cybersécurité & Offensive (J301-J350): tome-p5.md
       - Semestre 8 — Blue Team, SOC & SIEM (J351-J400): tome-p6.md
       - Semestre 9 — Cryptographie & PKI (J401-J450): qcm.md
