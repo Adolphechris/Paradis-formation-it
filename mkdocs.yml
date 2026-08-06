@@ -143,6 +143,18 @@ nav:
       - Semestre 5 — Web & APIs REST (J201-J250): tome-p3c.md
       - Semestre 6 — Cloud, DevOps & Projet Bachelor (J251-J300): tome-p4.md
   - 🛡️ CYCLE 2 — MASTER CYBERSÉCURITÉ (Bac+5):
+      - Semestre 6 — Cybersécurité Avancée Expert (J251-J300):
+          - Vue d'ensemble S6: tome-p6-intro.md
+          - J251 — Bug Bounty & Responsible Disclosure: tome-p6/jour-251.md
+          - J252 — Exploitation Web Avancée (SSRF, XXE, Prototype Pollution): tome-p6/jour-252.md
+          - J253 — Active Directory Offensive Avancé (BloodHound, DCSync, Shadow Credentials): tome-p6/jour-253.md
+          - J254 — Reverse Engineering Mobile (Android APK Frida, iOS jailbreak): tome-p6/jour-254.md
+          - J255 — Projet Intégrateur S6 Partie 1: tome-p6/jour-255.md
+          - J256 — Sécurité Kubernetes Avancée (etcd Encryption, RBAC Hardening): tome-p6/jour-256.md
+          - J257 — Threat Intelligence Opérationnelle (OpenCTI, MISP, Diamond Model): tome-p6/jour-257.md
+          - J258 — Sécurité des APIs GraphQL & gRPC: tome-p6/jour-258.md
+          - J259 — Pentest Wifi & BLE (WPA3, PMKID, BLE Sniffing): tome-p6/jour-259.md
+          - J260 — Projet Intégrateur S6 Partie 2: tome-p6/jour-260.md
       - Semestre 7 — Fondations Cybersécurité & Offensive (J301-J350): tome-p5.md
       - Semestre 8 — Blue Team, SOC & SIEM (J351-J400): tome-p6.md
       - Semestre 9 — Cryptographie & PKI (J401-J450): qcm.md
@@ -154,4 +166,3 @@ nav:
   - Radar de Compétences: radar.md
   - Annexe — Abréviations: annexes.md
   - Tuteur IA: tuteur-ia.md
-
