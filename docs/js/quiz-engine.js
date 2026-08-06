@@ -1026,60 +1026,60 @@
         "jour-18": [
             {
                 id: "j18-q1",
-                question: "la moyenne est sensible...",
+                question: "Quelle est la syntaxe correcte pour une boucle for sur une s\u00e9quence de 1 \u00e0 10 ?",
                 choices: [
-                    "aux valeurs extr\u00eames",
-                    "uniquement \u00e0 la m\u00e9diane",
-                    "\u00e0 rien",
-                    "pour synth\u00e9tiser des donn\u00e9es. - Produire des graphiques statistiques pertinents (histogramme, bo\u00eete \u00e0 moustaches, nuage de points). - Automatiser l'analyse avec des formules et la mise en forme conditionnelle. - Pr\u00e9senter des r\u00e9sultats statistiques de fa\u00e7on claire pour un public non technique.",
+                    "`for i in 1..10`",
+                    "`for i in {1..10}`",
+                    "`for (i=1; i<=10; i++)`",
+                    "`for i in [1-10]` *R\u00e9ponse: B*",
                 ],
                 correct_index: 1,
                 explanation: "Explication p\u00e9dagogique : La bonne option r\u00e9pond directement aux exigences du cours."
             },
             {
                 id: "j18-q2",
-                question: "la m\u00e9diane partage les donn\u00e9es en...",
+                question: "Quel est l'avantage de la boucle `while read` par rapport \u00e0 un `for` pour lire un fichier ?",
                 choices: [
-                    "deux moiti\u00e9s \u00e9gales",
-                    "quatre parties",
-                    "dix parties",
-                    "pour synth\u00e9tiser des donn\u00e9es. - Produire des graphiques statistiques pertinents (histogramme, bo\u00eete \u00e0 moustaches, nuage de points). - Automatiser l'analyse avec des formules et la mise en forme conditionnelle. - Pr\u00e9senter des r\u00e9sultats statistiques de fa\u00e7on claire pour un public non technique.",
+                    "Elle est plus rapide.",
+                    "Elle respecte les lignes enti\u00e8res m\u00eame s'il y a des espaces, contrairement au `for`.",
+                    "Elle utilise moins de RAM.",
+                    "`for i in [1-10]` *R\u00e9ponse: B*",
                 ],
                 correct_index: 1,
                 explanation: "Explication p\u00e9dagogique : La bonne option r\u00e9pond directement aux exigences du cours."
             },
             {
                 id: "j18-q3",
-                question: "l'\u00e9cart-type mesure...",
+                question: "Pourquoi pr\u00e9f\u00e8re-t-on la syntaxe `$(commande)` aux backticks \\`commande\\` ?",
                 choices: [
-                    "la dispersion des donn\u00e9es",
-                    "la valeur maximale",
-                    "la somme",
-                    "pour synth\u00e9tiser des donn\u00e9es. - Produire des graphiques statistiques pertinents (histogramme, bo\u00eete \u00e0 moustaches, nuage de points). - Automatiser l'analyse avec des formules et la mise en forme conditionnelle. - Pr\u00e9senter des r\u00e9sultats statistiques de fa\u00e7on claire pour un public non technique.",
+                    "Les backticks sont supprim\u00e9s de Linux.",
+                    "`$(...)` permet facilement d'imbriquer des commandes `$(commande1 $(commande2))`.",
+                    "C'est exig\u00e9 par le standard Windows.",
+                    "`for i in [1-10]` *R\u00e9ponse: B*",
                 ],
                 correct_index: 1,
                 explanation: "Explication p\u00e9dagogique : La bonne option r\u00e9pond directement aux exigences du cours."
             },
             {
                 id: "j18-q4",
-                question: "Q1 repr\u00e9sente...",
+                question: "Dans `while read -r ligne`, \u00e0 quoi sert `-r` ?",
                 choices: [
-                    "25% des donn\u00e9es en dessous",
-                    "50%",
-                    "75%",
-                    "pour synth\u00e9tiser des donn\u00e9es. - Produire des graphiques statistiques pertinents (histogramme, bo\u00eete \u00e0 moustaches, nuage de points). - Automatiser l'analyse avec des formules et la mise en forme conditionnelle. - Pr\u00e9senter des r\u00e9sultats statistiques de fa\u00e7on claire pour un public non technique.",
+                    "\u00c0 lire en Reverse (\u00e0 l'envers).",
+                    "\u00c0 ignorer les backslashes pour une lecture brute sans \u00e9chappement.",
+                    "\u00c0 utiliser une expression R\u00e9guli\u00e8re.",
+                    "\u00c0 limiter l'usage de la RAM. *R\u00e9ponse: B*",
                 ],
                 correct_index: 1,
                 explanation: "Explication p\u00e9dagogique : La bonne option r\u00e9pond directement aux exigences du cours."
             },
             {
                 id: "j18-q5",
-                question: "l'IQR est...",
+                question: "Quelle boucle est la plus appropri\u00e9e pour un menu persistant qui attend un choix utilisateur jusqu'\u00e0 ce qu'il tape 'Quitter' ?",
                 choices: [
-                    "Q3 - Q1",
-                    "Q3 + Q1",
-                    "Q3 / Q1",
-                    "pour synth\u00e9tiser des donn\u00e9es. - Produire des graphiques statistiques pertinents (histogramme, bo\u00eete \u00e0 moustaches, nuage de points). - Automatiser l'analyse avec des formules et la mise en forme conditionnelle. - Pr\u00e9senter des r\u00e9sultats statistiques de fa\u00e7on claire pour un public non technique.",
+                    "`for`",
+                    "`until`",
+                    "`while`",
+                    "`foreach` *R\u00e9ponse: C*",
                 ],
                 correct_index: 1,
                 explanation: "Explication p\u00e9dagogique : La bonne option r\u00e9pond directement aux exigences du cours."
@@ -1088,60 +1088,60 @@
         "jour-19": [
             {
                 id: "j19-q1",
-                question: "une fonction fen\u00eatre s'applique sur...",
+                question: "En Bash, comment passe-t-on le premier argument \u00e0 une fonction appel\u00e9e `calculer` ?",
                 choices: [
-                    "un sous-ensemble de lignes sans les r\u00e9duire",
-                    "toute la table sans condition",
-                    "une seule ligne",
-                    ", nombres (virgule vs point), unit\u00e9s (\u20ac, K\u20ac, M\u20ac). Standardiser en amont.",
+                    "`calculer($1)`",
+                    "`calculer -arg1`",
+                    "`calculer argument1`",
+                    "`call calculer(argument1)` *R\u00e9ponse: C*",
                 ],
                 correct_index: 1,
                 explanation: "Explication p\u00e9dagogique : La bonne option r\u00e9pond directement aux exigences du cours."
             },
             {
                 id: "j19-q2",
-                question: "`ROW_NUMBER()` vs `RANK()` \u2014 diff\u00e9rence sur ex-aequo ?",
+                question: "Pourquoi utilise-t-on le mot-cl\u00e9 `local` dans une fonction Bash ?",
                 choices: [
-                    "RANK cr\u00e9e un trou, ROW_NUMBER non",
-                    "ROW_NUMBER cr\u00e9e un trou, RANK non",
-                    "identiques",
-                    ", nombres (virgule vs point), unit\u00e9s (\u20ac, K\u20ac, M\u20ac). Standardiser en amont.",
+                    "Pour limiter l'usage r\u00e9seau.",
+                    "Pour emp\u00eacher une variable de modifier une variable de m\u00eame nom dans le script principal.",
+                    "Pour la rendre accessible uniquement \u00e0 l'utilisateur root.",
+                    "`call calculer(argument1)` *R\u00e9ponse: C*",
                 ],
                 correct_index: 1,
                 explanation: "Explication p\u00e9dagogique : La bonne option r\u00e9pond directement aux exigences du cours."
             },
             {
                 id: "j19-q3",
-                question: "une CTE r\u00e9cursive utilise...",
+                question: "Que fait la commande `set -e` ?",
                 choices: [
-                    "UNION ALL",
-                    "UNION uniquement",
-                    "INTERSECT",
-                    ", nombres (virgule vs point), unit\u00e9s (\u20ac, K\u20ac, M\u20ac). Standardiser en amont.",
+                    "Elle exporte toutes les variables.",
+                    "Elle ex\u00e9cute le script en arri\u00e8re-plan.",
+                    "Elle arr\u00eate imm\u00e9diatement le script si une commande \u00e9choue.",
+                    "`call calculer(argument1)` *R\u00e9ponse: C*",
                 ],
                 correct_index: 1,
                 explanation: "Explication p\u00e9dagogique : La bonne option r\u00e9pond directement aux exigences du cours."
             },
             {
                 id: "j19-q4",
-                question: "ROLLUP(a, b) produit...",
+                question: "Dans la crontab `*/15 * * * * commande`, \u00e0 quelle fr\u00e9quence la commande s'ex\u00e9cute-t-elle ?",
                 choices: [
-                    "(a,b), (a), ()",
-                    "(a,b) uniquement",
-                    "toutes les combinaisons",
-                    ", nombres (virgule vs point), unit\u00e9s (\u20ac, K\u20ac, M\u20ac). Standardiser en amont.",
+                    "Tous les jours \u00e0 15h.",
+                    "Le 15 de chaque mois.",
+                    "Toutes les 15 minutes.",
+                    "15 fois par jour. *R\u00e9ponse: C*",
                 ],
                 correct_index: 1,
                 explanation: "Explication p\u00e9dagogique : La bonne option r\u00e9pond directement aux exigences du cours."
             },
             {
                 id: "j19-q5",
-                question: "`LEAD(colonne)` retourne...",
+                question: "Quelle instruction permet d'intercepter la fermeture inattendue du script pour nettoyer des fichiers ?",
                 choices: [
-                    "la valeur de la ligne suivante",
-                    "la valeur de la ligne pr\u00e9c\u00e9dente",
-                    "la moyenne",
-                    ", nombres (virgule vs point), unit\u00e9s (\u20ac, K\u20ac, M\u20ac). Standardiser en amont.",
+                    "`catch`",
+                    "`trap`",
+                    "`clean`",
+                    "`finally` *R\u00e9ponse: B*",
                 ],
                 correct_index: 1,
                 explanation: "Explication p\u00e9dagogique : La bonne option r\u00e9pond directement aux exigences du cours."
@@ -1150,60 +1150,60 @@
         "jour-20": [
             {
                 id: "j20-q1",
-                question: "un graphique en courbes est id\u00e9al pour...",
+                question: "Pourquoi redirige-t-on la sortie ping avec `> /dev/null 2>&1` dans un script de monitoring ?",
                 choices: [
-                    "montrer une \u00e9volution dans le temps",
-                    "comparer des parts",
-                    "montrer une distribution",
-                    "Aucune de ces r\u00e9ponses / Autre",
+                    "Pour am\u00e9liorer la vitesse du r\u00e9seau.",
+                    "Pour masquer l'affichage normal et les erreurs afin que le script g\u00e8re tout en arri\u00e8re-plan sans polluer le terminal.",
+                    "Pour enregistrer la r\u00e9ponse dans un dossier secret.",
+                    "Pour forcer l'usage du protocole IPv6. *R\u00e9ponse: B*",
                 ],
                 correct_index: 1,
                 explanation: "Explication p\u00e9dagogique : La bonne option r\u00e9pond directement aux exigences du cours."
             },
             {
                 id: "j20-q2",
-                question: "un waterfall (cascade) sert \u00e0...",
+                question: "Que signifie `-W 1` dans la commande ping `ping -c 1 -W 1` ?",
                 choices: [
-                    "d\u00e9composer une variation",
-                    "montrer des tendances",
-                    "remplacer un tableau",
-                    "Aucune de ces r\u00e9ponses / Autre",
+                    "Web timeout de 1 heure.",
+                    "Un d\u00e9lai d'attente maximum (Wait) de 1 seconde.",
+                    "Weight = 1.",
+                    "Pour forcer l'usage du protocole IPv6. *R\u00e9ponse: B*",
                 ],
                 correct_index: 1,
                 explanation: "Explication p\u00e9dagogique : La bonne option r\u00e9pond directement aux exigences du cours."
             },
             {
                 id: "j20-q3",
-                question: "des sparklines sont...",
+                question: "A quoi sert l'outil `nc` (Netcat) utilis\u00e9 avec les options `-z` ?",
                 choices: [
-                    "des mini-graphiques dans une cellule",
-                    "un type de carte",
-                    "des formules",
-                    "Aucune de ces r\u00e9ponses / Autre",
+                    "Scanner l'existence d'un port ouvert sans envoyer de payload de donn\u00e9es.",
+                    "N\u00e9gocier une cl\u00e9 de Chiffrement.",
+                    "Compresser le fichier de Log (zlib).",
+                    "Pour forcer l'usage du protocole IPv6. *R\u00e9ponse: B*",
                 ],
                 correct_index: 1,
                 explanation: "Explication p\u00e9dagogique : La bonne option r\u00e9pond directement aux exigences du cours."
             },
             {
                 id: "j20-q4",
-                question: "un segment dans Excel permet de...",
+                question: "Si le projet est dans la crontab avec `*/10 * * * *`, combien de fois s'ex\u00e9cute-t-il par heure ?",
                 choices: [
-                    "filtrer interactivement les donn\u00e9es",
-                    "supprimer des lignes",
-                    "prot\u00e9ger la feuille",
-                    "Aucune de ces r\u00e9ponses / Autre",
+                    "1 fois.",
+                    "6 fois.",
+                    "10 fois.",
+                    "Pour forcer l'usage du protocole IPv6. *R\u00e9ponse: B*",
                 ],
                 correct_index: 1,
                 explanation: "Explication p\u00e9dagogique : La bonne option r\u00e9pond directement aux exigences du cours."
             },
             {
                 id: "j20-q5",
-                question: "un bon titre de graphique doit...",
+                question: "Quelle est l'utilit\u00e9 du `chmod +x` sur le script du projet final ?",
                 choices: [
-                    "raconter l'histoire",
-                    "\u00eatre technique et long",
-                    "\u00eatre absent",
-                    "Aucune de ces r\u00e9ponses / Autre",
+                    "Il chiffre le script avec une cl\u00e9 X.",
+                    "Il l'efface apr\u00e8s usage (eXtirper).",
+                    "Il le rend eX\u00e9cutable par le syst\u00e8me d'exploitation.",
+                    "Pour forcer l'usage du protocole IPv6. *R\u00e9ponse: B*",
                 ],
                 correct_index: 1,
                 explanation: "Explication p\u00e9dagogique : La bonne option r\u00e9pond directement aux exigences du cours."
