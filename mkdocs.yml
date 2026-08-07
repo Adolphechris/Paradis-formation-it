@@ -180,6 +180,11 @@ nav:
           - J283 — Binary Exploitation & Memory Protections (Buffer Overflow x64, ROP Chains, ASLR/DEP Bypass): tome-p6/jour-283.md
           - J284 — Physical Security, Hardware Hacking & BadUSB (Rubber Ducky, Flipper Zero, JTAG/UART Sniffing): tome-p6/jour-284.md
           - J285 — Projet Intégrateur S6 Partie 7 (Reverse Engineering, Kernel & Exploit Dev): tome-p6/jour-285.md
+          - J286 — Post-Quantum Cryptography & Quantum Preparedness (NIST FIPS 203/204/205, ML-KEM, ML-DSA): tome-p6/jour-286.md
+          - J287 — Cryptographic Agility & Migration PQC (Hybrid TLS 1.3, OpenSSL 3.3 liboqs, Key Exchange): tome-p6/jour-287.md
+          - J288 — Cryptanalyse Avancée & Attacks on RSA/ECC (Coppersmith Attack, Invalid Curve Attack, SageMath): tome-p6/jour-288.md
+          - J289 — Blockchain & Smart Contract Auditing (EVM Security, Reentrancy, Slither, Mythril): tome-p6/jour-289.md
+          - J290 — Projet Intégrateur S6 Partie 8 (PQC Migration, Cryptanalysis & Smart Contract Audit): tome-p6/jour-290.md
       - Semestre 7 — Fondations Cybersécurité & Offensive (J301-J350): tome-p5.md
       - Semestre 8 — Blue Team, SOC & SIEM (J351-J400): tome-p6.md
       - Semestre 9 — Cryptographie & PKI (J401-J450): qcm.md
