@@ -195,7 +195,57 @@ nav:
           - J298 — Cloud Penetration Testing & Lateral Movement (AWS/Azure Multi-Account Hijacking): tome-p6/jour-298.md
           - J299 — Master 1 Capstone Project (Full Red/Blue Team Hybrid Infrastructure Attack): tome-p6/jour-299.md
           - J300 — Grand Examen de Synthèse du Semestre 6 & Master 1 (50 QCM Corrigés & Bilan Master 1): tome-p6/jour-300.md
-      - Semestre 7 — Fondations Cybersécurité & Offensive (J301-J350): tome-p5.md
+      - Semestre 7 — Certifications d'Élite & Spécialisations (J301-J350):
+          - J301 — OSCP+ Prep : Web-to-RCE Full Chain (SQLi to Shell, File Upload Bypass, Webshell): tome-p7/jour-301.md
+          - J302 — OSCP+ Prep : Active Directory Full Chain (Kerberoasting, AS-REP, BloodHound Paths): tome-p7/jour-302.md
+          - J303 — OSCP+ Prep : Buffer Overflow 32-bit (x86 EIP Overwrite, Badchars, Shellcode): tome-p7/jour-303.md
+          - J304 — OSCP+ Prep : Pivoting & Tunneling (Chisel, Ligolo-ng, Dynamic Socks5 Proxychains): tome-p7/jour-304.md
+          - J305 — Projet Intégrateur S7 Partie 1 (OSCP+ Full Pentest Simulation): tome-p7/jour-305.md
+          - J306 — AWS Security Specialty : IAM Deep-Dive (SCPs, Permission Boundaries, IAM Access Analyzer): tome-p7/jour-306.md
+          - J307 — AWS Security Specialty : Detective, GuardDuty & Security Hub (Threat Detection Automatique): tome-p7/jour-307.md
+          - J308 — AWS Security Specialty : Macie, Inspector & Shield (Data Protection & DDoS): tome-p7/jour-308.md
+          - J309 — AWS Security Specialty : CloudTrail, Config & Incident Response (Forensique Cloud): tome-p7/jour-309.md
+          - J310 — Projet Intégrateur S7 Partie 2 (AWS Security Specialty Mock Exam + Remediation): tome-p7/jour-310.md
+          - J311 — CKS Bootcamp : Pod Security Standards (PSS), Admission Webhooks & OPA Gatekeeper: tome-p7/jour-311.md
+          - J312 — CKS Bootcamp : Supply Chain Security (Trivy, Falco, SBOM Syft & Cosign Image Signing): tome-p7/jour-312.md
+          - J313 — CKS Bootcamp : Network Policies Avancées (Caldera CNI, eBPF Cilium, mTLS Istio): tome-p7/jour-313.md
+          - J314 — CKS Bootcamp : Runtime Security (Falco Rules, Seccomp, AppArmor Profiles): tome-p7/jour-314.md
+          - J315 — Projet Intégrateur S7 Partie 3 (CKS Full Cluster Security Audit): tome-p7/jour-315.md
+          - J316 — CISM Intensive : Information Security Governance (COBIT 2019, Risk Appetite): tome-p7/jour-316.md
+          - J317 — CISM Intensive : Risk Management & Business Impact Analysis (BIA, RTO, RPO): tome-p7/jour-317.md
+          - J318 — CISSP Intensive : Security Architecture (SABSA, Defense-in-Depth, Threat Modeling): tome-p7/jour-318.md
+          - J319 — CISSP Intensive : Cryptography & PKI (Common Criteria, Evaluation Assurance Levels): tome-p7/jour-319.md
+          - J320 — Projet Intégrateur S7 Partie 4 (CISM/CISSP Mock Exam 50 Questions): tome-p7/jour-320.md
+          - J321 — GREM Prep : Malware Analysis Lab (IDA Pro, x64dbg, Pestudio, Strings & Imports): tome-p7/jour-321.md
+          - J322 — GREM Prep : Ransomware Analysis (ChaCha20 Encryption, Vss Delete, WMI Persistence): tome-p7/jour-322.md
+          - J323 — GREM Prep : Rootkit Detection (DKOM, SSDT Hooks, Volatility 3 Analysis): tome-p7/jour-323.md
+          - J324 — GCTI Intensive : Threat Intel Lifecycle (Intelligence Requirements, F3EAD Cycle): tome-p7/jour-324.md
+          - J325 — Projet Intégrateur S7 Partie 5 (GREM + GCTI Full Report): tome-p7/jour-325.md
+          - J326 — CIPP/E & RGPD Expert : Data Subject Rights Automation (DSR API, DSAR Workflows): tome-p7/jour-326.md
+          - J327 — CIPP/E & RGPD Expert : Privacy by Design (DPIA CNIL, Pseudonymisation, Minimisation): tome-p7/jour-327.md
+          - J328 — Secure Code Review (SAST Semgrep, CodeQL, Taint Analysis): tome-p7/jour-328.md
+          - J329 — BSCP Prep : Web Cache Poisoning, SSRF Advanced & Prototype Pollution: tome-p7/jour-329.md
+          - J330 — Projet Intégrateur S7 Partie 6 (CIPP/E DPIA + BSCP Web Labs): tome-p7/jour-330.md
+          - J331 — OSED Prep : Windows x64 Exploit Dev (SEH Overwrite, Egghunter, Custom Shellcode): tome-p7/jour-331.md
+          - J332 — OSED Prep : Browser Exploitation (V8 JIT, TypeConfusion, Heap Spray, Renderer Exploit): tome-p7/jour-332.md
+          - J333 — OSED Prep : Windows Kernel Exploitation (WDAC Bypass, HyperVisor Protected Code Integrity): tome-p7/jour-333.md
+          - J334 — Red Team Mature : Objective-Based Red Team (TIBER-EU, CBEST Methodology, Scoping): tome-p7/jour-334.md
+          - J335 — Projet Intégrateur S7 Partie 7 (OSED Lab + TIBER-EU Red Team Simulation): tome-p7/jour-335.md
+          - J336 — Cloud Native Security (AWS EKS Security, ECR Image Scanning, GuardDuty EKS): tome-p7/jour-336.md
+          - J337 — Offensive AI & LLM Red Teaming (Jailbreaking, Adversarial Suffixes, LLM Pentesting): tome-p7/jour-337.md
+          - J338 — Digital Forensics Advanced (DFIR Autopsy, Timeline, Registry Forensics, LNK Analysis): tome-p7/jour-338.md
+          - J339 — Supply Chain Security (SLSA Framework, Sigstore, Attestations, Dependency Confusion): tome-p7/jour-339.md
+          - J340 — Projet Intégrateur S7 Partie 8 (Cloud Native + AI Red Team + Supply Chain): tome-p7/jour-340.md
+          - J341 — Threat Modeling Avancé (STRIDE, PASTA, LINDDUN Privacy Threat Modeling): tome-p7/jour-341.md
+          - J342 — API Security (OWASP API Top 10 2023, GraphQL Introspection, JWT Attacks, Mass Assignment): tome-p7/jour-342.md
+          - J343 — Secrets Management at Scale (HashiCorp Vault Dynamic Secrets, AWS Secrets Manager, SOPS): tome-p7/jour-343.md
+          - J344 — Container Escape Techniques (Docker Socket Abuse, Privileged Container, cgroups Bypass): tome-p7/jour-344.md
+          - J345 — Projet Intégrateur S7 Partie 9 (Threat Modeling + API Security + Secrets): tome-p7/jour-345.md
+          - J346 — Portfolio Professionnel & Certifications Roadmap (LinkedIn, GitHub, CV Cyber Expert): tome-p7/jour-346.md
+          - J347 — Entretiens Techniques Cybersécurité (Big Four, FAANG, Banques, ANSSI, ENISA): tome-p7/jour-347.md
+          - J348 — Négociation Salariale & Marché de l'Emploi International (CDI, Freelance, Advisory): tome-p7/jour-348.md
+          - J349 — Master 2 Capstone Kickoff & Roadmap (J301-J600 Strategic Vision): tome-p7/jour-349.md
+          - J350 — Grand Examen de Synthèse du Semestre 7 (50 QCM — Certifications Élite & Spécialisations): tome-p7/jour-350.md
       - Semestre 8 — Blue Team, SOC & SIEM (J351-J400): tome-p6.md
       - Semestre 9 — Cryptographie & PKI (J401-J450): qcm.md
       - Semestre 10 — DFIR & Reverse Engineering (J451-J500): examen-blanc.md
