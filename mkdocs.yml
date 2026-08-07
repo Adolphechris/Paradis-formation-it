@@ -170,6 +170,11 @@ nav:
           - J273 — Privacy Engineering & Data Protection (Differential Privacy, k-Anonymity, RGPD/CCPA): tome-p6/jour-273.md
           - J274 — Zero Trust Architecture Implementation (ZTA NIST 800-207, SPIFFE/SPIRE, Cloudflare Access): tome-p6/jour-274.md
           - J275 — Projet Intégrateur S6 Partie 5 (Audit GRC, PKI Enterprise & Zero Trust Architecture): tome-p6/jour-275.md
+          - J276 — AI Security & LLM Pentesting (OWASP Top 10 for LLM, Prompt Injections, NeMo Guardrails): tome-p6/jour-276.md
+          - J277 — Confidential Computing & Sovereign Cloud (AMD SEV-SNP, Intel SGX/TDX, FHE TenSEAL): tome-p6/jour-277.md
+          - J278 — Enterprise HSM & Key Management (PKCS#11, HashiCorp Vault Transit Engine, AWS KMS): tome-p6/jour-278.md
+          - J279 — Cyber Crisis Management & Executive Communication (COMEX Cyber Crisis, NIS2/RGPD 72h): tome-p6/jour-279.md
+          - J280 — Projet Intégrateur S6 Partie 6 (AI Security, Confidential Computing & Crisis Management): tome-p6/jour-280.md
       - Semestre 7 — Fondations Cybersécurité & Offensive (J301-J350): tome-p5.md
       - Semestre 8 — Blue Team, SOC & SIEM (J351-J400): tome-p6.md
       - Semestre 9 — Cryptographie & PKI (J401-J450): qcm.md
