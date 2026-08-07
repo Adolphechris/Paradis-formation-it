@@ -185,6 +185,16 @@ nav:
           - J288 — Cryptanalyse Avancée & Attacks on RSA/ECC (Coppersmith Attack, Invalid Curve Attack, SageMath): tome-p6/jour-288.md
           - J289 — Blockchain & Smart Contract Auditing (EVM Security, Reentrancy, Slither, Mythril): tome-p6/jour-289.md
           - J290 — Projet Intégrateur S6 Partie 8 (PQC Migration, Cryptanalysis & Smart Contract Audit): tome-p6/jour-290.md
+          - J291 — SCADA & OT Security (Modbus TCP, DNP3, Purdue Model, Industrial Firewalls): tome-p6/jour-291.md
+          - J292 — IoT Firmware Reverse Engineering (Binwalk, QEMU Emulation, Firmware Extraction): tome-p6/jour-292.md
+          - J293 — Telecom & 5G Core Security (GPRS/5G Core Security, GTP Inspection, Diameter/SCTP): tome-p6/jour-293.md
+          - J294 — Satellite & Space Systems Cybersecurity (Space C2 Security, CCSDS Protocol, Telemetry Encryption): tome-p6/jour-294.md
+          - J295 — Projet Intégrateur S6 Partie 9 (Critical Infrastructure, OT & 5G Security): tome-p6/jour-295.md
+          - J296 — Red Team Operations & C2 Infrastructure (Cobalt Strike, Mythic, Malleable C2 Profiles): tome-p6/jour-296.md
+          - J297 — Advanced Persistence & Living off the Land (LOLBas, WMI Persistence, Scheduled Tasks): tome-p6/jour-297.md
+          - J298 — Cloud Penetration Testing & Lateral Movement (AWS/Azure Multi-Account Hijacking): tome-p6/jour-298.md
+          - J299 — Master 1 Capstone Project (Full Red/Blue Team Hybrid Infrastructure Attack): tome-p6/jour-299.md
+          - J300 — Grand Examen de Synthèse du Semestre 6 & Master 1 (50 QCM Corrigés & Bilan Master 1): tome-p6/jour-300.md
       - Semestre 7 — Fondations Cybersécurité & Offensive (J301-J350): tome-p5.md
       - Semestre 8 — Blue Team, SOC & SIEM (J351-J400): tome-p6.md
       - Semestre 9 — Cryptographie & PKI (J401-J450): qcm.md
