@@ -175,6 +175,11 @@ nav:
           - J278 — Enterprise HSM & Key Management (PKCS#11, HashiCorp Vault Transit Engine, AWS KMS): tome-p6/jour-278.md
           - J279 — Cyber Crisis Management & Executive Communication (COMEX Cyber Crisis, NIS2/RGPD 72h): tome-p6/jour-279.md
           - J280 — Projet Intégrateur S6 Partie 6 (AI Security, Confidential Computing & Crisis Management): tome-p6/jour-280.md
+          - J281 — Reverse Engineering Avancé & Packers (Ghidra, x64dbg, Unpacking UPX/Custom, Anti-Debugging): tome-p6/jour-281.md
+          - J282 — Kernel Exploitation & Driver Security (Windows Kernel Drivers, HEVD, Ring 0 PrivEsc): tome-p6/jour-282.md
+          - J283 — Binary Exploitation & Memory Protections (Buffer Overflow x64, ROP Chains, ASLR/DEP Bypass): tome-p6/jour-283.md
+          - J284 — Physical Security, Hardware Hacking & BadUSB (Rubber Ducky, Flipper Zero, JTAG/UART Sniffing): tome-p6/jour-284.md
+          - J285 — Projet Intégrateur S6 Partie 7 (Reverse Engineering, Kernel & Exploit Dev): tome-p6/jour-285.md
       - Semestre 7 — Fondations Cybersécurité & Offensive (J301-J350): tome-p5.md
       - Semestre 8 — Blue Team, SOC & SIEM (J351-J400): tome-p6.md
       - Semestre 9 — Cryptographie & PKI (J401-J450): qcm.md
