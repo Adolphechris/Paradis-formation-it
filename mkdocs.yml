@@ -288,7 +288,12 @@ nav:
           - "J389 — AI & LLM Security Engineering (OWASP Top 10 for LLM & Prompt Injection Guardrails)": tome-p8/jour-389.md
           - "J390 — Grand Examen de Synthèse du Semestre 8 (50 QCM — Certification Cyber Élite)": tome-p8/jour-390.md
           - "J391-J400 — Master 2 Capstone Project Defense & S8 Completion Certification": tome-p8/jour-400.md
-      - Semestre 9 — Cryptographie & PKI (J401-J450): qcm.md
+      - Semestre 9 — Cryptographie & PKI (J401-J450):
+          - "J401 — Cryptographie Symétrique Avancée (AES-256-GCM, ChaCha20-Poly1305 & IV Reuse)": tome-p9/jour-401.md
+          - "J402 — Cryptographie Asymétrique & Factorisation (RSA-4096, OAEP & Bleichenbacher Oracle)": tome-p9/jour-402.md
+          - "J403 — Cryptographie sur Courbes Elliptiques (ECC, ECDHE, Ed25519 & ECDSA Nonce Reuse)": tome-p9/jour-403.md
+          - "J404 — Fonctions de Hachage & MACs (SHA-3, HMAC-SHA256, HKDF & Length Extension)": tome-p9/jour-404.md
+          - "J405 — Projet Intégrateur S9 Partie 1 (Hybrid Crypto Engine AES-GCM + Ed25519 & Audit)": tome-p9/jour-405.md
       - Semestre 10 — DFIR & Reverse Engineering (J451-J500): examen-blanc.md
       - Semestre 11 — DevSecOps & Cloud Security (J501-J550): radar.md
       - Semestre 12 — Gouvernance & Portfolio Final (J551-J600): portfolio.md
