@@ -246,7 +246,48 @@ nav:
           - J348 — Négociation Salariale & Marché de l'Emploi International (CDI, Freelance, Advisory): tome-p7/jour-348.md
           - J349 — Master 2 Capstone Kickoff & Roadmap (J301-J600 Strategic Vision): tome-p7/jour-349.md
           - J350 — Grand Examen de Synthèse du Semestre 7 (50 QCM — Certifications Élite & Spécialisations): tome-p7/jour-350.md
-      - Semestre 8 — Blue Team, SOC & SIEM (J351-J400): tome-p6.md
+      - Semestre 8 — Blue Team, SOC & SIEM Advanced (J351-J400):
+          - "J351 — SOC Operations & Tier-1/2/3 Triage Workflows (Alert Triage, True/False Positives & SLA)": tome-p8/jour-351.md
+          - "J352 — ELK Stack for SIEM (Index Lifecycle, Ingest Pipelines & KQL Security Queries)": tome-p8/jour-352.md
+          - "J353 — Splunk Enterprise Security (SPL Deep-Dive, CIM Normalization & Correlation Searches)": tome-p8/jour-353.md
+          - "J354 — SIGMA Rule Engineering (Cross-Platform Detection, Transpilation to KQL/SPL & False Positive Tuning)": tome-p8/jour-354.md
+          - "J355 — SOC Automation & SOAR (Playbook Design, Cortex XSOAR/Shuffle & Incident Orchestration)": tome-p8/jour-355.md
+          - "J356 — Threat Intelligence Platforms (MISP, OpenCTI, STIX/TAXII & IoC Management)": tome-p8/jour-356.md
+          - "J357 — EDR/XDR Advanced & Endpoint Detection (Behavioral Detection, Process Tree, Quarantine & Post-Incident Recovery)": tome-p8/jour-357.md
+          - "J358 — NDR & Cyber Deception (Zeek/Suricata, Beaconing Detection, Honeypots & Canary Tokens)": tome-p8/jour-358.md
+          - "J359 — Zero Trust Architecture & Identity Security (NIST SP 800-207, IAM, Passwordless MFA, PAM & Identity Analytics)": tome-p8/jour-359.md
+          - "J360 — Projet Intégrateur S8 (SOC Blue Team Full Infrastructure: SIEM + SOAR + EDR + NDR + CTI + Zero Trust)": tome-p8/jour-360.md
+          - "J361 — Threat Hunting Hypothesis-Driven (PEAK Framework & Automated Playbooks)": tome-p8/jour-361.md
+          - "J362 — Active Directory Attack Detection (DCSync, Kerberoasting & Shadow Credentials)": tome-p8/jour-362.md
+          - "J363 — Cloud SOC & Multi-Cloud Threat Hunting (AWS CloudTrail, Azure & GCP Correlation)": tome-p8/jour-363.md
+          - "J364 — Memory & Endpoint Live Forensics (Volatility 3 & VAD Tree Injection Analysis)": tome-p8/jour-364.md
+          - "J365 — Projet Intégrateur S8 Partie 2 (Full Threat Hunting & Incident Response Campaign)": tome-p8/jour-365.md
+          - "J366 — Live Response & Fast Forensic Triage (KAPE, Velociraptor VQL & Chain of Custody)": tome-p8/jour-366.md
+          - "J367 — NTFS & File System Forensics ($MFT, USN Journal & Timestomping Detection)": tome-p8/jour-367.md
+          - "J368 — Windows Registry & User Activity Forensics (NTUSER.DAT, Amcache & Shimcache)": tome-p8/jour-368.md
+          - "J369 — Network & Traffic Forensics (PCAP Analysis, TShark CLI & TLS Decryption)": tome-p8/jour-369.md
+          - "J370 — Projet Intégrateur S8 Partie 3 (Full DFIR Case Analysis & Expert Evidence Report)": tome-p8/jour-370.md
+          - "J371 — Malware Analysis Static (PE Headers, ImpHash, Strings & YARA Rules)": tome-p8/jour-371.md
+          - "J372 — Malware Dynamic Analysis & Sandbox Engineering (API Call Tracing & MITRE Mapping)": tome-p8/jour-372.md
+          - "J373 — Ransomware Incident Response (Detection, Containment Runbook & RTO/RPO Recovery)": tome-p8/jour-373.md
+          - "J374 — Purple Team Operations & Adversarial Simulation (TIBER-EU & ATT&CK Navigator)": tome-p8/jour-374.md
+          - "J375 — Projet Intégrateur S8 Partie 4 (Malware Analysis & Purple Team Full Simulation)": tome-p8/jour-375.md
+          - "J376 — ISO 27001:2022 & NIST CSF 2.0 (ISMS Design, Risk Register & Annex A Controls)": tome-p8/jour-376.md
+          - "J377 — GDPR & NIS2 Compliance Engineering (RoPA, DPIA & 24h/72h Incident Notifications)": tome-p8/jour-377.md
+          - "J378 — Cloud Security Architecture (AWS Security Pillar, Azure Landing Zone & GCP SCC)": tome-p8/jour-378.md
+          - "J379 — Security Metrics & KPIs for CISO Reporting (MTTD/MTTR & FAIR Risk Quantification)": tome-p8/jour-379.md
+          - "J380 — Projet Intégrateur S8 Partie 5 (GRC & Cloud Security Full Assessment & CISO Report)": tome-p8/jour-380.md
+          - "J381 — Red Team Infrastructure Engineering (C2 Cobalt/Havoc, Redirectors & OPSEC)": tome-p8/jour-381.md
+          - "J382 — Active Directory Red Team (BloodHound, Pass-the-Hash & WMI Lateral Movement)": tome-p8/jour-382.md
+          - "J383 — Web Application Red Team (SSRF AWS IMDS, SSTI RCE & OAuth Abuse)": tome-p8/jour-383.md
+          - "J384 — Cloud Red Team & Multi-Cloud Exploitation (AWS IAM Escalation & Azure Managed Identity)": tome-p8/jour-384.md
+          - "J385 — Projet Intégrateur S8 Partie 6 (Full Red Team Campaign & Blue Team Handoff Report)": tome-p8/jour-385.md
+          - "J386 — Anti-Forensics & Evasion Detection (Log Wiping 1102 & EDR Unhooking Analysis)": tome-p8/jour-386.md
+          - "J387 — DevSecOps Pipeline & Supply Chain Security (SLSA Level 4, SBOM CycloneDX & Cosign)": tome-p8/jour-387.md
+          - "J388 — Container & Kubernetes Security (K8s CIS Benchmark & eBPF Falco Detection)": tome-p8/jour-388.md
+          - "J389 — AI & LLM Security Engineering (OWASP Top 10 for LLM & Prompt Injection Guardrails)": tome-p8/jour-389.md
+          - "J390 — Grand Examen de Synthèse du Semestre 8 (50 QCM — Certification Cyber Élite)": tome-p8/jour-390.md
+          - "J391-J400 — Master 2 Capstone Project Defense & S8 Completion Certification": tome-p8/jour-400.md
       - Semestre 9 — Cryptographie & PKI (J401-J450): qcm.md
       - Semestre 10 — DFIR & Reverse Engineering (J451-J500): examen-blanc.md
       - Semestre 11 — DevSecOps & Cloud Security (J501-J550): radar.md
