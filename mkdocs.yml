@@ -294,6 +294,11 @@ nav:
           - "J403 — Cryptographie sur Courbes Elliptiques (ECC, ECDHE, Ed25519 & ECDSA Nonce Reuse)": tome-p9/jour-403.md
           - "J404 — Fonctions de Hachage & MACs (SHA-3, HMAC-SHA256, HKDF & Length Extension)": tome-p9/jour-404.md
           - "J405 — Projet Intégrateur S9 Partie 1 (Hybrid Crypto Engine AES-GCM + Ed25519 & Audit)": tome-p9/jour-405.md
+          - "J406 — Architecture PKI d'Entreprise (Root CA, Intermediate CA, X.509 v3 & Trust Chain)": tome-p9/jour-406.md
+          - "J407 — Révocation de Certificats & CT Logs (CRL, OCSP Stapling & Must-Staple)": tome-p9/jour-407.md
+          - "J408 — Automated Certificate Management (ACME Protocol, Let's Encrypt & Cert-Manager K8s)": tome-p9/jour-408.md
+          - "J409 — Key Management & HSM (FIPS 140-3, PKCS#11 API, Cloud KMS & Key Ceremony)": tome-p9/jour-409.md
+          - "J410 — Projet Intégrateur S9 Partie 2 (Full Enterprise PKI Deployment & Key Management Plan)": tome-p9/jour-410.md
       - Semestre 10 — DFIR & Reverse Engineering (J451-J500): examen-blanc.md
       - Semestre 11 — DevSecOps & Cloud Security (J501-J550): radar.md
       - Semestre 12 — Gouvernance & Portfolio Final (J551-J600): portfolio.md
