@@ -304,6 +304,11 @@ nav:
           - "J413 — IPsec IKEv2 & WireGuard Architecture (VPN Multi-Sites, Perfect Forward Secrecy & Road Warrior)": tome-p9/jour-413.md
           - "J414 — Signal Protocol & Double Ratchet Algorithm (E2EE, Forward Secrecy & Break-in Recovery)": tome-p9/jour-414.md
           - "J415 — Projet Intégrateur S9 Partie 3 (Full Secure Communication Stack & Zero Trust Audit)": tome-p9/jour-415.md
+          - "J416 — Cryptographie Post-Quantique (NIST PQC ML-KEM FIPS 203, ML-DSA FIPS 204 & Hybride)": tome-p9/jour-416.md
+          - "J417 — Attaques par Canaux Auxiliaires (Timing Attacks, SPA/DPA, Cache-Bleed & Constant-Time)": tome-p9/jour-417.md
+          - "J418 — Cryptanalyse de Chiffrement Symétrique (Padding Oracle, CBC Byte-Flipping & Forbidden IV)": tome-p9/jour-418.md
+          - "J419 — Zero-Knowledge Proofs (zk-SNARKs vs zk-STARKs, Pedersen Commitments & FHE)": tome-p9/jour-419.md
+          - "J420 — Projet Intégrateur S9 Partie 4 (PQC Migration Strategy & Cryptanalysis Security Audit)": tome-p9/jour-420.md
       - Semestre 10 — DFIR & Reverse Engineering (J451-J500): examen-blanc.md
       - Semestre 11 — DevSecOps & Cloud Security (J501-J550): radar.md
       - Semestre 12 — Gouvernance & Portfolio Final (J551-J600): portfolio.md
