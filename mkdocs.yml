@@ -319,6 +319,11 @@ nav:
           - "J428 — Cryptographie des Flux Kafka (mTLS, SASL/SCRAM-SHA-512, Payload E2EE & Key Rotation)": tome-p9/jour-428.md
           - "J429 — Cryptographie des APIs & Jetons (JSON Web Encryption JWE RFC 7516 & OAuth2 DPoP RFC 9449)": tome-p9/jour-429.md
           - "J430 — Projet Intégrateur S9 Partie 6 (Distributed & Cloud Data Encryption Architecture)": tome-p9/jour-430.md
+          - "J431 — Gouvernance Cryptographique & Conformité (FIPS 140-3, PCI-DSS v4.0 & NIST SP 800-57)": tome-p9/jour-431.md
+          - "J432 — Gestion des Incidents Cryptographiques (Emergency Key Rotation, Mass-CRL & Zeroization)": tome-p9/jour-432.md
+          - "J433 — Cryptographic Threat Intelligence (Suivi Obsolescence NIST 800-131A & Quantum Horizon)": tome-p9/jour-433.md
+          - "J434 — Policy-as-Code Cryptographique (Automated Crypto Linter & OPA Rego CI/CD Guardrails)": tome-p9/jour-434.md
+          - "J435 — Projet Intégrateur S9 Partie 7 (Enterprise Cryptographic Governance & Incident Response)": tome-p9/jour-435.md
       - Semestre 10 — DFIR & Reverse Engineering (J451-J500): examen-blanc.md
       - Semestre 11 — DevSecOps & Cloud Security (J501-J550): radar.md
       - Semestre 12 — Gouvernance & Portfolio Final (J551-J600): portfolio.md
