@@ -314,6 +314,11 @@ nav:
           - "J423 — Consensus & Sécurité des Blockchains (PoW 51% Attack, PoS Slashing & BFT Finality)": tome-p9/jour-423.md
           - "J424 — Confidentialité Web3 & Cryptographie Anonyme (Monero RingCT, Stealth Addr & ZK Mixers)": tome-p9/jour-424.md
           - "J425 — Projet Intégrateur S9 Partie 5 (Web3 & Smart Contract Cryptographic Security Audit)": tome-p9/jour-425.md
+          - "J426 — Cryptographie du Stockage & Disques (LUKS2 XTS-AES-256, Argon2id & Key Escrow HSM)": tome-p9/jour-426.md
+          - "J427 — Cryptographie des Bases de Données (Transparent TDE, Field-Level & Blind Indexing)": tome-p9/jour-427.md
+          - "J428 — Cryptographie des Flux Kafka (mTLS, SASL/SCRAM-SHA-512, Payload E2EE & Key Rotation)": tome-p9/jour-428.md
+          - "J429 — Cryptographie des APIs & Jetons (JSON Web Encryption JWE RFC 7516 & OAuth2 DPoP RFC 9449)": tome-p9/jour-429.md
+          - "J430 — Projet Intégrateur S9 Partie 6 (Distributed & Cloud Data Encryption Architecture)": tome-p9/jour-430.md
       - Semestre 10 — DFIR & Reverse Engineering (J451-J500): examen-blanc.md
       - Semestre 11 — DevSecOps & Cloud Security (J501-J550): radar.md
       - Semestre 12 — Gouvernance & Portfolio Final (J551-J600): portfolio.md
