@@ -309,6 +309,11 @@ nav:
           - "J418 — Cryptanalyse de Chiffrement Symétrique (Padding Oracle, CBC Byte-Flipping & Forbidden IV)": tome-p9/jour-418.md
           - "J419 — Zero-Knowledge Proofs (zk-SNARKs vs zk-STARKs, Pedersen Commitments & FHE)": tome-p9/jour-419.md
           - "J420 — Projet Intégrateur S9 Partie 4 (PQC Migration Strategy & Cryptanalysis Security Audit)": tome-p9/jour-420.md
+          - "J421 — Cryptographie des Smart Contracts (ECDSA s-Value Malleability, ecrecover & EIP-712)": tome-p9/jour-421.md
+          - "J422 — Cryptographie des Portefeuilles & MPC (BIP32/39/44 HD Wallets, SLIP-0039 & MPC-TSS)": tome-p9/jour-422.md
+          - "J423 — Consensus & Sécurité des Blockchains (PoW 51% Attack, PoS Slashing & BFT Finality)": tome-p9/jour-423.md
+          - "J424 — Confidentialité Web3 & Cryptographie Anonyme (Monero RingCT, Stealth Addr & ZK Mixers)": tome-p9/jour-424.md
+          - "J425 — Projet Intégrateur S9 Partie 5 (Web3 & Smart Contract Cryptographic Security Audit)": tome-p9/jour-425.md
       - Semestre 10 — DFIR & Reverse Engineering (J451-J500): examen-blanc.md
       - Semestre 11 — DevSecOps & Cloud Security (J501-J550): radar.md
       - Semestre 12 — Gouvernance & Portfolio Final (J551-J600): portfolio.md
