@@ -299,6 +299,11 @@ nav:
           - "J408 — Automated Certificate Management (ACME Protocol, Let's Encrypt & Cert-Manager K8s)": tome-p9/jour-408.md
           - "J409 — Key Management & HSM (FIPS 140-3, PKCS#11 API, Cloud KMS & Key Ceremony)": tome-p9/jour-409.md
           - "J410 — Projet Intégrateur S9 Partie 2 (Full Enterprise PKI Deployment & Key Management Plan)": tome-p9/jour-410.md
+          - "J411 — TLS 1.3 Handshake Interne (Session Tickets 0-RTT, Downgrade Protection & JA3 Fingerprint)": tome-p9/jour-411.md
+          - "J412 — SSH Hardening Engineering (SSH CA Certificates, sshd_config NIST SP 800-190 & ProxyJump)": tome-p9/jour-412.md
+          - "J413 — IPsec IKEv2 & WireGuard Architecture (VPN Multi-Sites, Perfect Forward Secrecy & Road Warrior)": tome-p9/jour-413.md
+          - "J414 — Signal Protocol & Double Ratchet Algorithm (E2EE, Forward Secrecy & Break-in Recovery)": tome-p9/jour-414.md
+          - "J415 — Projet Intégrateur S9 Partie 3 (Full Secure Communication Stack & Zero Trust Audit)": tome-p9/jour-415.md
       - Semestre 10 — DFIR & Reverse Engineering (J451-J500): examen-blanc.md
       - Semestre 11 — DevSecOps & Cloud Security (J501-J550): radar.md
       - Semestre 12 — Gouvernance & Portfolio Final (J551-J600): portfolio.md
