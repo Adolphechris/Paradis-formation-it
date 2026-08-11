@@ -329,7 +329,17 @@ nav:
           - "J438 — Vérification Formelle de Protocoles (ProVerif, Dolev-Yao, Lowe Attack & Tamarin Prover)": tome-p9/jour-438.md
           - "J439 — Zero-Trust Workload Identity (SPIFFE/SPIRE, SVID X.509 & Istio mTLS Strict)": tome-p9/jour-439.md
           - "J440 — Projet Intégrateur S9 Partie 8 (Confidential Computing & Zero-Trust Architecture Capstone)": tome-p9/jour-440.md
-      - Semestre 10 — DFIR & Reverse Engineering (J451-J500): examen-blanc.md
+      - Semestre 10 — DFIR & Reverse Engineering (J441-J450):
+          - "J441 — DFIR Fondamentaux & Cadre Incident Response (SANS PICERL, Chaîne de Preuve Numérique & Triage Système)": tome-p10/jour-441.md
+          - "J442 — Forensique Mémoire Avancée (Volatility 3, Process Injection Detection & Memory Artifact Analysis)": tome-p10/jour-442.md
+          - "J443 — Forensique Disque & Système de Fichiers (Autopsy, The Sleuth Kit, NTFS/Ext4 Artefacts & Timeline Analysis)": tome-p10/jour-443.md
+          - "J444 — Forensique Réseau & Analyse de Trafic (Wireshark Avancé, Zeek IDS, Suricata & Network Threat Hunting)": tome-p10/jour-444.md
+          - "J445 — Projet Intégrateur S10 Partie 1 (DFIR End-to-End : Triage, Memory, Disk & Network Forensics)": tome-p10/jour-445.md
+          - "J446 — Introduction au Reverse Engineering (Architecture x86-64, Assembleur & Analyse Statique avec Ghidra)": tome-p10/jour-446.md
+          - "J447 — Analyse Dynamique de Malwares (GDB, x64dbg, Sandbox Cuckoo & Behavioral Analysis)": tome-p10/jour-447.md
+          - "J448 — Exploit Development Fondamental (Buffer Overflow, ROP Chains & Exploitation Linux x86-64)": tome-p10/jour-448.md
+          - "J449 — Malware Analysis Avancée (Ransomware, RAT, Rootkits & Threat Intelligence)": tome-p10/jour-449.md
+          - "J450 — Projet Intégrateur S10 Partie 2 (Reverse Engineering & Malware Analysis Capstone)": tome-p10/jour-450.md
       - Semestre 11 — DevSecOps & Cloud Security (J501-J550): radar.md
       - Semestre 12 — Gouvernance & Portfolio Final (J551-J600): portfolio.md
   - Exercices et QCM: qcm.md
