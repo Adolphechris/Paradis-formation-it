@@ -340,7 +340,17 @@ nav:
           - "J448 — Exploit Development Fondamental (Buffer Overflow, ROP Chains & Exploitation Linux x86-64)": tome-p10/jour-448.md
           - "J449 — Malware Analysis Avancée (Ransomware, RAT, Rootkits & Threat Intelligence)": tome-p10/jour-449.md
           - "J450 — Projet Intégrateur S10 Partie 2 (Reverse Engineering & Malware Analysis Capstone)": tome-p10/jour-450.md
-      - Semestre 11 — DevSecOps & Cloud Security (J501-J550): radar.md
+      - Semestre 11 — DevSecOps & Cloud Security (J451-J460):
+          - "J451 — DevSecOps Fondamentaux & Security in CI/CD Pipeline (Shift-Left, SAST, DAST, SCA & Security Gates)": tome-p11/jour-451.md
+          - "J452 — Analyse Statique de Code (SAST avec SonarQube, Semgrep, AST & Custom Security Rules)": tome-p11/jour-452.md
+          - "J453 — Analyse Dynamique de Sécurité (DAST avec OWASP ZAP, Nuclei, Dynamic API Scanning & Pipeline Integration)": tome-p11/jour-453.md
+          - "J454 — Software Supply Chain Security (SCA, SBOM CycloneDX/SPDX, Dependency-Track & SLSA Level 3)": tome-p11/jour-454.md
+          - "J455 — Projet Intégrateur S11 Partie 1 (Secure CI/CD Pipeline & Supply Chain Hardening Capstone)": tome-p11/jour-455.md
+          - "J456 — Cloud Security Architecture & Governance (AWS/GCP/Azure Hardening, IAM Least Privilege, CSPM & Cloud Audit)": tome-p11/jour-456.md
+          - "J457 — Sécurité et Hardening Kubernetes (K8s RBAC, NetworkPolicies, Pod Security Standards PSS & Kyverno)": tome-p11/jour-457.md
+          - "J458 — Container Security & Runtime Isolation (Docker Hardening, Seccomp, AppArmor, gVisor & Falco Detection)": tome-p11/jour-458.md
+          - "J459 — Infrastructure-as-Code & GitOps Security (Terraform Hardening, Checkov, ArgoCD Security & HashiCorp Vault)": tome-p11/jour-459.md
+          - "J460 — Projet Intégrateur S11 Partie 2 (Enterprise Cloud-Native DevSecOps & Container Security Architecture Capstone)": tome-p11/jour-460.md
       - Semestre 12 — Gouvernance & Portfolio Final (J551-J600): portfolio.md
   - Exercices et QCM: qcm.md
   - Portfolio & Employabilité: portfolio.md
