@@ -330,38 +330,170 @@ nav:
           - "J439 — Zero-Trust Workload Identity (SPIFFE/SPIRE, SVID X.509 & Istio mTLS Strict)": tome-p9/jour-439.md
           - "J440 — Projet Intégrateur S9 Partie 8 (Confidential Computing & Zero-Trust Architecture Capstone)": tome-p9/jour-440.md
       - Semestre 10 — DFIR & Reverse Engineering (J441-J450):
-          - "J441 — DFIR Fondamentaux & Cadre Incident Response (SANS PICERL, Chaîne de Preuve Numérique & Triage Système)": tome-p10/jour-441.md
-          - "J442 — Forensique Mémoire Avancée (Volatility 3, Process Injection Detection & Memory Artifact Analysis)": tome-p10/jour-442.md
-          - "J443 — Forensique Disque & Système de Fichiers (Autopsy, The Sleuth Kit, NTFS/Ext4 Artefacts & Timeline Analysis)": tome-p10/jour-443.md
-          - "J444 — Forensique Réseau & Analyse de Trafic (Wireshark Avancé, Zeek IDS, Suricata & Network Threat Hunting)": tome-p10/jour-444.md
-          - "J445 — Projet Intégrateur S10 Partie 1 (DFIR End-to-End : Triage, Memory, Disk & Network Forensics)": tome-p10/jour-445.md
-          - "J446 — Introduction au Reverse Engineering (Architecture x86-64, Assembleur & Analyse Statique avec Ghidra)": tome-p10/jour-446.md
-          - "J447 — Analyse Dynamique de Malwares (GDB, x64dbg, Sandbox Cuckoo & Behavioral Analysis)": tome-p10/jour-447.md
-          - "J448 — Exploit Development Fondamental (Buffer Overflow, ROP Chains & Exploitation Linux x86-64)": tome-p10/jour-448.md
-          - "J449 — Malware Analysis Avancée (Ransomware, RAT, Rootkits & Threat Intelligence)": tome-p10/jour-449.md
-          - "J450 — Projet Intégrateur S10 Partie 2 (Reverse Engineering & Malware Analysis Capstone)": tome-p10/jour-450.md
-      - Semestre 11 — DevSecOps & Cloud Security (J451-J460):
-          - "J451 — DevSecOps Fondamentaux & Security in CI/CD Pipeline (Shift-Left, SAST, DAST, SCA & Security Gates)": tome-p11/jour-451.md
-          - "J452 — Analyse Statique de Code (SAST avec SonarQube, Semgrep, AST & Custom Security Rules)": tome-p11/jour-452.md
-          - "J453 — Analyse Dynamique de Sécurité (DAST avec OWASP ZAP, Nuclei, Dynamic API Scanning & Pipeline Integration)": tome-p11/jour-453.md
-          - "J454 — Software Supply Chain Security (SCA, SBOM CycloneDX/SPDX, Dependency-Track & SLSA Level 3)": tome-p11/jour-454.md
-          - "J455 — Projet Intégrateur S11 Partie 1 (Secure CI/CD Pipeline & Supply Chain Hardening Capstone)": tome-p11/jour-455.md
-          - "J456 — Cloud Security Architecture & Governance (AWS/GCP/Azure Hardening, IAM Least Privilege, CSPM & Cloud Audit)": tome-p11/jour-456.md
-          - "J457 — Sécurité et Hardening Kubernetes (K8s RBAC, NetworkPolicies, Pod Security Standards PSS & Kyverno)": tome-p11/jour-457.md
-          - "J458 — Container Security & Runtime Isolation (Docker Hardening, Seccomp, AppArmor, gVisor & Falco Detection)": tome-p11/jour-458.md
-          - "J459 — Infrastructure-as-Code & GitOps Security (Terraform Hardening, Checkov, ArgoCD Security & HashiCorp Vault)": tome-p11/jour-459.md
-          - "J460 — Projet Intégrateur S11 Partie 2 (Enterprise Cloud-Native DevSecOps & Container Security Architecture Capstone)": tome-p11/jour-460.md
-      - Semestre 12 — Gouvernance, Compliance & Architecture Finale (J461-J470):
-          - "J461 — Gouvernance de la Sécurité d'Entreprise (ISO/IEC 27001:2022, NIST CSF v2.0 & CIS Controls v8)": tome-p12/jour-461.md
-          - "J462 — Gestion & Analyse des Risques de Sécurité (ISO/IEC 27005, EBIOS RM & Quantification FAIR)": tome-p12/jour-462.md
-          - "J463 — Réglementations & Conformité Internationale (RGPD, NIS2, DORA, PCI-DSS v4.0 & SOC 2 Type II)": tome-p12/jour-463.md
-          - "J464 — Security Operations Center (SOC) & Threat Intelligence (SOAR Automation, MITRE D3FEND & MTTR/MTTD)": tome-p12/jour-464.md
-          - "J465 — Projet Intégrateur S12 Partie 1 (Enterprise Security Governance, Risk & Compliance GRC Capstone)": tome-p12/jour-465.md
-          - "J466 — Architecture de Sécurité d'Entreprise & Standard Zero-Trust (SABSA, TOGAF & NIST SP 800-207 ZTA)": tome-p12/jour-466.md
-          - "J467 — Security Leadership, Business Alignment & Executive CISO Communication (Board Reporting & ROSI)": tome-p12/jour-467.md
-          - "J468 — Résilience Opérationnelle & Gestion de Crise Cyber (PCA/PRA, BCP/DRP & Tabletop Ransomware Simulation)": tome-p12/jour-468.md
-          - "J469 — Portfolio Technique d'Excellence & Synthèse des Compétences Masterclass (Portfolio Showcase & Certifications)": tome-p12/jour-469.md
-          - "J470 — GRAND PROJET INTÉGRATEUR FINAL (PARADIS IT MASTERCLASS ULTIMATE CAPSTONE)": tome-p12/jour-470.md
+          - "J441 — DFIR Fondamentaux & Cadre Incident Response (SANS PICERL, Chaîne de Preuve Numérique & Triage Système)": tome-p9/jour-441.md
+          - "J442 — Forensique Mémoire Avancée (Volatility 3, Process Injection Detection & Memory Artifact Analysis)": tome-p9/jour-442.md
+          - "J443 — Forensique Disque & Système de Fichiers (Autopsy, The Sleuth Kit, NTFS/Ext4 Artefacts & Timeline Analysis)": tome-p9/jour-443.md
+          - "J444 — Forensique Réseau & Analyse de Trafic (Wireshark Avancé, Zeek IDS, Suricata & Network Threat Hunting)": tome-p9/jour-444.md
+          - "J445 — Projet Intégrateur S10 Partie 1 (DFIR End-to-End : Triage, Memory, Disk & Network Forensics)": tome-p9/jour-445.md
+          - "J446 — Introduction au Reverse Engineering (Architecture x86-64, Assembleur & Analyse Statique avec Ghidra)": tome-p9/jour-446.md
+          - "J447 — Analyse Dynamique de Malwares (GDB, x64dbg, Sandbox Cuckoo & Behavioral Analysis)": tome-p9/jour-447.md
+          - "J448 — Exploit Development Fondamental (Buffer Overflow, ROP Chains & Exploitation Linux x86-64)": tome-p9/jour-448.md
+          - "J449 — Malware Analysis Avancée (Ransomware, RAT, Rootkits & Threat Intelligence)": tome-p9/jour-449.md
+          - "J450 — Projet Intégrateur S10 Partie 2 (Reverse Engineering & Malware Analysis Capstone)": tome-p9/jour-450.md
+      - Semestre 11 — Intelligence Artificielle, ML & MLOps (J451-J500):
+          - "J451 — Fondements Mathématiques du ML (Algèbre Linéaire, Calcul Différentiel & Backpropagation)": tome-p10/jour-451.md
+          - "J452 — Réseaux de Neurones Convolutifs (CNN, ResNet & Transfer Learning PyTorch)": tome-p10/jour-452.md
+          - "J453 — RNN, LSTM & GRU (Vanishing Gradient, Séquences & Détection d'Anomalies)": tome-p10/jour-453.md
+          - "J454 — Transformers & Self-Attention (MHSA, BERT vs GPT & Architecture Encoder-Decoder)": tome-p10/jour-454.md
+          - "J455 — Large Language Models (LLaMA-3, BPE Tokenisation, Sampling & Quantisation GGUF)": tome-p10/jour-455.md
+          - "J456 — Fine-tuning LLMs & LoRA/QLoRA (PEFT, NF4, SFT & DPO)": tome-p10/jour-456.md
+          - "J457 — Agents IA & LangChain/LangGraph (ReAct Loop, RAG ChromaDB & StateGraph)": tome-p10/jour-457.md
+          - "J458 — MLflow & Experiment Tracking (Runs, Registry & CI/CD Promotion)": tome-p10/jour-458.md
+          - "J459 — Feature Engineering & Feature Store (Data Leakage, Feast & SHAP)": tome-p10/jour-459.md
+          - "J460 — Déploiement & Serving de Modèles ML (FastAPI + ONNX, Canary & Shadow)": tome-p10/jour-460.md
+          - "J461 — Monitoring de Modèles en Production (Data/Concept Drift, PSI & Evidently AI)": tome-p10/jour-461.md
+          - "J462 — Kubeflow Pipelines & KServe (KFP v2 YAML, Katib HPO & GPU Scheduling)": tome-p10/jour-462.md
+          - "J463 — Sécurité des Systèmes ML (FGSM/PGD, Data Poisoning & EU AI Act 2024)": tome-p10/jour-463.md
+          - "J464 — Optimisation ML (Quantisation INT8, Pruning L1 & Knowledge Distillation)": tome-p10/jour-464.md
+          - "J465 — Responsible AI & XAI (Demographic Parity, LIME & Grad-CAM)": tome-p10/jour-465.md
+          - "J466 — GANs (Minimax, DCGAN PyTorch, Mode Collapse & WGAN-GP)": tome-p10/jour-466.md
+          - "J467 — Modèles de Diffusion (DDPM, Stable Diffusion diffusers & ControlNet)": tome-p10/jour-467.md
+          - "J468 — Reinforcement Learning (Bellman, DQN PyTorch, PPO & RLHF)": tome-p10/jour-468.md
+          - "J469 — Graph Neural Networks (MPNN, GCN PyTorch Geometric, GAT & GraphSAGE)": tome-p10/jour-469.md
+          - "J470 — NLP Avancé (SBERT, CamemBERT NER, Zero-Shot & XLM-RoBERTa)": tome-p10/jour-470.md
+          - "J471 — Computer Vision Avancée (YOLOv8, DETR, SAM & DeepSORT Tracking)": tome-p10/jour-471.md
+          - "J472 — Multimodal AI (CLIP InfoNCE, LLaVA VLM & DocVQA)": tome-p10/jour-472.md
+          - "J473 — AutoML & NAS (Optuna TPE, MedianPruner & DARTS)": tome-p10/jour-473.md
+          - "J474 — Data Engineering pour ML (DVC, SMOTE & Great Expectations)": tome-p10/jour-474.md
+          - "J475 — Infrastructure GPU pour ML (CUDA SIMT, Tensor Cores & NVLink/NCCL)": tome-p10/jour-475.md
+          - "J476 — Entraînement Distribué (PyTorch FSDP ZeRO-3, Tensor & Pipeline Parallelism)": tome-p10/jour-476.md
+          - "J477 — Optimisation Inférence LLM (KV-Cache, FlashAttention-2 & vLLM PagedAttention)": tome-p10/jour-477.md
+          - "J478 — Évaluation & Calibration ML (ROC vs PR-AUC, BERTScore, ECE & Temperature Scaling)": tome-p10/jour-478.md
+          - "J479 — MLSecOps (Exploit Pickle RCE, Safetensors, Watermarking & Sandbox gVisor)": tome-p10/jour-479.md
+          - "J480 — Architectures ML Cloud Multi-Cloud (SageMaker vs Vertex AI, Terraform & FinOps)": tome-p10/jour-480.md
+          - "J481 — Vector Search & Indexation (HNSW, IVF-PQ, FAISS GPU & Recall@k vs Latence)": tome-p10/jour-481.md
+          - "J482 — Agentic RAG & GraphRAG (Neo4j Cypher, RRF & Corrective RAG)": tome-p10/jour-482.md
+          - "J483 — Alignement Avancé LLM (PPO vs DPO vs KTO & TRL KTOTrainer)": tome-p10/jour-483.md
+          - "J484 — Prompt Engineering Avancé (CoT, Self-Consistency, ToT & Instructor Pydantic)": tome-p10/jour-484.md
+          - "J485 — Systèmes Multi-Agents (CrewAI SecOps, AutoGen & Critique-Refine Loop)": tome-p10/jour-485.md
+          - "J486 — Synthetic Data Generation (Self-Instruct, Evol-Instruct & SDV GaussianCopula)": tome-p10/jour-486.md
+          - "J487 — Compression & Edge AI (Apple MLX, TensorRT-LLM & NPU/SoC)": tome-p10/jour-487.md
+          - "J488 — Time Series Forecasting (PatchTST, Amazon Chronos Zero-Shot & TFT)": tome-p10/jour-488.md
+          - "J489 — Systèmes de Recommandation (Two-Stage, Two-Tower Model PyTorch & NDCG@k)": tome-p10/jour-489.md
+          - "J490 — Audio & Speech AI (Mel-Spectrogramme, Whisper OpenAI & Real-Time Voice Agent)": tome-p10/jour-490.md
+          - "J491 — Gouvernance & Risques IA (NIST AI RMF 1.0, AIRiskEvaluator & Incident Response)": tome-p10/jour-491.md
+          - "J492 — Code Generation & LLMs (StarCoder2, FIM Fill-In-the-Middle & Code-RAG AST)": tome-p10/jour-492.md
+          - "J493 — LLM Guardrails & Safety (NeMo Guardrails, Llama Guard & PII Masking Presidio)": tome-p10/jour-493.md
+          - "J494 — Pipelines d'Alignement Continu (Continuous Pre-Training, SFT Automatisé & DPO Loop)": tome-p10/jour-494.md
+          - "J495 — Edge MLOps & TinyML (TFLite, ONNX Edge, OTA Updates & MCUNet)": tome-p10/jour-495.md
+          - "J496 — Feature Store Streaming (Kafka + Feast + Flink & Redis < 5ms)": tome-p10/jour-496.md
+          - "J497 — Enterprise Multi-LLM Gateway (LiteLLM, Fallback Stratégique & Budget Manager)": tome-p10/jour-497.md
+          - "J498 — AI FinOps & Token Optimization (Semantic Cache Redis & Prompt Compression)": tome-p10/jour-498.md
+          - "J499 — Red Teaming & Robustesse LLM (GARAK, PyRIT & Jailbreak Automatisé)": tome-p10/jour-499.md
+          - "J500 — Projet Intégrateur S11 — Architecture MLOps & LLM Enterprise End-to-End": tome-p10/jour-500.md
+      - Semestre 12 — DevSecOps, Cloud Security & Gouvernance (J501-J550):
+          - "J501 — DevSecOps Fondamentaux & Security in CI/CD Pipeline (Shift-Left, SAST, DAST & Security Gates)": tome-p11/jour-501.md
+          - "J502 — Analyse Statique de Code SAST (SonarQube, Semgrep, AST & Custom Security Rules)": tome-p11/jour-502.md
+          - "J503 — Analyse Dynamique DAST (OWASP ZAP, Nuclei, Dynamic API Scanning & Pipeline Integration)": tome-p11/jour-503.md
+          - "J504 — Software Supply Chain Security (SCA, SBOM CycloneDX/SPDX, Dependency-Track & SLSA L3)": tome-p11/jour-504.md
+          - "J505 — Container Security & Runtime Isolation (Docker Hardening, Seccomp, AppArmor & Falco)": tome-p11/jour-505.md
+          - "J506 — Kubernetes Security (K8s RBAC, NetworkPolicies, Pod Security Standards & Kyverno)": tome-p11/jour-506.md
+          - "J507 — Infrastructure-as-Code Security (Terraform Hardening, Checkov, ArgoCD & Vault)": tome-p11/jour-507.md
+          - "J508 — Cloud Security Architecture (AWS/GCP/Azure Hardening, IAM Least Privilege & CSPM)": tome-p11/jour-508.md
+          - "J509 — Zero-Trust Architecture Enterprise (BeyondCorp, SPIFFE/SPIRE, mTLS & Microsegmentation)": tome-p11/jour-509.md
+          - "J510 — Projet Intégrateur S12 Partie 1 (Secure DevSecOps Pipeline & Cloud-Native Security)": tome-p11/jour-510.md
+          - "J511 — Gouvernance de Sécurité ISO 27001:2022 (SMSI, Annexe A, Audit Interne & Certification)": tome-p11/jour-511.md
+          - "J512 — Gestion des Risques ISO 27005 & EBIOS RM (Scénarios de Risque & Quantification FAIR)": tome-p11/jour-512.md
+          - "J513 — Conformité RGPD & NIS2 (Registre des Traitements, DPIA, Notification Incident)": tome-p11/jour-513.md
+          - "J514 — PCI-DSS v4.0 & SOC 2 Type II (Contrôles de Sécurité, Audit & Rapport de Conformité)": tome-p11/jour-514.md
+          - "J515 — DORA & Résilience Opérationnelle Financière (TLPT, ICT Risk & Incident Reporting)": tome-p11/jour-515.md
+          - "J516 — Security Operations Center SOC & SOAR (Playbooks, MITRE D3FEND & MTTR/MTTD)": tome-p11/jour-516.md
+          - "J517 — Threat Intelligence & Threat Hunting (MISP, OpenCTI, Sigma Rules & YARA)": tome-p11/jour-517.md
+          - "J518 — Vulnerability Management & Patch Management (CVSS v4.0, EPSS, Tenable & Rapid7)": tome-p11/jour-518.md
+          - "J519 — Business Continuity & Disaster Recovery (BCP/DRP, RTO/RPO, Tabletop & GameDay)": tome-p11/jour-519.md
+          - "J520 — Projet Intégrateur S12 Partie 2 (GRC Enterprise & SOC Operations Capstone)": tome-p11/jour-520.md
+          - "J521 — Architecture Zero-Trust Avancée (SABSA, NIST SP 800-207, ZTNA & SASE)": tome-p11/jour-521.md
+          - "J522 — CISO Leadership & Business Alignment (Board Reporting, ROSI & Communication Exécutive)": tome-p11/jour-522.md
+          - "J523 — Threat Modeling & Security Architecture Reviews (STRIDE, PASTA, Attack Trees)": tome-p11/jour-523.md
+          - "J524 — API Security & Web Application Hardening (OWASP API Top 10, JWT, OAuth 2.1 & WAF)": tome-p11/jour-524.md
+          - "J525 — Cryptographie Avancée en Production (HSM, PKI Enterprise, mTLS & Post-Quantum TLS 1.3)": tome-p11/jour-525.md
+          - "J526 — Identity & Access Management Avancé (PAM, CIAM, Passwordless & FIDO2/WebAuthn)": tome-p11/jour-526.md
+          - "J527 — SIEM Avancé & Log Management (Elastic SIEM, Splunk ES, Detection Engineering & UEBA)": tome-p11/jour-527.md
+          - "J528 — Red Team vs Blue Team & Purple Team (MITRE ATT&CK Simulation & Atomic Testing)": tome-p11/jour-528.md
+          - "J529 — Forensique Avancée & Réponse aux Incidents Cyber (DFIR Playbook & Chain of Custody)": tome-p11/jour-529.md
+          - "J530 — Projet Intégrateur S12 Partie 3 (Security Architecture Enterprise & Zero-Trust Capstone)": tome-p11/jour-530.md
+          - "J531 — Secure SDLC (Threat Modeling, Security Requirements & BSIMM)": tome-p11/jour-531.md
+          - "J532 — Cloud-Native Security Patterns (Istio mTLS, OPA Gatekeeper & Secrets Management)": tome-p11/jour-532.md
+          - "J533 — Penetration Testing Méthodologie (PTES, OWASP Testing Guide & Kali Linux)": tome-p11/jour-533.md
+          - "J534 — Social Engineering & Phishing Awareness (Pretexting, Vishing & KnowBe4)": tome-p11/jour-534.md
+          - "J535 — Sécurité des Données & DLP (Classification, Data Masking & Microsoft Purview)": tome-p11/jour-535.md
+          - "J536 — Email Security & Anti-Phishing (SPF, DKIM, DMARC, BIMI & Defender for Office)": tome-p11/jour-536.md
+          - "J537 — Endpoint Detection & Response EDR/XDR (CrowdStrike, Sentinel One & Wazuh)": tome-p11/jour-537.md
+          - "J538 — OT/ICS & SCADA Security (ISA/IEC 62443, Purdue Model, Dragos & Claroty)": tome-p11/jour-538.md
+          - "J539 — Mobile Security & MDM (Android/iOS Hardening, OWASP MASVS & Intune)": tome-p11/jour-539.md
+          - "J540 — Projet Intégrateur S12 Partie 4 (Pentest & Advanced Security Operations Capstone)": tome-p11/jour-540.md
+          - "J541 — Sécurité des APIs GraphQL & gRPC (Introspection Attack, AuthZ Flaws & Rate Limiting)": tome-p11/jour-541.md
+          - "J542 — Serverless & Function Security (AWS Lambda Hardening, CSPM & Event Injection)": tome-p11/jour-542.md
+          - "J543 — Supply Chain Attacks & Open Source Security (SolarWinds Pattern, Sigstore & Cosign)": tome-p11/jour-543.md
+          - "J544 — Quantum Computing & Cryptographie Post-Quantique (Kyber, Dilithium & NIST PQC)": tome-p11/jour-544.md
+          - "J545 — AI Security & LLM Red Teaming Avancé (Adversarial ML & MITRE ATLAS)": tome-p11/jour-545.md
+          - "J546 — Cybersécurité Opérationnelle & Gestion de Crise (CSIRT, War Room & Communication)": tome-p11/jour-546.md
+          - "J547 — Certification Roadmap & Career Planning (CISSP, CISM, CEH, OSCP & Portfolio)": tome-p11/jour-547.md
+          - "J548 — Retours d'Expérience & Leçons Apprises (Post-Mortem Breaches & APT Analysis)": tome-p11/jour-548.md
+          - "J549 — Veille Technologique & Innovation Sécurité (Threat Intel Feeds & CVE Triage)": tome-p11/jour-549.md
+          - "J550 — Projet Intégrateur S12 Partie 5 (Security Mastery & Advanced Threat Capstone)": tome-p11/jour-550.md
+      - Semestre 13 — Architecture Ultime, Leadership Technique & Capstone Final (J551-J600):
+          - "J551 — Architecture d'Entreprise Numérique (TOGAF ADM, Zachman Framework & EA Governance)": tome-p12/jour-551.md
+          - "J552 — Digital Transformation & IT Strategy (OKR, Product-Led Growth & Platform Engineering)": tome-p12/jour-552.md
+          - "J553 — Site Reliability Engineering SRE Avancé (SLO/SLA/SLI, Error Budget & Chaos Engineering)": tome-p12/jour-553.md
+          - "J554 — Platform Engineering & Internal Developer Platform (Backstage, Port & Golden Paths)": tome-p12/jour-554.md
+          - "J555 — FinOps Cloud Avancé (Cost Allocation, Commitment Discounts & Carbon Footprint)": tome-p12/jour-555.md
+          - "J556 — Data Mesh & Data Governance (Domain Ownership, Data Contracts & Data Quality)": tome-p12/jour-556.md
+          - "J557 — Microservices Patterns Avancés (Saga, CQRS, Event Sourcing & Outbox Pattern)": tome-p12/jour-557.md
+          - "J558 — Observability Engineering (OpenTelemetry, Distributed Tracing, Jaeger & SLO)": tome-p12/jour-558.md
+          - "J559 — Performance Engineering (Load Testing k6/Gatling, Profiling & Flamegraphs)": tome-p12/jour-559.md
+          - "J560 — Projet Intégrateur S13 Partie 1 (Enterprise Architecture & SRE Platform Capstone)": tome-p12/jour-560.md
+          - "J561 — API Design Excellence (REST Maturity, GraphQL Federation & AsyncAPI)": tome-p12/jour-561.md
+          - "J562 — Event-Driven Architecture (Apache Kafka Avancé, Schema Registry & Kafka Streams)": tome-p12/jour-562.md
+          - "J563 — Database Engineering Avancé (PostgreSQL Internals, CockroachDB & Vector DBs)": tome-p12/jour-563.md
+          - "J564 — Distributed Systems Patterns (CAP Theorem, Raft Consensus & CRDTs)": tome-p12/jour-564.md
+          - "J565 — High Availability & Disaster Recovery (Multi-Region Active-Active & RTO Zéro)": tome-p12/jour-565.md
+          - "J566 — Edge Computing & CDN Architecture (Cloudflare Workers, Lambda@Edge & IoT Edge)": tome-p12/jour-566.md
+          - "J567 — Green IT & Sustainable Architecture (Carbon-Aware Computing & GreenOps)": tome-p12/jour-567.md
+          - "J568 — Engineering Leadership & Team Scaling (Staff Engineer Path, Tech Radar & ADRs)": tome-p12/jour-568.md
+          - "J569 — Open Source Strategy & Community Building (InnerSource & OSS Governance)": tome-p12/jour-569.md
+          - "J570 — Projet Intégrateur S13 Partie 2 (Advanced Systems Design & Engineering Excellence)": tome-p12/jour-570.md
+          - "J571 — Blockchain & Web3 Fondamentaux (Consensus PoS, Smart Contracts Solidity & DeFi)": tome-p12/jour-571.md
+          - "J572 — Quantum Computing pour l'Ingénieur IT (Qubits, Portes Quantiques & Qiskit)": tome-p12/jour-572.md
+          - "J573 — Extended Reality XR & Spatial Computing (AR/VR/MR, WebXR & Digital Twin)": tome-p12/jour-573.md
+          - "J574 — 5G/6G & Next-Gen Networks (Network Slicing, MEC, Private 5G & O-RAN)": tome-p12/jour-574.md
+          - "J575 — Autonomous Systems & Robotics (ROS 2, Nav2, Digital Twin & Safety-Critical AI)": tome-p12/jour-575.md
+          - "J576 — Bioinformatique & Informatique Médicale (HL7 FHIR, DICOM & Medical AI)": tome-p12/jour-576.md
+          - "J577 — Space Technology & Satellite Computing (CubeSat, LoRa & Orbital AI)": tome-p12/jour-577.md
+          - "J578 — Ethics & Societal Impact of Technology (AI Ethics, Digital Rights & Techno-Humanism)": tome-p12/jour-578.md
+          - "J579 — Entrepreneurship Tech & Startup Engineering (MVP, Product-Market Fit & Scale-Up)": tome-p12/jour-579.md
+          - "J580 — Projet Intégrateur S13 Partie 3 (Frontier Technologies & Innovation Capstone)": tome-p12/jour-580.md
+          - "J581 — Révision Intensive Semestres 1-4 (Linux, Réseaux, Sécurité & Scripting)": tome-p12/jour-581.md
+          - "J582 — Révision Intensive Semestres 5-8 (Cloud, Kubernetes, CI/CD & Observabilité)": tome-p12/jour-582.md
+          - "J583 — Révision Intensive Semestres 9-10 (Cryptographie, PKI, Zero-Trust & MLOps LLM)": tome-p12/jour-583.md
+          - "J584 — Révision Intensive Semestres 11-12 (DevSecOps, GRC, SOC & Security Architecture)": tome-p12/jour-584.md
+          - "J585 — Simulation d'Examen Blanc Complet (600 QCM Chrono — Full Masterclass Mock Exam)": tome-p12/jour-585.md
+          - "J586 — Portfolio Technique Final & Showcase (GitHub Portfolio, Blog & LinkedIn)": tome-p12/jour-586.md
+          - "J587 — Interview Prep & Négociation Salariale (Technical Interview & System Design)": tome-p12/jour-587.md
+          - "J588 — Certification Sprint Final (CISSP, CISM, AWS SAP, CKS — Last Mile Preparation)": tome-p12/jour-588.md
+          - "J589 — Retour d'Expérience Alumni & Mentorat (Success Stories & Career Tracks)": tome-p12/jour-589.md
+          - "J590 — Projet Intégrateur S13 Partie 4 (Career Readiness & Professional Excellence)": tome-p12/jour-590.md
+          - "J591 — System Design Interview Simulation (Netflix, Uber, WhatsApp Scale)": tome-p12/jour-591.md
+          - "J592 — Technical Writing & Documentation Excellence (ADRs, Runbooks, RFC & Blog)": tome-p12/jour-592.md
+          - "J593 — Knowledge Sharing & Conférences (CFP, Talk Prep, Demo Day & OSS Contribution)": tome-p12/jour-593.md
+          - "J594 — Bilan de Compétences & Axes d'Amélioration (Skill Gap Analysis & Personal Roadmap)": tome-p12/jour-594.md
+          - "J595 — Vision Technologique 2030 (Tendances IA, Quantique, Edge & Architecture Future)": tome-p12/jour-595.md
+          - "J596 — Masterclass Alumni Network (Communauté PARADIS, Mentoring & Peer Learning)": tome-p12/jour-596.md
+          - "J597 — Célébration des Acquis & Remise Symbolique des Certifications (Cérémonie PARADIS)": tome-p12/jour-597.md
+          - "J598 — Synthèse Ultime — 600 Jours en Revue (Timeline, Compétences & Croissance)": tome-p12/jour-598.md
+          - "J599 — Dernière Masterclass — L'Ingénieur IT de Demain (Vision, Mission & Legacy)": tome-p12/jour-599.md
+          - "J600 — GRAND PROJET INTÉGRATEUR FINAL (PARADIS IT MASTERCLASS ULTIMATE CAPSTONE)": tome-p12/jour-600.md
+
   - Exercices et QCM: qcm.md
   - Portfolio & Employabilité: portfolio.md
   - Radar de Compétences: radar.md
