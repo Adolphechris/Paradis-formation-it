@@ -351,7 +351,17 @@ nav:
           - "J458 — Container Security & Runtime Isolation (Docker Hardening, Seccomp, AppArmor, gVisor & Falco Detection)": tome-p11/jour-458.md
           - "J459 — Infrastructure-as-Code & GitOps Security (Terraform Hardening, Checkov, ArgoCD Security & HashiCorp Vault)": tome-p11/jour-459.md
           - "J460 — Projet Intégrateur S11 Partie 2 (Enterprise Cloud-Native DevSecOps & Container Security Architecture Capstone)": tome-p11/jour-460.md
-      - Semestre 12 — Gouvernance & Portfolio Final (J551-J600): portfolio.md
+      - Semestre 12 — Gouvernance, Compliance & Architecture Finale (J461-J470):
+          - "J461 — Gouvernance de la Sécurité d'Entreprise (ISO/IEC 27001:2022, NIST CSF v2.0 & CIS Controls v8)": tome-p12/jour-461.md
+          - "J462 — Gestion & Analyse des Risques de Sécurité (ISO/IEC 27005, EBIOS RM & Quantification FAIR)": tome-p12/jour-462.md
+          - "J463 — Réglementations & Conformité Internationale (RGPD, NIS2, DORA, PCI-DSS v4.0 & SOC 2 Type II)": tome-p12/jour-463.md
+          - "J464 — Security Operations Center (SOC) & Threat Intelligence (SOAR Automation, MITRE D3FEND & MTTR/MTTD)": tome-p12/jour-464.md
+          - "J465 — Projet Intégrateur S12 Partie 1 (Enterprise Security Governance, Risk & Compliance GRC Capstone)": tome-p12/jour-465.md
+          - "J466 — Architecture de Sécurité d'Entreprise & Standard Zero-Trust (SABSA, TOGAF & NIST SP 800-207 ZTA)": tome-p12/jour-466.md
+          - "J467 — Security Leadership, Business Alignment & Executive CISO Communication (Board Reporting & ROSI)": tome-p12/jour-467.md
+          - "J468 — Résilience Opérationnelle & Gestion de Crise Cyber (PCA/PRA, BCP/DRP & Tabletop Ransomware Simulation)": tome-p12/jour-468.md
+          - "J469 — Portfolio Technique d'Excellence & Synthèse des Compétences Masterclass (Portfolio Showcase & Certifications)": tome-p12/jour-469.md
+          - "J470 — GRAND PROJET INTÉGRATEUR FINAL (PARADIS IT MASTERCLASS ULTIMATE CAPSTONE)": tome-p12/jour-470.md
   - Exercices et QCM: qcm.md
   - Portfolio & Employabilité: portfolio.md
   - Radar de Compétences: radar.md
