@@ -45,9 +45,14 @@
 - Analyse de vulnérabilités CVE, CVSS scoring et rapports d'audit
 
 ### Semestre 8 — Blue Team, SOC, SIEM & Threat Hunting (J351 - J400)
-- Architecture SOC & déploiement Wazuh SIEM / Elastic Stack
-- Surveillance réseau IDS/IPS Suricata & Threat Intelligence (IOC, YARA, Sigma)
-- Détection d'incidents, analyse de logs et gestion des accès IAM/MFA
+- SOC Operations & Tier-1/2/3 Triage, ELK Stack, Splunk ES, SIGMA Rule Engineering
+- SOC Automation & SOAR, Threat Intelligence (MISP/OpenCTI), EDR/XDR Advanced, NDR & Cyber Deception
+- Zero Trust Architecture, Projet Intégrateur S8, Advanced Threat Hunting, Detection Engineering
+- Incident Response & Case Management, SOC Compliance (NIS2/DORA/RGPD/COBAC), SOC Metrics & Executive Reporting
+- SOC Strategy & Budget Defense, SOC Culture & Burnout Prevention, SOC Innovation & Future Trends
+- SOC Capstone Project Part 1 & 2, Zero Trust Deep Dive, SOC AI/ML Detection, Cloud SOC Security
+- SOC Purple Teaming, DFIR Advanced, CTI Advanced, Detection Engineering CI/CD
+- SOC Final Assessment & Certification Preparation, Advanced Automation & Orchestration
 
 ### Semestre 9 — Cryptographie, PKI & Sécurité des Paiements (J401 - J450)
 - Cryptographie appliquée : AES, RSA, SHA, signatures numériques
