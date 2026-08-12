@@ -1,6 +1,6 @@
 ---
-title: PARADIS IT — Université Virtuelle d'Excellence
-description: Plateforme d'autoformation intensive en 45 jours — Bachelor IT calibrée pour les concours BCC. 630h de cours, 7 tomes, tuteur IA, progression synchronisée.
+title: PARADIS IT — Masterclass 600 Jours
+description: Plateforme d'autoformation IT de niveau Master — 600 jours, 12 semestres, du Bachelor au niveau Expert Cybersécurité. Linux, Réseaux, Cloud, Kubernetes, Pentest, Cryptographie, DevSecOps, GRC & Architecture Zero-Trust.
 ---
 
 <div class="paradis-hero-section">
@@ -13,17 +13,16 @@ description: Plateforme d'autoformation intensive en 45 jours — Bachelor IT ca
   <div class="paradis-hero-content">
     <div class="paradis-hero-badge">
       <span class="badge-dot"></span>
-      Formation BCC · Banque Centrale du Congo
+      IT Masterclass · Bachelor → Master Expert Cybersécurité
     </div>
 
     <h1 class="paradis-hero-title">
       Devenez Expert IT<br>
-      <span class="paradis-hero-title-accent">en 45 Jours</span>
+      <span class="paradis-hero-title-accent">en 600 Jours</span>
     </h1>
 
     <p class="paradis-hero-subtitle">
-      La plateforme d'autoformation la plus complète pour réussir les concours IT de la <strong>Banque Centrale du Congo</strong>. 
-      Maîtrisez les systèmes, réseaux, bases de données et sécurité bancaire.
+      La plateforme d'autoformation IT la plus complète — <strong>12 Semestres progressifs</strong> du socle Linux jusqu'à l'Architecture Zero-Trust, la Cryptographie Post-Quantique et la Gouvernance d'Entreprise.
     </p>
 
     <div class="paradis-hero-actions">
@@ -33,24 +32,24 @@ description: Plateforme d'autoformation intensive en 45 jours — Bachelor IT ca
       </button>
       <a href="table-des-matieres/" class="paradis-btn-hero-secondary">
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-        Voir le Programme
+        Voir les 600 Jours
       </a>
     </div>
 
     <div class="paradis-hero-stats">
       <div class="hero-stat">
-        <span class="hero-stat-number">630</span>
+        <span class="hero-stat-number">600</span>
+        <span class="hero-stat-label">Jours de formation</span>
+      </div>
+      <div class="hero-stat-divider"></div>
+      <div class="hero-stat">
+        <span class="hero-stat-number">12</span>
+        <span class="hero-stat-label">Semestres progressifs</span>
+      </div>
+      <div class="hero-stat-divider"></div>
+      <div class="hero-stat">
+        <span class="hero-stat-number">8 400</span>
         <span class="hero-stat-label">Heures de formation</span>
-      </div>
-      <div class="hero-stat-divider"></div>
-      <div class="hero-stat">
-        <span class="hero-stat-number">45</span>
-        <span class="hero-stat-label">Jours intensifs</span>
-      </div>
-      <div class="hero-stat-divider"></div>
-      <div class="hero-stat">
-        <span class="hero-stat-number">7</span>
-        <span class="hero-stat-label">Tomes de cours</span>
       </div>
       <div class="hero-stat-divider"></div>
       <div class="hero-stat">
@@ -75,80 +74,50 @@ description: Plateforme d'autoformation intensive en 45 jours — Bachelor IT ca
 
 ---
 
-## 🛤️ Programme Complet — 45 Jours
+## 🛤️ Les 12 Semestres — 600 Jours de Masterclass IT
 
 <div class="paradis-curriculum-grid">
 
   <a href="tome-p0/" class="paradis-tome-card tome-p0">
     <div class="tome-card-icon">🖥️</div>
     <div class="tome-card-body">
-      <div class="tome-card-phase">Phase P0 · J1–J3</div>
-      <h3 class="tome-card-title">Fondamentaux</h3>
-      <p class="tome-card-desc">Support technique, bureautique avancée, Web, Git, Linux</p>
+      <div class="tome-card-phase">Semestre 1 · J001–J050</div>
+      <h3 class="tome-card-title">Fondamentaux Linux & Systèmes</h3>
+      <p class="tome-card-desc">Linux avancé, Shell scripting, administration système, processus, stockage et sécurité de base</p>
       <div class="tome-card-tags">
-        <span class="tome-tag">Support</span>
-        <span class="tome-tag">Git</span>
         <span class="tome-tag">Linux</span>
+        <span class="tome-tag">Shell</span>
+        <span class="tome-tag">Admin Sys</span>
       </div>
     </div>
     <div class="tome-card-arrow">→</div>
   </a>
 
   <a href="tome-p2/" class="paradis-tome-card tome-p2">
-    <div class="tome-card-icon">🐍</div>
-    <div class="tome-card-body">
-      <div class="tome-card-phase">Phase P2 · J4–J11</div>
-      <h3 class="tome-card-title">Fondations IT</h3>
-      <p class="tome-card-desc">Python, données, SQL, réseaux TCP/IP, scripting Bash</p>
-      <div class="tome-card-tags">
-        <span class="tome-tag">Python</span>
-        <span class="tome-tag">SQL</span>
-        <span class="tome-tag">Réseaux</span>
-      </div>
-    </div>
-    <div class="tome-card-arrow">→</div>
-  </a>
-
-  <a href="tome-p3a/" class="paradis-tome-card tome-p3a">
-    <div class="tome-card-icon">⚙️</div>
-    <div class="tome-card-body">
-      <div class="tome-card-phase">Phase P3A · J12–J17</div>
-      <h3 class="tome-card-title">Admin Système</h3>
-      <p class="tome-card-desc">Administration Linux/Windows, virtualisation, Active Directory</p>
-      <div class="tome-card-tags">
-        <span class="tome-tag">Linux</span>
-        <span class="tome-tag">Windows Server</span>
-        <span class="tome-tag">VMware</span>
-      </div>
-    </div>
-    <div class="tome-card-arrow">→</div>
-  </a>
-
-  <a href="tome-p3b/" class="paradis-tome-card tome-p3b">
-    <div class="tome-card-icon">🗄️</div>
-    <div class="tome-card-body">
-      <div class="tome-card-phase">Phase P3B · J18–J22</div>
-      <h3 class="tome-card-title">Bases de Données</h3>
-      <p class="tome-card-desc">PostgreSQL avancé, analytique, data warehouse, reporting</p>
-      <div class="tome-card-tags">
-        <span class="tome-tag">PostgreSQL</span>
-        <span class="tome-tag">BI</span>
-        <span class="tome-tag">ETL</span>
-      </div>
-    </div>
-    <div class="tome-card-arrow">→</div>
-  </a>
-
-  <a href="tome-p3c/" class="paradis-tome-card tome-p3c">
     <div class="tome-card-icon">🌐</div>
     <div class="tome-card-body">
-      <div class="tome-card-phase">Phase P3C · J23–J28</div>
-      <h3 class="tome-card-title">Développement Web</h3>
-      <p class="tome-card-desc">HTML/CSS/JS, APIs REST, frameworks modernes, déploiement</p>
+      <div class="tome-card-phase">Semestre 2 · J051–J100</div>
+      <h3 class="tome-card-title">Réseaux & Télécoms Avancés</h3>
+      <p class="tome-card-desc">Routage BGP/OSPF, MPLS, SDN, VPN, Wireshark, sécurité réseau et architecture telecom</p>
       <div class="tome-card-tags">
-        <span class="tome-tag">HTML/CSS</span>
-        <span class="tome-tag">JavaScript</span>
-        <span class="tome-tag">API REST</span>
+        <span class="tome-tag">BGP/OSPF</span>
+        <span class="tome-tag">SDN</span>
+        <span class="tome-tag">VPN</span>
+      </div>
+    </div>
+    <div class="tome-card-arrow">→</div>
+  </a>
+
+  <a href="tome-p3/" class="paradis-tome-card tome-p3">
+    <div class="tome-card-icon">⚙️</div>
+    <div class="tome-card-body">
+      <div class="tome-card-phase">Semestre 3 · J101–J150</div>
+      <h3 class="tome-card-title">Virtualisation & Stockage</h3>
+      <p class="tome-card-desc">VMware, Proxmox, KVM, SAN/NAS, Ceph, iSCSI et architectures de stockage d'entreprise</p>
+      <div class="tome-card-tags">
+        <span class="tome-tag">Proxmox</span>
+        <span class="tome-tag">KVM</span>
+        <span class="tome-tag">SAN/NAS</span>
       </div>
     </div>
     <div class="tome-card-arrow">→</div>
@@ -157,43 +126,133 @@ description: Plateforme d'autoformation intensive en 45 jours — Bachelor IT ca
   <a href="tome-p4/" class="paradis-tome-card tome-p4">
     <div class="tome-card-icon">☁️</div>
     <div class="tome-card-body">
-      <div class="tome-card-phase">Phase P4 · J29–J35</div>
-      <h3 class="tome-card-title">Cloud & Sécurité</h3>
-      <p class="tome-card-desc">AWS/Azure, cybersécurité bancaire, SWIFT, RTGS, monétique</p>
+      <div class="tome-card-phase">Semestre 4 · J151–J200</div>
+      <h3 class="tome-card-title">Cloud Computing & IaC</h3>
+      <p class="tome-card-desc">AWS, Azure, GCP, Terraform, Ansible, CI/CD et architectures cloud multi-région</p>
       <div class="tome-card-tags">
-        <span class="tome-tag">Cloud</span>
-        <span class="tome-tag">Sécurité</span>
-        <span class="tome-tag">SWIFT</span>
+        <span class="tome-tag">AWS</span>
+        <span class="tome-tag">Terraform</span>
+        <span class="tome-tag">CI/CD</span>
       </div>
     </div>
     <div class="tome-card-arrow">→</div>
   </a>
 
   <a href="tome-p5/" class="paradis-tome-card tome-p5">
-    <div class="tome-card-icon">📝</div>
+    <div class="tome-card-icon">🐳</div>
     <div class="tome-card-body">
-      <div class="tome-card-phase">Phase P5 · J36–J41</div>
-      <h3 class="tome-card-title">Préparation BCC</h3>
-      <p class="tome-card-desc">QCM intensifs, simulations d'examens blancs, révisions ciblées</p>
+      <div class="tome-card-phase">Semestre 5 · J201–J250</div>
+      <h3 class="tome-card-title">Kubernetes & Orchestration</h3>
+      <p class="tome-card-desc">Docker, Kubernetes avancé, Helm, Istio, GitOps, Argo CD et service mesh</p>
       <div class="tome-card-tags">
-        <span class="tome-tag">QCM</span>
-        <span class="tome-tag">Examens</span>
-        <span class="tome-tag">Révisions</span>
+        <span class="tome-tag">Kubernetes</span>
+        <span class="tome-tag">Helm</span>
+        <span class="tome-tag">GitOps</span>
       </div>
     </div>
     <div class="tome-card-arrow">→</div>
   </a>
 
   <a href="tome-p6/" class="paradis-tome-card tome-p6">
+    <div class="tome-card-icon">🎯</div>
+    <div class="tome-card-body">
+      <div class="tome-card-phase">Semestre 6 · J251–J300</div>
+      <h3 class="tome-card-title">Pentesting & Hacking Éthique</h3>
+      <p class="tome-card-desc">Bug Bounty, exploitation web, Active Directory offensif, Red Team, C2 et OSCP+ prep</p>
+      <div class="tome-card-tags">
+        <span class="tome-tag">OSCP+</span>
+        <span class="tome-tag">Red Team</span>
+        <span class="tome-tag">AD Offensif</span>
+      </div>
+    </div>
+    <div class="tome-card-arrow">→</div>
+  </a>
+
+  <a href="tome-p7/" class="paradis-tome-card tome-p7">
+    <div class="tome-card-icon">🛡️</div>
+    <div class="tome-card-body">
+      <div class="tome-card-phase">Semestre 7 · J301–J350</div>
+      <h3 class="tome-card-title">Application Security & AppSec</h3>
+      <p class="tome-card-desc">OWASP Top 10, sécurité web avancée, reverse engineering mobile, AWS Security Specialty</p>
+      <div class="tome-card-tags">
+        <span class="tome-tag">OWASP</span>
+        <span class="tome-tag">AppSec</span>
+        <span class="tome-tag">CKS</span>
+      </div>
+    </div>
+    <div class="tome-card-arrow">→</div>
+  </a>
+
+  <a href="tome-p8/" class="paradis-tome-card tome-p8">
+    <div class="tome-card-icon">🔐</div>
+    <div class="tome-card-body">
+      <div class="tome-card-phase">Semestre 8 · J351–J400</div>
+      <h3 class="tome-card-title">Hardening & IAM/PAM/EDR</h3>
+      <p class="tome-card-desc">Hardening OS, CIS Benchmarks, Identity Access Management, Privileged Access, EDR/XDR</p>
+      <div class="tome-card-tags">
+        <span class="tome-tag">IAM</span>
+        <span class="tome-tag">PAM</span>
+        <span class="tome-tag">EDR/XDR</span>
+      </div>
+    </div>
+    <div class="tome-card-arrow">→</div>
+  </a>
+
+  <a href="tome-p9/" class="paradis-tome-card tome-p9">
+    <div class="tome-card-icon">🔑</div>
+    <div class="tome-card-body">
+      <div class="tome-card-phase">Semestre 9 · J401–J450</div>
+      <h3 class="tome-card-title">Cryptographie Avancée & PKI</h3>
+      <p class="tome-card-desc">PKI enterprise, TLS 1.3, ZKP, Post-Quantique NIST (ML-KEM/ML-DSA), FHE, HSM & Vault</p>
+      <div class="tome-card-tags">
+        <span class="tome-tag">PQC</span>
+        <span class="tome-tag">ZKP</span>
+        <span class="tome-tag">HSM</span>
+      </div>
+    </div>
+    <div class="tome-card-arrow">→</div>
+  </a>
+
+  <a href="tome-p10/" class="paradis-tome-card tome-p10">
+    <div class="tome-card-icon">🔍</div>
+    <div class="tome-card-body">
+      <div class="tome-card-phase">Semestre 10 · J451–J500</div>
+      <h3 class="tome-card-title">DFIR & Reverse Engineering</h3>
+      <p class="tome-card-desc">SANS PICERL, Volatility 3, Autopsy, Zeek, Ghidra, GDB, Ransomware Analysis & CTF</p>
+      <div class="tome-card-tags">
+        <span class="tome-tag">DFIR</span>
+        <span class="tome-tag">Ghidra</span>
+        <span class="tome-tag">Forensique</span>
+      </div>
+    </div>
+    <div class="tome-card-arrow">→</div>
+  </a>
+
+  <a href="tome-p11/" class="paradis-tome-card tome-p11">
+    <div class="tome-card-icon">🚀</div>
+    <div class="tome-card-body">
+      <div class="tome-card-phase">Semestre 11 · J501–J550</div>
+      <h3 class="tome-card-title">DevSecOps & Cloud Security</h3>
+      <p class="tome-card-desc">Shift-Left, SAST/DAST, SBOM, SLSA L3, CSPM, Kubernetes Security & Supply Chain</p>
+      <div class="tome-card-tags">
+        <span class="tome-tag">DevSecOps</span>
+        <span class="tome-tag">CSPM</span>
+        <span class="tome-tag">SBOM</span>
+      </div>
+    </div>
+    <div class="tome-card-arrow">→</div>
+  </a>
+
+  <a href="tome-p12/" class="paradis-tome-card tome-p12">
     <div class="tome-card-icon">🏆</div>
     <div class="tome-card-body">
-      <div class="tome-card-phase">Phase P6 · J42–J45</div>
-      <h3 class="tome-card-title">Portfolio & Soutenance</h3>
-      <p class="tome-card-desc">Projets concrets, rapport d'employabilité, pitch professionnel</p>
+      <div class="tome-card-phase">Semestre 12 · J551–J600</div>
+      <h3 class="tome-card-title">Gouvernance GRC & Grand Capstone</h3>
+      <p class="tome-card-desc">ISO 27001:2022, EBIOS RM, RGPD/NIS2/DORA, Zero-Trust Architecture & Grand Capstone Final</p>
       <div class="tome-card-tags">
-        <span class="tome-tag">Projets</span>
-        <span class="tome-tag">Portfolio</span>
-        <span class="tome-tag">Emploi</span>
+        <span class="tome-tag">GRC</span>
+        <span class="tome-tag">Zero-Trust</span>
+        <span class="tome-tag">CISO</span>
       </div>
     </div>
     <div class="tome-card-arrow">→</div>
@@ -203,13 +262,13 @@ description: Plateforme d'autoformation intensive en 45 jours — Bachelor IT ca
 
 ---
 
-## 🎯 Pourquoi PARADIS IT ?
+## 🎯 Pourquoi PARADIS IT Masterclass ?
 
 <div class="paradis-features-grid">
   <div class="paradis-feature-card">
     <div class="feature-icon">🎓</div>
-    <h3>Niveau Universitaire</h3>
-    <p>Programme équivalent au Bachelor of Information Technology, conçu pour les institutions financières d'Afrique centrale.</p>
+    <h3>Du Bachelor au Master Expert</h3>
+    <p>Progression structurée en 12 semestres — du socle Linux jusqu'à l'Architecture Zero-Trust et la Cryptographie Post-Quantique.</p>
   </div>
   <div class="paradis-feature-card">
     <div class="feature-icon">🤖</div>
@@ -219,22 +278,22 @@ description: Plateforme d'autoformation intensive en 45 jours — Bachelor IT ca
   <div class="paradis-feature-card">
     <div class="feature-icon">📡</div>
     <h3>100% Hors-ligne</h3>
-    <p>Application PWA installable. Tous les cours sont accessibles sans connexion internet après le premier chargement.</p>
+    <p>Application PWA installable. Tous les 600 jours de cours sont accessibles sans connexion internet après le premier chargement.</p>
   </div>
   <div class="paradis-feature-card">
     <div class="feature-icon">☁️</div>
     <h3>Progression Synchronisée</h3>
-    <p>Créez un compte pour retrouver votre progression, notes et résultats sur tous vos appareils.</p>
+    <p>Créez un compte pour retrouver votre progression, notes et résultats QCM sur tous vos appareils en temps réel.</p>
   </div>
   <div class="paradis-feature-card">
-    <div class="feature-icon">🏦</div>
-    <h3>Culture Bancaire BCC</h3>
-    <p>Modules spécialisés sur SWIFT, RTGS, monétique et systèmes d'information bancaires de la RDC.</p>
+    <div class="feature-icon">📝</div>
+    <h3>QCM & Examens Blancs</h3>
+    <p>Banque de QCM par semestre, mode examen blanc chrono 2h, corrections détaillées et grilles de remédiation.</p>
   </div>
   <div class="paradis-feature-card">
     <div class="feature-icon">📊</div>
-    <h3>Analytics Détaillés</h3>
-    <p>Suivez votre progression jour par jour avec des graphiques radar, scores QCM et certificats de complétion.</p>
+    <h3>Radar de Compétences</h3>
+    <p>Suivez votre montée en compétences sur 6 axes avec des graphiques radar, badges employabilité et export de certificats PDF.</p>
   </div>
 </div>
 
@@ -245,7 +304,7 @@ description: Plateforme d'autoformation intensive en 45 jours — Bachelor IT ca
 <div class="paradis-search-container">
   <div class="paradis-search-wrapper">
     <svg class="paradis-search-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-    <input type="text" id="search-input" class="paradis-search-input" placeholder="Rechercher un cours, concept, mot-clé... (Ctrl+K)" />
+    <input type="text" id="search-input" class="paradis-search-input" placeholder="Rechercher parmi les 600 jours... (Ctrl+K)" />
     <kbd class="paradis-search-kbd">Ctrl+K</kbd>
   </div>
   <div id="search-results" class="paradis-search-results"></div>
@@ -269,7 +328,7 @@ description: Plateforme d'autoformation intensive en 45 jours — Bachelor IT ca
   <div class="platform-item">
     <span class="platform-icon">📡</span>
     <strong>Mode Hors-ligne</strong>
-    <span>PWA installable — cours disponibles sans connexion</span>
+    <span>PWA installable — 600 jours sans connexion</span>
   </div>
   <div class="platform-item">
     <span class="platform-icon">🔄</span>
@@ -280,5 +339,5 @@ description: Plateforme d'autoformation intensive en 45 jours — Bachelor IT ca
 
 <div class="paradis-footer-tech">
   <p>Propulsé par <strong>MkDocs Material</strong> · <strong>IndexedDB</strong> · <strong>Supabase</strong> · <strong>PWA</strong> · <strong>GitHub Pages</strong></p>
-  <p class="paradis-footer-version">Version 3.0 — Juillet 2026 — Université Virtuelle PARADIS IT</p>
+  <p class="paradis-footer-version">Version 6.0 — Août 2026 — PARADIS IT Masterclass 600 Jours</p>
 </div>
