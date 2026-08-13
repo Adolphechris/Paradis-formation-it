@@ -3,7 +3,7 @@
  *
  * Rend le contenu de la page /espace-etudiant/ :
  *   - Carte de bienvenue personnalisée
- *   - Grille des 45 jours avec statut visuel par leçon
+ *   - Grille de progression sur 600 Jours / 12 Semestres avec statut visuel par leçon
  *   - Statistiques globales (progression, streak, temps total)
  *   - Bouton "Reprendre là où j'en suis"
  */

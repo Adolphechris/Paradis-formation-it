@@ -81,7 +81,7 @@
 
         y += 6;
         doc.setFontSize(10);
-        doc.text('Plateforme PARADIS IT — Autoformation 45 jours / 630h', 14, y);
+        doc.text('Plateforme PARADIS IT — Masterclass IT 600 Jours / 3 300h (5-6h/j)', 14, y);
     }
 
     async function exportProgress(progressData) {

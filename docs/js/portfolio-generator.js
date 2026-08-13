@@ -1,10 +1,10 @@
 /**
- * PARADIS — Générateur de Portfolio & CV Officier IT BCC (Sprint 24)
+ * PARADIS — Générateur de Portfolio & CV Ingénieur IT (Sprint 24)
  *
  * Génère une fiche de compétences et portfolio valorisable :
- *   - Synthèse des 45 jours d'apprentissage et projets validés
+ *   - Synthèse du parcours 600 Jours (12 Semestres) et projets intégrateurs validés
  *   - Badges de certification et compétences techniques
- *   - Exportation / Impression pour les recruteurs du secteur bancaire
+ *   - Exportation / Impression pour les recruteurs IT et grandes organisations
  */
 (function () {
     'use strict';

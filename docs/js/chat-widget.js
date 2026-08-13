@@ -67,7 +67,7 @@ Règles :
         }
     ];
 
-    const DEFAULT_FALLBACK = '🧠 Je n\'ai pas de réponse précise à cela dans mon contexte actuel. Reformulez votre question ou précisez le tome/jour concerné. Je peux vous aider sur Python, SQL, Réseaux, Sécurité, Linux, SWIFT ou la préparation aux concours BCC.';
+    const DEFAULT_FALLBACK = '🧠 Je n\'ai pas de réponse précise à cela dans mon contexte actuel. Reformulez votre question ou précisez le semestre/jour concerné. Je peux vous aider sur Linux, Réseaux, Cloud, Kubernetes, Python, SQL, Cybersécurité, DevSecOps, Cryptographie, IA/ML ou tout autre sujet du programme Masterclass 600 Jours.';
 
     // ── Historique de conversation ─────────────────────────────────────────────
     const conversationHistory = [];
@@ -105,7 +105,7 @@ Règles :
             },
             {
                 role: 'model',
-                parts: [{ text: 'Compris ! Je suis le Tuteur IA PARADIS IT, spécialisé dans la formation IT bancaire pour les concours BCC en RDC. Je répondrai toujours en français avec des exemples concrets du secteur bancaire congolais. Que puis-je vous expliquer ?' }]
+                parts: [{ text: 'Compris ! Je suis le Tuteur IA PARADIS IT, votre accompagnateur sur les 600 jours de la Masterclass IT — du Bachelor (Socle Linux/Réseaux) jusqu\'au niveau Expert (Cybersécurité, IA/ML, DevSecOps, Architecture Cloud). Je répondrai toujours en français avec des exemples concrets et pratiques. Que puis-je vous expliquer ?' }]
             },
             // Historique récent
             ...recentHistory,
@@ -374,11 +374,12 @@ Règles :
 
     // ── Suggestions rapides ────────────────────────────────────────────────────
     const QUICK_QUESTIONS = [
-        'Comment fonctionne SWIFT ?',
-        'Explique SQL JOIN avec exemple',
+        'Explique SQL JOIN avec un exemple',
         'Qu\'est-ce qu\'un VLAN ?',
-        'Comment préparer l\'examen BCC ?',
-        'Python vs Bash pour l\'admin système ?'
+        'Comment fonctionne Kubernetes ?',
+        'Différence entre pentest et red team ?',
+        'Python vs Bash pour l\'admin système ?',
+        'Qu\'est-ce que le Zero Trust ?'
     ];
 
     // ── Injection du markup HTML ───────────────────────────────────────────────
@@ -386,7 +387,7 @@ Règles :
         if (document.getElementById('paradis-chat-trigger')) return;
 
         const geminiActive = isGeminiConfigured();
-        const statusText = geminiActive ? 'Gemini AI — Programme BCC' : 'Mode local — Programme BCC';
+        const statusText = geminiActive ? 'Gemini AI — Masterclass 600 Jours' : 'Mode local — Masterclass 600 Jours';
         const poweredText = geminiActive ? '⚡ Propulsé par Google Gemini' : '📚 Base de connaissances locale';
 
         const btn = document.createElement('button');
@@ -412,7 +413,7 @@ Règles :
                 <button type="button" class="paradis-chat-close-btn" onclick="window.ParadisChat.toggleChat()">&times;</button>
             </div>
             <div id="paradis-chat-messages" class="paradis-chat-messages">
-                <div class="paradis-msg bot">👋 Bonjour ! Je suis votre <strong>Tuteur IA PARADIS</strong>${geminiActive ? ', propulsé par <strong>Google Gemini</strong>' : ''}. Posez-moi vos questions sur le programme IT Bancaire — Python, SQL, Réseaux, Sécurité, SWIFT, Linux ou la préparation aux concours <strong>BCC</strong>.</div>
+                <div class="paradis-msg bot">👋 Bonjour ! Je suis votre <strong>Tuteur IA PARADIS</strong>${geminiActive ? ', propulsé par <strong>Google Gemini</strong>' : ''}. Posez-moi vos questions sur la <strong>Masterclass IT 600 Jours</strong> — Linux, Réseaux, Cloud, Kubernetes, Python, SQL, Cybersécurité, Cryptographie, DevSecOps, IA/ML et bien plus.</div>
             </div>
             <div class="paradis-quick-qs" id="paradis-quick-qs"></div>
             <div class="paradis-chat-input-area">

@@ -1,22 +1,36 @@
 /**
  * PARADIS — Paliers d'Employabilité & Jauge de Compétences (Sprint 12)
  *
- * Calcule et affiche la qualification professionnelle de l'apprenant selon 5 paliers :
- *   1. 🔴 Débutant IT (0 - 8 jours)
- *   2. 🟠 Technicien Support & Systèmes (9 - 18 jours)
- *   3. 🟡 Administrateur IT & Data (19 - 28 jours)
- *   4. 🟢 Ingénieur Cloud & Sécurité (29 - 38 jours)
- *   5. 🏆 Expert IT Officer BCC (39 - 45 jours)
+ * Calcule et affiche la qualification professionnelle de l'apprenant selon 12 paliers (1 par semestre) :
+ *   S1  🔴  Socle IT — Environnement, Outils, Linux de base (J001-J050)
+ *   S2  🟠  Technicien Systèmes & Réseaux (J051-J100)
+ *   S3  🟡  Développeur Python & SQL (J101-J150)
+ *   S4  🟢  Administrateur Cloud & DevOps (J151-J200)
+ *   S5  🟣  Ingénieur Sécurité & Pentest (J201-J250)
+ *   S6  🔵  Architecte Cloud & Infrastructure (J251-J300)
+ *   S7  🟤  Expert Red Team & DevSecOps (J301-J350)
+ *   S8  🯤  Analyste SOC & Blue Team (J351-J400)
+ *   S9  🟠  Spécialiste Cryptographie & PKI (J401-J450)
+ *   S10 🟡  Expert DFIR & Reverse Engineering (J451-J500)
+ *   S11 🟢  Ingénieur IA/ML & MLOps (J501-J550)
+ *   S12 🏆  Architecte Master IT — Capstone & GRC (J551-J600)
  */
 (function () {
     'use strict';
 
     const PALIERS = [
-        { level: 1, name: 'Débutant IT', minDays: 0, maxDays: 8, color: '#ef4444', icon: '🔴', role: 'Support N1' },
-        { level: 2, name: 'Technicien Support & Systèmes', minDays: 9, maxDays: 18, color: '#f97316', icon: '🟠', role: 'Administrateur Junior' },
-        { level: 3, name: 'Administrateur IT & Data', minDays: 19, maxDays: 28, color: '#eab308', icon: '🟡', role: 'Admin Systèmes & SQL' },
-        { level: 4, name: 'Ingénieur Cloud & Sécurité', minDays: 29, maxDays: 38, color: '#10b981', icon: '🟢', role: 'SecOps & SysAdmin Senior' },
-        { level: 5, name: 'Expert IT Officer BCC', minDays: 39, maxDays: 45, color: '#06b6d4', icon: '🏆', role: 'Officier IT Bancaire (BCC)' }
+        { level: 1, name: 'Socle IT', minDays: 0,   maxDays: 50,  color: '#ef4444', icon: '🔴', role: 'Support N1 / Technicien Desktop' },
+        { level: 2, name: 'Technicien Systèmes & Réseaux', minDays: 51, maxDays: 100, color: '#f97316', icon: '🟠', role: 'Admin Réseaux Junior' },
+        { level: 3, name: 'Développeur Python & SQL', minDays: 101, maxDays: 150, color: '#eab308', icon: '🟡', role: 'Développeur Back-End / Analyste Data' },
+        { level: 4, name: 'Administrateur Cloud & DevOps', minDays: 151, maxDays: 200, color: '#22c55e', icon: '🟢', role: 'Cloud Engineer / SRE Junior' },
+        { level: 5, name: 'Ingénieur Sécurité & Pentest', minDays: 201, maxDays: 250, color: '#06b6d4', icon: '🟣', role: 'Pen Tester / Security Engineer' },
+        { level: 6, name: 'Architecte Cloud & Infrastructure', minDays: 251, maxDays: 300, color: '#3b82f6', icon: '🔵', role: 'Cloud Architect / Solutions Architect' },
+        { level: 7, name: 'Expert Red Team & DevSecOps', minDays: 301, maxDays: 350, color: '#8b5cf6', icon: '🟤', role: 'Red Team Engineer / DevSecOps Lead' },
+        { level: 8, name: 'Analyste SOC & Blue Team', minDays: 351, maxDays: 400, color: '#ec4899', icon: '🯤', role: 'SOC Analyst L2-L3 / CSIRT' },
+        { level: 9, name: 'Spécialiste Cryptographie & PKI', minDays: 401, maxDays: 450, color: '#f59e0b', icon: '🟠', role: 'Cryptographer / Security Architect' },
+        { level: 10, name: 'Expert DFIR & Reverse Engineering', minDays: 451, maxDays: 500, color: '#10b981', icon: '🟡', role: 'DFIR Analyst / Malware Analyst' },
+        { level: 11, name: 'Ingénieur IA/ML & MLOps', minDays: 501, maxDays: 550, color: '#6366f1', icon: '🟢', role: 'ML Engineer / AI Security Researcher' },
+        { level: 12, name: 'Architecte Master IT', minDays: 551, maxDays: 600, color: '#f59e0b', icon: '🏆', role: 'CISO / Lead Architect / Expert GRC' }
     ];
 
     // Injection CSS dynamique

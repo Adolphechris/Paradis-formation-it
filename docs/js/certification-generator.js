@@ -1,8 +1,8 @@
 /**
- * PARADIS — Générateur de Certificat Numérique de Réussite BCC (Sprint 21)
+ * PARADIS — Générateur de Certificat Numérique de Réussite (Sprint 21)
  *
- * Génère le diplôme numérique certifié IT Officer BCC :
- *   - Vérification stricte des conditions (45 jours validés + Examen Blanc ≥ 80%)
+ * Génère le diplôme numérique certifié Masterclass IT 600 Jours :
+ *   - Vérification stricte des conditions (semestre validé + Examen de Semestre ≥ 80%)
  *   - Rendu Canvas / HTML HD du diplôme avec sceau et identifiant unique
  *   - Téléchargement / Impression 1-clic
  */

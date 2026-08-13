@@ -1,7 +1,7 @@
 {
   "name": "paradis-formation-it",
-  "version": "5.0.0",
-  "description": "Plateforme e-learning d'apprentissage intensif pour officiers IT bancaires (BCC)",
+  "version": "6.0.0",
+  "description": "Plateforme e-learning Masterclass IT — 600 Jours, 12 Semestres, Bachelor → Expert Cybersécurité & IA",
   "private": true,
   "scripts": {
     "test": "node scripts/test-suite.js",
@@ -16,8 +16,11 @@
   "keywords": [
     "e-learning",
     "formation-it",
-    "banking",
-    "bcc",
+    "masterclass",
+    "600-days",
+    "cybersecurity",
+    "kubernetes",
+    "devSecOps",
     "mkdocs",
     "supabase"
   ],

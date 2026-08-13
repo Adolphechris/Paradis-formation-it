@@ -102,10 +102,17 @@
                 <div style="display:flex; flex-direction:column; gap:6px;">
                     <label style="font-size:0.8rem; font-weight:600; color:#d1d5db;">OBJECTIF DE CARRIÈRE (RÔLE CIBLE)</label>
                     <select id="profile-target-role" class="paradis-auth-input" style="background:#1f2937; color:#fff;">
-                        <option value="bcc_it_officer">🏛️ Officier IT Banque Centrale du Congo (BCC)</option>
                         <option value="sysadmin">⚙️ Administrateur Systèmes & Réseaux</option>
+                        <option value="cloud_engineer">☁️ Cloud Engineer / SRE (AWS, Azure, GCP)</option>
+                        <option value="devops">🔁 DevOps / DevSecOps Engineer</option>
+                        <option value="pentest">🔴 Pentester / Red Team Operator</option>
+                        <option value="soc_analyst">🛡️ Analyste SOC / Blue Team (L2-L3)</option>
                         <option value="data_analyst">📊 Analyste de Données & SQL</option>
                         <option value="fullstack">💻 Développeur Fullstack Web</option>
+                        <option value="ml_engineer">🤖 Ingénieur IA/ML & MLOps</option>
+                        <option value="security_architect">🏗️ Architecte Sécurité / CISO</option>
+                        <option value="bcc_it_officer">🏛️ Officier IT Institutions Financières (Banque Centrale, etc.)</option>
+                        <option value="other">🌍 Autre (secteur IT général)</option>
                     </select>
                 </div>
 
