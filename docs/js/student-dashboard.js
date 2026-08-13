@@ -535,7 +535,7 @@
                 </div>
                 <div class="sdb-days-grid">`;
 
-            for (const dayNum of phase.days) {
+            for (const dayNum of sem.days) {
                 const dayId = 'jour-' + String(dayNum).padStart(2, '0');
                 const rec = progressMap[dayId];
                 const meta = engine.LESSON_META[dayId] || {};
