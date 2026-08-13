@@ -1,58 +1,133 @@
 ---
-title: "Espace Étudiant — Auditoire & Salle de Cours (Jour 1 à Jour 600)"
-description: "Auditoire virtuel d'apprentissage : commencez à étudier dès le Jour 1 et suivez l'intégralité des 600 leçons des 12 Semestres."
+title: "Espace Étudiant — 600 Jours de Formation"
+description: "Votre auditoire virtuel : 600 leçons organisées en 12 semestres. Commencez dès le Jour 1."
 ---
 
-# 🎓 Auditoire & Salle de Cours Virtuelle
+# 🎓 Auditoire — 600 Jours de Formation
 
----
-
-<!-- BOUTON D'ACTION IMMÉDIAT : DÉMARRAGE JOUR 1 -->
-<div style="background: linear-gradient(135deg, rgba(6, 182, 212, 0.15) 0%, rgba(30, 58, 138, 0.4) 100%); border: 2px solid #06b6d4; border-radius: 16px; padding: 28px; margin-bottom: 32px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; box-shadow: 0 8px 32px rgba(6, 182, 212, 0.15);">
-  <div>
-    <div style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #38bdf8; margin-bottom: 6px;">
-      🚀 Point de Démarrage Officiel du Cursus
-    </div>
-    <h2 style="margin: 0 0 8px 0; font-size: 1.6rem; color: #ffffff;">
-      Prêt à commencer votre premier cours ?
-    </h2>
-    <p style="margin: 0; color: #cbd5e1; font-size: 0.95rem; max-width: 600px;">
-      Démarrez dès maintenant avec le <strong>Jour 1 — Introduction aux Systèmes Linux, Arborescence et Premières Commandes Shell</strong>.
-    </p>
-  </div>
-  <a href="tome-p0/jour-01.md" style="background: linear-gradient(135deg, #06b6d4, #2563eb); color: #ffffff; text-decoration: none; padding: 14px 28px; border-radius: 12px; font-weight: 700; font-size: 1.05rem; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 14px rgba(6, 182, 212, 0.4); transition: transform 0.2s ease;">
-    ▶ COMMENCER LE COURS (JOUR 1)
-  </a>
-</div>
+<div id="student-dashboard-root"></div>
 
 ---
 
-<!-- ANCRE DE RENDU DU TABLEAU DE BORD D'AUDITOIRE (COMPTEUR, PROGRESSION & GRILLE COMPLÈTE DES 600 JOURS) -->
-<div id="student-dashboard-root">
-  <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 16px; padding: 32px; text-align: center; margin: 24px 0;">
-    <div style="font-size: 2rem; margin-bottom: 12px;">⏳</div>
-    <h3 style="color: #38bdf8; margin-bottom: 8px;">Préparation de votre Auditoire...</h3>
-    <p style="color: #94a3b8; font-size: 0.95rem;">Chargement des 600 leçons et de votre progression d'apprentissage.</p>
-  </div>
-</div>
+## 🚀 Commencer maintenant — Semestre 1, Jour 1
+
+**[▶ Ouvrir le Cours du Jour 1 — Linux CLI & Navigation de Base](tome-p0/jour-01.md)**
 
 ---
 
-## 📚 Structure Globale de l'Auditoire (12 Semestres)
+## 🎓 CYCLE 1 — Bachelor in Information Technology (J001 à J300)
 
-### 🎓 Cycle 1 — Bachelor in Information Technology (BIT — Bac+3)
-- **[Semestre 1 — Socle Système Linux & Admin Sys (J001 - J050)](tome-p0.md)** : 50 leçons pratiques d'installation, ligne de commande, permissions et services.
-- **[Semestre 2 — Réseaux & Télécoms Avancés (J051 - J100)](tome-p2.md)** : Modèle TCP/IP, routage, VLANs, Wireshark et administration réseau.
-- **[Semestre 3 — Python, Bash & Compréhension du Code (J101 - J150)](tome-p3a.md)** : Scripting, automatisation système et inspection de code.
-- **[Semestre 4 — Bases de Données, SQL & Data (J151 - J200)](tome-p3b.md)** : PostgreSQL, SQL avancé, ETL et prévention des injections SQL.
-- **[Semestre 5 — Web Full-Stack & APIs REST (J201 - J250)](tome-p3c.md)** : HTML5/CSS3, Node.js, React et ateliers OWASP Top 10.
-- **[Semestre 6 — Cloud, DevOps & Grand Projet Bachelor (J251 - J300)](tome-p4.md)** : Docker, Kubernetes, AWS/Azure et projet synthétique Cycle 1.
+### 📚 Semestre 1 — Socle Système Linux (J001 – J050)
 
-### 🛡️ Cycle 2 — Master Cybersécurité & Executive IT (Bac+5)
-- **[Semestre 6+ — Cybersécurité Avancée Expert (J251 - J300)](tome-p5.md)** : Pentest avancé, PQC, Cloud Security et GRC.
-- **[Semestre 7 — Certifications d'Élite & Spécialisations (J301 - J350)](tome-p6-intro.md)** : OSCP+, CKS, CISSP/CISM, GREM et Cloud Security Specialty.
-- **[Semestre 8 — Blue Team, SOC & SIEM Advanced (J351 - J400)](tome-p6.md)** : SOC Operations, SIGMA, SOAR, EDR/XDR et Threat Hunting.
-- **[Semestre 9 — Cryptographie Avancée & PKI (J401 - J450)](qcm.md)** : AES-GCM, RSA, PKI Enterprise, PQC et Zero-Trust Workload Identity.
-- **[Semestre 10 — DFIR & Reverse Engineering (J441 - J500)](table-des-matieres.md)** : Volatility 3, Ghidra, Malware Analysis et Incident Response.
-- **[Semestre 11 — AI/ML Security & MLOps (J451 - J500)](apercu.md)** : LLMs, RAG, MLOps et Red Teaming IA.
-- **[Semestre 12 — DevSecOps, GRC & Grand Capstone (J551 - J600)](feuille-de-route.md)** : ISO 27001, Zero-Trust Enterprise, CISO Leadership et Capstone Final.
+| Jour | Leçon |
+|:---:|:---|
+| **J001** | [Prise en main Linux CLI & Navigation de Base](tome-p0/jour-01.md) |
+| **J002** | [Système de Fichiers Linux FHS & Liens](tome-p0/jour-02.md) |
+| **J003** | [Permissions Linux & Gestion des Utilisateurs](tome-p0/jour-03.md) |
+| **J004** | [Gestion des Processus Linux & Ressources Système](tome-p0/jour-04.md) |
+| **J005** | [Flux d'Entrée/Sortie, Redirections & Pipelines](tome-p0/jour-05.md) |
+| **J006** | [Administration des Paquets & Services systemd](tome-p0/jour-06.md) |
+| **J007** | [Architecture Matérielle & Couches Système](tome-p0/jour-07.md) |
+| **J008** | [Windows 11 & Server 2025 Administration](tome-p0/jour-08.md) |
+| **J009** | [PowerShell Fondamentaux & Automation](tome-p0/jour-09.md) |
+| **J010** | [Projet Synthétique Semestre 1 — Partie 1](tome-p0/jour-10.md) |
+| **J011** | [Scripting Bash — Variables, Boucles & Conditions](tome-p0/jour-11.md) |
+| **J012** | [Scripting Bash Avancé — Fonctions & Parsing](tome-p0/jour-12.md) |
+| **J013** | [Gestion des Réseaux Linux — Interfaces & Diagnostics](tome-p0/jour-13.md) |
+| **J014** | [Firewall iptables & nftables — Règles & Sécurité](tome-p0/jour-14.md) |
+| **J015** | [SSH Hardening & Administration Distante Sécurisée](tome-p0/jour-15.md) |
+| **J016** | [Cron, Tâches Planifiées & Automatisation Système](tome-p0/jour-16.md) |
+| **J017** | [Monitoring Système — top, htop, sar & Alertes](tome-p0/jour-17.md) |
+| **J018** | [Gestion des Logs — journald, rsyslog & Rotation](tome-p0/jour-18.md) |
+| **J019** | [Stockage Linux — LVM, RAID & Partitionnement](tome-p0/jour-19.md) |
+| **J020** | [Projet Synthétique Semestre 1 — Partie 2](tome-p0/jour-20.md) |
+| **J021** | [Git & GitHub — Contrôle de Version Fondamentaux](tome-p0/jour-21.md) |
+| **J022** | [Git Avancé — Branches, Merge, Rebase & Conflicts](tome-p0/jour-22.md) |
+| **J023** | [Docker Introduction — Images, Conteneurs & Volumes](tome-p0/jour-23.md) |
+| **J024** | [Docker Avancé — Compose, Réseaux & Registres](tome-p0/jour-24.md) |
+| **J025** | [Active Directory — Structure, Objets & GPO](tome-p0/jour-25.md) |
+| **J026** | [Active Directory — DNS, DHCP & Authentification](tome-p0/jour-26.md) |
+| **J027** | [Virtualisation — Proxmox, KVM & LXC](tome-p0/jour-27.md) |
+| **J028** | [Sauvegarde & Restauration — Stratégies & Outils](tome-p0/jour-28.md) |
+| **J029** | [PKI & Certificats X.509 — CA, TLS & HTTPS](tome-p0/jour-29.md) |
+| **J030** | [Projet Synthétique Semestre 1 — Partie 3](tome-p0/jour-30.md) |
+| **J031** | [Python Fondamentaux — Syntaxe, Types & Structures](tome-p0/jour-31.md) |
+| **J032** | [Python — Fonctions, Modules & POO](tome-p0/jour-32.md) |
+| **J033** | [Python — Fichiers, Exceptions & Regex](tome-p0/jour-33.md) |
+| **J034** | [Python — Automatisation Système & API REST](tome-p0/jour-34.md) |
+| **J035** | [SQL Fondamentaux — PostgreSQL, SELECT & JOINs](tome-p0/jour-35.md) |
+| **J036** | [SQL Avancé — Index, Transactions & Optimisation](tome-p0/jour-36.md) |
+| **J037** | [Réseaux TCP/IP — Modèle OSI, IPv4/IPv6 & Subnetting](tome-p0/jour-37.md) |
+| **J038** | [Réseaux — Routage, VLANs & Protocoles Avancés](tome-p0/jour-38.md) |
+| **J039** | [Sécurité Fondamentale — CIA Triad & OWASP Top 10](tome-p0/jour-39.md) |
+| **J040** | [Projet Synthétique Semestre 1 — Partie 4](tome-p0/jour-40.md) |
+| **J041** | [Linux — Administration Avancée & Kernel Tuning](tome-p0/jour-41.md) |
+| **J042** | [Linux — Performances & Diagnostic Avancé](tome-p0/jour-42.md) |
+| **J043** | [Conteneurisation — Kubernetes Fondamentaux & Pods](tome-p0/jour-43.md) |
+| **J044** | [Cloud — AWS/Azure Introduction & IAM](tome-p0/jour-44.md) |
+| **J045** | [DevOps — CI/CD & Pipeline GitHub Actions](tome-p0/jour-45.md) |
+| **J046** | [Infrastructure as Code — Terraform Fondamentaux](tome-p0/jour-46.md) |
+| **J047** | [Monitoring Cloud — Grafana, Prometheus & Alertes](tome-p0/jour-47.md) |
+| **J048** | [Révision Intensive Semestre 1](tome-p0/jour-48.md) |
+| **J049** | [Simulation Examen Semestre 1 (50 QCM)](tome-p0/jour-49.md) |
+| **J050** | [Grand Examen de Synthèse S1 & Validation Jalon](tome-p0/jour-50.md) |
+
+---
+
+### 📡 Semestre 2 — Réseaux & Télécoms (J051 – J100)
+
+[**→ Accéder au Semestre 2 complet (50 leçons)**](tome-p2.md)
+
+---
+
+### 🐍 Semestre 3 — Python, Bash & Code (J101 – J150)
+
+[**→ Accéder au Semestre 3 complet (50 leçons)**](tome-p3a.md)
+
+---
+
+### 🗄️ Semestre 4 — Bases de Données & Data (J151 – J200)
+
+[**→ Accéder au Semestre 4 complet (50 leçons)**](tome-p3b.md)
+
+---
+
+### ⚡ Semestre 5 — Web Full-Stack & APIs (J201 – J250)
+
+[**→ Accéder au Semestre 5 complet (50 leçons)**](tome-p3c.md)
+
+---
+
+### ☁️ Semestre 6 — Cloud, DevOps & Projet Bachelor (J251 – J300)
+
+[**→ Accéder au Semestre 6 complet (50 leçons)**](tome-p4.md)
+
+---
+
+## 🛡️ CYCLE 2 — Master Cybersécurité (J301 à J600)
+
+### 🔴 Semestre 7 — Offensive Security & Red Team (J301 – J350)
+
+[**→ Accéder au Semestre 7 complet (50 leçons)**](tome-p5.md)
+
+---
+
+### 🔵 Semestre 8 — Blue Team, SOC & SIEM (J351 – J400)
+
+[**→ Accéder au Semestre 8 — Vue d'ensemble**](tome-p6-intro.md)
+
+---
+
+### 🔐 Semestre 9 — Cryptographie Avancée & PKI (J401 – J450)
+
+[**→ Accéder au Semestre 9 complet**](tome-p6.md)
+
+---
+
+### 🔬 Semestres 10 à 12 — DFIR, MLSecOps & Gouvernance (J451 – J600)
+
+[**→ Table des matières complète (600 jours)**](table-des-matieres.md)
+
+---
+
+> *Chaque semestre compte 50 leçons à raison de 5 à 6 heures par jour. Un examen de synthèse valide chaque semestre (score minimum 75%).*
