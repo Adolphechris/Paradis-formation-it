@@ -15,44 +15,43 @@
     // Banque de données spécialisée pour les Annexes
     // -----------------------------------------------------------------------
     const ANNEX_DATA = {
-        bcc: {
-            title: "🏛️ BCC & Normes Bancaires",
+        grc: {
+            title: "🏛️ GRC, ISO 27001 & Architecture Zero-Trust",
             flashcards: [
-                { term: "BCC", def: "Banque Centrale du Congo — Institution d'émission et de régulation monétaire de la RDC." },
-                { term: "SWIFT", def: "Society for Worldwide Interbank Financial Telecommunication — Réseau sécurisé de messagerie interbancaire." },
-                { term: "RTGS", def: "Real-Time Gross Settlement — Système de règlement brut en temps réel pour gros montants." },
-                { term: "ITIL", def: "Information Technology Infrastructure Library — Référentiel des meilleures pratiques de gestion des services IT." },
                 { term: "ISO 27001", def: "Norme internationale définissant les exigences pour le Système de Management de la Sécurité de l'Information (SMSI)." },
+                { term: "Zero-Trust (NIST SP 800-207)", def: "Principe de sécurité 'Ne jamais faire confiance, toujours vérifier' appliqué à chaque requête." },
                 { term: "PCA / PRA", def: "Plan de Continuité d'Activité (maintien du service) / Plan de Reprise d'Activité (reconstruction du SI après sinistre)." },
-                { term: "KYC / AML", def: "Know Your Customer (vérification d'identité) / Anti-Money Laundering (Lutte contre le blanchiment de capitaux)." }
+                { term: "ITIL v4", def: "Référentiel des meilleures pratiques de gestion des services IT et gouvernance d'entreprise." },
+                { term: "EBIOS RM / NIST CSF", def: "Méthodes d'analyse de risques et cadres de cybersécurité pour les infrastructures critiques." },
+                { term: "GDPR / RGPD & Compliance", def: "Cadre réglementaire de protection des données personnelles et d'audit de conformité." }
             ],
             questions: [
                 {
-                    id: "annex-bcc-1",
-                    question: "Que signifie le protocole SWIFT dans le domaine interbancaire ?",
+                    id: "annex-grc-1",
+                    question: "Quel principe fondamental définit l'architecture Zero-Trust (NIST SP 800-207) ?",
                     choices: [
-                        "Système de paiement sans contact sur smartphone",
-                        "Réseau mondial sécurisé d'échange de messages financiers entre institutions bancaires",
-                        "Langage de programmation créé par Apple pour iOS",
-                        "Format de compression de fichiers bancaires"
+                        "Faire confiance au réseau interne et bloquer uniquement l'extérieur",
+                        "Ne jamais faire confiance, toujours vérifier explicitement chaque accès et chaque identité",
+                        "Chiffrer uniquement les sauvegardes mensuelles",
+                        "Utiliser un seul mot de passe pour tous les serveurs"
                     ],
                     correct_index: 1,
-                    explanation: "SWIFT est le réseau standard international utilisé par les banques (dont la BCC) pour échanger des ordres de virement sécurisés."
+                    explanation: "Le Zero-Trust impose l'authentification et l'autorisation systématiques à chaque flux, sans supposer la sécurité du réseau local."
                 },
                 {
-                    id: "annex-bcc-2",
+                    id: "annex-grc-2",
                     question: "Quelle est la différence fondamentale entre le PCA et le PRA ?",
                     choices: [
                         "Le PCA s'occupe du réseau et le PRA s'occupe des ordinateurs",
                         "Le PCA vise le maintien continu de l'activité en crise, tandis que le PRA planifie la reconstruction complète du SI après un sinistre",
-                        "Le PCA est réservé aux banques privées et le PRA aux banques centrales",
+                        "Le PCA est réservé au cloud et le PRA à l'on-premise",
                         "Il n'y a aucune différence, ce sont des synonymes"
                     ],
                     correct_index: 1,
                     explanation: "Le PCA évite l'interruption de service pendant la crise, le PRA remet en état l'infrastructure après l'interruption."
                 },
                 {
-                    id: "annex-bcc-3",
+                    id: "annex-grc-3",
                     question: "Quelle norme internationale définit les exigences du SMSI (Système de Management de la Sécurité de l'Information) ?",
                     choices: ["ISO 9001", "ISO 27001", "ITIL v4", "PCI-DSS 4.0"],
                     correct_index: 1,
@@ -196,19 +195,32 @@
         sprintHighScore: 0
     };
 
-    // -----------------------------------------------------------------------
-    // Initialisation
-    // -----------------------------------------------------------------------
-    document.addEventListener('DOMContentLoaded', init);
-
     function init() {
-        if (!document.getElementById('annex-eval-app')) return;
+        const app = document.getElementById('annex-eval-app');
+        if (!app) return;
 
         injectStyles();
         loadState();
         bindEvents();
         updateDashboardUI();
     }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        setTimeout(init, 100);
+    }
+
+    window.addEventListener('popstate', () => setTimeout(init, 100));
+    window.addEventListener('hashchange', () => setTimeout(init, 100));
+
+    setInterval(() => {
+        const app = document.getElementById('annex-eval-app');
+        if (app && !app.dataset.initialized) {
+            app.dataset.initialized = 'true';
+            init();
+        }
+    }, 400);
 
     // -----------------------------------------------------------------------
     // Injection des Styles CSS Dynamiques

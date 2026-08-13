@@ -590,16 +590,26 @@
         }
     }
 
-    // Mise à jour automatique après connexion
-    window.addEventListener('paradis:session-changed', () => setTimeout(renderDashboard, 300));
-    window.addEventListener('paradis:study-status-changed', () => setTimeout(renderDashboard, 300));
+    // Écouteurs globaux & Détection continue pour MkDocs Instant Navigation
+    window.addEventListener('paradis:session-changed', () => setTimeout(renderDashboard, 200));
+    window.addEventListener('paradis:study-status-changed', () => setTimeout(renderDashboard, 200));
+    window.addEventListener('popstate', () => setTimeout(renderDashboard, 100));
+    window.addEventListener('hashchange', () => setTimeout(renderDashboard, 100));
 
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', renderDashboard);
     } else {
-        setTimeout(renderDashboard, 200);
+        setTimeout(renderDashboard, 100);
     }
 
+    // Surveillance active du DOM (garantit le rendu lors de la navigation MkDocs)
+    setInterval(() => {
+        const anchor = document.getElementById('student-dashboard-root');
+        if (anchor && anchor.children.length <= 1) {
+            renderDashboard();
+        }
+    }, 400);
+
     window.ParadisStudentDashboard = { refresh: renderDashboard };
-    console.info('[PARADIS] Student Dashboard initialisé.');
+    console.info('[PARADIS] Student Dashboard initialisé avec succès.');
 })();

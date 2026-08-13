@@ -1,7 +1,12 @@
-# 🧪 Espace Évaluation des Annexes & Fiches de Révision
+---
+title: "Espace Évaluation des Annexes — PARADIS IT Masterclass (600 Jours)"
+description: "Studio d'évaluation et de mémorisation des fiches techniques, acronymes, commandes Linux, SQL, réseaux, cybersécurité et normes GRC Zero-Trust."
+---
+
+# 🧪 Studio d'Évaluation des Annexes & Fiches Techniques
 
 > [!NOTE]
-> **Espace Indépendant d'Évaluation des Annexes** : Cet espace dédié vous permet de tester votre compréhension, de travailler votre mémoire à long terme et de mesurer votre taux de maîtrise sur les acronymes, commandes Linux, syntaxes SQL/Python, ports réseau et normes bancaires de la BCC.
+> **Référentiel Constitutionnel :** Cet espace d'évaluation est régi par la **[Constitution PARADIS IT](feuille-de-route.md)**. Il vous permet de tester votre mémoire à long terme, de mesurer votre taux de maîtrise et d'ancrer vos connaissances sur les 6 piliers d'expertise du cursus 600 Jours.
 
 ---
 
@@ -10,15 +15,15 @@
   <div class="annex-eval-hero">
     <div class="annex-eval-header-card">
       <div class="annex-badge-container">
-        <span class="annex-badge">🧪 Espace Évaluation Dédié</span>
-        <span class="annex-status-pill" id="annex-mastery-pill">Maîtrise Global : 0%</span>
+        <span class="annex-badge">🧪 Studio d'Évaluation 600 Jours</span>
+        <span class="annex-status-pill" id="annex-mastery-pill">Maîtrise Globale : 0%</span>
       </div>
       <h2>Studio de Mémorisation & Évaluation des Annexes</h2>
-      <p>Entraînez-vous de manière autonome sur les fiches de synthèse, le dictionnaire des acronymes et la ligne de commande.</p>
+      <p>Entraînez-vous de manière autonome sur les 6 axes de compétences, le dictionnaire d'acronymes, les commandes systèmes et les règles d'architecture Zero-Trust.</p>
 
       <div class="annex-stats-grid">
         <div class="annex-stat-item">
-          <div class="annex-stat-val" id="annex-stat-completed">0 / 5</div>
+          <div class="annex-stat-val" id="annex-stat-completed">0 / 6</div>
           <div class="annex-stat-lbl">Domaines Validés (≥75%)</div>
         </div>
         <div class="annex-stat-item">
@@ -40,10 +45,10 @@
 
   <div class="annex-domain-selector">
     <button class="annex-domain-btn active" data-domain="all">
-      🌐 Tous les Domaines
+      🌐 Tous les Domaines (Masterclass)
     </button>
-    <button class="annex-domain-btn" data-domain="bcc">
-      🏛️ BCC & Normes Bancaires
+    <button class="annex-domain-btn" data-domain="grc">
+      🏛️ GRC, ISO 27001 & Zero-Trust
     </button>
     <button class="annex-domain-btn" data-domain="linux">
       🐧 Linux & Shell Bash
@@ -82,7 +87,7 @@
     <div class="annex-mode-card" id="mode-btn-sprint">
       <div class="mode-icon">⚡</div>
       <h4>Sprint Mémorisation (Chrono 60s)</h4>
-      <p>Testez la rapidité de vos réflexes sur les acronymes et ports réseau en 60 secondes chrono.</p>
+      <p>Testez la rapidité de vos réflexes sur les acronymes, commandes et ports réseau en 60 secondes chrono.</p>
       <button class="mode-start-btn">Lancer le Sprint</button>
     </div>
   </div>
@@ -98,11 +103,3 @@
     </div>
   </div>
 </div>
-
----
-
-## 📌 Astuce Pédagogique Mémorisation
-Pour ancrer durablement les acronymes et syntaxes dans votre mémoire :
-1. Effectuez **1 session de Flashcards** par jour.
-2. Validez le **Test QCM à 75%** sur chaque domaine.
-3. Testez votre vitesse avec le **Sprint Chrono** avant de passer les examens de fin de tome.
