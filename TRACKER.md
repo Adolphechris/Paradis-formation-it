@@ -7,10 +7,9 @@ _Regénéré sur des bases saines — sans dépendance à l'ancien tracker_
 
 | Document | Rôle |
 |:---|:---|
-| `00-cahier-des-charges/cahier-des-charges-v3.0.md` | Vision produit, critères d'acceptation, déploiement cible |
-| `00-cahier-des-charges/plan-de-developpement-42-sprints-v2-enrichi.md` | Plan d'exécution atomique (1 PR par sprint) |
-| `01-feuille-de-route/feuille-de-route-v2.2.md` | Feuille de route opérationnelle |
-| `01-feuille-de-route/table-des-matieres-45jours.md` | Planning jour par jour |
+| `docs/feuille-de-route.md` | 🏛️ Constitution & Loi Fondamentale — Norme suprême |
+| `00-cahier-des-charges/cahier-des-charges-600jours-v1.0.md` | Cahier des charges technique — Programme 600 Jours / 12 Semestres |
+| `docs/table-des-matieres.md` | Table des matières complète des 600 leçons |
 
 ---
 

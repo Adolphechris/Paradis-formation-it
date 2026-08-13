@@ -142,7 +142,7 @@ Cible de déploiement : GitHub Pages (`https://adolphechris.github.io/Paradis-fo
 | Job | Test | Statut |
 |:---|:---|:---:|
 | build | Checkout → Python → deps → inject secrets → mkdocs build → upload artifact | ✅ Configuré |
-| test | 45 jours HTML + search_index.json + tomes + scan anti-secrets | ✅ Configuré |
+| test | 600 jours HTML (12 Semestres) + search_index.json + tomes + scan anti-secrets | ✅ Configuré |
 | deploy | GitHub Pages (`actions/deploy-pages@v4`) | ✅ Configuré |
 
 ---
@@ -165,13 +165,10 @@ Cible de déploiement : GitHub Pages (`https://adolphechris.github.io/Paradis-fo
 
 | Document | Lignes | Statut |
 |:---|:---:|:---:|
-| `cahier-des-charges-v3.0.md` | 634 | ✅ FINAL |
-| `cahier-des-charges-merged.md` | 168 | ✅ |
-| `plan-de-developpement-42-sprints-v2-enrichi.md` | ~880 | ✅ |
-| `feuille-de-route-v2.2.md` | 276 | ✅ |
-| `table-des-matieres-45jours.md` | ~160 | ✅ |
+| `cahier-des-charges-600jours-v1.0.md` | 152 | ✅ FINAL |
+| `feuille-de-route.md` (Constitution) | En ligne | ✅ |
 | `docs/runbook.md` (Sprint 41) | ~180 | ✅ Fait |
-| `docs/go-live-checklist.md` (Sprint 42) | Ce document | ✅ Fait |
+| `docs/go-live-checklist.md` | Ce document | ✅ Fait |
 | `TRACKER.md` | Régénéré | ✅ |
 
 ---

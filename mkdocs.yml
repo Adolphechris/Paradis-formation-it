@@ -136,12 +136,12 @@ nav:
   - Feuille de route: feuille-de-route.md
   - Table des matières (600 jours): table-des-matieres.md
   - 🎓 CYCLE 1 — BACHELOR BIT (Bac+3):
-      - Semestre 1 — Socle Système (J001-J050): tome-p0.md
-      - Semestre 2 — Réseaux & Télécoms (J051-J100): tome-p2.md
-      - Semestre 3 — Python & Bash (J101-J150): tome-p3a.md
-      - Semestre 4 — Data & SQL (J151-J200): tome-p3b.md
-      - Semestre 5 — Web & APIs REST (J201-J250): tome-p3c.md
-      - Semestre 6 — Cloud, DevOps & Projet Bachelor (J251-J300): tome-p4.md
+      - Semestre 1 — Socle Système (J001-J050): tome-p0/jour-01.md
+      - Semestre 2 — Réseaux & Télécoms (J051-J100): tome-p2/jour-51.md
+      - Semestre 3 — Python & Bash (J101-J150): tome-p3/jour-101.md
+      - Semestre 4 — Data & SQL (J151-J200): tome-p4/jour-151.md
+      - Semestre 5 — Web & APIs REST (J201-J250): tome-p5/jour-201.md
+      - Semestre 6 — Cloud, DevOps & Projet Bachelor (J251-J300): tome-p6-intro.md
   - 🛡️ CYCLE 2 — MASTER CYBERSÉCURITÉ (Bac+5):
       - Semestre 6 — Cybersécurité Avancée Expert (J251-J300):
           - Vue d'ensemble S6: tome-p6-intro.md

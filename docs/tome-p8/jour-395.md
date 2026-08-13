@@ -560,7 +560,7 @@ bcc_portfolio:
 ## ❓ Banque de Questions & Test du Jour
 
 **Q1 :** Pourquoi un examen de synthèse final est-il nécessaire à la fin du Semestre 8 ?
-- A) Parce qu'il valide l'acquisition de l'ensemble des compétences Blue Team/SOC/SIEM sur 45 jours de formation intensive — sans cet examen, l'étudiant ne peut pas certifier sa maîtrise opérationnelle du SOC avant de poursuivre vers les certifications professionnelles (GSEC, CISSP, GCIH)
+- A) Parce qu'il valide l'acquisition de l'ensemble des compétences Blue Team/SOC/SIEM du Semestre 8 — sans cet examen, l'étudiant ne peut pas certifier sa maîtrise opérationnelle du SOC avant de poursuivre vers les certifications professionnelles (GSEC, CISSP, GCIH)
 - B) Parce que c'est la seule façon d'obtenir un diplôme
 - C) Parce que les examens sont obligatoires
 - D) Parce que les QCM sont plus faciles que les TP

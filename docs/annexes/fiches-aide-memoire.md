@@ -1,7 +1,7 @@
 # Annexes — Fiches Aide-Mémoire & Synthèses Techniques
 
 > [!NOTE]
-> Ces fiches de révision condensées regroupent les commandes, syntaxes et règles indispensables pour réussir l'examen de certification BCC et briller en environnement bancaire professionnel.
+> Ces fiches de révision condensées regroupent les commandes, syntaxes et règles indispensables pour maîrtriser les compétences fondamentales de la **PARADIS IT Masterclass 600 Jours** et exceller en environnement professionnel IT.
 
 ---
 
@@ -148,4 +148,4 @@ git merge feature        # Fusionner une branche dans la branche courante
 
 ---
 
-*Fiches Aide-Mémoire Officielles — PARADIS IT BCC 2026*
+*Fiches Aide-Mémoire Officielles — PARADIS IT Masterclass 600 Jours (3 300h / 12 Semestres)*

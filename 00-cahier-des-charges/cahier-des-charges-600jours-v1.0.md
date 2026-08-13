@@ -43,23 +43,20 @@ La plateforme accompagne l'apprenant depuis les fondamentaux des systèmes Linux
 
 ---
 
-### 1.2. Stratégie d'Éclipsement & Alignement du Cursus 600 Jours
+### 1.2. Architecture du Cursus Masterclass 600 Jours
 
-Le **Semestre 1 initial (`docs/tome-p0/`, J1 à J50 - Fondamentaux Linux, Shell & Administration Systèmes)** est **100% préservé, intact et inchangé**. Aucun fichier de cours d'origine n'a été modifié ou supprimé.
+La plateforme **PARADIS IT Masterclass** est conçue depuis son origine comme un cursus d'élite de **600 Jours / 12 Semestres (3 300h)**. Il n'existe aucun autre référentiel antérieur ou concurrent : ce programme est le standard fondateur et l'unique boussole pédagogique de la plateforme.
 
-L'éclipsement s'applique uniquement à l'ancienne formulation de cadrage (l'ancien document v3.0 qui limitait la vision à un sprint court de 45 jours) :
-
-1. **Préservation Intégrale du Semestre 1 Initial (`docs/tome-p0/`) :** Les 50 jours du Semestre 1 (Fondamentaux Linux, Git, Shell scripting, Administration Système) constituent la fondation absolue du cursus 600 jours.
-2. **Éclipsement du Document de Cadrage 45 Jours :** Le nouveau Cahier des Charges v1.0 remplace le document de cadrage v3.0. L'interface utilisateur (`index.md`), les compteurs globaux et le tableau de bord affichent désormais la vision complète des **12 Semestres (600 Jours, 3 300h au rythme de 5h-6h/j)**.
-3. **Prêt pour Implémentation :** Ce Cahier des Charges v1.0 est **100% prêt et opérationnel pour l'implémentation**, avec l'ensemble des 600 jours déjà rédigés dans le code, indexés dans `mkdocs.yml`, et qualifiés par 160/160 tests automatisés.
+1. **Semestre 1 (`docs/tome-p0/`, J1–J50) :** Fondamentaux Linux CLI, Administration Système, Git, Docker, PKI.
+2. **Semestres 2 à 6 :** Réseaux, Python/Bash, SQL, Web Full-Stack, Cloud/DevOps et Grand Projet Bachelor BIT.
+3. **Semestres 7 à 12 :** Master Cybersécurité, Cryptographie PQC, DFIR, MLSecOps, DevSecOps, GRC et Grand Capstone Final.
 
 ```mermaid
 graph TD
-    A[Ancien Parcours 45 Jours - BCC] -->|Absorbé & Enrichi| B[Semestres 1 & 2 : Socle & Fondations (5-6h/j)]
-    B --> C[Semestres 3 à 5 : Sysadmin, Data, Web, Cloud & K8s]
-    C --> D[Semestres 6 à 8 : Pentesting, AppSec, Hardening & EDR]
-    D --> E[Semestres 9 à 12 : Cryptographie PQC, DFIR, DevSecOps, GRC & Zero-Trust]
-    E --> F[600 Jours — Master Class Ultimate Capstone (3 300h)]
+    A[Semestres 1 & 2 : Socle Système & Réseaux] --> B[Semestres 3 à 6 : Python, SQL, Web & Cloud]
+    B --> C[Semestres 7 à 9 : Cybersécurité Expert & Cryptographie PQC]
+    C --> D[Semestres 10 à 12 : DFIR, MLSecOps, GRC & Capstone Final]
+    D --> E[600 Jours — PARADIS IT Masterclass (3 300h)]
 ```
 
 ---

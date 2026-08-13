@@ -76,31 +76,31 @@ description: "Votre auditoire virtuel : 600 leçons organisées en 12 semestres.
 
 ### 📡 Semestre 2 — Réseaux & Télécoms (J051 – J100)
 
-[**→ Accéder au Semestre 2 complet (50 leçons)**](tome-p2.md)
+[**→ Accéder au Semestre 2 complet (50 leçons)**](tome-p2/jour-51.md)
 
 ---
 
 ### 🐍 Semestre 3 — Python, Bash & Code (J101 – J150)
 
-[**→ Accéder au Semestre 3 complet (50 leçons)**](tome-p3a.md)
+[**→ Accéder au Semestre 3 complet (50 leçons)**](tome-p3/jour-101.md)
 
 ---
 
 ### 🗄️ Semestre 4 — Bases de Données & Data (J151 – J200)
 
-[**→ Accéder au Semestre 4 complet (50 leçons)**](tome-p3b.md)
+[**→ Accéder au Semestre 4 complet (50 leçons)**](tome-p4/jour-151.md)
 
 ---
 
 ### ⚡ Semestre 5 — Web Full-Stack & APIs (J201 – J250)
 
-[**→ Accéder au Semestre 5 complet (50 leçons)**](tome-p3c.md)
+[**→ Accéder au Semestre 5 complet (50 leçons)**](tome-p5/jour-201.md)
 
 ---
 
 ### ☁️ Semestre 6 — Cloud, DevOps & Projet Bachelor (J251 – J300)
 
-[**→ Accéder au Semestre 6 complet (50 leçons)**](tome-p4.md)
+[**→ Accéder au Semestre 6 complet (50 leçons)**](tome-p6-intro.md)
 
 ---
 
@@ -108,19 +108,19 @@ description: "Votre auditoire virtuel : 600 leçons organisées en 12 semestres.
 
 ### 🔴 Semestre 7 — Offensive Security & Red Team (J301 – J350)
 
-[**→ Accéder au Semestre 7 complet (50 leçons)**](tome-p5.md)
+[**→ Accéder au Semestre 7 complet (50 leçons)**](tome-p7/jour-301.md)
 
 ---
 
 ### 🔵 Semestre 8 — Blue Team, SOC & SIEM (J351 – J400)
 
-[**→ Accéder au Semestre 8 — Vue d'ensemble**](tome-p6-intro.md)
+[**→ Accéder au Semestre 8 complet (50 leçons)**](tome-p8/jour-351.md)
 
 ---
 
 ### 🔐 Semestre 9 — Cryptographie Avancée & PKI (J401 – J450)
 
-[**→ Accéder au Semestre 9 complet**](tome-p6.md)
+[**→ Accéder au Semestre 9 complet (50 leçons)**](tome-p9/jour-401.md)
 
 ---
 
