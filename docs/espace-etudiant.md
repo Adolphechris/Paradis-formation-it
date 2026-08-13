@@ -43,15 +43,16 @@ description: "Auditoire virtuel d'apprentissage : commencez à étudier dès le 
 ### 🎓 Cycle 1 — Bachelor in Information Technology (BIT — Bac+3)
 - **[Semestre 1 — Socle Système Linux & Admin Sys (J001 - J050)](tome-p0.md)** : 50 leçons pratiques d'installation, ligne de commande, permissions et services.
 - **[Semestre 2 — Réseaux & Télécoms Avancés (J051 - J100)](tome-p2.md)** : Modèle TCP/IP, routage, VLANs, Wireshark et administration réseau.
-- **[Semestre 3 — Virtualisation Proxmox & Stockage (J101 - J150)](tome-p3a.md)** : Hyperviseurs, conteneurs LXC, stockage distribué et clustering.
-- **[Semestre 4 — Cloud AWS/Azure & Terraform IaC (J151 - J200)](tome-p3b.md)** : Déploiement d'infrastructures Cloud as Code et VPC.
-- **[Semestre 5 — Docker, Kubernetes & GitOps (J201 - J250)](tome-p3c.md)** : Orchestration de conteneurs, clusters K8s et déploiement continu.
-- **[Semestre 6 — Grand Projet Bachelor & Synthèse (J251 - J300)](tome-p4.md)** : Projets d'intégration complets et validation du Cycle 1.
+- **[Semestre 3 — Python, Bash & Compréhension du Code (J101 - J150)](tome-p3a.md)** : Scripting, automatisation système et inspection de code.
+- **[Semestre 4 — Bases de Données, SQL & Data (J151 - J200)](tome-p3b.md)** : PostgreSQL, SQL avancé, ETL et prévention des injections SQL.
+- **[Semestre 5 — Web Full-Stack & APIs REST (J201 - J250)](tome-p3c.md)** : HTML5/CSS3, Node.js, React et ateliers OWASP Top 10.
+- **[Semestre 6 — Cloud, DevOps & Grand Projet Bachelor (J251 - J300)](tome-p4.md)** : Docker, Kubernetes, AWS/Azure et projet synthétique Cycle 1.
 
 ### 🛡️ Cycle 2 — Master Cybersécurité & Executive IT (Bac+5)
-- **[Semestre 7 — Pentesting & Active Directory Offensif (J301 - J350)](tome-p5.md)** : Audits d'intrusion, OWASP Top 10 et attaques d'infrastructures.
-- **[Semestre 8 — Blue Team, SOC, SIEM & Threat Hunting (J351 - J400)](tome-p6.md)** : Centre de supervision de sécurité, EDR, règles SIGMA et réponse à incident.
-- **[Semestre 9 — Cryptographie Avancée & Post-Quantique (J401 - J450)](tome-p7.md)** : PKI entreprise, chiffrements modernes et sécurité des transactions.
-- **[Semestre 10 — DFIR & Reverse Engineering Malware (J451 - J500)](tome-p8.md)** : Forensique mémoire/disque avec Volatility 3 et analyse Ghidra.
-- **[Semestre 11 — DevSecOps & AI Security (J501 - J550)](tome-p9.md)** : Sécurisation de la supply chain logicielle, MLOps et red teaming IA.
-- **[Semestre 12 — Gouvernance GRC & Grand Capstone Master (J551 - J600)](tome-p10.md)** : Normes ISO 27001, Zero-Trust et projet intégrateur final.
+- **[Semestre 6+ — Cybersécurité Avancée Expert (J251 - J300)](tome-p5.md)** : Pentest avancé, PQC, Cloud Security et GRC.
+- **[Semestre 7 — Certifications d'Élite & Spécialisations (J301 - J350)](tome-p6-intro.md)** : OSCP+, CKS, CISSP/CISM, GREM et Cloud Security Specialty.
+- **[Semestre 8 — Blue Team, SOC & SIEM Advanced (J351 - J400)](tome-p6.md)** : SOC Operations, SIGMA, SOAR, EDR/XDR et Threat Hunting.
+- **[Semestre 9 — Cryptographie Avancée & PKI (J401 - J450)](qcm.md)** : AES-GCM, RSA, PKI Enterprise, PQC et Zero-Trust Workload Identity.
+- **[Semestre 10 — DFIR & Reverse Engineering (J441 - J500)](table-des-matieres.md)** : Volatility 3, Ghidra, Malware Analysis et Incident Response.
+- **[Semestre 11 — AI/ML Security & MLOps (J451 - J500)](apercu.md)** : LLMs, RAG, MLOps et Red Teaming IA.
+- **[Semestre 12 — DevSecOps, GRC & Grand Capstone (J551 - J600)](feuille-de-route.md)** : ISO 27001, Zero-Trust Enterprise, CISO Leadership et Capstone Final.
