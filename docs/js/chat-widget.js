@@ -11,61 +11,59 @@
     'use strict';
 
     // ── Prompt système PARADIS ─────────────────────────────────────────────────
-    const SYSTEM_PROMPT = `Tu es le Tuteur IA de PARADIS IT, une plateforme universitaire de formation IT Bancaire.
+    const SYSTEM_PROMPT = `Tu es le Tuteur IA de PARADIS IT, une plateforme universitaire de formation IT d'élite (Bachelor BIT -> Master Expert Cybersécurité).
 
-Programme : 45 jours intensifs, 630 heures, 7 tomes.
-- P0 (J1-J3) : Fondamentaux IT — Support, bureautique, Web, Git, Linux
-- P2 (J4-J11) : Fondations — Python, SQL, Réseaux TCP/IP, Bash
-- P3A (J12-J17) : Administration Système — Linux, Windows Server, Active Directory
-- P3B (J18-J22) : Bases de données — PostgreSQL, analytique, BI
-- P3C (J23-J28) : Développement Web — HTML/CSS/JS, API REST
-- P4 (J29-J35) : Cloud & Sécurité — AWS/Azure, SWIFT, RTGS, monétique BCC
-- P5 (J36-J41) : Préparation BCC — QCM, examens blancs
-- P6 (J42-J45) : Portfolio — Projets, rapport d'employabilité, soutenance
+Programme : 600 jours intensifs, 12 semestres (Tomes P0 à P12), 3 300h de formation pratique (5-6h/jour).
+- S1 (P0, J1-J50) : Fondamentaux Linux, Shell, Admin Système & Support
+- S2 (P2, J51-J100) : Réseaux & Télécoms Avancés, BGP/OSPF, SDN
+- S3 (P3, J101-J150) : Virtualisation Proxmox/KVM, Stockage SAN/NAS & Ceph
+- S4 (P4, J151-J200) : Cloud Computing AWS/Azure, Terraform & IaC
+- S5 (P5, J201-J250) : Conteneurs Docker, Kubernetes, Helm & GitOps
+- S6 (P6, J251-J300) : Pentesting, Active Directory Offensif & Red Team (OSCP+ prep)
+- S7 (P7, J301-J350) : Application Security, OWASP Top 10 & AppSec (CKS prep)
+- S8 (P8, J351-J400) : Hardening OS, IAM, PAM, EDR/XDR & SOC Operations (CISSP prep)
+- S9 (P9, J401-J450) : Cryptographie Avancée, PKI Enterprise, ZKP, Post-Quantique (PQC) & HSM
+- S10 (P10, J451-J500) : DFIR, Forensique Mémoire (Volatility), Ghidra & Reverse Engineering
+- S11 (P11, J501-J550) : DevSecOps, Supply Chain Security (SBOM/SLSA) & CSPM
+- S12 (P12, J551-J600) : Gouvernance GRC (ISO 27001, EBIOS RM), Zero-Trust Architecture & Grand Capstone
 
-Objectif : Préparer les étudiants aux concours IT de la Banque Centrale du Congo (BCC) et à l'employabilité dans les institutions financières de RDC.
+Objectif : Accompagner de manière socratique les étudiants vers la maîtrise complète de l'ingénierie système, cloud, DevSecOps et sécurité offensive/défensive.
 
 Règles :
-- Réponds TOUJOURS en français
-- Sois précis, pédagogique et contextualise pour le secteur bancaire en RDC
-- Cite le tome et le jour concerné quand c'est pertinent
-- Limite tes réponses à 3-4 paragraphes maximum
-- Utilise des exemples concrets liés à la BCC, aux banques ou à la RDC
-- Si la question sort du cadre IT/bancaire, redirige poliment vers le programme`;
+- Réponds TOUJOURS en français avec méthode socratique
+- Sois précis, pédagogique et guide par des questions guidées sans donner immédiatement la solution finale
+- Cite le tome, le semestre et le jour concerné quand c'est pertinent
+- Limite tes réponses à 3-4 paragraphes maximum`;
 
     // ── Base de connaissances locale (fallback) ────────────────────────────────
     const KB_FALLBACK = [
         {
             keys: ['python', 'script', 'variable', 'boucle', 'pandas', 'fonction'],
-            reply: '🐍 **Python** est au cœur du Tome P2 (J4–J11). Pour le contexte BCC, maîtrise `pandas` pour analyser des fichiers CSV de transactions, `os/subprocess` pour l\'automatisation, et `json` pour les APIs interbancaires. Consulte le Tome P2 > Jour 5-6 pour les scripts pratiques.'
+            reply: '🐍 **Python** est au cœur du Tome P2 (J4–J11). Pour le contexte entreprise, maîtrise `pandas` pour analyser des données complexes, `os/subprocess` pour l\'automatisation, et `json` pour les APIs interbancaires.'
         },
         {
             keys: ['sql', 'base de donn', 'postgresql', 'requête', 'jointure', 'select', 'table'],
-            reply: '🗄️ **SQL/PostgreSQL** est essentiel pour les SGBD bancaires (Tome P3B, J18-J22). Points clés : JOINs, INDEX pour les performances, TRANSACTIONS ACID, et vues matérialisées pour les rapports. En production BCC, utilise `EXPLAIN ANALYZE` pour optimiser les requêtes sur des millions de transactions.'
+            reply: '🗄️ **SQL/PostgreSQL** est essentiel (Tome P3B, J18-J22). Points clés : JOINs, INDEX pour les performances, TRANSACTIONS ACID, et vues matérialisées. En production, utilise `EXPLAIN ANALYZE` pour optimiser tes requêtes.'
         },
         {
-            keys: ['réseau', 'tcp', 'ip', 'dns', 'vlan', 'routeur', 'firewall', 'http'],
-            reply: '🌐 **Réseaux** (Tome P2 J8-9 + Tome P4) : le modèle OSI à 7 couches est fondamental. Pour la BCC, les VLAN segmentent le réseau (VLAN 10 opérations, VLAN 20 gestion, VLAN 30 DMZ). Maîtrise le subnetting : 192.168.10.0/26 = 62 hôtes utilisables.'
+            keys: ['réseau', 'tcp', 'ip', 'dns', 'vlan', 'routeur', 'firewall', 'http', 'bgp'],
+            reply: '🌐 **Réseaux** (Tome P2 J51-J100) : le modèle OSI, le routage BGP/OSPF et SDN. Maîtrise la segmentation VLAN et le subnetting IPv4/IPv6.'
         },
         {
-            keys: ['sécurité', 'chiffrement', 'ssl', 'tls', 'vpn', 'audit', 'malware'],
-            reply: '🔐 **Cybersécurité bancaire** (Tome P4, J29-J35) : la BCC applique ISO 27001. Piliers CIA : Confidentialité, Intégrité, Disponibilité. AES-256 pour les données au repos, TLS 1.3 en transit. Le framework NIST CSF guide les audits : Identifier, Protéger, Détecter, Répondre, Récupérer.'
-        },
-        {
-            keys: ['swift', 'rtgs', 'monétique', 'virement', 'bcc', 'banque centrale'],
-            reply: '🏦 **SWIFT & RTGS** (Tome P4) : SWIFT est le réseau mondial de messagerie financière (MT103, MT202). Le RTGS de la BCC traite les paiements interbancaires en temps réel pour les gros montants. La monétique couvre les protocoles EMV des cartes bancaires. Indispensable pour les concours BCC IT.'
+            keys: ['sécurité', 'chiffrement', 'ssl', 'tls', 'vpn', 'audit', 'malware', 'pqc', 'zkp'],
+            reply: '🔐 **Cybersécurité & Cryptographie** (Tomes P6 à P12) : ISO 27001, TLS 1.3, PQC (FIPS 203/204 ML-KEM/ML-DSA), ZKP, et Zero-Trust Architecture NIST 800-207.'
         },
         {
             keys: ['linux', 'bash', 'terminal', 'commande', 'chmod', 'systemd', 'cron'],
-            reply: '🐧 **Linux** est l\'OS de référence des serveurs bancaires (Tome P2 + P3A). Commandes BCC essentielles : `systemctl` pour les services, `journalctl` pour les logs, `crontab` pour les tâches planifiées. La maîtrise de `grep/awk/sed` est indispensable pour analyser les logs RTGS.'
+            reply: '🐧 **Linux** est l\'OS de référence des serveurs d\'entreprise (Tome P0 J1-J50). Commandes essentielles : `systemctl` pour les services, `journalctl` pour les logs, `crontab` pour les tâches planifiées.'
         },
         {
             keys: ['examen', 'concours', 'qcm', 'révision', 'préparer', 'test'],
-            reply: '📝 **Préparation BCC** (Tome P5, J36-J41) : les épreuves couvrent Culture IT, Réseaux & Sécurité, Bases de données, et Culture Bancaire. Utilise le module QCM PARADIS quotidiennement. Vise 75%+ avant de continuer. Le module Examen Blanc simule les conditions réelles.'
+            reply: '📝 **Évaluations & Examens** : les 600 jours disposent d\'évaluations quotidiennes (/100) et d\'un simulateur d\'Examen Blanc de 600 questions chrono 2h.'
         },
         {
             keys: ['aide', 'bonjour', 'salut', 'hello', 'programme', 'paradis'],
-            reply: '👋 Bonjour ! Je suis votre **Tuteur IA PARADIS**, propulsé par Google Gemini. Posez-moi vos questions sur Python, SQL, Réseaux, Sécurité, Linux, SWIFT/RTGS, ou la préparation aux concours BCC. Je suis là pour vous aider tout au long des 45 jours de formation !'
+            reply: '👋 Bonjour ! Je suis votre **Tuteur IA PARADIS**, propulsé par Google AI. Posez-moi vos questions sur Linux, Réseaux, Cloud, Kubernetes, Pentest, Cryptographie PQC, DevSecOps ou GRC. Je suis là pour vous accompagner tout au long des 600 jours de formation !'
         }
     ];
 

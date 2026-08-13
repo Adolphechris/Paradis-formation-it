@@ -4,7 +4,7 @@
  * Moteur de mise en cache hors-ligne autonome :
  *   - Mise en cache de l'application (HTML, CSS, JS) pour fonctionnement sans réseau
  */
-const CACHE_NAME = 'paradis-pwa-v1';
+const CACHE_NAME = 'paradis-pwa-v6-600days';
 const ASSETS_TO_CACHE = [
     './',
     './index.html',
@@ -27,6 +27,7 @@ self.addEventListener('activate', (event) => {
             return Promise.all(
                 keys.map((key) => {
                     if (key !== CACHE_NAME) {
+                        console.log('[PWA] Purging outdated cache:', key);
                         return caches.delete(key);
                     }
                 })

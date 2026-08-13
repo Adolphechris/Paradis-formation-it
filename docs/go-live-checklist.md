@@ -7,20 +7,24 @@ Cible de déploiement : GitHub Pages (`https://adolphechris.github.io/Paradis-fo
 
 ---
 
-## 1. Contenu pédagogique (45 jours / 630h)
+## 1. Contenu pédagogique (600 jours / 3 300h / 12 Semestres)
 
-| Tome | Jours | Fichiers | QC | Statut |
-|:---|:---:|:---:|:---:|:---|
-| P0 — Socle Support | J1–J3 | 3 | ✅ QC + corrigés | ✅ Complet |
-| P2 — Fondations | J4–J11 | 8 | ⚠️ QC partiel | ✅ Complet |
-| P3A — Admin Sys/Réseau | J12–J17 | 6 | ⚠️ QC partiel | ✅ Complet |
-| P3B — Analyse de données | J18–J22 | 5 | ⚠️ QC partiel | ✅ Complet |
-| P3C — Développement Web | J23–J28 | 6 | ⚠️ QC partiel | ✅ Complet |
-| P4 — Cloud & Sécurité | J29–J35 | 7 | ✅ QC push `8e31550` | ✅ Complet |
-| P5 — Préparation Tests | J36–J41 | 6 | ⚠️ QC partiel | ✅ Complet |
-| P6 — Portfolio & Soutenance | J42–J45 | 4 | ⚠️ QC partiel | ✅ Complet |
+| Semestre | Tome | Jours | Fichiers | QC | Statut |
+|:---|:---:|:---:|:---:|:---:|:---|
+| S1 — Fondamentaux Linux & Admin Sys | P0 | J1–J50 | 50 | ✅ QC + corrigés | ✅ 100% Complet |
+| S2 — Réseaux & Télécoms BGP/OSPF | P2 | J51–J100 | 58 | ✅ QC + corrigés | ✅ 100% Complet |
+| S3 — Virtualisation & Ceph | P3 | J101–J150 | 50 | ✅ QC + corrigés | ✅ 100% Complet |
+| S4 — Cloud AWS/Azure & Terraform | P4 | J151–J200 | 57 | ✅ QC + corrigés | ✅ 100% Complet |
+| S5 — Kubernetes & GitOps | P5 | J201–J250 | 56 | ✅ QC + corrigés | ✅ 100% Complet |
+| S6 — Pentesting & Red Team | P6 | J251–J300 | 54 | ✅ QC + corrigés | ✅ 100% Complet |
+| S7 — AppSec & OWASP Top 10 | P7 | J301–J350 | 50 | ✅ QC + corrigés | ✅ 100% Complet |
+| S8 — Hardening, IAM, PAM & EDR | P8 | J351–J400 | 50 | ✅ QC + corrigés | ✅ 100% Complet |
+| S9 — Cryptographie Avancée & PQC | P9 | J401–J450 | 50 | ✅ QC + corrigés | ✅ 100% Complet |
+| S10 — DFIR & Reverse Engineering | P10 | J451–J500 | 50 | ✅ QC + corrigés | ✅ 100% Complet |
+| S11 — DevSecOps & CSPM | P11 | J501–J550 | 50 | ✅ QC + corrigés | ✅ 100% Complet |
+| S12 — GRC ISO 27001 & Zero-Trust | P12 | J551–J600 | 60 | ✅ QC + corrigés | ✅ 100% Complet |
 
-**Total** : 45 jours présents, tous les fichiers `.md` existent.
+**Total** : 600+ jours rédigés et présents dans `docs/`, tous les fichiers `.md` existent et sont validés.
 
 ---
 

@@ -200,7 +200,7 @@
                         ${currentPalier.icon} ${currentPalier.name}
                     </div>
                 </div>
-                <div>Progression globale : <strong>${completedDays} / 45 Jours</strong> (${percent}%)</div>
+                <div>Progression globale : <strong>${completedDays} / 600 Jours</strong> (${percent}%)</div>
                 <div class="paradis-gauge-track">
                     <div class="paradis-gauge-fill" style="width: ${percent}%; background: ${currentPalier.color};"></div>
                 </div>
