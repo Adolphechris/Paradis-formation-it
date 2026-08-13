@@ -381,7 +381,7 @@
     }
 
     function getNextLessonUrl(dayNum) {
-        if (dayNum >= 45) return null;
+        if (dayNum >= 600) return null;
         const next = dayNum + 1;
         const nextId = 'jour-' + String(next).padStart(2, '0');
         const engine = window.ParadisStudySession;
@@ -418,7 +418,7 @@
 
         bar.innerHTML = `
             <div class="psb-lesson-info">
-                <span class="psb-day-label">📖 Phase ${meta.tome || ''} · Jour ${dayNum} / 45</span>
+                <span class="psb-day-label">📖 Phase ${meta.tome || ''} · Jour ${dayNum} / 600</span>
                 <span class="psb-lesson-title">${meta.title || dayId}</span>
             </div>
             <div id="psb-timer" class="psb-timer">${currentTimeStr}</div>
@@ -553,7 +553,7 @@
                         <span class="pcm-stat-lbl">Temps étudié</span>
                     </div>
                     <div class="pcm-stat-item">
-                        <span class="pcm-stat-val">${dayNum}<span style="font-size:0.9rem;color:#64748b">/45</span></span>
+                        <span class="pcm-stat-val">${dayNum}<span style="font-size:0.9rem;color:#64748b">/600</span></span>
                         <span class="pcm-stat-lbl">Jours validés</span>
                     </div>
                 </div>

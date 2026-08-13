@@ -15,7 +15,7 @@
 (function () {
     'use strict';
 
-    const TOTAL_DAYS = 45;
+    const TOTAL_DAYS = 600;
 
     // ------------------------------------------------------------------
     // Styles intégrés

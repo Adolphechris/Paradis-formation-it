@@ -189,7 +189,7 @@
 
         // Calcule le lien du jour suivant
         let nextHTML = '<div></div>';
-        if (dayNum < 45) {
+        if (dayNum < 600) {
             const nextNum = dayNum + 1;
             const targetUrl = nextUrl || `../jour-${nextNum < 10 ? '0' + nextNum : nextNum}/`;
             nextHTML = `

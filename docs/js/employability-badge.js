@@ -176,7 +176,7 @@
         const completedDays = await getCompletedDaysCount();
         const currentPalier = getPalier(completedDays);
 
-        badge.innerHTML = `${currentPalier.icon} Nivo ${currentPalier.level} — ${currentPalier.name} (${completedDays}/45j)`;
+        badge.innerHTML = `${currentPalier.icon} Nivo ${currentPalier.level} — ${currentPalier.name} (${completedDays}/600j)`;
         badge.title = `Palier Actuel: ${currentPalier.name}. Cliquez pour voir votre jauge de progression.`;
         badge.onclick = toggleEmployabilityCard;
     }
@@ -190,7 +190,7 @@
 
         const completedDays = await getCompletedDaysCount();
         const currentPalier = getPalier(completedDays);
-        const percent = Math.min(100, Math.round((completedDays / 45) * 100));
+        const percent = Math.min(100, Math.round((completedDays / 600) * 100));
 
         let paliersHTML = '';
         PALIERS.forEach(p => {

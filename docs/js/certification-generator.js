@@ -136,7 +136,7 @@
                     ${studentName}
                 </div>
                 <div style="font-size: 1rem; color: #334155; line-height: 1.6;">
-                    a complété avec succès l’intégralité de la formation intensive (45 Jours) et a satisfait aux exigences de l’Examen Certifiant au titre d’
+                    a complété avec succès l’intégralité de la formation intensive (600 Jours / 12 Semestres) et a satisfait aux exigences de l’Examen Certifiant au titre d’
                     <br><strong style="color: #0b1120; font-size: 1.1rem;">OFFICIER IT & SYSTÈMES BANCAIRES (BCC)</strong>
                 </div>
                 <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 30px; font-size: 0.85rem; color: #64748b;">
