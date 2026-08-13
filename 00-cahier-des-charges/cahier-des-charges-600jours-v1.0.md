@@ -16,14 +16,14 @@
 | **Site de déploiement cible** | GitHub Pages (`https://adolphechris.github.io/Paradis-formation-it/`) |
 | **Static Generator** | MkDocs Material (Thème Slate/Default customisé) |
 | **Hébergement** | GitHub Pages (CDN Global, HTTPS automatique, CI/CD GitHub Actions) |
-| **Périmètre Pédagogique** | 600 Jours / 12 Semestres / 8 400 Heures de formation (Bachelor IT → Master Expert Cybersécurité, DevSecOps & Cloud Zero-Trust) |
+| **Périmètre Pédagogique** | 600 Jours / 12 Semestres / 5h à 6h par jour (3 300h au total) (Bachelor IT → Master Expert Cybersécurité, DevSecOps & Cloud Zero-Trust) |
 
 ---
 
 ## 1. SYNTHÈSE EXÉCUTATIVE
 
 ### 1.1. Vision du projet
-Construire et maintenir la plateforme d'apprentissage en ligne **PELP** (PARADIS E-Learning Platform) v6.0, une infrastructure d'autoformation d'élite couvrant l'intégralité du cursus **PARADIS IT Masterclass** — 600 jours d'autoformation intensive (8 400 heures) répartis en 12 semestres (Tomes P0 à P12). 
+Construire et maintenir la plateforme d'apprentissage en ligne **PELP** (PARADIS E-Learning Platform) v6.0, une infrastructure d'autoformation d'élite couvrant l'intégralité du cursus **PARADIS IT Masterclass** — 600 jours d'autoformation intensive à raison de **5 à 6 heures par jour** (3 300 heures de formation au total) répartis en 12 semestres (Tomes P0 à P12). 
 
 La plateforme accompagne l'apprenant depuis les fondamentaux des systèmes Linux et réseaux (Niveau Bachelor BIT) jusqu'aux compétences d'Expert en Cybersécurité, DevSecOps, Cryptographie Post-Quantique et Gouvernance d'Entreprise Zero-Trust (Niveau Master Expert / CISO).
 
@@ -31,19 +31,19 @@ La plateforme accompagne l'apprenant depuis les fondamentaux des systèmes Linux
 
 ### 1.2. Stratégie d'Éclipsement & Transition (Passage 45 Jours → 600 Jours)
 
-L'ancien parcours de 45 jours (version v3.0, calibrée initialement pour les concours d'entrée rapide de la Banque Centrale du Congo - BCC) est officiellement **absorbé et éclipsé** par la Masterclass 600 Jours selon le plan de transition suivant :
+L'ancien parcours de 45 jours (version v3.0, calibrée initialement pour les concours d'entrée rapide de la Banque Centrale du Congo - BCC à raison de 14h/jour irréalistes) est officiellement **absorbé et éclipsé** par la Masterclass 600 Jours selon le plan de transition suivant :
 
 1. **Intégration comme "Socle d'Accélération Initial" :** Le contenu de l'ancien parcours 45 jours constitue désormais le **Semestre 1 (J1–J50)** et le **Semestre 2 (J51–J100)** de la nouvelle Masterclass. Aucune donnée pédagogique n'est perdue ; elle est augmentée et approfondie.
-2. **Éclipsement de l'Interface UI :** L'interface utilisateur, la page d'accueil (`index.md`), le compteur de progression global, les badges et le tableau de bord basculent définitivement de l'échelle *45 jours / 630h* vers l'échelle *600 jours / 8 400h*.
+2. **Éclipsement de l'Interface UI & Calibration Ergonomique :** L'interface utilisateur, la page d'accueil (`index.md`), le compteur de progression global, les badges et le tableau de bord basculent définitivement vers l'échelle **600 jours / 5h à 6h par jour (3 300h au total)**, offrant un rythme d'étude réaliste, soutenable et compatible avec une activité professionnelle.
 3. **Compatibilité & Rétro-Migration des Données :** Les étudiants ayant validé des modules sous le format 45 jours conservent leur progression IndexedDB/Supabase via une passerelle de correspondance automatisée (`docs/js/progress-tracker.js`).
 
 ```mermaid
 graph TD
-    A[Ancien Parcours 45 Jours - BCC] -->|Absorbé & Enrichi| B[Semestres 1 & 2 : Socle & Fondations]
+    A[Ancien Parcours 45 Jours - BCC] -->|Absorbé & Enrichi| B[Semestres 1 & 2 : Socle & Fondations (5-6h/j)]
     B --> C[Semestres 3 à 5 : Sysadmin, Data, Web, Cloud & K8s]
     C --> D[Semestres 6 à 8 : Pentesting, AppSec, Hardening & EDR]
     D --> E[Semestres 9 à 12 : Cryptographie PQC, DFIR, DevSecOps, GRC & Zero-Trust]
-    E --> F[600 Jours — Master Class Ultimate Capstone]
+    E --> F[600 Jours — Master Class Ultimate Capstone (3 300h)]
 ```
 
 ---
@@ -51,6 +51,7 @@ graph TD
 ### 1.3. Contraintes et principes fondamentaux
 
 - **Content Completeness (100% Rédigé) :** Aucun jour, aucun semestre ne doit être omis, résumé ou laissé sous forme de placeholder. Les 600 jours (J1–J600) sont intégralement rédigés et indexés dans `mkdocs.yml`.
+- **Rythme d'Étude Ergonomique (5h à 6h/jour) :** Chaque journée de formation est calibrée pour un volume horaire réaliste de **5 à 6 heures d'apprentissage actif** (théorie, TP guidés, commandes pratiques et QCM).
 - **Local-First Architecture :** La plateforme fonctionne à 100% hors-ligne dans le navigateur (IndexedDB + Service Worker PWA). La synchronisation vers le Cloud Supabase est optionnelle et transparente.
 - **Gratuité & Open Source :** Zéro composant payant ou serveur propriétaire. Hébergement gratuit sur GitHub Pages, base de données Supabase Tier gratuit, modèles IA Gemini 1.5 Flash / DeepSeek V4 Lite.
 - **Charte Typographique Stricte :**
@@ -58,26 +59,26 @@ graph TD
   - **Source Serif Pro** — Police de lecture des leçons (confort visuel longue durée).
   - **JetBrains Mono** — Police des blocs de code syntax-highlightés.
 - **Accessibilité & WCAG 2.1 AA :** Support complet des lecteurs d'écran, contraste élevé, navigation au clavier (`Tab`, `Ctrl+K`), contrôles A11y dédiés (`docs/js/accessibility-controls.js`).
-- **Moteur de Recherche Plein Texte Client-Side :** Recherche instantanée via `Ctrl+K` sur l'ensemble des 600 leçons et 8 400h de contenu.
+- **Moteur de Recherche Plein Texte Client-Side :** Recherche instantanée via `Ctrl+K` sur l'ensemble des 600 leçons et 3 300h de contenu.
 
 ---
 
-### 1.4. Structure du Cursus Pédagogique (12 Semestres — 600 Jours)
+### 1.4. Structure du Cursus Pédagogique (12 Semestres — 600 Jours — 5h-6h/j)
 
 | Semestre | Code | Jours | Thématique Principale | Volume Horaire | Certification / Palier Cible |
 | :---: | :---: | :---: | :--- | :---: | :--- |
-| **S1** | **P0** | J001–J050 | Fondamentaux Linux, Shell, Admin Système & Support | 700 h | Linux Essentials / LPIC-1 |
-| **S2** | **P2** | J051–J100 | Réseaux Avancés, Routage BGP/OSPF, SDN & Telecom | 700 h | CCNA / Network+ |
-| **S3** | **P3** | J101–J150 | Virtualisation Proxmox/KVM, Stockage SAN/NAS & Ceph | 700 h | VCP / Proxmox Certified |
-| **S4** | **P4** | J151–J200 | Cloud Computing (AWS/Azure), Terraform & Infrastructure-as-Code | 700 h | AWS SysOps / Terraform Assoc. |
-| **S5** | **P5** | J201–J250 | Conteneurs Docker, Kubernetes Avancé, Helm & GitOps | 700 h | CKA (Certified K8s Admin) |
-| **S6** | **P6** | J251–J300 | Pentesting, Hacking Éthique, Active Directory & Red Team | 700 h | OSCP+ / CEH Master |
-| **S7** | **P7** | J301–J350 | Application Security, OWASP Top 10 & WebSec Avancé | 700 h | CKS (Certified K8s Security) |
-| **S8** | **P8** | J351–J400 | Hardening OS, IAM, PAM, EDR/XDR & SOC Operations | 700 h | CISSP / Security+ |
-| **S9** | **P9** | J401–J450 | Cryptographie Avancée, PKI, ZKP, Post-Quantique (PQC) & HSM | 700 h | EC-Council ECIH / PQC Specialist |
-| **S10** | **P10** | J451–J500 | DFIR, Forensique Mémoire (Volatility), Ghidra & Reverse Engineering | 700 h | GCFA / GREM |
-| **S11** | **P11** | J501–J550 | DevSecOps, Supply Chain Security (SBOM/SLSA) & CSPM | 700 h | DevSecOps Professional |
-| **S12** | **P12** | J551–J600 | Gouvernance GRC (ISO 27001, EBIOS), Zero-Trust & Grand Capstone | 700 h | CISO / CISM / Grand Capstone |
+| **S1** | **P0** | J001–J050 | Fondamentaux Linux, Shell, Admin Système & Support | 275 h (5.5h/j) | Linux Essentials / LPIC-1 |
+| **S2** | **P2** | J051–J100 | Réseaux Avancés, Routage BGP/OSPF, SDN & Telecom | 275 h (5.5h/j) | CCNA / Network+ |
+| **S3** | **P3** | J101–J150 | Virtualisation Proxmox/KVM, Stockage SAN/NAS & Ceph | 275 h (5.5h/j) | VCP / Proxmox Certified |
+| **S4** | **P4** | J151–J200 | Cloud Computing (AWS/Azure), Terraform & Infrastructure-as-Code | 275 h (5.5h/j) | AWS SysOps / Terraform Assoc. |
+| **S5** | **P5** | J201–J250 | Conteneurs Docker, Kubernetes Avancé, Helm & GitOps | 275 h (5.5h/j) | CKA (Certified K8s Admin) |
+| **S6** | **P6** | J251–J300 | Pentesting, Hacking Éthique, Active Directory & Red Team | 275 h (5.5h/j) | OSCP+ / CEH Master |
+| **S7** | **P7** | J301–J350 | Application Security, OWASP Top 10 & WebSec Avancé | 275 h (5.5h/j) | CKS (Certified K8s Security) |
+| **S8** | **P8** | J351–J400 | Hardening OS, IAM, PAM, EDR/XDR & SOC Operations | 275 h (5.5h/j) | CISSP / Security+ |
+| **S9** | **P9** | J401–J450 | Cryptographie Avancée, PKI, ZKP, Post-Quantique (PQC) & HSM | 275 h (5.5h/j) | EC-Council ECIH / PQC Specialist |
+| **S10** | **P10** | J451–J500 | DFIR, Forensique Mémoire (Volatility), Ghidra & Reverse Engineering | 275 h (5.5h/j) | GCFA / GREM |
+| **S11** | **P11** | J501–J550 | DevSecOps, Supply Chain Security (SBOM/SLSA) & CSPM | 275 h (5.5h/j) | DevSecOps Professional |
+| **S12** | **P12** | J551–J600 | Gouvernance GRC (ISO 27001, EBIOS), Zero-Trust & Grand Capstone | 275 h (5.5h/j) | CISO / CISM / Grand Capstone |
 
 ---
 
@@ -295,4 +296,4 @@ La plateforme est soumise à la suite de tests automatisée `scripts/test-suite.
 
 ## 7. RECOMMANDATION ET CONCLUSION
 
-Le **Cahier des Charges Master v1.0 (600 Jours)** est le document de cadrage produit ultime de la plateforme **PARADIS IT Masterclass**. Il formalise le passage à l'échelle des 12 Semestres (8 400h), absorbe et éclipse définitivement l'ancien parcours de 45 jours, et garantit la maintenabilité, la sécurité et la haute qualité pédagogique de l'infrastructure.
+Le **Cahier des Charges Master v1.0 (600 Jours)** est le document de cadrage produit ultime de la plateforme **PARADIS IT Masterclass**. Il formalise le passage à l'échelle des 12 Semestres (3 300h au rythme soutenable de 5h à 6h par jour), absorbe et éclipse définitivement l'ancien parcours de 45 jours, et garantit la maintenabilité, la sécurité et la haute qualité pédagogique de l'infrastructure.
