@@ -1,24 +1,34 @@
-# Simulateur d'Examen Blanc — Concours BCC
+# 🏆 Simulateur d'Examen Blanc Masterclass (600 Questions)
 
-Le simulateur reproduit les conditions réelles de l'examen de la Banque Centrale du Congo.
+## Mode Examen Officiel
 
-## Caractéristiques
-
-- **100 questions** aléatoires dans la banque de 600+ questions
-- **Chronomètre strict** de 2h00 sans interruption possible
-- **Ordre aléatoire** des questions et des choix de réponse
-- **Feedback différé** : aucune correction tant que l'épreuve n'est pas terminée
-- **Relevé officiel** généré automatiquement avec score /100
-
-## Préparation
-
-- Complétez au minimum 80% des journées avant de tenter l'examen blanc
-- Visez un score de 75/100 minimum pour être prêt au concours
-
-## Passer l'examen
-
-Cliquez sur **"Démarrer l'examen blanc"** depuis le tableau de bord. Le chronomètre démarre immédiatement.
+Ce simulateur reproduit les exigences des examens certifiants d'ingénierie informatique et de cybersécurité (LPIC, CCNA, CKA, OSCP+, CKS, CISSP, ISO 27001).
 
 ---
 
-*Fonctionne en mode hors-ligne grâce au PWA et au Service Worker.*
+### Conditions d'Épreuve
+
+- **Volume de questions :** **600 Questions à Choix Multiples** tirées de la banque globale des 12 Semestres.
+- **Chronomètre :** **2h00 strictes** avec décompte visuel en temps réel.
+- **Confidentialité :** Réponses et corrigés masqués pendant la session.
+- **Verrouillage :** Pas d'interruption ni de pause autorisée pendant le test.
+
+---
+
+### Déroulement & Relevé de Note
+
+1. Cliquez sur **"Démarrer l'Examen Blanc"** ci-dessous.
+2. Répondez aux questions sur les 6 axes de compétences (Linux, Réseaux, Cloud, Pentest, Cryptographie, GRC).
+3. Soumettez l'épreuve pour obtenir immédiatement votre **Relevé de Note Officiel** et générer votre certificat d'accomplissement en PDF.
+
+---
+
+<div style="text-align: center; margin: 2.5rem 0;">
+  <button onclick="window.ParadisExam && window.ParadisExam.startExam()" class="paradis-btn-hero-primary" style="font-size: 1.1rem; padding: 0.9rem 2rem;">
+    🚀 Démarrer la Simulation d'Examen Blanc (600 Questions)
+  </button>
+</div>
+
+---
+
+*Moteur d'examen géré localement par `js/exam-simulator.js`. Vos résultats sont conservés dans votre historique IndexedDB.*

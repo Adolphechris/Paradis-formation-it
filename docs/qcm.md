@@ -1,29 +1,37 @@
-# QCM & Exercices
+# QCM & Moteur d'Évaluation — Masterclass 600 Jours
 
-## Test Quotidien
+## Test Quotidien de Fin de Journée
 
-Chaque journée se termine par un QCM de validation.
+Chacune des **600 leçons du programme** se termine par une évaluation interactive pour valider vos acquis au quotidien.
 
-- **Durée** : 1h30 max
-- **Note sur 100**
-- **Seuil de validation** : 80/100 (mention), 60–79/100 (à consolider), < 60/100 (remédiation)
-
-## Examen Blanc BCC
-
-Simulateur d'examen blanc calqué sur les conditions réelles du concours de la Banque Centrale du Congo.
-
-- **100 questions** tirées aléatoirement de la banque globale
-- **Chronomètre strict** : 2h00 sans pause
-- **Réponses masquées** pendant l'épreuve
-- **Relevé de note officiel** généré à la fin
-
-## Utilisation du QCM
-
-1. Complétez le contenu de la journée
-2. Lancez le QCM via le bouton "Tester vos connaissances"
-3. Consultez le corrigé détaillé après validation
-4. Si score < 80, refaites la journée et les exercices de remédiation
+- **Durée maximale** : 1h30
+- **Barème** : Note calculée sur 100
+- **Seuil de validation** :
+  - **≥ 80/100** : ✅ Journée validée avec mention d'excellence
+  - **60 – 79/100** : 🔄 Statut "À consolider" (remédiation tuteur recommandée)
+  - **< 60/100** : 🔁 Exercices de remédiation socratique obligatoires
 
 ---
 
-*Le moteur QCM est intégré au plan de travail côté client avec sauvegarde en IndexedDB.*
+## Simulateur d'Examen Blanc Masterclass (600 Questions)
+
+Le simulateur d'examen blanc vous permet de tester vos compétences globales dans les conditions réelles d'un examen certifiant d'ingénierie IT.
+
+- **600 questions** tirées aléatoirement dans la banque de données globale des 12 Semestres.
+- **Chronomètre strict de 2h00** sans possibilité de mettre en pause.
+- **Réponses et explications masquées** pendant toute la durée de l'épreuve.
+- **Ordre aléatoire** des questions et des choix de réponses à chaque tentative.
+- **Édition d'un Relevé de Note Officiel (PDF)** généré et téléchargeable en fin d'épreuve.
+
+---
+
+## Guide d'Utilisation
+
+1. Étudiez le cours théorique et réalisez les TP guidés de la journée (5h à 6h d'étude).
+2. Lancez le QCM quotidien via le bouton **"Tester vos connaissances"** en bas de page.
+3. Obtenez immédiatement votre score et le corrigé pédagogique détaillé.
+4. Vos résultats sont enregistrés en local (IndexedDB) et synchronisés sur votre profil étudiant.
+
+---
+
+*Le moteur QCM fonctionne 100% hors-ligne dans le navigateur via `js/quiz-engine.js` et `js/qcm-bank.js`.*
