@@ -66,6 +66,11 @@ Chaque semestre comprend exactement **50 leçons quotidiennes (275 heures de for
 | **S11** | **P11** | J501–J550 | IA/ML, MLOps, LLM Red Teaming & AI Security (MITRE ATLAS) | 275 h | DevSecOps / AI Security Professional |
 | **S12** | **P12** | J551–J600 | Gouvernance GRC ISO 27001, Architecture Zero-Trust & Capstone Master | 275 h | CISO / CISM / **Grand Capstone Final** |
 
+### Section 2.03 — Module d'Initiation & Pré-requis Absolus (Semestre 0 / J0a à J0o)
+1. Tout candidat zéro compétence préalable est orienté vers le **Semestre 0 — Initiation & Socle Pré-requis (15 leçons `J0a` à `J0o`)**.
+2. Ce module d'accélération ludique et inspirant introduit la culture informatique, la logique binaire, l'architecture matérielle, le réseau, les métiers de l'IT et les bases du terminal sans altérer le rythme des 600 jours.
+3. Chaque journée du Semestre 0 se conclut par une **évaluation QCM quotidienne**, et le module est couronné par le **Grand Examen Massif de Synthèse d'Entrée (40 questions chrono / 75% minimum)** au Jour `J0o` délivrant le *Badge d'Entrée & Qualification Masterclass*.
+
 ---
 
 ## 🔒 ARTICLE 3 : INVIOLABILITÉ ET PRÉSERVATION DU SOCLE D'ORIGINE

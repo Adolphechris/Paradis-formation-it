@@ -9,7 +9,15 @@ description: "Votre auditoire virtuel : 600 leçons organisées en 12 semestres.
 
 ---
 
-## 🚀 Commencer maintenant — Semestre 1, Jour 1
+## 🚀 Commencer par le Semestre 0 — Initiation & Pré-requis Absolus (J0a–J0o)
+
+> Pour les apprenants débutants sans expérience préalable :  
+> **[▶ Découvrir le Jour J0a — Qu'est-ce qu'un Ordinateur ?](tome-p0/jour-0a.md)**  
+> **[▶ Tenter le Grand Examen Massif & Diagnostic d'Entrée (Jour J0o)](tome-p0/jour-0o.md)**
+
+---
+
+## 🎓 Commencer la Masterclass 600 Jours — Semestre 1, Jour 1
 
 **[▶ Ouvrir le Cours du Jour 1 — Linux CLI & Navigation de Base](tome-p0/jour-01.md)**
 

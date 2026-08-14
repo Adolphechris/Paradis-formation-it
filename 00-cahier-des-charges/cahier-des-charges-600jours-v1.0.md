@@ -43,17 +43,19 @@ La plateforme accompagne l'apprenant depuis les fondamentaux des systèmes Linux
 
 ---
 
-### 1.2. Architecture du Cursus Masterclass 600 Jours
+### 1.2. Architecture du Cursus Masterclass 600 Jours & Passerelle Semestre 0
 
-La plateforme **PARADIS IT Masterclass** est conçue depuis son origine comme un cursus d'élite de **600 Jours / 12 Semestres (3 300h)**. Il n'existe aucun autre référentiel antérieur ou concurrent : ce programme est le standard fondateur et l'unique boussole pédagogique de la plateforme.
+La plateforme **PARADIS IT Masterclass** intègre le **Semestre 0 (Initiation & Socle Pré-requis J0a–J0o)** comme passerelle d'entrée facultative dédiée aux apprenants débutants absolus, avant le déroulement du cursus d'élite de **600 Jours / 12 Semestres (3 300h)** :
 
+0. **Semestre 0 (`docs/tome-p0/`, J0a–J0o) :** 15 jours d'initiation ludique (Hardware, Binaire, Reseau, Métiers IT, Outils & Grand Examen Massif d'Entrée).
 1. **Semestre 1 (`docs/tome-p0/`, J1–J50) :** Fondamentaux Linux CLI, Administration Système, Git, Docker, PKI.
 2. **Semestres 2 à 6 :** Réseaux, Python/Bash, SQL, Web Full-Stack, Cloud/DevOps et Grand Projet Bachelor BIT.
 3. **Semestres 7 à 12 :** Master Cybersécurité, Cryptographie PQC, DFIR, MLSecOps, DevSecOps, GRC et Grand Capstone Final.
 
 ```mermaid
 graph TD
-    A[Semestres 1 & 2 : Socle Système & Réseaux] --> B[Semestres 3 à 6 : Python, SQL, Web & Cloud]
+    S0[Semestre 0 : Initiation & Pré-requis J0a-J0o] --> A[Semestres 1 & 2 : Socle Système & Réseaux]
+    A --> B[Semestres 3 à 6 : Python, SQL, Web & Cloud]
     B --> C[Semestres 7 à 9 : Cybersécurité Expert & Cryptographie PQC]
     C --> D[Semestres 10 à 12 : DFIR, MLSecOps, GRC & Capstone Final]
     D --> E[600 Jours — PARADIS IT Masterclass (3 300h)]

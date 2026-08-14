@@ -135,6 +135,22 @@ nav:
   - Aperçu du programme: apercu.md
   - Feuille de route: feuille-de-route.md
   - Table des matières (600 jours): table-des-matieres.md
+  - 🚀 SEMESTRE 0 — INITIATION & PRÉ-REQUIS (J0a-J0o):
+      - J0a — Qu'est-ce qu'un Ordinateur ?: tome-p0/jour-0a.md
+      - J0b — La Logique Binaire (Bits & Octets): tome-p0/jour-0b.md
+      - J0c — Système d'Exploitation vs Applications: tome-p0/jour-0c.md
+      - J0d — Le Monde du Réseau & d'Internet: tome-p0/jour-0d.md
+      - J0e — Premiers Pas dans le Terminal: tome-p0/jour-0e.md
+      - J0f — Fichiers, Dossiers & Arborescence: tome-p0/jour-0f.md
+      - J0g — Comment Fonctionne un Programme ?: tome-p0/jour-0g.md
+      - J0h — Le Métier d'Administrateur Système: tome-p0/jour-0h.md
+      - J0i — Le Métier d'Expert Cybersécurité: tome-p0/jour-0i.md
+      - J0j — L'Avenir Radieux de l'IT: tome-p0/jour-0j.md
+      - J0k — L'Écosystème Linux & Open Source: tome-p0/jour-0k.md
+      - J0l — La Boîte à Outils de l'Ingénieur IT: tome-p0/jour-0l.md
+      - J0m — Méthodologie d'Apprentissage & Débogage: tome-p0/jour-0m.md
+      - J0n — Présentation de la Masterclass 600 Jours: tome-p0/jour-0n.md
+      - J0o — Grand Examen Massif & Diagnostic d'Entrée: tome-p0/jour-0o.md
   - 🎓 CYCLE 1 — BACHELOR BIT (Bac+3):
       - Semestre 1 — Socle Système (J001-J050): tome-p0/jour-01.md
       - Semestre 2 — Réseaux & Télécoms (J051-J100): tome-p2/jour-51.md
