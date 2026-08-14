@@ -72,11 +72,24 @@ description: Plateforme d'autoformation IT de niveau Master — 600 jours, 12 se
   </div>
 </div>
 
----
-
 ## 🛤️ Les 12 Semestres — 600 Jours de Masterclass IT
 
 <div class="paradis-curriculum-grid">
+
+  <a href="tome-p0/jour-0a/" class="paradis-tome-card tome-p0" style="border-color: #06b6d4; background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(15, 23, 42, 0.9));">
+    <div class="tome-card-icon">🚀</div>
+    <div class="tome-card-body">
+      <div class="tome-card-phase" style="color: #06b6d4;">Semestre 0 · J0a–J0o</div>
+      <h3 class="tome-card-title">Initiation & Socle Pré-requis</h3>
+      <p class="tome-card-desc">Découverte ludique : Hardware, Binaire, OS, Réseau, Métiers IT, Outils & Grand Examen Massif d'Entrée</p>
+      <div class="tome-card-tags">
+        <span class="tome-tag" style="background: rgba(6, 182, 212, 0.2); color: #06b6d4;">Pré-requis</span>
+        <span class="tome-tag" style="background: rgba(16, 185, 129, 0.2); color: #10b981;">Débutant Absolu</span>
+        <span class="tome-tag" style="background: rgba(139, 92, 246, 0.2); color: #a78bfa;">Examen Massif</span>
+      </div>
+    </div>
+    <div class="tome-card-arrow" style="color: #06b6d4;">→</div>
+  </a>
 
   <a href="tome-p0/" class="paradis-tome-card tome-p0">
     <div class="tome-card-icon">🖥️</div>

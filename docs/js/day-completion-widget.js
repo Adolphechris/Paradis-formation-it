@@ -164,11 +164,30 @@
     }
 
     /**
-     * Gatekeeper : Verrouille la leçon courante si le jour précédent n'est pas validé à >= 75%.
+     * Calcule le dossier du tome pour n'importe quel jour (1..600).
+     */
+    function getTomeFolderForDay(dayNum) {
+        if (dayNum <= 50) return 'tome-p0';
+        if (dayNum <= 100) return 'tome-p2';
+        if (dayNum <= 150) return 'tome-p3';
+        if (dayNum <= 200) return 'tome-p4';
+        if (dayNum <= 250) return 'tome-p5';
+        if (dayNum <= 300) return 'tome-p6';
+        if (dayNum <= 350) return 'tome-p7';
+        if (dayNum <= 400) return 'tome-p8';
+        if (dayNum <= 450) return 'tome-p9';
+        if (dayNum <= 500) return 'tome-p10';
+        if (dayNum <= 550) return 'tome-p11';
+        return 'tome-p12';
+    }
+
+    /**
+     * Gatekeeper : Verrouille la leçon courante si le pré-requis n'est pas validé à >= 75%.
      */
     async function checkLessonLockGatekeeper() {
-        const meta = getCurrentDayMeta();
-        if (!meta || meta.dayNumber <= 1) return; // Jour 01 est toujours libre
+        const path = window.location.pathname;
+        const matchS0 = path.match(/\/jour-0([a-o])\/?$/i);
+        const matchMain = path.match(/\/jour-(\d+)\/?$/i);
 
         if (!window.ParadisStorage || typeof window.ParadisStorage.getAllLocal !== 'function') return;
 
@@ -177,40 +196,96 @@
             const progressMap = {};
             records.forEach(r => { progressMap[r.id || r.day_id] = r; });
 
-            const prevDayNum = meta.dayNumber - 1;
-            const isPrevValidated = isDayValidatedFromRecords(prevDayNum, progressMap);
+            const contentInner = document.querySelector('.md-content__inner') || document.querySelector('.md-content');
 
-            if (!isPrevValidated) {
-                // Verrouiller la page !
-                const contentInner = document.querySelector('.md-content__inner') || document.querySelector('.md-content');
-                if (contentInner) {
+            // 1. Cas Semestre 0 (jour-0a à jour-0o)
+            if (matchS0) {
+                const charCode = matchS0[1].toLowerCase().charCodeAt(0);
+                if (charCode === 97) return; // J0a (97) est toujours déverrouillé
+
+                const prevChar = String.fromCharCode(charCode - 1);
+                const prevDayId = `jour-0${prevChar}`;
+                const prevRec = progressMap[prevDayId];
+                const isValidated = prevRec && ((prevRec.quiz_score ?? 0) >= 75 || prevRec.is_completed);
+
+                if (!isValidated && contentInner) {
+                    contentInner.innerHTML = `
+                        <div class="paradis-locked-screen">
+                            <div class="locked-icon">🔒</div>
+                            <h1>Leçon Verrouillée — Jour J0${matchS0[1].toUpperCase()}</h1>
+                            <p>
+                                Accès refusé ! Vous devez d'abord valider l'évaluation du <strong>Jour J0${prevChar.toUpperCase()}</strong> avec un score minimum de <strong>75%</strong>.
+                            </p>
+                            <div class="locked-btn-group">
+                                <a href="../jour-0${prevChar}/" class="btn-lock-prev">
+                                    🎯 Réussir l'évaluation du Jour J0${prevChar.toUpperCase()}
+                                </a>
+                                <a href="../../espace-etudiant/" class="btn-lock-home">
+                                    🎓 Tableau de bord Étudiant
+                                </a>
+                            </div>
+                        </div>
+                    `;
+                    return;
+                }
+            }
+
+            // 2. Cas Cursus Principal (Jour 1 à Jour 600)
+            if (matchMain) {
+                const dayNum = parseInt(matchMain[1], 10);
+
+                // Pour le Jour 1 : vérification du Grand Examen Massif (jour-0o)
+                if (dayNum === 1) {
+                    const j0oRec = progressMap['jour-0o'];
+                    const isJ0oValidated = j0oRec && ((j0oRec.quiz_score ?? 0) >= 75 || j0oRec.is_completed);
+                    
+                    if (!isJ0oValidated && contentInner) {
+                        contentInner.innerHTML = `
+                            <div class="paradis-locked-screen">
+                                <div class="locked-icon">🎓</div>
+                                <h1>Semestre 0 Non Validé — Accès Bloqué</h1>
+                                <p>
+                                    Pour entamer le <strong>Jour 1 du Semestre 1</strong>, vous devez d'abord réussir le <strong>Grand Examen Massif de Pré-requis (Jour J0o)</strong> avec un score minimum de <strong>75%</strong>.
+                                </p>
+                                <div class="locked-btn-group">
+                                    <a href="../jour-0o/" class="btn-lock-prev">
+                                        🏆 Passer le Grand Examen Massif (Jour J0o)
+                                    </a>
+                                    <a href="../jour-0a/" class="btn-lock-prev" style="background: #0284c7;">
+                                        🚀 Commencer le Semestre 0 au Jour J0a
+                                    </a>
+                                    <a href="../../espace-etudiant/" class="btn-lock-home">
+                                        🎓 Tableau de bord Étudiant
+                                    </a>
+                                </div>
+                            </div>
+                        `;
+                        return;
+                    }
+                    return; // J1 déverrouillé une fois J0o validé !
+                }
+
+                // Pour les Jours 2 à 600 : vérification du jour N-1
+                const prevDayNum = dayNum - 1;
+                const isPrevValidated = isDayValidatedFromRecords(prevDayNum, progressMap);
+
+                if (!isPrevValidated && contentInner) {
                     const prevDayStr = String(prevDayNum).padStart(2, '0');
-                    // Retrouver le sous-dossier du tome du jour précédent
-                    let prevTomeFolder = 'tome-p0';
-                    if (prevDayNum >= 4 && prevDayNum <= 11) prevTomeFolder = 'tome-p2';
-                    else if (prevDayNum >= 12 && prevDayNum <= 17) prevTomeFolder = 'tome-p3a';
-                    else if (prevDayNum >= 18 && prevDayNum <= 22) prevTomeFolder = 'tome-p3b';
-                    else if (prevDayNum >= 23 && prevDayNum <= 28) prevTomeFolder = 'tome-p3c';
-                    else if (prevDayNum >= 29 && prevDayNum <= 35) prevTomeFolder = 'tome-p4';
-                    else if (prevDayNum >= 36 && prevDayNum <= 41) prevTomeFolder = 'tome-p5';
-                    else if (prevDayNum >= 42 && prevDayNum <= 45) prevTomeFolder = 'tome-p6';
-
-                    // Chemin relatif vers la leçon précédente et l'espace étudiant
+                    const prevTomeFolder = getTomeFolderForDay(prevDayNum);
                     const prevUrl = `../../${prevTomeFolder}/jour-${prevDayStr}/`;
-                    const studentSpaceUrl = `../../espace-etudiant/`;
 
                     contentInner.innerHTML = `
                         <div class="paradis-locked-screen">
                             <div class="locked-icon">🔒</div>
-                            <h1>Leçon Verrouillée — Jour ${meta.dayNumber}</h1>
+                            <h1>Leçon Verrouillée — Jour ${dayNum}</h1>
                             <p>
-                                Accès refusé ! Vous ne pouvez pas étudier la leçon du <strong>Jour ${meta.dayNumber}</strong> car vous n'avez pas encore validé l'évaluation du <strong>Jour ${prevDayNum}</strong> avec un score minimum de <strong>75%</strong>.
+                                Accès refusé ! Vous ne pouvez pas étudier la leçon du <strong>Jour ${dayNum}</strong> car vous n'avez pas encore validé l'évaluation du <strong>Jour ${prevDayNum}</strong> avec un score minimum de <strong>75%</strong>.
                             </p>
                             <div class="locked-btn-group">
                                 <a href="${prevUrl}" class="btn-lock-prev">
                                     🎯 Réussir l'évaluation du Jour ${prevDayNum}
                                 </a>
-                                <a href="${studentSpaceUrl}" class="btn-lock-home">
+                                <a href="../../espace-etudiant/" class="btn-lock-home">
                                     🎓 Tableau de bord Étudiant
                                 </a>
                             </div>

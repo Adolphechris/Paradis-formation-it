@@ -26,7 +26,22 @@
 
     // Mapping URL → métadonnées leçon
     const LESSON_META = {
-        'jour-01': { tome: 'P0', title: 'Jour 1 — Socle Windows & Bureautique', totalHours: 14 },
+        'jour-0a': { tome: 'P0', title: 'Jour J0a — Qu\'est-ce qu\'un Ordinateur ?', totalHours: 4 },
+        'jour-0b': { tome: 'P0', title: 'Jour J0b — La Logique Binaire (Bits & Octets)', totalHours: 4 },
+        'jour-0c': { tome: 'P0', title: 'Jour J0c — OS vs Applications', totalHours: 4 },
+        'jour-0d': { tome: 'P0', title: 'Jour J0d — Réseau & Internet', totalHours: 4 },
+        'jour-0e': { tome: 'P0', title: 'Jour J0e — Premiers Pas Terminal', totalHours: 4 },
+        'jour-0f': { tome: 'P0', title: 'Jour J0f — Fichiers & Arborescence', totalHours: 4 },
+        'jour-0g': { tome: 'P0', title: 'Jour J0g — Logique d\'un Programme', totalHours: 4 },
+        'jour-0h': { tome: 'P0', title: 'Jour J0h — Métier Administrateur Système', totalHours: 4 },
+        'jour-0i': { tome: 'P0', title: 'Jour J0i — Métier Expert Cybersécurité', totalHours: 4 },
+        'jour-0j': { tome: 'P0', title: 'Jour J0j — Avenir Radieux de l\'IT', totalHours: 4 },
+        'jour-0k': { tome: 'P0', title: 'Jour J0k — Linux & Open Source', totalHours: 4 },
+        'jour-0l': { tome: 'P0', title: 'Jour J0l — Boîte à Outils Ingénieur', totalHours: 4 },
+        'jour-0m': { tome: 'P0', title: 'Jour J0m — Méthodologie & Débogage', totalHours: 4 },
+        'jour-0n': { tome: 'P0', title: 'Jour J0n — Masterclass 600 Jours', totalHours: 4 },
+        'jour-0o': { tome: 'P0', title: 'Jour J0o — Grand Examen Massif d\'Entrée', totalHours: 6 },
+        'jour-01': { tome: 'P0', title: 'Jour 1 — Prise en main Linux CLI', totalHours: 6 },
         'jour-02': { tome: 'P0', title: 'Jour 2 — Tableur & Collaboration', totalHours: 14 },
         'jour-03': { tome: 'P0', title: 'Jour 3 — Mini-projet P0', totalHours: 14 },
         'jour-04': { tome: 'P2', title: 'Jour 4 — Python Fondamentaux', totalHours: 12 },
