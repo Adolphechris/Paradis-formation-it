@@ -3,6 +3,18 @@
 
 ---
 
+## 🚀 SEMESTRE 0 — INITIATION & SOCLE DE PRÉ-REQUIS ABSOLUS (J0a – J0o)
+
+### Semestre 0 — Initiation & Pré-requis (J0a - J0o)
+- **Hardware & Architectures** : Qu'est-ce qu'un Ordinateur, CPU, RAM, SSD/HDD & Modèle de Von Neumann (J0a)
+- **Logique Binaire & Données** : Transistors, Bits, Octets, Échelle de stockage & Encodage UTF-8 (J0b)
+- **Système d'Exploitation & OS** : Noyau (Kernel), GUI vs CLI & Écosystème Linux / Distributions (J0c, J0k)
+- **Réseau, Terminal & Scripting** : Modèle Client-Serveur, IP/MAC, Premier Terminal & Exécution de Code (J0d - J0g)
+- **Métiers IT, Outils & Méthodologie** : Carrières Admin Sys & Cybersécurité, Boîte à Outils IT & Débogage (J0h - J0m)
+- **Qualification d'Entrée** : Présentation Masterclass (J0n) & **Grand Examen Massif de Synthèse J0o (40 QCM)**
+
+---
+
 ## 🎓 CYCLE 1 — BACHELOR IN INFORMATION TECHNOLOGY (BIT — Bac+3)
 
 ### Semestre 1 — Socle Système (J001 - J050)

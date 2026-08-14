@@ -1,0 +1,150 @@
+# Jour J540A — Pont Cloud → AD : Hybride, la Réalité des Entreprises
+
+> [!NOTE]
+> **JOUR ANNEXE DU JOUR 540 — S11 (J540a)**  
+> Cette leçon explique la coexistence cloud/on-premise dans les entreprises nord-américaines. Aucun prérequis avancé.
+
+---
+
+## 🎯 Objectifs de la Leçon
+- 🧠 Comprendre pourquoi 90% des entreprises ont du cloud ET du on-premise.
+- 📊 Savoir faire cohabiter Azure AD et Active Directory on-premise.
+- 🛠️ Configurer la synchronisation Azure AD Connect.
+- 🚀 Préparer S12 où l'architecture hybride est la norme.
+
+---
+
+## 📖 1. Pourquoi hybride ?
+
+| On-premise (legacy) | Cloud (moderne) |
+|---|---|
+| AD Windows Server | Azure AD / Entra ID |
+| Exchange on-premise | Microsoft 365 |
+| SharePoint local | SharePoint Online |
+| Serveurs physiques | AWS / Azure / GCP |
+| Backup sur bandes | Sauvegardes cloud immuables |
+
+**Pourquoi ne pas migrer tout au cloud ?**
+- Coût de migration massif.
+- Applications legacy non compatibles cloud.
+- Exigences réglementaires (données sensibles doivent rester sur site).
+- Compétences existantes : les admins Windows connaissent AD, pas Azure AD.
+
+**Pourquoi ne pas rester 100% on-premise ?**
+- Coût de maintenance élevé.
+- Manque de flexibilité et de scalabilité.
+- Avantages du cloud : disponibilité mondiale, services managés, innovation rapide.
+
+---
+
+## 📖 2. Architecture hybride : Azure AD + AD on-premise
+
+### Composants
+
+| Composant | Rôle |
+|---|---|
+| **AD on-premise** | Annuaire local, authentification NTLM/Kerberos |
+| **Azure AD** | Annuaire cloud, authentification moderne (SAML, OAuth2, OIDC) |
+| **Azure AD Connect** | Synchronisation des utilisateurs/mots de passe entre AD et Azure AD |
+| **Hybrid Azure Join** | Machines jointes à la fois à AD on-premise et Azure AD |
+| **SSO** | Connexion unique : un seul mot de passe pour les ressources cloud et on-premise |
+
+### Flux d'authentification hybride
+
+```
+Utilisateur
+    ↓
+[AD on-premise] ←→ [Azure AD Connect] ←→ [Azure AD / Entra ID]
+    ↓
+    ↓
+[Ressources on-premise]    [Ressources cloud : M365, Teams, Azure]
+```
+
+---
+
+## 🧪 Atelier Pratique : Configurer Azure AD Connect (simulation)
+
+### Étape 1 : Préparer AD on-premise
+```powershell
+# Sur le contrôleur de domaine Windows Server
+# Créer un utilisateur de test
+New-ADUser -Name "Jean Dupont" -SamAccountName "jdupont" -UserPrincipalName "jdupont@entreprise.local" -Enabled $true
+```
+
+### Étape 2 : Installer Azure AD Connect (conceptuel)
+```powershell
+# Sur un serveur Windows dédié
+# Installer Azure AD Connect
+# Configuration :
+# - Synchronisation : AD on-premise → Azure AD
+# - Type : Sync par mot de passe (Password Hash Sync)
+# - Domaines : entreprise.local
+# - Filtrage : OU "Utilisateurs" uniquement
+```
+
+### Étape 3 : Vérifier la synchronisation
+```powershell
+# Sur Azure AD (via Portail Azure ou PowerShell)
+Connect-AzureAD
+Get-AzureADUser -Filter "DisplayName eq 'Jean Dupont'"
+```
+
+### Étape 4 : Tester le SSO
+```powershell
+# Depuis un poste Windows joint au domaine
+# Ouvrir un navigateur et se connecter à portal.azure.com
+# L'utilisateur doit être automatiquement connecté (SSO)
+```
+
+### Livrable
+- Schéma d'architecture hybride.
+- Script PowerShell de création d'utilisateur AD.
+- Documentation de la synchronisation Azure AD Connect.
+
+---
+
+## ❓ Banque de QCM & Test du Jour (5 Questions)
+
+**Q1 : Pourquoi 90% des entreprises sont-elles en mode hybride ?**
+- A) Coût, legacy, conformité, flexibilité
+- B) Parce que c'est à la mode
+- C) Parce que le cloud est interdit
+- D) Parce que AD est parfait
+
+*Réponse : A — Hybride = compromis entre coût, legacy, conformité et flexibilité.*
+
+**Q2 : Que fait Azure AD Connect ?**
+- A) Synchronise les utilisateurs/mots de passe entre AD on-premise et Azure AD
+- B) Installe un antivirus
+- C) Formate les serveurs
+- D) Crée des VM Azure
+
+*Réponse : A — Azure AD Connect synchronise les identités entre les deux mondes.*
+
+**Q3 : Qu'est-ce que le SSO (Single Sign-On) ?**
+- A) Un seul mot de passe pour accéder à toutes les ressources cloud et on-premise
+- B) Plusieurs mots de passe
+- C) Pas de mot de passe
+- D) Un mot de passe par application
+
+*Réponse : A — SSO = une seule authentification pour tous les services.*
+
+**Q4 : Qu'est-ce qu'un Hybrid Azure Join ?**
+- A) Une machine jointe à AD on-premise ET Azure AD simultanément
+- B) Un type de virus
+- C) Un protocole réseau
+- D) Un système d'exploitation
+
+*Réponse : A — Hybrid Azure Join = machine connue des deux annuaires.*
+
+**Q5 : Quel est l'avantage principal de l'architecture hybride ?**
+- A) Flexibilité : garder le legacy tout en profitant du cloud
+- B) Tout migrer au cloud coûte moins cher
+- C) C'est plus simple à gérer
+- D) Il n'y a aucun avantage
+
+*Réponse : A — Hybride = meilleur des deux mondes (legacy + cloud).*
+
+---
+
+*Pont Pédagogique S11 — Module J540a (annexe de J540)*

@@ -314,7 +314,6 @@
         if (!meta) return '#';
         const tomeMap = { P0:'tome-p0', P2:'tome-p2', P3A:'tome-p3a', P3B:'tome-p3b', P3C:'tome-p3c', P4:'tome-p4', P5:'tome-p5', P6:'tome-p6' };
         const folder = tomeMap[meta.tome] || 'tome-p0';
-        // Chemin relatif depuis /espace-etudiant/
         return `../${folder}/${dayId}/`;
     }
 
@@ -332,8 +331,45 @@
     }
 
     function isDayUnlocked(dayNum, progressMap) {
-        if (dayNum <= 1) return true;
+        if (dayNum <= 1) {
+            // Jour 1 nécessite la validation du Grand Examen Massif (jour-0o)
+            const j0oRec = progressMap['jour-0o'];
+            return Boolean(j0oRec && ((j0oRec.quiz_score ?? 0) >= 75 || j0oRec.is_completed));
+        }
         return isDayValidated(dayNum - 1, progressMap);
+    }
+
+    // Helper Semestre 0 (jour-0a à jour-0o)
+    const S0_DAYS = [
+        { id: 'jour-0a', code: 'a', label: 'J0a', title: 'Qu\'est-ce qu\'un Ordinateur ?' },
+        { id: 'jour-0b', code: 'b', label: 'J0b', title: 'La Logique Binaire' },
+        { id: 'jour-0c', code: 'c', label: 'OS vs Applications' },
+        { id: 'jour-0d', code: 'd', label: 'Réseau & Internet' },
+        { id: 'jour-0e', code: 'e', label: 'Premiers Pas Terminal' },
+        { id: 'jour-0f', code: 'f', label: 'Fichiers & Arborescence' },
+        { id: 'jour-0g', code: 'g', label: 'Logique d\'un Programme' },
+        { id: 'jour-0h', code: 'h', label: 'Métier Admin Sys' },
+        { id: 'jour-0i', code: 'i', label: 'Métier Cybersécurité' },
+        { id: 'jour-0j', code: 'j', label: 'Avenir de l\'IT' },
+        { id: 'jour-0k', code: 'k', label: 'Linux & Open Source' },
+        { id: 'jour-0l', code: 'l', label: 'Boîte à Outils IT' },
+        { id: 'jour-0m', code: 'm', label: 'Méthodologie & Débogage' },
+        { id: 'jour-0n', code: 'n', label: 'Masterclass 600 Jours' },
+        { id: 'jour-0o', code: 'o', label: 'Grand Examen Massif' }
+    ];
+
+    function isS0DayValidated(dayId, progressMap) {
+        const rec = progressMap[dayId];
+        if (!rec) return false;
+        const score = rec.quiz_score ?? null;
+        const completed = Boolean(rec.is_completed || rec.study_status === 'completed');
+        return (score !== null && score !== undefined) ? score >= 75 : completed;
+    }
+
+    function isS0DayUnlocked(index, progressMap) {
+        if (index === 0) return true; // J0a est toujours déverrouillé
+        const prevDayId = S0_DAYS[index - 1].id;
+        return isS0DayValidated(prevDayId, progressMap);
     }
 
     function getStatusIcon(record, isUnlocked) {
@@ -364,9 +400,8 @@
     // Rendu
     // -----------------------------------------------------------------------
     async function renderDashboard() {
-        // Chercher le container cible sur la page espace-etudiant.md
         const anchor = document.getElementById('student-dashboard-root');
-        if (!anchor) return; // Pas la bonne page
+        if (!anchor) return;
 
         const engine = window.ParadisStudySession;
         if (!engine) {
@@ -378,7 +413,7 @@
         const progressRecords = await getAllProgress();
         const progressMap = buildProgressMap(progressRecords);
 
-        // Compte uniquement les jours validés avec score >= 75%
+        // Compte les jours validés avec score >= 75%
         let completed = 0;
         const TOTAL_DAYS = 600;
         for (let d = 1; d <= TOTAL_DAYS; d++) {
@@ -391,28 +426,38 @@
         const streak = computeStreak(progressRecords);
         const totalMin = progressRecords.reduce((a, r) => a + (r.time_spent_minutes || 0), 0);
 
-        // Déterminer le prochain jour valide déverrouillé non complété
-        let nextNum = 1;
-        for (let d = 1; d <= TOTAL_DAYS; d++) {
-            if (!isDayValidated(d, progressMap)) {
-                nextNum = d;
-                break;
-            }
-        }
-        // Vérifier s'il est bien déverrouillé
-        if (!isDayUnlocked(nextNum, progressMap)) {
-            // Si le premier non-validé est verrouillé, prendre le dernier déverrouillé
-            for (let d = TOTAL_DAYS; d >= 1; d--) {
-                if (isDayUnlocked(d, progressMap)) {
+        // Déterminer la leçon à proposer sur le bouton "Continuer"
+        let nextTargetLabel = 'Jour J0a';
+        let nextTargetUrl = '../tome-p0/jour-0a/';
+        let nextIsS0 = true;
+
+        // Trouver le premier jour de S0 non validé mais déverrouillé
+        let s0NextIndex = S0_DAYS.findIndex((d, idx) => !isS0DayValidated(d.id, progressMap) && isS0DayUnlocked(idx, progressMap));
+        if (s0NextIndex !== -1) {
+            nextTargetLabel = S0_DAYS[s0NextIndex].label;
+            nextTargetUrl = `../tome-p0/${S0_DAYS[s0NextIndex].id}/`;
+        } else {
+            // S0 est entièrement validé ! Passer au Cursus Principal (Jour 1..600)
+            nextIsS0 = false;
+            let nextNum = 1;
+            for (let d = 1; d <= TOTAL_DAYS; d++) {
+                if (!isDayValidated(d, progressMap)) {
                     nextNum = d;
                     break;
                 }
             }
+            if (!isDayUnlocked(nextNum, progressMap)) {
+                for (let d = TOTAL_DAYS; d >= 1; d--) {
+                    if (isDayUnlocked(d, progressMap)) {
+                        nextNum = d;
+                        break;
+                    }
+                }
+            }
+            nextTargetLabel = `Jour ${nextNum}`;
+            const nextDayId = 'jour-' + String(nextNum).padStart(2, '0');
+            nextTargetUrl = getLessonUrl(nextDayId);
         }
-
-        const nextDayId = 'jour-' + String(nextNum).padStart(2, '0');
-        const nextUrl = getLessonUrl(nextDayId);
-        const inProgress = progressRecords.find(r => r.study_status === 'in_progress' || r.study_status === 'paused');
 
         // ── HTML ──
         let html = '';
@@ -424,7 +469,7 @@
                 <span style="font-size:1.8rem">🔑</span>
                 <div class="sdb-guest-text">
                     <p class="sdb-guest-title">Connectez-vous pour sauvegarder votre progression</p>
-                    <p class="sdb-guest-desc">Vos données de progression sont déjà enregistrées localement. Créez un compte pour les synchroniser.</p>
+                    <p class="sdb-guest-desc">Vos données de progression sont enregistrées localement. Créez un compte pour les synchroniser.</p>
                 </div>
                 <button type="button" class="sdb-guest-btn" id="sdb-login-btn">🎓 Créer mon compte</button>
             </div>`;
@@ -438,10 +483,10 @@
             <div class="sdb-welcome-text">
                 <p class="sdb-welcome-greeting">Bienvenue sur votre espace d'étude</p>
                 <h2 class="sdb-welcome-name">${displayName}</h2>
-                <p class="sdb-welcome-sub">Double Diplôme PARADIS IT · Bachelor BIT & Master Cybersécurité · 600 jours · Marché Nord-Américain</p>
+                <p class="sdb-welcome-sub">Double Diplôme PARADIS IT · Bachelor BIT & Master Cybersécurité · 600 jours · Initiation Semestre 0 inclus</p>
             </div>
-            <a href="${nextUrl}" class="sdb-resume-btn">
-                ${isDayValidated(nextNum, progressMap) ? '▶ Revoir' : '▶ Continuer'} — Jour ${nextNum}
+            <a href="${nextTargetUrl}" class="sdb-resume-btn" style="background: linear-gradient(135deg, #06b6d4, #0284c7);">
+                ▶ Continuer — ${nextTargetLabel}
             </a>
         </div>`;
 
@@ -482,24 +527,66 @@
             </div>
         </div>`;
 
-        // 12 Semestres
+        // ── RENDER SEMESTRE 0 (FEATURING CARDS) ──
+        const s0DoneCount = S0_DAYS.filter(d => isS0DayValidated(d.id, progressMap)).length;
+        const s0AllDone = s0DoneCount === S0_DAYS.length;
+        const s0BadgeClass = s0AllDone ? 'done' : s0DoneCount > 0 ? 'active' : 'locked';
+        const s0BadgeLabel = s0AllDone ? `✅ Semestre 0 Validé` : s0DoneCount > 0 ? `🔵 En cours (${s0DoneCount}/15)` : `🚀 À Découvrir (15 Leçons)`;
+
+        html += `
+        <div style="margin: 36px 0 18px 0; padding-bottom: 8px; border-bottom: 2px solid #06b6d4;">
+            <h3 style="margin:0; font-family:'Outfit',sans-serif; color:#06b6d4; font-size:1.3rem; text-transform:uppercase; letter-spacing:0.05em;">
+                🚀 SEMESTRE 0 — INITIATION & PRÉ-REQUIS ABSOLUS (J0a–J0o)
+            </h3>
+        </div>
+        <div class="sdb-phase-section" style="border: 1px solid rgba(6, 182, 212, 0.3); background: rgba(6, 182, 212, 0.03);">
+            <div class="sdb-phase-header">
+                <span class="sdb-phase-icon">💻</span>
+                <span class="sdb-phase-title">Initiation Informatique, Operating Systems, Réseaux & Grand Examen d'Entrée</span>
+                <span class="sdb-phase-badge ${s0BadgeClass}" style="background: rgba(6, 182, 212, 0.2); color: #06b6d4;">${s0BadgeLabel}</span>
+            </div>
+            <div class="sdb-days-grid">`;
+
+        S0_DAYS.forEach((day, idx) => {
+            const rec = progressMap[day.id];
+            const unlocked = isS0DayUnlocked(idx, progressMap);
+            const icon = getStatusIcon(rec, unlocked);
+            const cardCls = getCardClass(rec, unlocked);
+            const url = unlocked ? `../tome-p0/${day.id}/` : 'javascript:void(0)';
+            const score = rec ? (rec.quiz_score ?? null) : null;
+
+            html += `
+            <a href="${url}" class="sdb-day-card ${cardCls}" ${!unlocked ? `data-s0-index="${idx}"` : ''}>
+                <span class="sdb-day-status-icon">${icon}</span>
+                <div class="sdb-day-info">
+                    <div class="sdb-day-num" style="color:#06b6d4;">${day.label}</div>
+                    <div class="sdb-day-title">${day.title}</div>
+                    ${!unlocked ? `<div style="font-size:0.68rem;color:#ef4444;margin-top:2px;">🔒 Requis: ${S0_DAYS[idx-1].label} (75%)</div>` :
+                      (score !== null ? `<div style="font-size:0.68rem;color:${score>=75?'#34d399':'#f59e0b'};margin-top:2px;">QCM: ${score}%</div>` : '')}
+                </div>
+            </a>`;
+        });
+
+        html += `</div></div>`;
+
+        // ── 12 SEMESTRES PRINCIPAUX ──
         const makeRange = (start, end) => Array.from({length: end - start + 1}, (_, i) => start + i);
 
         const SEMESTRES = [
             // CYCLE 1 — BACHELOR BIT
-            { id: 'S1',  cycle: 'Cycle 1 — Bachelor BIT', icon: '🖥️',  title: 'Semestre 1 — Socle Système (Linux, Hardware, Windows)', days: makeRange(1, 50) },
-            { id: 'S2',  cycle: 'Cycle 1 — Bachelor BIT', icon: '🌐',  title: 'Semestre 2 — Réseaux & Télécoms (TCP/IP, VLANs, Routers)', days: makeRange(51, 100) },
-            { id: 'S3',  cycle: 'Cycle 1 — Bachelor BIT', icon: '🐍',  title: 'Semestre 3 — Python, Bash & Compréhension du Code', days: makeRange(101, 150) },
-            { id: 'S4',  cycle: 'Cycle 1 — Bachelor BIT', icon: '🗄️',  title: 'Semestre 4 — Bases de Données, SQL & Data Engineering', days: makeRange(151, 200) },
-            { id: 'S5',  cycle: 'Cycle 1 — Bachelor BIT', icon: '⚡',  title: 'Semestre 5 — Développement Web Full-Stack & APIs REST', days: makeRange(201, 250) },
-            { id: 'S6',  cycle: 'Cycle 1 — Bachelor BIT', icon: '☁️',  title: 'Semestre 6 — Cloud, DevOps (Docker/K8s) & Grand Projet Bachelor', days: makeRange(251, 300) },
+            { id: 'S1',  cycle: 'Cycle 1 — Bachelor BIT (Bac+3)', icon: '🖥️',  title: 'Semestre 1 — Socle Système (Linux, Hardware, Windows)', days: makeRange(1, 50) },
+            { id: 'S2',  cycle: 'Cycle 1 — Bachelor BIT (Bac+3)', icon: '🌐',  title: 'Semestre 2 — Réseaux & Télécoms (TCP/IP, VLANs, Routers)', days: makeRange(51, 100) },
+            { id: 'S3',  cycle: 'Cycle 1 — Bachelor BIT (Bac+3)', icon: '🐍',  title: 'Semestre 3 — Python, Bash & Compréhension du Code', days: makeRange(101, 150) },
+            { id: 'S4',  cycle: 'Cycle 1 — Bachelor BIT (Bac+3)', icon: '🗄️',  title: 'Semestre 4 — Bases de Données, SQL & Data Engineering', days: makeRange(151, 200) },
+            { id: 'S5',  cycle: 'Cycle 1 — Bachelor BIT (Bac+3)', icon: '⚡',  title: 'Semestre 5 — Développement Web Full-Stack & APIs REST', days: makeRange(201, 250) },
+            { id: 'S6',  cycle: 'Cycle 1 — Bachelor BIT (Bac+3)', icon: '☁️',  title: 'Semestre 6 — Cloud, DevOps (Docker/K8s) & Grand Projet Bachelor', days: makeRange(251, 300) },
             // CYCLE 2 — MASTER CYBERSÉCURITÉ
-            { id: 'S7',  cycle: 'Cycle 2 — Master Cybersécurité', icon: '🛡️',  title: 'Semestre 7 — Fondations Cybersécurité & Offensive Security', days: makeRange(301, 350) },
-            { id: 'S8',  cycle: 'Cycle 2 — Master Cybersécurité', icon: '🦅',  title: 'Semestre 8 — Blue Team, SOC, SIEM & Threat Hunting', days: makeRange(351, 400) },
-            { id: 'S9',  cycle: 'Cycle 2 — Master Cybersécurité', icon: '🔐',  title: 'Semestre 9 — Cryptographie, PKI & Sécurité des Paiements', days: makeRange(401, 450) },
-            { id: 'S10', cycle: 'Cycle 2 — Master Cybersécurité', icon: '🔬',  title: 'Semestre 10 — DFIR, Reverse Engineering & Malware Analysis', days: makeRange(451, 500) },
-            { id: 'S11', cycle: 'Cycle 2 — Master Cybersécurité', icon: '⚙️',  title: 'Semestre 11 — DevSecOps, Hardening CIS & Sécurité Cloud', days: makeRange(501, 550) },
-            { id: 'S12', cycle: 'Cycle 2 — Master Cybersécurité', icon: '🏆',  title: 'Semestre 12 — Gouvernance, Grand Projet Synthétique & Portfolio', days: makeRange(551, 600) },
+            { id: 'S7',  cycle: 'Cycle 2 — Master Cybersécurité (Bac+5)', icon: '🛡️',  title: 'Semestre 7 — Fondations Cybersécurité & Offensive Security', days: makeRange(301, 350) },
+            { id: 'S8',  cycle: 'Cycle 2 — Master Cybersécurité (Bac+5)', icon: '🦅',  title: 'Semestre 8 — Blue Team, SOC, SIEM & Threat Hunting', days: makeRange(351, 400) },
+            { id: 'S9',  cycle: 'Cycle 2 — Master Cybersécurité (Bac+5)', icon: '🔐',  title: 'Semestre 9 — Cryptographie, PKI & Sécurité des Paiements', days: makeRange(401, 450) },
+            { id: 'S10', cycle: 'Cycle 2 — Master Cybersécurité (Bac+5)', icon: '🔬',  title: 'Semestre 10 — DFIR, Reverse Engineering & Malware Analysis', days: makeRange(451, 500) },
+            { id: 'S11', cycle: 'Cycle 2 — Master Cybersécurité (Bac+5)', icon: '⚙️',  title: 'Semestre 11 — DevSecOps, Hardening CIS & Sécurité Cloud', days: makeRange(501, 550) },
+            { id: 'S12', cycle: 'Cycle 2 — Master Cybersécurité (Bac+5)', icon: '🏆',  title: 'Semestre 12 — Gouvernance, Grand Projet Synthétique & Portfolio', days: makeRange(551, 600) },
         ];
 
         let currentCycleHeader = '';
@@ -552,7 +639,7 @@
                     <div class="sdb-day-info">
                         <div class="sdb-day-num">Jour ${dayNum}</div>
                         <div class="sdb-day-title">${shortTitle}</div>
-                        ${!unlocked ? `<div style="font-size:0.68rem;color:#ef4444;margin-top:2px;">🔒 Requis: Jour ${dayNum - 1} (75%)</div>` :
+                        ${!unlocked ? `<div style="font-size:0.68rem;color:#ef4444;margin-top:2px;">🔒 Requis: ${dayNum === 1 ? 'Examen J0o (75%)' : `Jour ${dayNum - 1} (75%)`}</div>` :
                           (score !== null ? `<div style="font-size:0.68rem;color:${score>=75?'#34d399':'#f59e0b'};margin-top:2px;">QCM: ${score}%</div>` : '')}
                     </div>
                 </a>`;
