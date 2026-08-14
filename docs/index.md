@@ -26,13 +26,13 @@ description: Plateforme d'autoformation IT de niveau Master — 600 jours, 12 se
     </p>
 
     <div class="paradis-hero-actions">
-      <button class="paradis-btn-hero-primary" onclick="window.ParadisAuth && window.ParadisAuth.openModal()">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
-        Commencer Gratuitement
-      </button>
-      <a href="table-des-matieres/" class="paradis-btn-hero-secondary">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-        Voir les 600 Jours
+      <a href="tome-p0/jour-0a/" class="paradis-btn-hero-primary" style="background: linear-gradient(135deg, #06b6d4, #0284c7); border: none; box-shadow: 0 4px 20px rgba(6, 182, 212, 0.4);">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        🚀 Commencer l'Initiation (Semestre 0 · J0a)
+      </a>
+      <a href="espace-etudiant/" class="paradis-btn-hero-secondary">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        🎓 Espace Étudiant
       </a>
     </div>
 

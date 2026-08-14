@@ -2,86 +2,99 @@
 
 > [!NOTE]
 > **SEMESTRE 0 — PARCOURS D'INITIATION ET SOCLE DE PRÉ-REQUIS ABSOLUS (J0a–J0o)**  
-> Cette leçon est conçue pour les apprenants débutants absolus. Elle pose les bases de manière simple, illustrée et accessible avant d'aborder les cours du cursus principal de 600 Jours.
+> Cette leçon vous plonge dans le monde de la sécurité informatique, de la défense des systèmes et du hacking éthique.
 
 ---
 
-## 🎯 Objectifs du Jour
-Découvrir le monde de la sécurité informatique, la différence entre Hackers Chapeaux Blancs (Ethical) et Noirs, Red Team & Blue Team.
+## 🎯 Objectifs de la Leçon
+- 🛡️ Comprendre ce qu'est la **Cybersécurité** et les principes de la Trinité **CIA** (Confidentialité, Intégrité, Disponibilité).
+- 🎩 Distinguer les Hackers **Chapeaux Blancs (Ethical)**, **Noirs (Cybercriminels)** et **Gris**.
+- ⚔️ Comprendre l'affrontement entre la **Red Team** (Attaque) et la **Blue Team** (Défense / SOC).
+- ⚖️ Connaître le cadre légal et éthique du Pentest.
 
 ---
 
-## 🖼️ Illustrations & Découverte Visuelle
-![Le Métier d'Expert Cybersécurité & Hacker Éthique](https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800)
+## 🖼️ Cybersécurité & Hacking Éthique
+![Cybersécurité](https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800)
 
 ---
 
-## 📖 1. Concepts Clés & Définitions
+## 📖 1. La Trinité de la Cybersécurité : La Règle C-I-A
 
-- 🔹 **Qu'est-ce que la Cybersécurité ?**\n- 🔹 **Red Team (Attaque) vs Blue Team (Défense)**\n- 🔹 **Le Pentesting & Audit de Sécurité**\n- 🔹 **Responsabilité Légale & Éthique**
-
-### 💡 Qu'est-ce que cela signifie concrètement ?
-Chaque notion informatique complexe s'explique simplement par des analogies de la vie quotidienne. L'informatique n'est pas de la magie : c'est un assemblage logique d'outils et de règles conçus par des êtres humains pour automatiser et sécuriser le traitement de l'information.
+Toute la sécurité informatique vise à protéger trois piliers fondamentaux :
+1. **Confidentialité (C)** : S'assurer que seules les personnes autorisées ont accès aux données (chiffrement, mots de passe, MFA).
+2. **Intégrité (I)** : Garantir que les données n'ont pas été modifiées ou altérées par un attaquant (signatures numériques, hashs).
+3. **Disponibilité (A)** : Veiller à ce que les systèmes et serveurs restent accessibles aux utilisateurs légitimes sans interruption (protection anti-DDoS, redondance).
 
 ---
 
-## 🧪 2. Atelier Pratique & Manipulation Guidée
+## 📖 2. Les Couleurs du Hacking : White Hat vs Black Hat
 
-### Exercice d'Observation :
-1. Observez l'environnement de travail et repérez les éléments étudiés aujourd'hui.
-2. Suivez les étapes pas-à-pas pour manipuler les concepts sans aucune appréhension.
+- **White Hat (Hacker Éthique / Chapeau Blanc)** : Expert en sécurité engagé légalement par les entreprises pour tester et découvrir les failles de sécurité *avant* que les criminels ne les exploitent.
+- **Black Hat (Cybercriminel / Chapeau Noir)** : Attaquant malveillant qui pirate les systèmes sans autorisation pour voler des données, extorquer de l'argent (ransomwares) ou détruire des infrastructures.
+
+---
+
+## 📖 3. Red Team vs Blue Team : L'Entraînement des Armées Numériques
+
+Dans les grandes organisations et institutions bancaires :
+- **Red Team (L'Attaque)** : Simule des attaques réelles avancées pour tester la résistance globale des défenses et des collaborateurs.
+- **Blue Team (La Défense / SOC)** : Surveille le réseau 24h/24, détecte les intrusions, analyse les malwares et stoppe les attaques en temps réel.
+
+---
+
+## 🧪 2. Atelier Pratique : Calculer une Empreinte de Sécurité (Hash SHA-256)
+
+En cybersécurité, pour vérifier l'intégrité d'un fichier et s'assurer qu'il n'a pas été altéré, on calcule son "empreinte digitale" (*Hash*). Tapez cette commande dans votre terminal :
 
 ```bash
-# Exemple de commande d'initiation et de vérification
-echo "Bienvenue dans le Semestre 0 de PARADIS IT !"
-date
+# Générer le hash SHA-256 d'un texte pour vérifier son intégrité
+echo -n "PARADIS_IT_SECURITY" | sha256sum
 ```
 
 ---
 
 ## ❓ Banque de QCM & Test du Jour (5 Questions)
 
+**Q1 : Que désignent les trois lettres C-I-A en cybersécurité ?**
+- A) Control, Intelligence, Action
+- B) Confidentialité, Intégrité, Disponibilité
+- C) Cloud, Internet, Apple
+- D) Central Internal Architecture
 
-**Q1 :** Question de révision n°1 sur les notions abordées aujourd'hui.
-- A) Option A — Réponse exacte découlant de la leçon
-- B) Option B — Inexacte
-- C) Option C — Hors sujet
-- D) Option D — Incorrecte
+*Réponse : B — La trinité CIA représente la Confidentialité, l'Intégrité et la Disponibilité des données.*
 
-*Réponse : A — Explication pédagogique claire illustrant le concept clé n°1.*
+**Q2 : Quelle est la mission principale d'un "Hacker Éthique" (White Hat) ?**
+- A) Pirater les comptes bancaires pour s'enrichir
+- B) Identifier légalement les failles de sécurité avec l'autorisation de l'entreprise pour les corriger
+- C) Détruire les serveurs des concurrents
+- D) Bloquer l'accès à Internet
 
-**Q2 :** Question de révision n°2 sur les notions abordées aujourd'hui.
-- A) Option A — Réponse exacte découlant de la leçon
-- B) Option B — Inexacte
-- C) Option C — Hors sujet
-- D) Option D — Incorrecte
+*Réponse : B — Le hacker éthique teste la sécurité de manière autorisée pour renforcer les défenses.*
 
-*Réponse : A — Explication pédagogique claire illustrant le concept clé n°2.*
+**Q3 : Quel est le rôle de la "Blue Team" dans une entreprise ?**
+- A) Concevoir des jeux vidéo
+- B) Assurer la défense en temps réel, la surveillance du SOC et la réaction aux incidents de sécurité
+- C) Vendre des ordinateurs bleus
+- D) Attaquer les serveurs distants
 
-**Q3 :** Question de révision n°3 sur les notions abordées aujourd'hui.
-- A) Option A — Réponse exacte découlant de la leçon
-- B) Option B — Inexacte
-- C) Option C — Hors sujet
-- D) Option D — Incorrecte
+*Réponse : B — La Blue Team est l'équipe défensive chargée de la détection et de la réponse aux attaques.*
 
-*Réponse : A — Explication pédagogique claire illustrant le concept clé n°3.*
+**Q4 : Qu'est-ce qu'un "Ransomware" (Rançongiciel) ?**
+- A) Un logiciel de nettoyage de disque dur
+- B) Un logiciel malveillant qui chiffre les fichiers d'une victime et exige une rançon financier pour les débloquer
+- C) Un antivirus gratuit
+- D) Un câble réseau rapide
 
-**Q4 :** Question de révision n°4 sur les notions abordées aujourd'hui.
-- A) Option A — Réponse exacte découlant de la leçon
-- B) Option B — Inexacte
-- C) Option C — Hors sujet
-- D) Option D — Incorrecte
+*Réponse : B — Le ransomware chiffre les données des entreprises pour exiger une rançon.*
 
-*Réponse : A — Explication pédagogique claire illustrant le concept clé n°4.*
+**Q5 : À quoi sert un algorithme de hachage comme SHA-256 en sécurité ?**
+- A) À afficher des photos
+- B) À calculer l'empreinte digitale unique d'une donnée pour garantir son intégrité
+- C) À éteindre le processeur
+- D) À accélérer le démarrage de Windows
 
-**Q5 :** Question de révision n°5 sur les notions abordées aujourd'hui.
-- A) Option A — Réponse exacte découlant de la leçon
-- B) Option B — Inexacte
-- C) Option C — Hors sujet
-- D) Option D — Incorrecte
-
-*Réponse : A — Explication pédagogique claire illustrant le concept clé n°5.*
-
+*Réponse : B — Un hash permet de vérifier qu'un fichier n'a pas été altéré ou modifié.*
 
 ---
 

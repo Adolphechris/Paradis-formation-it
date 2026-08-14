@@ -1,349 +1,352 @@
 # Jour J0O — Grand Examen Massif de Synthèse & Qualification d'Entrée
 
 > [!IMPORTANT]
-> **GRAND EXAMEN MASSIF DE SYNTHÈSE DE PRÉ-REQUIS & DIAGNOSTIC D'ENTRÉE :**  
-> Cet examen officiel de 40 questions valide l'ensemble des connaissances acquises lors des 14 jours d'initiation du Semestre 0 (J0a à J0n). Un score minimal de **75% (30/40)** est exigé pour débloquer le **Badge d'Entrée Masterclass** et accéder au Jour 1 (`jour-01.md`).
+> **GRAND EXAMEN MASSIF D'ENTRÉE — SEMESTRE 0 (40 QUESTIONS OBLIGATOIRES)**  
+> Cet examen évalue l'ensemble des connaissances acquises durant le Semestre 0 (Initiation & Pré-requis).  
+> **Condition de Réussite :** Vous devez obtenir un score minimum de **75% (30/40 bonnes réponses)** pour valider le Semestre 0, obtenir le **Badge d'Entrée** et déverrouiller l'accès au **Jour 1 (Semestre 1)**.
 
 ---
 
-## 🎯 Objectifs de l'Évaluation
-- 🧪 **Tester l'assimilation** des concepts fondamentaux (Hardware, Binaire, OS, Réseau, CLI, Métiers IT & Méthodologie).
-- 🏆 **Délivrer la Qualification d'Entrée** certifiant que l'étudiant possède le socle nécessaire pour attaquer la formation d'élite des 600 Jours.
+## 🎯 Consignes de l'Examen Massif
+- ⏳ Prenez le temps de lire attentivement chaque question et l'ensemble des 4 propositions.
+- 🧠 Revoir les leçons `J0a` à `J0n` si vous hésitez sur un concept.
+- 🎯 Une fois vos réponses sélectionnées, cliquez sur le bouton de validation en bas de page.
 
 ---
 
-## 🖼️ Galerie & Badge de Qualification
-![Examen Massif](https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800)
+## ❓ Banque des 40 Questions de l'Examen Massif
 
----
 
-## ❓ Grand Examen Massif (40 Questions)
+**Q1 : Quel composant physique est considéré comme le 'cerveau calculatoire' de l'ordinateur ?**
+- A) Le disque dur SSD
+- B) Le processeur (CPU)
+- C) La mémoire RAM
+- D) L'alimentation PSU
 
+*Réponse : B — Le CPU traite et exécute toutes les instructions arithmétiques et logiques du système.*
 
-**Q1 :** Question de qualification n°1 sur les fondamentaux informatiques et pré-requis.
-- A) Option A (Correcte)
-- B) Option B
-- C) Option C
-- D) Option D
+**Q2 : Quelle est la caractéristique fondamentale de la mémoire vive RAM ?**
+- A) Elle est non-volatile
+- B) Elle est ultra-lente
+- C) Elle est volatile et s'efface lors de la coupure de courant
+- D) Elle sert d'écran visuel
 
-*Réponse attendue : A — Explication synthétique de validation des pré-requis pour la question 1.*
+*Réponse : C — La RAM est une mémoire vive volatile nécessitant du courant électrique pour maintenir les données.*
 
-**Q2 :** Question de qualification n°2 sur les fondamentaux informatiques et pré-requis.
-- A) Option A (Correcte)
-- B) Option B
-- C) Option C
-- D) Option D
+**Q3 : Pourquoi les disques SSD NVMe sont-ils nettement plus rapides que les disques HDD magnétiques ?**
+- A) Parce qu'ils ont des pièces mécaniques en bois
+- B) Parce qu'ils utilisent des puces électroniques flash NAND sans pièce mécanique
+- C) Parce qu'ils fonctionnent à l'eau
+- D) Parce qu'ils sont plus lourds
 
-*Réponse attendue : A — Explication synthétique de validation des pré-requis pour la question 2.*
+*Réponse : B — L'absence de pièces mécaniques et l'accès direct aux puces flash offrent des vitesses jusqu'à 50x supérieures.*
 
-**Q3 :** Question de qualification n°3 sur les fondamentaux informatiques et pré-requis.
-- A) Option A (Correcte)
-- B) Option B
-- C) Option C
-- D) Option D
+**Q4 : Dans la métaphore de la cuisine, que représente la mémoire RAM ?**
+- A) L'armoire de stockage au sous-sol
+- B) Le plan de travail sur lequel sont posés les ingrédients actifs
+- C) La camionnette du livreur
+- D) Le four à micro-ondes
 
-*Réponse attendue : A — Explication synthétique de validation des pré-requis pour la question 3.*
+*Réponse : B — La RAM est le plan de travail rapide pour les données activement traitées par le CPU.*
 
-**Q4 :** Question de qualification n°4 sur les fondamentaux informatiques et pré-requis.
-- A) Option A (Correcte)
-- B) Option B
-- C) Option C
-- D) Option D
+**Q5 : Quel est le composant maître qui interconnecte électriquement le CPU, la RAM, les disques et la carte réseau ?**
+- A) La Carte Mère (Motherboard)
+- B) Le boîtier externe
+- C) Le câble HDMI
+- D) La prise murale
 
-*Réponse attendue : A — Explication synthétique de validation des pré-requis pour la question 4.*
+*Réponse : A — La carte mère est le circuit imprimé principal qui relie l'ensemble des composants.*
 
-**Q5 :** Question de qualification n°5 sur les fondamentaux informatiques et pré-requis.
-- A) Option A (Correcte)
-- B) Option B
-- C) Option C
-- D) Option D
+**Q6 : Pourquoi les ordinateurs fonctionnent-ils exclusivement en binaire (Base 2) avec des 0 et des 1 ?**
+- A) Parce que les transistors électroniques ne mesurent que deux états (Courant passe = 1 / Courant ne passe pas = 0)
+- B) Parce que les humains n'aiment pas les chiffres
+- C) Parce que c'est une loi américaine
+- D) Parce que les écrans sont noirs
 
-*Réponse attendue : A — Explication synthétique de validation des pré-requis pour la question 5.*
+*Réponse : A — Le binaire dérive de la nature physique des transistors électroniques (ouvert/fermé).*
 
-**Q6 :** Question de qualification n°6 sur les fondamentaux informatiques et pré-requis.
-- A) Option A (Correcte)
-- B) Option B
-- C) Option C
-- D) Option D
+**Q7 : Combien de bits constituent exactement un Octet (Byte) ?**
+- A) 4 bits
+- B) 8 bits
+- C) 16 bits
+- D) 100 bits
 
-*Réponse attendue : A — Explication synthétique de validation des pré-requis pour la question 6.*
+*Réponse : B — Un octet est rigoureusement composé d'un ensemble de 8 bits.*
 
-**Q7 :** Question de qualification n°7 sur les fondamentaux informatiques et pré-requis.
-- A) Option A (Correcte)
-- B) Option B
-- C) Option C
-- D) Option D
+**Q8 : Quelle unité de mesure est immédiatement supérieure au Gigaoctet (Go) ?**
+- A) Le Kilooctet (Ko)
+- B) Le Mégaoctet (Mo)
+- C) Le Téraoctet (To)
+- D) Le Pétaoctet (Po)
 
-*Réponse attendue : A — Explication synthétique de validation des pré-requis pour la question 7.*
+*Réponse : C — 1 Téraoctet (To) équivaut à 1 000 Gigaoctets (Go).*
 
-**Q8 :** Question de qualification n°8 sur les fondamentaux informatiques et pré-requis.
-- A) Option A (Correcte)
-- B) Option B
-- C) Option C
-- D) Option D
+**Q9 : Quel standard d'encodage moderne permet de représenter tous les alphabets du monde ainsi que les émojis ?**
+- A) ASCII 1963
+- B) UTF-8 / Unicode
+- C) MS-DOS Prompt
+- D) ISO-8859-1
 
-*Réponse attendue : A — Explication synthétique de validation des pré-requis pour la question 8.*
+*Réponse : B — UTF-8 est la norme universelle capable d'encoder l'intégralité des alphabets et symboles mondiaux.*
 
-**Q9 :** Question de qualification n°9 sur les fondamentaux informatiques et pré-requis.
-- A) Option A (Correcte)
-- B) Option B
-- C) Option C
-- D) Option D
+**Q10 : Si un fichier texte simple contient 1 000 caractères ASCII, quelle sera sa taille approximative sur le disque ?**
+- A) 1 000 octets (bytes)
+- B) 1 000 Gigaoctets
+- C) 10 octets
+- D) 1 Mégaoctet
 
-*Réponse attendue : A — Explication synthétique de validation des pré-requis pour la question 9.*
+*Réponse : A — En ASCII, 1 caractère occupe exactement 1 octet, donc 1 000 caractères occupent 1 000 octets.*
 
-**Q10 :** Question de qualification n°10 sur les fondamentaux informatiques et pré-requis.
-- A) Option A (Correcte)
-- B) Option B
-- C) Option C
-- D) Option D
+**Q11 : Quel composant logiciel sert d'intermédiaire direct entre le matériel physique et les applications ?**
+- A) Le navigateur web
+- B) Le Noyau (Kernel)
+- C) Le fichier texte
+- D) L'écran de télévision
 
-*Réponse attendue : A — Explication synthétique de validation des pré-requis pour la question 10.*
+*Réponse : B — Le Noyau (Kernel) est le cœur du système qui dialogue directement avec les composants physiques.*
 
-**Q11 :** Question de qualification n°11 sur les fondamentaux informatiques et pré-requis.
-- A) Option A (Correcte)
-- B) Option B
-- C) Option C
-- D) Option D
+**Q12 : Que signifie l'acronyme CLI en informatique ?**
+- A) Central Linux Interface
+- B) Command Line Interface (Interface en Ligne de Commande)
+- C) Computer Logic Instrument
+- D) Control Link Protocol
 
-*Réponse attendue : A — Explication synthétique de validation des pré-requis pour la question 11.*
+*Réponse : B — CLI désigne l'interface textuelle basée sur la ligne de commande.*
 
-**Q12 :** Question de qualification n°12 sur les fondamentaux informatiques et pré-requis.
-- A) Option A (Correcte)
-- B) Option B
-- C) Option C
-- D) Option D
+**Q13 : Pourquoi les experts en administration système et cybersécurité privilégient-ils la CLI plutôt que la GUI ?**
+- A) Parce que la GUI est interdite par la loi
+- B) Pour la vitesse, la légèreté et la capacité d'automatiser des tâches via des scripts
+- C) Parce que la CLI coûte moins cher
+- D) Parce qu'il n'y a pas de clavier avec la GUI
 
-*Réponse attendue : A — Explication synthétique de validation des pré-requis pour la question 12.*
+*Réponse : B — La CLI offre une vitesse inégalée, consomme peu de ressources et s'automatise facilement.*
+
+**Q14 : Parmi les suivants, quel est le système d'exploitation libre et open-source qui propulse la majorité des serveurs web mondiaux ?**
+- A) Windows 95
+- B) Linux
+- C) MS-DOS
+- D) MacOS System 7
 
-**Q13 :** Question de qualification n°13 sur les fondamentaux informatiques et pré-requis.
-- A) Option A (Correcte)
-- B) Option B
-- C) Option C
-- D) Option D
+*Réponse : B — Linux est le système d'exploitation libre et open-source roi des serveurs et du Cloud.*
+
+**Q15 : Quelle est la fonction du gestionnaire de mémoire dans le Noyau (Kernel) ?**
+- A) Augmenter la résolution de l'écran
+- B) Allouer et sécuriser des espaces mémoire RAM isolés pour chaque application
+- C) Effacer le disque dur une fois par mois
+- D) Télécharger des vidéos
 
-*Réponse attendue : A — Explication synthétique de validation des pré-requis pour la question 13.*
+*Réponse : B — Le noyau gère l'allocation de la RAM pour s'assurer qu'aucune application n'empiète sur les autres.*
+
+**Q16 : Quelle est la différence essentielle entre une adresse MAC et une adresse IP ?**
+- A) L'adresse MAC est l'identifiant physique gravé sur la carte réseau, l'adresse IP est l'adresse logique attribuée sur le réseau
+- B) L'adresse MAC change tous les jours
+- C) L'adresse IP ne sert que pour le Wi-Fi
+- D) L'adresse MAC est imprimée sur le papier
 
-**Q14 :** Question de qualification n°14 sur les fondamentaux informatiques et pré-requis.
-- A) Option A (Correcte)
-- B) Option B
-- C) Option C
-- D) Option D
+*Réponse : A — La MAC est l'empreinte physique unique de la carte réseau, l'IP est l'adresse réseau évolutive.*
+
+**Q17 : Dans le modèle Client-Serveur, quel est le rôle du 'Client' ?**
+- A) Formuler une requête vers un serveur pour obtenir une page ou un service
+- B) Stocker toutes les données de tous les utilisateurs
+- C) Fournir de l'électricité aux câbles
+- D) Fabriquer les routeurs
 
-*Réponse attendue : A — Explication synthétique de validation des pré-requis pour la question 14.*
+*Réponse : A — Le client est l'émetteur de la demande de service (ex: votre navigateur web).*
+
+**Q18 : Que signifie l'acronyme LAN ?**
+- A) Large Access Network
+- B) Local Area Network (Réseau Local)
+- C) Linux Admin Node
+- D) Link Automatic Number
 
-**Q15 :** Question de qualification n°15 sur les fondamentaux informatiques et pré-requis.
-- A) Option A (Correcte)
-- B) Option B
-- C) Option C
-- D) Option D
+*Réponse : B — LAN désigne le réseau local restreint à un bâtiment ou une habitation.*
+
+**Q19 : À quoi sert la commande réseau `ping` dans un terminal Linux ?**
+- A) À éteindre l'ordinateur distant
+- B) À tester la connectivité et mesurer la latence des paquets vers une machine distante
+- C) À supprimer le réseau
+- D) À installer des programmes
 
-*Réponse attendue : A — Explication synthétique de validation des pré-requis pour la question 15.*
+*Réponse : B — Ping vérifie la présence et la vitesse de réponse d'un équipement sur le réseau.*
+
+**Q20 : Quel équipement est responsable de l'acheminement des paquets entre votre réseau local et Internet ?**
+- A) L'imprimante
+- B) Le Routeur
+- C) L'écran
+- D) Le clavier
 
-**Q16 :** Question de qualification n°16 sur les fondamentaux informatiques et pré-requis.
-- A) Option A (Correcte)
-- B) Option B
-- C) Option C
-- D) Option D
+*Réponse : B — Le routeur est le passerelle intelligente qui relie le réseau local au réseau mondial.*
+
+**Q21 : Que signifie la commande Unix `pwd` ?**
+- A) Print Working Directory (Afficher le répertoire courant)
+- B) Power Down
+- C) Password Change
+- D) Process Windows Data
 
-*Réponse attendue : A — Explication synthétique de validation des pré-requis pour la question 16.*
+*Réponse : A — `pwd` affiche le chemin absolu du dossier exact dans lequel on se trouve.*
+
+**Q22 : Dans l'invite de commande `user@pc:~$`, que signifie le symbole tilde `~` ?**
+- A) Que le système est bloqué
+- B) Que vous êtes dans votre répertoire personnel d'utilisateur (/home/user)
+- C) Que vous êtes déconnecté
+- D) Que le disque est plein
 
-**Q17 :** Question de qualification n°17 sur les fondamentaux informatiques et pré-requis.
-- A) Option A (Correcte)
-- B) Option B
-- C) Option C
-- D) Option D
+*Réponse : B — Le tilde `~` est l'abréviation universelle désignant le dossier personnel d'utilisateur.*
+
+**Q23 : Dans la commande `ls -la /var/log`, quel élément constitue le flag (l'option) ?**
+- A) `ls`
+- B) `-la`
+- C) `/var/log`
+- D) Le bouton Entrée
 
-*Réponse attendue : A — Explication synthétique de validation des pré-requis pour la question 17.*
+*Réponse : B — `-la` est l'option qui modifie l'affichage de la commande `ls`.*
+
+**Q24 : Quelle commande permet de connaître le nom exact de l'utilisateur actuellement connecté dans le terminal ?**
+- A) `whoami`
+- B) `whoareyou`
+- C) `name`
+- D) `user`
 
-**Q18 :** Question de qualification n°18 sur les fondamentaux informatiques et pré-requis.
-- A) Option A (Correcte)
-- B) Option B
-- C) Option C
-- D) Option D
+*Réponse : A — `whoami` renvoie l'identifiant du compte utilisateur actif.*
+
+**Q25 : Quel raccourci clavier nettoie instantanément l'affichage de l'écran du terminal Linux ?**
+- A) `Alt + F4`
+- B) `Ctrl + L`
+- C) `Ctrl + Alt + Suppr`
+- D) `Espace`
 
-*Réponse attendue : A — Explication synthétique de validation des pré-requis pour la question 18.*
+*Réponse : B — `Ctrl + L` efface l'écran du terminal (équivalent de la commande `clear`).*
+
+**Q26 : Quel symbole représente la Racine du système de fichiers sous Linux ?**
+- A) `C:\`
+- B) `/` (Slash)
+- C) `~`
+- D) `root:`
 
-**Q19 :** Question de qualification n°19 sur les fondamentaux informatiques et pré-requis.
-- A) Option A (Correcte)
-- B) Option B
-- C) Option C
-- D) Option D
+*Réponse : B — La barre oblique `/` désigne le sommet unique de l'arborescence Linux.*
+
+**Q27 : Quel dossier Linux contient par convention les fichiers de configuration système en texte clair ?**
+- A) `/tmp`
+- B) `/etc`
+- C) `/home`
+- D) `/dev`
 
-*Réponse attendue : A — Explication synthétique de validation des pré-requis pour la question 19.*
-
-**Q20 :** Question de qualification n°20 sur les fondamentaux informatiques et pré-requis.
-- A) Option A (Correcte)
-- B) Option B
-- C) Option C
-- D) Option D
-
-*Réponse attendue : A — Explication synthétique de validation des pré-requis pour la question 20.*
-
-**Q21 :** Question de qualification n°21 sur les fondamentaux informatiques et pré-requis.
-- A) Option A (Correcte)
-- B) Option B
-- C) Option C
-- D) Option D
-
-*Réponse attendue : A — Explication synthétique de validation des pré-requis pour la question 21.*
-
-**Q22 :** Question de qualification n°22 sur les fondamentaux informatiques et pré-requis.
-- A) Option A (Correcte)
-- B) Option B
-- C) Option C
-- D) Option D
-
-*Réponse attendue : A — Explication synthétique de validation des pré-requis pour la question 22.*
-
-**Q23 :** Question de qualification n°23 sur les fondamentaux informatiques et pré-requis.
-- A) Option A (Correcte)
-- B) Option B
-- C) Option C
-- D) Option D
-
-*Réponse attendue : A — Explication synthétique de validation des pré-requis pour la question 23.*
-
-**Q24 :** Question de qualification n°24 sur les fondamentaux informatiques et pré-requis.
-- A) Option A (Correcte)
-- B) Option B
-- C) Option C
-- D) Option D
-
-*Réponse attendue : A — Explication synthétique de validation des pré-requis pour la question 24.*
-
-**Q25 :** Question de qualification n°25 sur les fondamentaux informatiques et pré-requis.
-- A) Option A (Correcte)
-- B) Option B
-- C) Option C
-- D) Option D
-
-*Réponse attendue : A — Explication synthétique de validation des pré-requis pour la question 25.*
-
-**Q26 :** Question de qualification n°26 sur les fondamentaux informatiques et pré-requis.
-- A) Option A (Correcte)
-- B) Option B
-- C) Option C
-- D) Option D
-
-*Réponse attendue : A — Explication synthétique de validation des pré-requis pour la question 26.*
-
-**Q27 :** Question de qualification n°27 sur les fondamentaux informatiques et pré-requis.
-- A) Option A (Correcte)
-- B) Option B
-- C) Option C
-- D) Option D
-
-*Réponse attendue : A — Explication synthétique de validation des pré-requis pour la question 27.*
-
-**Q28 :** Question de qualification n°28 sur les fondamentaux informatiques et pré-requis.
-- A) Option A (Correcte)
-- B) Option B
-- C) Option C
-- D) Option D
-
-*Réponse attendue : A — Explication synthétique de validation des pré-requis pour la question 28.*
-
-**Q29 :** Question de qualification n°29 sur les fondamentaux informatiques et pré-requis.
-- A) Option A (Correcte)
-- B) Option B
-- C) Option C
-- D) Option D
-
-*Réponse attendue : A — Explication synthétique de validation des pré-requis pour la question 29.*
-
-**Q30 :** Question de qualification n°30 sur les fondamentaux informatiques et pré-requis.
-- A) Option A (Correcte)
-- B) Option B
-- C) Option C
-- D) Option D
-
-*Réponse attendue : A — Explication synthétique de validation des pré-requis pour la question 30.*
-
-**Q31 :** Question de qualification n°31 sur les fondamentaux informatiques et pré-requis.
-- A) Option A (Correcte)
-- B) Option B
-- C) Option C
-- D) Option D
-
-*Réponse attendue : A — Explication synthétique de validation des pré-requis pour la question 31.*
-
-**Q32 :** Question de qualification n°32 sur les fondamentaux informatiques et pré-requis.
-- A) Option A (Correcte)
-- B) Option B
-- C) Option C
-- D) Option D
-
-*Réponse attendue : A — Explication synthétique de validation des pré-requis pour la question 32.*
-
-**Q33 :** Question de qualification n°33 sur les fondamentaux informatiques et pré-requis.
-- A) Option A (Correcte)
-- B) Option B
-- C) Option C
-- D) Option D
-
-*Réponse attendue : A — Explication synthétique de validation des pré-requis pour la question 33.*
-
-**Q34 :** Question de qualification n°34 sur les fondamentaux informatiques et pré-requis.
-- A) Option A (Correcte)
-- B) Option B
-- C) Option C
-- D) Option D
-
-*Réponse attendue : A — Explication synthétique de validation des pré-requis pour la question 34.*
-
-**Q35 :** Question de qualification n°35 sur les fondamentaux informatiques et pré-requis.
-- A) Option A (Correcte)
-- B) Option B
-- C) Option C
-- D) Option D
-
-*Réponse attendue : A — Explication synthétique de validation des pré-requis pour la question 35.*
-
-**Q36 :** Question de qualification n°36 sur les fondamentaux informatiques et pré-requis.
-- A) Option A (Correcte)
-- B) Option B
-- C) Option C
-- D) Option D
-
-*Réponse attendue : A — Explication synthétique de validation des pré-requis pour la question 36.*
-
-**Q37 :** Question de qualification n°37 sur les fondamentaux informatiques et pré-requis.
-- A) Option A (Correcte)
-- B) Option B
-- C) Option C
-- D) Option D
-
-*Réponse attendue : A — Explication synthétique de validation des pré-requis pour la question 37.*
-
-**Q38 :** Question de qualification n°38 sur les fondamentaux informatiques et pré-requis.
-- A) Option A (Correcte)
-- B) Option B
-- C) Option C
-- D) Option D
-
-*Réponse attendue : A — Explication synthétique de validation des pré-requis pour la question 38.*
-
-**Q39 :** Question de qualification n°39 sur les fondamentaux informatiques et pré-requis.
-- A) Option A (Correcte)
-- B) Option B
-- C) Option C
-- D) Option D
-
-*Réponse attendue : A — Explication synthétique de validation des pré-requis pour la question 39.*
-
-**Q40 :** Question de qualification n°40 sur les fondamentaux informatiques et pré-requis.
-- A) Option A (Correcte)
-- B) Option B
-- C) Option C
-- D) Option D
-
-*Réponse attendue : A — Explication synthétique de validation des pré-requis pour la question 40.*
+*Réponse : B — `/etc` héberge la totalité des fichiers de configuration texte du système.*
+
+**Q28 : Dans un chemin de fichier, que désigne le symbole `..` (deux points) ?**
+- A) Le répertoire racine
+- B) Le répertoire parent (remonter d'un niveau)
+- C) Un fichier temporaire
+- D) La corbeille
+
+*Réponse : B — `..` permet de faire référence au dossier immédiatement supérieur dans l'arbre.*
+
+**Q29 : Quelle est la différence entre un chemin absolu et un chemin relatif ?**
+- A) Le chemin absolu commence toujours par la racine `/`, le chemin relatif démarre du dossier courant
+- B) Le chemin absolu n'existe que sous Windows
+- C) Le chemin relatif ne fonctionne pas en ligne de commande
+- D) Il n'y a aucune différence
+
+*Réponse : A — L'absolu part de `/` tandis que le relatif s'évalue depuis le répertoire actif.*
+
+**Q30 : Quel répertoire Linux héberge les espaces de travail personnels des utilisateurs ?**
+- A) `/bin`
+- B) `/var`
+- C) `/home`
+- D) `/boot`
+
+*Réponse : C — `/home` est le répertoire réservé aux dossiers personnels des utilisateurs.*
+
+**Q31 : Qu'est-ce qu'un algorithme en informatique ?**
+- A) Un composant physique
+- B) Une suite d'instructions étape par étape permettant de résoudre un problème
+- C) Un modèle d'imprimante
+- D) Un câble réseau
+
+*Réponse : B — Un algorithme est la description logique de la démarche d'instructions à effectuer.*
+
+**Q32 : Quelle est la différence entre un langage compilé (C) et un langage interprété (Python) ?**
+- A) Le langage compilé est traduit en binaire avant l'exécution, l'interprété est traduit ligne par ligne à l'exécution
+- B) Le langage interprété est interdit sur Linux
+- C) Le langage compilé nécessite un écran tactile
+- D) Il n'y en a aucune
+
+*Réponse : A — La compilation produit un binaire exécutable natif avant le lancement du programme.*
+
+**Q33 : Que signifie le terme 'Bug' (Bogue) en programmation ?**
+- A) Une erreur ou un défaut dans le code source qui provoque un dysfonctionnement
+- B) Un insecte volant
+- C) Une sauvegarde automatique
+- D) Une mise à jour système
+
+*Réponse : B — Un bug est une erreur logique ou syntaxique présente dans le code source.*
+
+**Q34 : Quel est le rôle d'un Administrateur Système (SysAdmin) ?**
+- A) Nettoyer les bureaux
+- B) Garantir le fonctionnement, la sécurité et la disponibilité continue des serveurs
+- C) Vendre des abonnements télévisés
+- D) Dessiner des logos
+
+*Réponse : B — Le SysAdmin est responsable de la stabilité, la sécurité et la santé de l'infrastructure.*
+
+**Q35 : Que désignent les lettres C-I-A en cybersécurité ?**
+- A) Confidentialité, Intégrité, Disponibilité
+- B) Control, Intelligence, Action
+- C) Cloud, Internet, Access
+- D) Code, Data, Algorithm
+
+*Réponse : A — La trinité CIA forme le socle fondamental de la protection des données.*
+
+**Q36 : Quelle est la mission d'un 'Hacker Éthique' (White Hat) ?**
+- A) Tester légalement la sécurité des systèmes avec autorisation pour découvrir et corriger les failles
+- B) Pirater les banques pour s'enrichir
+- C) Supprimer les bases de données
+- D) Vendre des virus
+
+*Réponse : A — Le hacker éthique réalise des tests d'intrusion autorisés pour renforcer les défenses.*
+
+**Q37 : Qui est le créateur du Noyau Linux en 1991 ?**
+- A) Linus Torvalds
+- B) Steve Jobs
+- C) Bill Gates
+- D) Richard Stallman
+
+*Réponse : A — Linus Torvalds a créé le noyau Linux en 1991.*
+
+**Q38 : À quoi sert l'éditeur Vim dans un terminal Linux ?**
+- A) À éditer des fichiers de texte et de code directement en ligne de commande
+- B) À écouter de la musique
+- C) À éteindre le processeur
+- D) À formater les cartes SD
+
+*Réponse : A — Vim est l'éditeur universel en ligne de commande présent sur les serveurs Linux.*
+
+**Q39 : Quelle est la règle d'or lorsqu'on fait face à un message d'erreur dans le terminal ?**
+- A) Lire le message jusqu'au bout, identifier le problème et chercher sa cause de manière méthodique
+- B) Éteindre immédiatement le PC
+- C) Taper n'importe quelle commande au hasard
+- D) Fermer les yeux
+
+*Réponse : A — Le message d'erreur contient l'explication précise fournie par le système.*
+
+**Q40 : Combien de Semestres et de Jours composent le cursus complet PARADIS IT Masterclass ?**
+- A) 12 Semestres et 600 Jours de formation
+- B) 4 Semestres et 100 Jours
+- C) 1 Semestre et 30 Jours
+- D) 50 Semestres et 1000 Jours
+
+*Réponse : A — La Masterclass PARADIS IT est un cursus d'excellence en 12 Semestres et 600 Jours.*
 
 
 ---
 
-## 🏆 Clôture du Semestre 0
-Félicitations ! En validant ce grand examen massif avec un score supérieur ou égal à 75%, vous avez démontré votre motivation et acquis les bases fondamentales. Vous êtes prêt(e) à commencer votre aventure de 600 jours vers l'expertise informatique et la cybersécurité !
+## 🏆 Validation & Déverrouillage du Semestre 1
 
-[**→ Franchir la porte du Jour 1 (Fondamentaux Linux CLI)**](../tome-p0/jour-01.md)
+Si vous obtenez un score supérieur ou égal à **75% (30/40)** :
+1. Votre progression enregistre automatiquement la validation du **Semestre 0**.
+2. Le **Jour 1 (Semestre 1 — Fondamentaux Linux & Administration Système)** devient immédiatement accessible !
+3. Rendez-vous sur votre [Espace Étudiant](../../espace-etudiant/) ou cliquez directement sur la leçon du [Jour 01 (Semestre 1)](../tome-p0/jour-01.md).
+
+---
+
+*Semestre 0 — Module d'Initiation & Pré-requis Absolus PARADIS IT Masterclass*
