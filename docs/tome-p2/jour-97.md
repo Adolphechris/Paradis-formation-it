@@ -11,7 +11,7 @@
 
 ### 📖 Narration/Intuition
 
-En plus de ses systèmes bancaires informatiques (IT), une banque centrale comme la BCC ou des entités nationales stratégiques exploitent des **Systèmes de Technologies Opérationnelles (OT / Operational Technology)** : gestion technique des bâtiments (GTB), contrôle des coffres-forts haute sécurité, climatisation des Datacenters, et groupes électrogènes de secours.
+En plus de ses systèmes informatiques (IT), une grande organisation ou une entité nationale stratégique exploite des **Systèmes de Technologies Opérationnelles (OT / Operational Technology)** : gestion technique des bâtiments (GTB), contrôle des infrastructures critiques, climatisation des Datacenters, et groupes électrogènes de secours.
 
 Historiquement, les réseaux OT n'étaient pas connectés à Internet. Aujourd'hui, la convergence IT/OT expose les Automates Programmables Industriels (API / PLC) à des cyberattaques dévastatrices (ex: Stuxnet, CrashOverride).
 

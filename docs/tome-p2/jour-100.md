@@ -1,23 +1,23 @@
 # TOME P2 — Réseaux & Télécoms — Jour 100 (6h) : Projet Intégrateur Semestre 2 (Final) — Architecture Globale SecDevOps, Cloud Hybride & Data Resilience
 
 > [!NOTE]
-> **Objectif du jour :** Examen final de synthèse du Semestre 2 (J51 à J100) : concevoir, documenter et soutenir l'Architecture Globale de la Banque Centrale du Congo (BCC) combinant Réseaux Avancés (BGP/OSPF), Cloud Hybride (AWS VPC/Direct Connect), SecDevOps, Observabilité, ZTA et Data Analytics.
+> **Objectif du jour :** Examen final de synthèse du Semestre 2 (J51 à J100) : concevoir, documenter et soutenir l'Architecture Globale d'une grande institution financière combinant Réseaux Avancés (BGP/OSPF), Cloud Hybride, SecDevOps, Observabilité, ZTA et Data Analytics.
 >
 > **Compétences visées :** `PRO-01` (A) — Capstone Project & Master Architecture | `SEC-04` (A) — Architecture Global SI | `POL-01` (A) — Stratégie SI & Résilience
 
 ---
 
-## 1) Module — Master Architecture du Système d'Information BCC (2h)
+## 1) Module — Master Architecture du Système d'Information (2h)
 
 ### 📖 Narration/Intuition
 
 Félicitations ! Vous êtes arrivés au terme des **100 premiers jours de formation (Fin du Tome P2)**.
 
-En tant qu'**Architecte Principal du Système d'Information de la Banque Centrale**, vous devez présenter à la Haute Direction la synthèse complète de l'architecture cible du SI de la BCC. Ce système interconnecte le Datacenter Central, les Agences Régionales, le Cloud Hybride et le réseau bancaire international (SWIFT/RTGS).
+En tant qu'**Architecte Principal du Système d'Information**, vous devez présenter à la Haute Direction la synthèse complète de l'architecture cible du SI. Ce système interconnecte le Datacenter Central, les Sites Régionaux, le Cloud Hybride et le réseau international (SWIFT/RTGS).
 
 ### 🔍 Anatomie Technique
 
-**Master Diagramme d'Architecture Globale (BCC SI - Tome P2) :**
+**Master Diagramme d'Architecture Globale (SI - Tome P2) :**
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
@@ -129,14 +129,14 @@ if __name__ == "__main__":
 | Abréviation | Signification |
 |:---:|:---|
 | **Tome P2** | Deuxième volume du cursus PARADIS IT (Semestre 2 — J51 à J100) |
-| **NPIP** | Nouvelle Plateforme Interbancaire de Paiement |
-| **BCC** | Banque Centrale du Congo |
+| **NPIP** | Nouvelle Plateforme de Paiement Critique |
+| **SI** | Système d'Information |
 
 ---
 
 ## 🏋️ Exercices & Corrigés
 
-**Exercice 1 :** Quelle est l'articulation entre le routage dynamique BGP/OSPF (J62-J63), l'architecture Zero Trust (J93) et le plan de reprise d'activité PRA (J88) dans l'architecture globale de la BCC ?
+**Exercice 1 :** Quelle est l'articulation entre le routage dynamique BGP/OSPF (J62-J63), l'architecture Zero Trust (J93) et le plan de reprise d'activité PRA (J88) dans l'architecture globale d'une institution financière ?
 
 **Corrigé :**
 - **OSPF / BGP** assurent l'interconnexion physique et logique haute performance (L3) entre le Datacenter Siège, les agences et le Cloud Hybride avec basculement dynamique de routes.
@@ -159,7 +159,7 @@ if __name__ == "__main__":
 
 **Réponse : B**
 
-**Q2 :** Dans l'architecture cible du SI de la BCC, quel composant assure l'authentification unique (SSO) basée sur le protocole OpenID Connect (OIDC) ?
+**Q2 :** Dans l'architecture cible du SI d'une grande institution, quel composant assure l'authentification unique (SSO) basée sur le protocole OpenID Connect (OIDC) ?
 - A) Keycloak
 - B) HAProxy
 - C) Nmap

@@ -1,9 +1,9 @@
 # TOME P2 — Réseaux & Télécoms — Jour 91 (6h) : Ingestion de Données Temps Réel — Apache Kafka & Event-Driven Architecture
 
 > [!NOTE]
-> **Objectif du jour :** Comprendre et mettre en œuvre une architecture orientée événements (Event-Driven Architecture) avec Apache Kafka : Producers, Consumers, Topics, Partitionnement, Consumer Groups et intégration Python pour l'ingestion de flux de transactions bancaires en temps réel.
+> **Objectif du jour :** Comprendre les concepts fondamentaux d'une architecture orientée événements (Event-Driven) avec Apache Kafka : Topics, Producers, Consumers, Partitions et Consumer Groups, pour l'ingestion de flux de données en temps réel.
 >
-> **Compétences visées :** `BIT-06` (A) — Architectures Données & Streaming | `BIT-04` (A) — Ingestion Haute Performance
+> **Compétences visées :** `BIT-04` (A) — Architectures Données & Streaming | `BIT-06` (A) — Ingestion Temps Réel
 
 ---
 
@@ -11,9 +11,9 @@
 
 ### 📖 Narration/Intuition
 
-Dans une infrastructure bancaire moderne, les événements se produisent en continu : chaque paiement par carte, virement interbancaire ou tentative de connexion génère une donnée instantanée. L'architecture traditionnelle où les applications interrogent une base de données centrale toutes les 5 secondes ne passe pas à l'échelle.
+Dans les infrastructures modernes, les événements se produisent en continu : chaque transaction, connexion ou action génère une donnée instantanée. L'architecture traditionnelle où les applications interrogent une base de données centrale ne passe pas à l'échelle.
 
-**Apache Kafka** est une plateforme de **streaming d'événements distribuée**. Il agit comme un journal d'audit immuable et hautement disponible, capable d'absorber des millions d'événements par seconde avec une latence inférieure à 10 millisecondes.
+**Apache Kafka** est une plateforme de **streaming d'événements distribuée**. Il agit comme un journal immuable et hautement disponible, capable d'absorber des millions d'événements par seconde.
 
 ### 🔍 Anatomie Technique
 
@@ -22,165 +22,122 @@ Dans une infrastructure bancaire moderne, les événements se produisent en cont
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                       PRODUCERS                             │
-│  ┌─────────────────┐   ┌────────────────┐   ┌────────────┐  │
-│  │ Appli Virement  │   │ Terminal TPE   │   │ Web Banking│  │
-│  └────────┬────────┘   └───────┬────────┘   └─────┬──────┘  │
-└───────────┼────────────────────┼──────────────────┼─────────┘
-            │ Produce Events (Publish)
-┌───────────▼────────────────────▼──────────────────▼─────────┐
+│  Applications qui publient des messages                     │
+└───────────────────────────┬─────────────────────────────────┘
+                            │ Produce Events
+┌───────────────────────────▼─────────────────────────────────┐
 │                    KAFKA CLUSTER (BROKERS)                  │
 │                                                             │
-│  Topic: "bcc-transactions" (Partitions: 3, Replication: 2)  │
-│  ┌────────────────────────┐  ┌───────────────────────────┐  │
-│  │ Broker 1 (Leader P0)   │  │ Broker 2 (Leader P1)      │  │
-│  │ Follower P1            │  │ Follower P0               │  │
-│  └────────────────────────┘  └───────────────────────────┘  │
-└───────────┬──────────────────────────────────────┬──────────┘
-            │ Consume Events (Subscribe / Consumer Groups)
-┌───────────▼──────────────────────────────────────▼──────────┐
+│  Topic: "evenements" (Partitions: 3, Replication: 2)        │
+│  ┌─────────────────────┐  ┌─────────────────────────────┐  │
+│  │ Broker 1 (Leader)   │  │ Broker 2 (Follower)         │  │
+│  └─────────────────────┘  └─────────────────────────────┘  │
+└───────────────────────────┬─────────────────────────────────┘
+                            │ Consume Events
+┌───────────────────────────▼─────────────────────────────────┐
 │                       CONSUMERS                             │
-│  ┌─────────────────────────┐   ┌─────────────────────────┐  │
-│  │ Service Anti-Fraude     │   │ Core Banking Storage    │  │
-│  │ (Consumer Group: fraud) │   │ (Consumer Group: db-sync)│ │
-│  └─────────────────────────┘   └─────────────────────────┘  │
+│  Services qui traitent les événements                       │
 └─────────────────────────────────────────────────────────────┘
 ```
+
+**Concepts clés :**
+- **Topic** : Catégorie de flux d'événements.
+- **Partition** : Division physique permettant le parallélisme.
+- **Offset** : Position de lecture dans une partition.
+- **Consumer Group** : Ensemble de consommateurs coopérant pour lire un topic.
 
 ---
 
 ## 2) Module — Production & Consommation d'Événements avec Python (2h)
 
-### 📖 Narration/Intuition
-
-Un **Producer** publie des messages dans un **Topic**. Chaque message possède une clé (Key) et une valeur (Value). La clé détermine dans quelle partition le message est stocké (garantissant l'ordre strict des événements pour un même compte bancaire).
-
-Les **Consumers** lisent les messages de manière asynchrone sans bloquer les producteurs.
-
 ### 🔍 Anatomie Technique
 
-**Code du Producer Python (`kafka_producer_tx.py`) :**
+**Code du Producer Python (`kafka_producer.py`) :**
 
 ```python
 #!/usr/bin/env python3
 """
-kafka_producer_tx.py — Générateur de flux de transactions bancaires pour Kafka
+kafka_producer.py — Générateur d'événements pour Kafka
 """
 from kafka import KafkaProducer
 import json
 import time
 import uuid
-import random
 
-KAFKA_SERVER = "10.0.30.10:9092"
-TOPIC_NAME = "bcc-transactions"
-
-# Initialiser le producteur Kafka avec sérallisation JSON
 producer = KafkaProducer(
-    bootstrap_servers=[KAFKA_SERVER],
-    key_serializer=lambda k: k.encode('utf-8'),
+    bootstrap_servers=['localhost:9092'],
     value_serializer=lambda v: json.dumps(v).encode('utf-8'),
-    acks='all',  # Attendre confirmation de tous les réplicas (sécurité max)
+    acks='all',
     retries=5
 )
 
-print(f"[+] Producteur Kafka connecté à {KAFKA_SERVER}. Diffusion sur '{TOPIC_NAME}'...")
+print("[+] Producteur Kafka connecté.")
 
-def generer_transaction():
-    compte_id = f"BCC-{random.randint(1000, 1050)}"
-    return compte_id, {
-        "tx_id": str(uuid.uuid4()),
-        "compte_id": compte_id,
-        "montant": round(random.uniform(10.0, 5000.0), 2),
-        "devise": "CDF",
-        "timestamp": int(time.time()),
-        "canal": random.choice(["MOBILE", "TPE", "WEB", "ATM"])
+for i in range(50):
+    evenement = {
+        "id": str(uuid.uuid4()),
+        "type": "transaction",
+        "montant": round(time.time() % 1000, 2),
+        "timestamp": int(time.time())
     }
+    producer.send("evenements", value=evenement)
+    print(f"[{i+1}] Événement envoyé : {evenement['id']}")
+    time.sleep(0.2)
 
-try:
-    for i in range(100):
-        compte_key, tx_data = generer_transaction()
-        
-        # La clé 'compte_key' garantit que toutes les transactions du même compte
-        # vont dans la MÊME partition (ordre chronologique préservé)
-        future = producer.send(TOPIC_NAME, key=compte_key, value=tx_data)
-        record_metadata = future.get(timeout=10)
-        
-        print(f"[{i+1}/100] Tx transmise -> Partition: {record_metadata.partition}, Offset: {record_metadata.offset}")
-        time.sleep(0.1)
-
-except Exception as e:
-    print(f"❌ Erreur d'envoi Kafka : {e}")
-
-finally:
-    producer.flush()
-    producer.close()
+producer.flush()
+producer.close()
 ```
 
-**Code du Consumer Python (`kafka_consumer_fraud.py`) :**
+**Code du Consumer Python (`kafka_consumer.py`) :**
 
 ```python
 #!/usr/bin/env python3
 """
-kafka_consumer_fraud.py — Service de détection de fraude en temps réel consommant les événements Kafka
+kafka_consumer.py — Consommateur d'événements Kafka
 """
 from kafka import KafkaConsumer
 import json
 
-KAFKA_SERVER = "10.0.30.10:9092"
-TOPIC_NAME = "bcc-transactions"
-GROUP_ID = "service-anti-fraude"
-
 consumer = KafkaConsumer(
-    TOPIC_NAME,
-    bootstrap_servers=[KAFKA_SERVER],
-    group_id=GROUP_ID,
+    "evenements",
+    bootstrap_servers=['localhost:9092'],
+    group_id="service-traitement",
     auto_offset_reset='earliest',
-    enable_auto_commit=True,
-    key_deserializer=lambda k: k.decode('utf-8') if k else None,
     value_deserializer=lambda v: json.loads(v.decode('utf-8'))
 )
 
-print(f"[+] Service Anti-Fraude en écoute sur '{TOPIC_NAME}' (Group: {GROUP_ID})...")
+print("[+] Consumer en écoute sur le topic 'evenements'...")
 
 for message in consumer:
-    tx = message.value
-    compte_id = message.key
-    
-    # Règle de détection de fraude simple (Alerte si montant > 4000 CDF)
-    if tx['montant'] > 4000.0:
-        print(f"🚨 ALERTE FRAUDE : Tx Suspecte {tx['tx_id']} sur compte {compte_id} !")
-        print(f"   Montant : {tx['montant']} {tx['devise']} via {tx['canal']}")
-    else:
-        print(f"✅ Tx Conforme {tx['tx_id']} ({tx['montant']} CDF)")
+    evenement = message.value
+    print(f"Reçu : {evenement['type']} | ID: {evenement['id']} | Montant: {evenement.get('montant', 'N/A')}")
 ```
 
 ---
 
 ## 3) Module — Supervision & Haute Disponibilité de Kafka (2h)
 
-### 📖 Narration/Intuition
-
-En production bancaire, la perte d'un message Kafka est inacceptable. Pour garantir la tolérance aux pannes, Kafka s'appuie sur le réplication intra-cluster (Factor de réplication >= 3) et un quorum d'acquittement (`acks=all`).
-
 ### 🔍 Anatomie Technique
 
-**Gestion des Topics via la CLI Kafka :**
+**Commandes de gestion d'un Topic Kafka :**
 
 ```bash
-# 1. Créer un Topic hautement disponible (3 partitions, réplication 3)
-kafka-topics.sh --bootstrap-server 10.0.30.10:9092 \
-  --create --topic bcc-transactions-prod \
+# Créer un Topic avec 3 partitions et facteur de réplication 2
+kafka-topics.sh --bootstrap-server localhost:9092 \
+  --create --topic evenements \
   --partitions 3 \
-  --replication-factor 3
+  --replication-factor 2
 
-# 2. Inspecter l'état du Topic et les Leaders de partitions
-kafka-topics.sh --bootstrap-server 10.0.30.10:9092 \
-  --describe --topic bcc-transactions-prod
+# Décrire l'état d'un Topic
+kafka-topics.sh --bootstrap-server localhost:9092 \
+  --describe --topic evenements
 
-# 3. Monitorer le retard des consommateurs (Consumer Group Lag)
-kafka-consumer-groups.sh --bootstrap-server 10.0.30.10:9092 \
-  --describe --group service-anti-fraude
+# Monitorer le retard des Consumers
+kafka-consumer-groups.sh --bootstrap-server localhost:9092 \
+  --describe --group service-traitement
 ```
+
+**Règle d'or :** Un facteur de réplication >= 3 et `acks=all` garantissent qu'aucun message n'est perdu en cas de panne d'un broker.
 
 ---
 
@@ -188,23 +145,25 @@ kafka-consumer-groups.sh --bootstrap-server 10.0.30.10:9092 \
 
 | Abréviation | Signification |
 |:---:|:---|
-| **Topic** | Catégorie ou nom de flux auquel les messages sont publiés dans Kafka |
-| **Partition** | Division physique d'un topic permettant le parallélisme et le scaling |
-| **Offset** | Identifiant séquentiel unique attribué à chaque message au sein d'une partition |
-| **Consumer Group** | Ensemble de consommateurs coopérant pour lire les données d'un topic |
-| **ISR** | In-Sync Replicas — Liste des nœuds réplicas synchronisés avec le leader |
+| **Topic** | Catégorie de flux d'événements dans Kafka |
+| **Partition** | Division physique d'un topic pour le parallélisme |
+| **Offset** | Position séquentielle de lecture dans une partition |
+| **Consumer Group** | Ensemble de consommateurs partageant la lecture d'un topic |
+| **ISR** | In-Sync Replicas — réplicas synchronisés avec le leader |
 
 ---
 
 ## 🏋️ Exercices & Corrigés
 
-**Exercice 1 :** Quelle est l'utilité de définir une clé (`Key`) lors de la publication d'un message dans Kafka ?
+**Exercice 1 :** Quelle est l'utilité de la clé (Key) lors de la publication d'un message dans Kafka ?
 
-**Corrigé :** La clé (`Key`) est utilisée par l'algorithme d'assignation de Kafka (hachage de la clé) pour déterminer dans quelle **partition** du topic le message sera stocké. Tous les messages partageant la même clé (ex: le même `compte_id`) sont obligatoirement envoyés dans la **même partition**, ce qui garantit qu'ils seront lus dans leur **ordre chronologique exact** par le consommateur.
+**Corrigé :** La clé détermine dans quelle **partition** le message est stocké (par hachage). Tous les messages partageant la même clé vont dans la même partition, garantissant leur ordre chronologique de lecture.
 
-**Exercice 2 :** Que signifie le paramètre `acks='all'` (ou `acks=-1`) du producteur Kafka ?
+---
 
-**Corrigé :** Ce paramètre indique que le producteur ne considérera le message comme transmis qu'une fois que le leader de la partition ET tous les réplicas synchronisés (ISR - In-Sync Replicas) auront confirmé l'écriture du message sur leur disque. C'est le niveau de garantie de durabilité maximal, empêchant la perte de messages même en cas de crash du broker leader.
+**Exercice 2 :** Si un topic possède 4 partitions et qu'un Consumer Group contient 6 consommateurs, combien de consommateurs sont actifs ?
+
+**Corrigé :** Seuls **4 consommateurs** sont actifs (un par partition). Les 2 autres restent en attente (inactifs). Si un consommateur tombe, un consommateur inactif prend sa place.
 
 ---
 
@@ -213,10 +172,12 @@ kafka-consumer-groups.sh --bootstrap-server 10.0.30.10:9092 \
 **Q1 :** Dans Apache Kafka, quelle structure garantit le stockage des messages dans un ordre chronologique strict ?
 - A) Le cluster global
 - B) La partition individuelle d'un topic
-- C) Le fichier de configuration du client
-- D) Le composant Zookeeper
+- C) Le fichier de configuration
+- D) Zookeeper
 
 **Réponse : B**
+
+---
 
 **Q2 :** Comment appelle-t-on le pointeur numérique qui marque la position de lecture exacte d'un consommateur dans une partition Kafka ?
 - A) Index
@@ -226,25 +187,31 @@ kafka-consumer-groups.sh --bootstrap-server 10.0.30.10:9092 \
 
 **Réponse : B**
 
-**Q3 :** Si un topic Kafka possède 4 partitions et qu'un Consumer Group contient 6 consommateurs, combien de consommateurs liront des données simultanément ?
+---
+
+**Q3 :** Si un topic possède 4 partitions et qu'un Consumer Group contient 6 consommateurs, combien de consommateurs lisent des données simultanément ?
 - A) 6
-- B) 4 (2 consommateurs resteront inactifs en attente)
+- B) 4 (2 inactifs)
 - C) 24
 - D) Aucun
 
 **Réponse : B**
 
-**Q4 :** Quel composant d'une architecture Event-Driven avec Kafka est chargé de s'abonner aux topics pour traiter les événements ?
-- A) Broker
-- B) Producer
-- C) Consumer
-- D) Schema Registry
+---
+
+**Q4 :** Quel paramètre du Producer garantit que le message n'est considéré comme envoyé qu'après confirmation de tous les réplicas ?
+- A) acks=0
+- B) acks=1
+- C) acks=all
+- D) retries=0
 
 **Réponse : C**
 
-**Q5 :** Quel est le principal avantage de l'architecture événementielle (Event-Driven) par rapport aux architectures monolithiques basées sur des requêtes synchrones ?
-- A) Les consommateurs sont complètement découplés des producteurs et peuvent traiter les événements de manière asynchrone à leur propre rythme
-- B) Elle n'utilise pas de réseau informatique
+---
+
+**Q5 :** Quel est le principal avantage de l'architecture événementielle par rapport aux architectures synchrones ?
+- A) Les consommateurs sont découplés des producteurs et traitent les événements de manière asynchrone
+- B) Elle n'utilise pas de réseau
 - C) Elle supprime le besoin de bases de données
 - D) Elle ne fonctionne qu'avec des fichiers texte
 

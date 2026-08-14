@@ -1,109 +1,203 @@
-# TOME P2 — Réseaux & Télécoms — Jour 96 (6h) : Architectures de Données Analytiques & Sécurité Big Data (Hadoop, Spark & Data Governance)
+# TOME P2 — Réseaux & Télécoms — Jour 96 (6h) : Logique Booléenne & Applications en Cybersécurité
 
 > [!NOTE]
-> **Objectif du jour :** Comprendre les architectures Big Data et Data Lakes pour le traitement analytique de volumes massifs de transactions bancaires (terabytes/petabytes) : écosystème Hadoop (HDFS, YARN), calcul distribué avec Apache Spark, chiffrement des données et gouvernance des accès avec Apache Ranger et Apache Atlas.
+> **Objectif du jour :** Maîtriser les fondements de l'algèbre booléenne, les tables de vérité, les lois de simplification (De Morgan) et leurs applications concrètes en cybersécurité : règles de pare-feu, conditions d'accès, filtrage de paquets et logique de programmation sécurisée.
 >
-> **Compétences visées :** `BIT-06` (A) — Architectures Big Data & Data Lakes | `SEC-03` (A) — Sécurité & Gouvernance des Données Massives
+> **Compétences visées :** `SEC-01` (A) — Logique de Sécurité & Conditions | `BIT-09` (A) — Fondements Algorithmiques
 
 ---
 
-## 1) Module — Fondamentaux du Big Data & Écosystème Hadoop (2h)
+## 1) Module — Fondements de l'Algèbre Booléenne (2h)
 
 ### 📖 Narration/Intuition
 
-La Banque Centrale du Congo enregistre chaque jour des dizaines de millions de transactions, de journaux réseau et d'événements d'audit. Une base de données relationnelle classique (PostgreSQL, MySQL) atteint ses limites de stockage et de vitesse de traitement face à ces volumes massifs.
+Toute la cybersécurité repose sur des décisions binaires : **autoriser / refuser**, **vrai / faux**, **1 / 0**. Une règle de pare-feu, une condition d'accès, un filtre de détection d'intrusion ne sont rien d'autre que des expressions logiques booléennes évaluées sur chaque paquet ou chaque tentative de connexion.
 
-L'**architecture Big Data** s'appuie sur le calcul et le stockage distribués sur des grappes (clusters) de serveurs standards. **HDFS (Hadoop Distributed File System)** découpe les fichiers volumineux en blocs et les répartit sur plusieurs serveurs avec réplication, tandis que **YARN** gère l'allocation des ressources de calcul du cluster.
+L'**algèbre booléenne**, inventée par George Boole en 1854, est le langage mathématique qui permet de manipuler ces décisions binaires de manière rigoureuse.
 
 ### 🔍 Anatomie Technique
 
-**Architecture d'un Cluster Hadoop HDFS :**
+**Variables et Opérateurs Booléens Fondamentaux :**
+
+| Opérateur | Symbole | Signification | Exemple Sécurité |
+|:---|:---|:---|:---|
+| **ET** (AND) | `∧` ou `*` | Les deux conditions doivent être vraies | `(IP_source = autorisée) ∧ (Port = 443)` |
+| **OU** (OR) | `∨` ou `+` | Au moins une condition vraie | `(Role = admin) ∨ (Role = auditor)` |
+| **NON** (NOT) | `¬` ou `'` | Inversion de la condition | `NOT (IP_source = blacklistée)` |
+| **XOR** | `⊕` | Une seule des deux conditions vraie | `(VPN = actif) XOR (Réseau_invite = actif)` |
+
+**Tables de Vérité des Opérateurs de Base :**
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                    NAME NODE (Master)                       │
-│  - Gère la métadonnée (arborescence des fichiers)           │
-│  - Cartographie des blocs vers les Data Nodes               │
-└──────────────┬──────────────────────────────┬───────────────┘
-               │                              │
-    ┌──────────▼──────────┐        ┌──────────▼──────────┐
-    │ DATA NODE 1 (Worker)│        │ DATA NODE 2 (Worker)│
-    │  - Bloc 1 (BCC_Tx)  │        │  - Bloc 1 (Réplica) │
-    │  - Bloc 2 (BCC_Tx)  │        │  - Bloc 3 (BCC_Tx)  │
-    └─────────────────────┘        └─────────────────────┘
+┌───────┬───────┬───────┬────────┬────────┐
+│   A   │   B   │ A AND B │ A OR B │ A XOR B│
+├───────┼───────┼─────────┼────────┼────────┤
+│   0   │   0   │    0    │   0    │   0    │
+│   0   │   1   │    0    │   1    │   1    │
+│   1   │   0   │    0    │   1    │   1    │
+│   1   │   1   │    1    │   1    │   0    │
+└───────┴───────┴───────┴────────┴────────┘
 ```
+
+**Exercice mental :** Évaluer l'expression `(A ∧ B) ∨ (¬A ∧ ¬B)` pour toutes les combinaisons de A et B.
+
+**Corrigé :**
+
+```
+A=0, B=0 : (0∧0)∨(1∧1) = 0∨1 = 1
+A=0, B=1 : (0∧1)∨(1∧0) = 0∨0 = 0
+A=1, B=0 : (1∧0)∨(0∧1) = 0∨0 = 0
+A=1, B=1 : (1∧1)∨(0∧0) = 1∨0 = 1
+```
+
+Résultat : Cette expression est l'opérateur **XNOR** (équivalence). Elle est vraie quand A et B sont identiques.
 
 ---
 
-## 2) Module — Calcul Distribué avec Apache Spark (2h)
+## 2) Module — Lois de Simplification & Formes Canoniques (2h)
 
 ### 📖 Narration/Intuition
 
-Là où l'ancien modèle MapReduce écrivait chaque étape intermédiaire sur disque, **Apache Spark** effectue le traitement distribué en mémoire vive (In-Memory Computing). Il est 100 fois plus rapide que MapReduce pour le traitement des données bancaires massives et les calculs statistiques (ex: détection de blanchiment d'argent sur 10 ans d'historique).
+En cybersécurité, les règles de pare-feu ou les conditions d'autorisation peuvent devenir extrêmement complexes. Un administrateur peut se retrouver avec 50 règles qui, en réalité, ne sont que des combinaisons redondantes des mêmes conditions. L'algèbre booléenne permet de **simplifier** ces expressions pour ne garder que l'essentiel, réduisant les erreurs et les failles de sécurité.
 
 ### 🔍 Anatomie Technique
 
-**Script PySpark d'analyse massive de transactions (`spark_banking_analysis.py`) :**
+**Lois Fondamentales de l'Algèbre Booléenne :**
+
+```
+1. LOI D'IDENTITÉ :
+   A ∧ 1 = A          A ∨ 0 = A
+
+2. LOI DE NULLITÉ :
+   A ∧ 0 = 0          A ∨ 1 = 1
+
+3. LOI DE IDEMPOTENCE :
+   A ∧ A = A          A ∨ A = A
+
+4. LOI DE COMPLÉMENTARITÉ :
+   A ∧ ¬A = 0         A ∨ ¬A = 1
+
+5. LOI DE COMMUTATIVITÉ :
+   A ∧ B = B ∧ A      A ∨ B = B ∨ A
+
+6. LOI D'ASSOCIATIVITÉ :
+   (A ∧ B) ∧ C = A ∧ (B ∧ C)
+   (A ∨ B) ∨ C = A ∨ (B ∨ C)
+
+7. LOI DE DISTRIBUTIVITÉ :
+   A ∧ (B ∨ C) = (A ∧ B) ∨ (A ∧ C)
+   A ∨ (B ∧ C) = (A ∨ B) ∧ (A ∨ C)
+```
+
+** Lois de De Morgan (Fondamentales en Sécurité Informatique) :**
+
+```
+¬(A ∧ B) = ¬A ∨ ¬B
+¬(A ∨ B) = ¬A ∧ ¬B
+
+Interprétation sécurité :
+"NE PAS (autoriser SI admin ET IP_interne)" 
+= "refuser SI (NON admin) OU (NON IP_interne)"
+```
+
+**Exemple de Simplification de Règle de Sécurité :**
+
+Expression complexe d'une règle de pare-feu :
+```
+(A ∧ B) ∨ (A ∧ ¬B) ∨ (¬A ∧ B)
+```
+
+Simplification étape par étape :
+```
+= A ∧ (B ∨ ¬B) ∨ (¬A ∧ B)      [Factorisation par A]
+= A ∧ 1 ∨ (¬A ∧ B)             [B ∨ ¬B = 1]
+= A ∨ (¬A ∧ B)                 [A ∧ 1 = A]
+= (A ∨ ¬A) ∧ (A ∨ B)           [Distributivité]
+= 1 ∧ (A ∨ B)                  [A ∨ ¬A = 1]
+= A ∨ B                        [1 ∧ X = X]
+```
+
+**Résultat :** La règle complexe se résume à `A ∨ B` (autoriser si A OU B est vrai).
+
+---
+
+## 3) Module — Applications Pratiques en Cybersécurité (2h)
+
+### 📖 Narration/Intuition
+
+La logique booléenne n'est pas une théorie abstraite : elle est au cœur de chaque décision de sécurité. Un administrateur système, un analyste SOC ou un développeur d'applications sécurisées utilise quotidiennement des expressions booléennes pour :
+
+- Écrire des règles de pare-feu (iptables/nftables)
+- Définir des politiques d'accès conditionnel (RBAC/ABAC)
+- Programmer des détections d'intrusion (Suricata/Snort rules)
+- Concevoir des workflows d'authentification multifacteur
+
+### 🔍 Anatomie Technique
+
+**Application 1 — Règle de Pare-feu booléenne (nftables) :**
+
+```bash
+# Logique : Autoriser le trafic SSH UNIQUEMENT si
+#   (IP_source est dans le réseau interne) ET (Port destination = 22)
+#   OU
+#   (IP_source est dans le réseau VPN) ET (Port destination = 22)
+
+# En nftables, cela se traduit par :
+nft add rule inet filter input \
+  ip saddr {10.0.0.0/8, 172.16.0.0/12} tcp dport 22 \
+  accept
+
+nft add rule inet filter input \
+  ip saddr {196.200.30.0/24} tcp dport 22 \
+  accept
+
+# Règle par défaut (tout le reste est refusé) :
+nft add rule inet filter input \
+  tcp dport 22 \
+  drop
+```
+
+**Expression booléenne équivalente :**
+```
+Autoriser = (Réseau_interne ∧ Port_22) ∨ (Réseau_VPN ∧ Port_22)
+Refuser  = Port_22 ∧ ¬(Réseau_interne ∨ Réseau_VPN)
+```
+
+**Application 2 — Condition d'accès multifacteur (Pseudo-code sécurisé) :**
 
 ```python
-#!/usr/bin/env python3
-"""
-spark_banking_analysis.py — Calcul distribué avec Apache Spark (PySpark)
-"""
-from pyspark.sql import SparkSession
-from pyspark.sql.functions import col, sum, count, avg
-
-# 1. Initialiser la session Spark distribuée
-spark = SparkSession.builder \
-    .appName("BCC-Massive-Transaction-Analysis") \
-    .config("spark.executor.memory", "4g") \
-    .config("spark.driver.memory", "2g") \
-    .getOrCreate()
-
-print("[+] Cluster Spark connecté. Chargement du Data Lake HDFS...")
-
-# 2. Charger un fichier de transactions de 50 GB (Format Parquet optimisé)
-# En production: path = "hdfs://namenode:9000/data/transactions.parquet"
-df_transactions = spark.read.parquet("/tmp/transactions_sample.parquet")
-
-# 3. Traitement distribué des données (DataFrame API)
-print("[+] Calcul des agrégations financières par agence...")
-df_resultats = df_transactions \
-    .filter(col("statut") == "VALIDE") \
-    .groupBy("code_agence") \
-    .agg(
-        count("tx_id").alias("nb_total_transactions"),
-        sum("montant").alias("volume_total_cdf"),
-        avg("montant").alias("montant_moyen_cdf")
-    ) \
-    .orderBy(col("volume_total_cdf").desc())
-
-# 4. Afficher le résultat du calcul distribué
-df_resultats.show(10)
-
-# 5. Arrêt de la session Spark
-spark.stop()
+def verifier_acces_admin(utilisateur):
+    """
+    Logique booléenne d'accès administrateur sécurisé :
+    Autoriser SI (authentification forte réussie) ET (appareil de confiance)
+              ET (hors plage horaire interdite = 23h-6h OU validation manager)
+    """
+    
+    auth_forte = (utilisateur.mfa_valide == True) and (utilisateur.mot_de_passe_recent == True)
+    appareil_ok = utilisateur.appareil in liste_appareils_de_confiance
+    horaire_ok = (utilisateur.heure_connexion < 23) and (utilisateur.heure_connexion > 6)
+    validation_manager = utilisateur.validation_manager == True
+    
+    # Expression booléenne finale
+    acces_autorise = auth_forte and appareil_ok and (horaire_ok or validation_manager)
+    
+    return acces_autorise
 ```
 
----
+**Application 3 — Détection d'intrusion par motifs booléens (Suricata/Snort) :**
 
-## 3) Module — Sécurité & Gouvernance du Data Lake (Apache Ranger & Atlas) (2h)
+```bash
+# Règle Suricata : Détecter un scan de ports SYN
+# Logique : (Protocole = TCP) ∧ (Flag = SYN) ∧ (Flag != ACK) ∧ (Ports multiples)
 
-### 📖 Narration/Intuition
+alert tcp any any -> $HOME_NET any (msg:"SCAN: SYN Scan détecté"; 
+  flags:S; 
+  threshold: type both, track by_src, count 20, seconds 60; 
+  sid:1000001; rev:1;)
 
-Un Data Lake bancaire sans gouvernance devient un "Data Swamp" (marécage de données) extrêmement dangereux sur le plan de la sécurité. Si toutes les données sont centralisées au même endroit, comment empêcher un analyste junior d'accéder au numéro de compte du Gouverneur de la Banque Centrale ?
-
-**Apache Ranger** fournit un contrôle d'accès centralisé et granulaire (RBAC/ABAC au niveau de la ligne et de la colonne) sur l'ensemble de l'écosystème Big Data. **Apache Atlas** gère la gouvernance, le catalogue de données et la traçabilité de l'origine des données (Data Lineage).
-
-### 🔍 Anatomie Technique
-
-**Composants de Sécurité Big Data :**
-
-```
-- Authentification Kerberos : Authentification forte mutuelle obligatoire de tous les utilisateurs et serveurs du cluster Big Data.
-- Chiffrement HDFS (Transparent Data Encryption - TDE) : Zones de chiffrement (Encryption Zones) sur disque pour protéger les fichiers au repos.
-- Apache Ranger : Définition de politiques de sécurité (ex: Masquer la colonne 'numero_carte' pour le groupe 'analystes').
-- Anonymisation & Data Masking : Remplacer à la volée les données identifiantes par des valeurs hachées ou masquées (ex: XXXX-XXXX-XXXX-1234).
+# Interprétation booléenne :
+# Détecter SI (Protocole == TCP) ∧ (Flag SYN == 1) ∧ (Flag ACK == 0)
+#        ET (Nombre de paquets > 20 en 60 secondes)
 ```
 
 ---
@@ -112,67 +206,109 @@ Un Data Lake bancaire sans gouvernance devient un "Data Swamp" (marécage de don
 
 | Abréviation | Signification |
 |:---:|:---|
-| **HDFS** | Hadoop Distributed File System — Système de fichiers distribué de Hadoop |
-| **YARN** | Yet Another Resource Negotiator — Gestionnaire de ressources des clusters Hadoop |
-| **Parquet** | Format de stockage de données columnar hautement optimisé et compressé |
-| **RDD** | Resilient Distributed Dataset — Structure de données de base distribuée d'Apache Spark |
-| **TDE** | Transparent Data Encryption — Chiffrement transparent des fichiers sur disque |
+| **AND** | Opérateur booléen ET — toutes les conditions doivent être vraies |
+| **OR** | Opérateur booléen OU — au moins une condition vraie |
+| **NOT** | Opérateur booléen de négation — inverse la vérité |
+| **XOR** | OU exclusif — une seule condition vraie parmi deux |
+| **XNOR** | NON-OU exclusif — équivalence (les deux conditions identiques) |
+| **De Morgan** | Lois de transformation logique : ¬(A∧B) = ¬A∨¬B et ¬(A∨B) = ¬A∧¬B |
 
 ---
 
 ## 🏋️ Exercices & Corrigés
 
-**Exercice 1 :** Pourquoi le format de fichier **Apache Parquet** (stockage en colonnes) est-il beaucoup plus efficace que le format CSV ou JSON pour les requêtes analytiques Big Data ?
+**Exercice 1 :** Simplifier l'expression booléenne suivante en utilisant les lois de l'algèbre booléenne :
+```
+(A ∧ B) ∨ (A ∧ ¬B)
+```
 
-**Corrigé :** Le format **Parquet** stocke les données par **colonnes** plutôt que par lignes. Lorsqu'une requête analytique demande par exemple de calculer la somme de la colonne `montant` sur 100 millions de lignes, le moteur de calcul (Spark/Hive) lit **uniquement** les blocs de disque contenant la colonne `montant` et ignore complètement les 50 autres colonnes (nom, adresse, etc.). Cela réduit les lectures disque d'un facteur 10 à 100 par rapport à un fichier CSV/JSON où chaque ligne entière doit être lue.
+**Corrigé :**
+```
+= A ∧ (B ∨ ¬B)      [Factorisation par A — loi de distributivité]
+= A ∧ 1             [B ∨ ¬B = 1 — loi de complémentarité]
+= A                 [A ∧ 1 = A — loi d'identité]
+```
+**Résultat :** L'expression se simplifie en `A`.
 
-**Exercice 2 :** Dans la sécurité Big Data, quel est le rôle d'**Apache Ranger** pour le masquage dynamique des données (Data Masking) ?
+---
 
-**Corrigé :** **Apache Ranger** intercepte les requêtes des utilisateurs (SQL/Spark) et applique des politiques de masquage dynamique en fonction du rôle de l'utilisateur sans modifier les données originales sur disque. Par exemple, si un administrateur exécute `SELECT numero_carte FROM clients`, il voit la valeur réelle ; mais si un utilisateur du groupe "Support Client" exécute la même requête, Apache Ranger masque à la volée les résultats (ex: `XXXX-XXXX-XXXX-5678`), garantissant la confidentialité des données sensibles.
+**Exercice 2 :** En cybersécurité, un administrateur écrit la condition suivante pour autoriser l'accès à un serveur :
+```
+Autoriser SI (utilisateur_est_admin = VRAI) OU (utilisateur_est_auditor = VRAI)
+```
+En utilisant la loi de De Morgan, écrire l'expression booléenne de la condition de **refus** d'accès.
+
+**Corrigé :**
+```
+Refus = NOT(utilisateur_est_admin OU utilisateur_est_auditor)
+      = (NOT utilisateur_est_admin) ET (NOT utilisateur_est_auditor)
+      = (utilisateur_n'est_pas_admin) ∧ (utilisateur_n'est_pas_auditor)
+```
+**Interprétation :** L'accès est refusé si l'utilisateur n'est NI admin NI auditor.
+
+---
+
+**Exercice 3 :** Quelle est la valeur de l'expression `(A XOR B) XOR B` pour toutes les valeurs de A et B ? Simplifier.
+
+**Corrigé :**
+```
+(A XOR B) XOR B = A XOR (B XOR B)   [Associativité du XOR]
+                = A XOR 0           [B XOR B = 0 — tout nombre XOR lui-même = 0]
+                = A                 [A XOR 0 = A — élément neutre]
+```
+**Résultat :** L'expression est équivalente à `A`. Cette propriété est utilisée en cryptographie (chiffrement par flot).
 
 ---
 
 ## ❓ Banque de Questions & Test du Jour
 
-**Q1 :** Quel composant de l'écosystème Hadoop assure le stockage distribué et la réplication des blocs de fichiers sur l'ensemble des Data Nodes ?
-- A) HDFS
-- B) Spark
-- C) Hive
-- D) Kafka
+**Q1 :** Quelle est la table de vérité de l'opérateur AND (ET logique) ?
+- A) Vrai seulement si A ET B sont vrais
+- B) Vrai si A OU B est vrai
+- C) Toujours vrai
+- D) Jamais vrai
 
 **Réponse : A**
 
-**Q2 :** Pourquoi Apache Spark est-il considérablement plus rapide qu'Hadoop MapReduce pour les traitements de données complexes ?
-- A) Il utilise des câbles réseau en fibre optique
-- B) Il effectue ses calculs et conservations d'états intermédiaires directement en mémoire vive (RAM - In-Memory Computing)
-- C) Il supprime le besoin de sécurité
-- D) Il ne fonctionne que sur Windows
+---
+
+**Q2 :** Quelle est la forme simplifiée de l'expression `(A ∧ B) ∨ (A ∧ ¬B)` ?
+- A) A ∧ B
+- B) A ∨ B
+- C) A
+- D) B
+
+**Réponse : C**
+
+---
+
+**Q3 :** Quelle est la transformation de `¬(A ∧ B)` selon les lois de De Morgan ?
+- A) `¬A ∧ ¬B`
+- B) `¬A ∨ ¬B`
+- C) `A ∨ B`
+- D) `A ∧ B`
 
 **Réponse : B**
 
-**Q3 :** Quel protocole d'authentification réseau est le standard obligatoire pour sécuriser les accès et communications dans un cluster Hadoop d'entreprise ?
-- A) HTTP basique
-- B) Kerberos
-- C) FTP
-- D) Telnet
+---
+
+**Q4 :** Dans une règle de pare-feu, la logique `(Réseau_interne ∧ Port_443) ∨ (Réseau_VPN ∧ Port_443)` signifie :
+- A) Autoriser le port 443 UNIQUEMENT depuis les deux réseaux simultanément
+- B) Autoriser le port 443 depuis le réseau interne OU depuis le réseau VPN
+- C) Refuser le port 443 depuis tous les réseaux
+- D) Autoriser tous les ports depuis le réseau interne
 
 **Réponse : B**
 
-**Q4 :** Quel outil open-source de l'écosystème Big Data permet de définir des politiques de sécurité et de contrôle d'accès unifiées (RBAC) sur HDFS, Spark, Hive et Kafka ?
-- A) Apache Ranger
-- B) Nmap
-- C) Gzip
-- D) Wireshark
+---
 
-**Réponse : A**
+**Q5 :** Quel opérateur booléen est utilisé pour exprimer "une seule des deux conditions est vraie, pas les deux" ?
+- A) AND
+- B) OR
+- C) XOR
+- D) NOT
 
-**Q5 :** Quel terme désigne la traçabilité du parcours d'une donnée depuis sa source originale jusqu'à sa transformation finale dans un Data Lake ?
-- A) Data Lineage
-- B) Data Mining
-- C) Data Entry
-- D) Data Storage
-
-**Réponse : A**
+**Réponse : C**
 
 ---
 

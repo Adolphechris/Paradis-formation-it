@@ -1,7 +1,7 @@
 # TOME P2 — Réseaux & Télécoms — Jour 88 (6h) : Continuité d'Activité (PCA/PRA) & Sauvegardes Immuables (Veeam & Restic)
 
 > [!NOTE]
-> **Objectif du jour :** Concevoir et mettre en œuvre une stratégie robuste de Continuité d'Activité (PCA) et de Reprise d'Activité (PRA) pour les systèmes d'information bancaires de la BCC : calcul des métriques RTO et RPO, architecture de réplication multi-sites, sauvegardes immuables (WORM - Write Once Read Many) contre les ransomwares avec Restic et Veeam.
+> **Objectif du jour :** Concevoir et mettre en œuvre une stratégie robuste de Continuité d'Activité (PCA) et de Reprise d'Activité (PRA) pour les systèmes d'information critiques : calcul des métriques RTO et RPO, architecture de réplication multi-sites, sauvegardes immuables (WORM - Write Once Read Many) contre les ransomwares avec Restic.
 >
 > **Compétences visées :** `POL-02` (A) — Plan de Continuité & Reprise d'Activité | `SEC-03` (A) — Sauvegardes & Résilience Données
 
@@ -11,7 +11,7 @@
 
 ### 📖 Narration/Intuition
 
-En cas d'inondation du Datacenter principal de Kinshasa, d'attaque par ransomware ou de coupure de fibre majeure, comment garantir que la Banque Centrale du Congo continue de fonctionner ?
+En cas d'inondation du Datacenter principal, d'attaque par ransomware ou de coupure de fibre majeure, comment garantir que l'organisation continue de fonctionner ?
 
 - Le **PCA (Plan de Continuité d'Activité)** regroupe l'ensemble des mesures (humaines, techniques, organisationnelles) permettant de maintenir le service bancaire sans interruption, ou avec une dégradation minimale acceptée.
 - Le **PRA (Plan de Reprise d'Activité)** regroupe les procédures techniques permettant de reconstruire et restaurer les systèmes d'information sur un site de secours après un sinistre majeur.
@@ -30,9 +30,9 @@ Moments clés lors d'un sinistre :
 ```
 
 - **RPO (Recovery Point Objective - Durée Maximale de Perte de Données Acceptable)** : Quantité maximale de données que l'organisation peut se permettre de perdre.
-  *(Exemple BCC : Pour le système de paiement RTGS, RPO = 0 seconde -> Réplication synchrone obligatoire. Pour de la bureautique, RPO = 24 heures).*
+  *(Exemple secteur financier : Pour le système de paiement RTGS, RPO = 0 seconde -> Réplication synchrone obligatoire. Pour de la bureautique, RPO = 24 heures).*
 - **RTO (Recovery Time Objective - Durée Maximale d'Interruption Admissible)** : Temps maximal écoulé entre le sinistre et la remise en service opérationnelle des applications.
-  *(Exemple BCC : RTO RTGS = 15 minutes ; RTO intranet = 4 heures).*
+  *(Exemple secteur financier : RTO RTGS = 15 minutes ; RTO intranet = 4 heures).*
 
 **Niveaux de Sites de Secours (Disaster Recovery Sites) :**
 
@@ -60,7 +60,7 @@ La solution consiste à utiliser des **Sauvegardes Immuables (WORM - Write Once,
 # Restic est un outil de sauvegarde moderne, rapide, chiffré et dédupliqué.
 
 # ─── 1. Initialisation du dépôt Restic sur un Bucket S3 avec Object Lock ───────
-export RESTIC_REPOSITORY="s3:https://s3-backup.bcc.cd/bcc-immutable-backups"
+export RESTIC_REPOSITORY="s3:https://s3-backup.entreprise.cd/backups-immutables"
 export RESTIC_PASSWORD="Cle_De_Chiffrement_Restoration_Ultra_Secrete_2024!"
 export AWS_ACCESS_KEY_ID="restic-backup-bot"
 export AWS_SECRET_ACCESS_KEY="Cle_Bot_S3_Secrete"
@@ -70,7 +70,7 @@ restic init
 
 # ─── 2. Exécution d'une Sauvegarde Chiffrée et Immuable ───────────────────────
 # Sauvegarder les répertoires critiques de la base de données et de la configuration
-restic backup /var/vmail /etc /opt/bcc-app/data \
+restic backup /var/vmail /etc /opt/app-data \
   --tag "production" \
   --tag "daily" \
   --exclude="/var/vmail/spool"
@@ -102,7 +102,7 @@ Un plan PRA qui n'a jamais été testé est un plan qui échouera le jour du sin
 ```python
 #!/usr/bin/env python3
 """
-pra_failover.py — Script d'activation du Site de Secours (PRA) BCC
+pra_failover.py — Script d'activation du Site de Secours (PRA)
 Bascule le routage DNS et active les bases de données secondaires.
 """
 import requests
@@ -110,7 +110,7 @@ import subprocess
 import time
 import sys
 
-DNS_PROVIDER_API = "https://api.dns.bcc.cd/v1"
+DNS_PROVIDER_API = "https://api.dns.entreprise.cd/v1"
 API_KEY = "DNS_API_KEY_PRA_SECRET"
 
 SITE_PRINCIPAL_IP = "196.200.10.50"
@@ -129,7 +129,7 @@ def basculer_dns(nouveau_target_ip):
     print(f"[+] Basculement DNS vers l'IP de Secours : {nouveau_target_ip}...")
     headers = {"Authorization": f"Bearer {API_KEY}"}
     payload = {
-        "domain": "bcc.cd",
+        "domain": "entreprise.cd",
         "records": [
             {"name": "banque", "type": "A", "content": nouveau_target_ip, "ttl": 60},
             {"name": "api", "type": "A", "content": nouveau_target_ip, "ttl": 60}

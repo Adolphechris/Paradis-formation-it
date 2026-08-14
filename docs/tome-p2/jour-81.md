@@ -11,13 +11,13 @@
 
 ### 📖 Narration/Intuition
 
-Par défaut, le noyau Linux est configuré pour privilégier la compatibilité et la facilité d'utilisation au détriment de la sécurité. Pour un serveur hébergeant des applications bancaires ou des bases de données critiques à la BCC, cette configuration par défaut expose le système à des attaques réseau (IP spoofing, SYN flood, redirections ICMP) et des attaques de mémoire (buffer overflow, élévation de privilèges).
+Par défaut, le noyau Linux est configuré pour privilégier la compatibilité et la facilité d'utilisation au détriment de la sécurité. Pour un serveur hébergeant des applications critiques, cette configuration par défaut expose le système à des attaques réseau (IP spoofing, SYN flood, redirections ICMP) et des attaques de mémoire (buffer overflow, élévation de privilèges).
 
 **Le durcissement du noyau (kernel hardening)** consiste à désactiver les fonctionnalités inutiles, restreindre l'accès à la mémoire du noyau et activer les protections défensives natives.
 
 ### 🔍 Anatomie Technique
 
-**Paramètres sysctl critiques pour la sécurité (`/etc/sysctl.d/99-bcc-hardening.conf`) :**
+**Paramètres sysctl critiques pour la sécurité (`/etc/sysctl.d/99-hardening.conf`) :**
 
 ```ini
 # ─── 1. Protections Mémoire & Kernel ─────────────────────────────────────────
@@ -94,7 +94,7 @@ fs.protected_regular = 2
 
 ```bash
 # Appliquer la configuration sysctl sans redémarrer
-sudo sysctl -p /etc/sysctl.d/99-bcc-hardening.conf
+sudo sysctl -p /etc/sysctl.d/99-hardening.conf
 
 # Vérifier un paramètre spécifique
 sysctl kernel.randomize_va_space
@@ -122,31 +122,31 @@ Modes AppArmor :
 - Disabled : AppArmor ne surveille pas le profil.
 ```
 
-**Création et déploiement d'un profil AppArmor pour une application bancaire Python (`/etc/apparmor.d/usr.bin.bcc-api`) :**
+**Création et déploiement d'un profil AppArmor pour une application Python (`/etc/apparmor.d/usr.bin.app-critique`) :**
 
 ```gperf
 #include <tunables/global>
 
-profile bcc-api /opt/bcc-api/venv/bin/python3 flags=(attach_disconnected) {
+profile app-critique /opt/app-critique/venv/bin/python3 flags=(attach_disconnected) {
   #include <abstractions/base>
   #include <abstractions/nameservice>
   #include <abstractions/openssl>
 
   # Autoriser la lecture du code applicatif et des bibliothèques
-  /opt/bcc-api/** r,
-  /opt/bcc-api/venv/lib/python3.*/site-packages/** r,
-  /opt/bcc-api/venv/lib/python3.*/site-packages/**/*.so mr,
+  /opt/app-critique/** r,
+  /opt/app-critique/venv/lib/python3.*/site-packages/** r,
+  /opt/app-critique/venv/lib/python3.*/site-packages/**/*.so mr,
 
   # Autoriser la lecture des certificats TLS
   /etc/ssl/certs/** r,
-  /etc/bcc-pki/certs/** r,
+  /etc/pki/certs/** r,
 
   # Autoriser l'écriture uniquement dans le dossier de logs spécifique
-  /var/log/bcc-api/ w,
-  /var/log/bcc-api/* w,
+  /var/log/app-critique/ w,
+  /var/log/app-critique/* w,
 
   # Accès aux fichiers temporaires isolés
-  /tmp/bcc-api-tmp-* rw,
+  /tmp/app-critique-tmp-* rw,
 
   # Interdire explicitement l'accès aux clés privées d'autres services ou root
   deny /root/** mrwklx,
@@ -167,10 +167,10 @@ profile bcc-api /opt/bcc-api/venv/bin/python3 flags=(attach_disconnected) {
 sudo aa-status
 
 # Passer un profil en mode complain (apprentissage)
-sudo aa-complain /etc/apparmor.d/usr.bin.bcc-api
+sudo aa-complain /etc/apparmor.d/usr.bin.app-critique
 
 # Charger/Recharger un profil en mode enforce
-sudo aa-enforce /etc/apparmor.d/usr.bin.bcc-api
+sudo aa-enforce /etc/apparmor.d/usr.bin.app-critique
 
 # Examiner les violations d'AppArmor dans les logs
 sudo aa-notify -s 1 -v
@@ -184,7 +184,7 @@ sudo ausearch -m avc -ts recent
 
 ### 📖 Narration/Intuition
 
-Comment prouver à un auditeur de la BCC ou à une autorité de régulation que les serveurs respectent les normes de sécurité (CIS Benchmarks, ISO 27001) ? L'analyse manuelle est impossible à grande échelle. Des outils d'audit comme **Lynis** et **OpenSCAP** scannent le système de manière automatisée, évaluent l'indice de durcissement (Hardening Index) et génèrent un rapport détaillé des faiblesses.
+Comment prouver à un auditeur ou à une autorité de régulation que les serveurs respectent les normes de sécurité (CIS Benchmarks, ISO 27001) ? L'analyse manuelle est impossible à grande échelle. Des outils d'audit comme **Lynis** et **OpenSCAP** scannent le système de manière automatisée, évaluent l'indice de durcissement (Hardening Index) et génèrent un rapport détaillé des faiblesses.
 
 ### 🔍 Anatomie Technique
 
@@ -211,7 +211,7 @@ grep "hardening_index" /var/log/lynis-report.dat
 ```python
 #!/usr/bin/env python3
 """
-parse_lynis_report.py — Analyseur de conformité Lynis pour la BCC
+parse_lynis_report.py — Analyseur de conformité Lynis
 Exige un score de durcissement (Hardening Index) >= 80%
 """
 import re
@@ -238,7 +238,7 @@ def analyser_rapport():
         sys.exit(1)
 
     print(f"\n==========================================")
-    print(f"   RAPPORT D'AUDIT LYNIS — BCC SECURITY   ")
+    print(f"   RAPPORT D'AUDIT LYNIS — HARDENING SECURITY   ")
     print(f"==========================================")
     print(f"Score de Durcissement : {hardening_index}%")
     print(f"Avertissements (Warnings) : {len(warnings)}")

@@ -89,7 +89,7 @@ KEM_NAME = "Kyber768"  # Equivalent à ML-KEM-768 (FIPS 203)
 
 print(f"=== ÉCHANGE DE CLÉS POST-QUANTIQUE — {KEM_NAME} ===")
 
-# ─── 1. Le Destinataire (ex: Serveur BCC) génère sa paire de clés Post-Quantique ──
+# ─── 1. Le Destinataire (ex: Serveur critique) génère sa paire de clés Post-Quantique ──
 with oqs.KeyEncapsulation(KEM_NAME) as server_kem:
     # Génération de la clé publique et de la clé privée post-quantique
     public_key_server = server_kem.generate_keypair()

@@ -1,7 +1,7 @@
 # TOME P2 — Réseaux & Télécoms — Jour 83 (6h) : Supervision des Performances & Observabilité (Prometheus, Grafana & Jaeger)
 
 > [!NOTE]
-> **Objectif du jour :** Mettre en œuvre une architecture complète d'observabilité sur l'infrastructure et les applications de la BCC : métriques temps réel avec Prometheus, dashboards de visualisation avec Grafana, et traçage distribué des requêtes (Distributed Tracing) avec OpenTelemetry / Jaeger.
+> **Objectif du jour :** Mettre en œuvre une architecture complète d'observabilité sur l'infrastructure et les applications : métriques temps réel avec Prometheus, dashboards de visualisation avec Grafana, et traçage distribué des requêtes avec OpenTelemetry / Jaeger.
 >
 > **Compétences visées :** `POL-03` (A) — Supervision & Observabilité | `BIT-04` (A) — Monitoring des Infrastructures Avancées
 
@@ -208,12 +208,12 @@ def init_tracer(service_name):
     return trace.get_tracer(service_name)
 
 # Utilisation dans le code métier
-tracer = init_tracer("bcc-virement-service")
+tracer = init_tracer("app-service")
 
 def traiter_virement(compte_src, compte_dest, montant):
     with tracer.start_as_current_span("traiter_virement_main") as span:
-        span.set_attribute("bcc.montant", montant)
-        span.set_attribute("bcc.devise", "CDF")
+        span.set_attribute("app.montant", montant)
+        span.set_attribute("app.devise", "EUR")
         
         # Sous-opération 1 : Vérification de la fraude
         with tracer.start_as_current_span("verification_fraude") as sub_span:

@@ -7,15 +7,15 @@
 
 ---
 
-## 1) Module — Architecture de Référence SecDevOps BCC (2h)
+## 1) Module — Architecture de Référence SecDevOps (2h)
 
 ### 📖 Narration/Intuition
 
-Ce projet intégrateur synthétise tout le Semestre 2 (J71-J80). Vous êtes Architecte SecDevOps de la BCC. La Direction Générale demande de déployer un nouveau portail de virements interbancaires en ligne. Votre mission : concevoir l'architecture complète de sécurité — du code source jusqu'à la production.
+Ce projet intégrateur synthétise tout le Semestre 2 (J71-J80). Vous êtes Architecte SecDevOps d'une grande institution financière. La Direction Générale demande de déployer un nouveau portail de transactions critique en ligne. Votre mission : concevoir l'architecture complète de sécurité — du code source jusqu'à la production.
 
 ### 🔍 Anatomie Technique
 
-**Vue d'ensemble de l'architecture SecDevOps BCC :**
+**Vue d'ensemble de l'architecture SecDevOps :**
 
 ```
 PHASE DÉVELOPPEMENT                        PHASE PRODUCTION
@@ -24,8 +24,8 @@ Code Source                                 K8s Cluster
 (Git + Branching strategy)                  ┌────────────────────────┐
     │                                        │  Namespace: production │
     ▼                                        │  ┌──────────────────┐  │
-Pipeline CI/CD (GitHub Actions)             │  │ Pod: bcc-api (3) │  │
-  ├── SAST (Semgrep + Bandit)               │  │ Pod: bcc-worker  │  │
+Pipeline CI/CD (GitHub Actions)             │  │ Pod: app-api (3) │  │
+  ├── SAST (Semgrep + Bandit)               │  │ Pod: app-worker  │  │
   ├── Secret Scan (GitLeaks)                │  └──────────────────┘  │
   ├── SCA (Safety)                          │  NetworkPolicy: deny-all│
   ├── Tests (pytest + 80% couv.)            └──────────┬─────────────┘
@@ -62,7 +62,7 @@ Pipeline CI/CD (GitHub Actions)             │  │ Pod: bcc-api (3) │  │
 ├────────────────────────────────────────────────────────────────┤
 │ COUCHE 3 : CRYPTOGRAPHIE                                       │
 │ • TLS 1.3 uniquement (ECDHE-RSA/ECDSA), PFS                   │
-│ • PKI interne BCC (CA Racine + CA Inter + certs serveurs)      │
+│ • PKI interne (CA Racine + CA Inter + certs serveurs)      │
 │ • bcrypt pour les mots de passe, AES-256-GCM pour les données  │
 ├────────────────────────────────────────────────────────────────┤
 │ COUCHE 2 : CI/CD & SUPPLY CHAIN                                │
@@ -92,7 +92,7 @@ L'architecture reste sur le papier si elle n'est pas validée techniquement. Ce 
 ```python
 #!/usr/bin/env python3
 """
-bcc-security-audit.py — Audit automatisé de l'architecture SecDevOps BCC
+security-audit.py — Audit automatisé de l'architecture SecDevOps
 Valide que toutes les couches de sécurité sont correctement configurées.
 """
 import subprocess
@@ -239,7 +239,7 @@ def audit_rate_limiting(api_url):
 def run_audit(hostname, api_url):
     """Exécute l'audit complet et génère un rapport."""
     print(f"\n{'='*60}")
-    print(f"AUDIT SecDevOps BCC — {hostname}")
+        print(f"AUDIT SecDevOps — {hostname}")
     print(f"Date : {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print(f"{'='*60}\n")
     
@@ -276,7 +276,7 @@ def run_audit(hostname, api_url):
     return score >= 80
 
 if __name__ == "__main__":
-    hostname = sys.argv[1] if len(sys.argv) > 1 else "api.bcc.cd"
+    hostname = sys.argv[1] if len(sys.argv) > 1 else "api.entreprise.cd"
     api_url = f"https://{hostname}"
     succès = run_audit(hostname, api_url)
     sys.exit(0 if succès else 1)
@@ -292,10 +292,10 @@ Un architecte SecDevOps ne livre pas seulement du code — il livre une **politi
 
 ### 🔍 Anatomie Technique
 
-**Matrice de conformité SecDevOps BCC :**
+**Matrice de conformité SecDevOps :**
 
 ```markdown
-## Matrice de Conformité — Architecture SecDevOps BCC
+## Matrice de Conformité — Architecture SecDevOps
 
 | Exigence | Contrôle Technique | Outil / Implémentation | Statut |
 |:---|:---|:---|:---:|
@@ -310,7 +310,7 @@ Un architecte SecDevOps ne livre pas seulement du code — il livre une **politi
 | Conteneur non-root | USER 1001 Dockerfile | Docker best practices | ✅ |
 | K8s RBAC | Role/RoleBinding | Kubernetes manifests | ✅ |
 | K8s Network | NetworkPolicy deny-all | Kubernetes NetworkPolicy | ✅ |
-| TLS 1.3 | nginx + cert-manager | Let's Encrypt / PKI BCC | ✅ |
+| TLS 1.3 | nginx + cert-manager | Let's Encrypt / PKI interne | ✅ |
 | PFS | ECDHE cipher suites | nginx ssl_ciphers | ✅ |
 | Chiffrement données | pgcrypto (AES) | PostgreSQL extension | ✅ |
 | Backup chiffré | GPG + sha256sum | Script backup prod | ✅ |
@@ -337,7 +337,7 @@ Architecte SecDevOps Junior
   ✓ Rapport de scan Trivy + Semgrep
   ✓ Rapport de couverture de tests (>80%)
 
-□ LIVRABLE 3 : Application sécurisée (Flask API)
+□ LIVRABLE 3 : Application sécurisée (API REST)
   ✓ Mitigations OWASP Top 10 (J71-J72)
   ✓ JWT + RBAC + Rate Limiting
   ✓ Tests de sécurité automatisés
@@ -348,7 +348,7 @@ Architecte SecDevOps Junior
   ✓ K8s manifestes sécurisés (J76)
 
 □ LIVRABLE 5 : Rapport d'audit de sécurité
-  ✓ Résultats bcc-security-audit.py
+  ✓ Résultats de l'audit automatisé
   ✓ Matrice de conformité OWASP/ISO27001
   ✓ Plan de remédiation (priorités P1/P2/P3)
 
@@ -376,7 +376,7 @@ Architecte SecDevOps Junior
 
 ## 🏋️ Exercices & Corrigés
 
-**Exercice 1 :** Le script `bcc-security-audit.py` teste si `X-Powered-By` est **absent**. Pourquoi sa présence est-elle un problème de sécurité ?
+**Exercice 1 :** Le script `security-audit.py` teste si `X-Powered-By` est **absent**. Pourquoi sa présence est-elle un problème de sécurité ?
 
 **Corrigé :** `X-Powered-By: Flask/3.0` ou `X-Powered-By: PHP/8.1.2` révèle à l'attaquant le framework et sa version exacte. Il peut alors chercher dans les CVE les vulnérabilités connues de cette version précise et adapter ses exploits en conséquence (information disclosure → facilitation de l'exploitation).
 

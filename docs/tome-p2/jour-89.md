@@ -14,7 +14,7 @@
 La sécurité informatique ne s'arrête pas à la technique : elle s'inscrit dans un cadre de **gouvernance, gestion des risques et conformité**.
 
 - **ISO/IEC 27001** est la norme internationale qui définit les exigences pour mettre en place un **Système de Management de la Sécurité de l'Information (SMSI)**.
-- **PCI-DSS (Payment Card Industry Data Security Standard)** est la norme de sécurité obligatoire pour toute institution financière (comme la BCC) ou entreprise qui stocke, traite ou transmet des données de cartes bancaires.
+- **PCI-DSS (Payment Card Industry Data Security Standard)** est la norme de sécurité obligatoire pour toute institution financière ou entreprise qui stocke, traite ou transmet des données de cartes bancaires.
 
 ### 🔍 Anatomie Technique
 
@@ -102,7 +102,7 @@ Les **CIS Benchmarks** (édités par le Center for Internet Security) sont des g
           KexAlgorithms curve25519-sha256,curve25519-sha256@libssh.org,diffie-hellman-group16-sha512
       notify: Restart SSH
 
-    # CIS 5.4.1 — Expiration et complexité des mots de passe (PAM)
+    # CIS 5.4.1 — Complexité des mots de passe (PAM)
     - name: Définir la durée maximale de validité des mots de passe (90 jours)
       lineinfile:
         path: /etc/login.defs

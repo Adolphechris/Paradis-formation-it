@@ -11,7 +11,7 @@
 
 ### 📖 Narration/Intuition
 
-Lorsqu'un ransomware s'infiltre dans le réseau de la BCC ou qu'une exfiltration de données bancaires est détectée, la panique est le pire ennemi. L'équipe de réponse aux incidents (DFIR / CSIRT) doit appliquer une **procédure méthodique et répétable** pour stopper l'attaque sans détruire les preuves numériques nécessaires à l'enquête.
+Lorsqu'un ransomware s'infiltre dans le réseau d'une grande organisation ou qu'une exfiltration de données sensibles est détectée, la panique est le pire ennemi. L'équipe de réponse aux incidents (DFIR / CSIRT) doit appliquer une **procédure méthodique et répétable** pour stopper l'attaque sans détruire les preuves numériques nécessaires à l'enquête.
 
 Le framework de réponse aux incidents SANS/NIST définit 6 étapes incontournables.
 
@@ -106,7 +106,7 @@ python3 vol.py -f /tmp/memoire_infectee.raw windows.dumpfiles.DumpFiles --pid 41
 
 ### 📖 Narration/Intuition
 
-Lorsqu'une banque consœur subit une cyberattaque, les **indicateurs de compromission (IoC)** (adresses IP d'attaquants, hashs de malwares, noms de domaine malveillants) peuvent être partagés immédiatement avec la BCC pour bloquer l'attaque *avant* qu'elle n'atteigne notre réseau.
+Lorsqu'une entreprise consœur subit une cyberattaque, les indicateurs de compromission (IoC) (adresses IP d'attaquants, hashs de malwares, noms de domaine malveillants) peuvent être partagés immédiatement pour bloquer l'attaque avant qu'elle n'atteigne notre réseau.
 
 **MISP (Malware Information Sharing Platform)** est la plateforme Open Source standard internationale d'échange de renseignements sur les menaces (Threat Intelligence).
 
@@ -136,7 +136,7 @@ depuis MISP et mise à jour de la liste de blocage Nftables / Firewall.
 from pymisp import PyMISP
 import subprocess
 
-MISP_URL = "https://misp.bcc.cd"
+MISP_URL = "https://misp.entreprise.cd"
 MISP_KEY = "Votre_Cle_API_MISP_Secrete"
 
 def mettre_a_jour_firewall():
@@ -163,7 +163,7 @@ def mettre_a_jour_firewall():
         # Exécution de la commande nftables
         print("[+] Mise à jour du jeux de règles Nftables...")
         # subprocess.run(cmd, shell=True, check=True)
-        print("✅ Pare-feu BCC mis à jour avec les IoC de Threat Intelligence.")
+        print("✅ Pare-feu mis à jour avec les IoC de Threat Intelligence.")
 
 if __name__ == "__main__":
     mettre_a_jour_firewall()

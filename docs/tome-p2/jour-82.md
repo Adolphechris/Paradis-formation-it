@@ -11,7 +11,7 @@
 
 ### 📖 Narration/Intuition
 
-Dans une grande organisation comme la BCC, chaque employé et chaque client utilise plusieurs applications : portail de virement, messagerie, système RH, console d'audit. Gérer des mots de passe séparés pour chaque application est un cauchemar de sécurité et d'administration.
+Dans une grande organisation, chaque employé et chaque client utilise plusieurs applications : portail de transactions, messagerie, système RH, console d'audit. Gérer des mots de passe séparés pour chaque application est un cauchemar de sécurité et d'administration.
 
 **OAuth 2.0** est un protocole de **délégation d'autorisation** (il permet à une application d'accéder à des ressources sans connaître le mot de passe de l'utilisateur). **OpenID Connect (OIDC)** est une couche d'**authentification** basée sur OAuth 2.0. Ensemble, ils permettent le **Single Sign-On (SSO)** : s'authentifier une seule fois auprès d'un serveur d'identité centralisé (Identity Provider - IdP) pour accéder à l'ensemble du système d'information.
 
@@ -66,7 +66,7 @@ version: '3.8'
 services:
   keycloak-db:
     image: postgres:16-alpine
-    container_name: bcc-keycloak-db
+    container_name: keycloak-db
     environment:
       POSTGRES_DB: keycloak
       POSTGRES_USER: keycloak
@@ -79,14 +79,14 @@ services:
 
   keycloak:
     image: quay.io/keycloak/keycloak:24.0.1
-    container_name: bcc-keycloak
+    container_name: keycloak
     command: start --optimized
     environment:
       KC_DB: postgres
       KC_DB_URL: jdbc:postgresql://keycloak-db:5432/keycloak
       KC_DB_USERNAME: keycloak
       KC_DB_PASSWORD: ${KC_DB_PASSWORD}
-      KC_HOSTNAME: auth.bcc.cd
+      KC_HOSTNAME: auth.entreprise.cd
       KC_PROXY_HEADERS: xforwarded
       KC_HTTP_ENABLED: "false"
       KEYCLOAK_ADMIN: admin
@@ -112,7 +112,7 @@ networks:
 
 ```
 - Realm (Royaume) : Espace d'isolement logique contenant ses propres utilisateurs, applications (Clients) et rôles.
-  (Exemple : Realm "BCC-Interne" pour les employés, Realm "BCC-Clients" pour le public).
+  (Exemple : Realm "Interne" pour les employés, Realm "Externe" pour le public).
 - Client : Application qui délègue son authentification à Keycloak (ex: Portail Web, API, Mobile App).
 - Client Secret : Clé privée de l'application pour les clients confidentiels (backend).
 - User Federation : Synchronisation/Connexion avec un annuaire d'entreprise existant (LDAP / Active Directory).
@@ -142,8 +142,8 @@ from jwt import PyJWKClient
 
 app = Flask(__name__)
 
-KEYCLOAK_URL = "https://auth.bcc.cd"
-REALM_NAME = "BCC-Enterprise"
+KEYCLOAK_URL = "https://auth.entreprise.cd"
+REALM_NAME = "Enterprise"
 JWKS_URL = f"{KEYCLOAK_URL}/realms/{REALM_NAME}/protocol/openid-connect/certs"
 
 # Initialiser le client JWK pour récupérer dynamiquement les clés publiques de signature Keycloak

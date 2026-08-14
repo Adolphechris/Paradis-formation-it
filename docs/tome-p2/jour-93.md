@@ -52,7 +52,7 @@ Dans une architecture Zero Trust, chaque serveur communique avec les autres via 
 
 ### 🔍 Anatomie Technique
 
-**Déploiement d'un Maillage WireGuard (Mesh) entre serveurs BCC (`/etc/wireguard/wg0.conf`) :**
+**Déploiement d'un Maillage WireGuard (Mesh) entre serveurs critiques (`/etc/wireguard/wg0.conf`) :**
 
 ```ini
 # Configuration WireGuard sur le Serveur API (IP Mesh: 10.200.0.1/32)
@@ -105,7 +105,7 @@ Comment prouver l'identité d'un microservice (ex: un conteneur Kubernetes) aupr
 
 ```
 Format d'un SPIFFE ID : spiffe://<trust-domain>/ns/<namespace>/sa/<service-account>
-Exemple BCC : spiffe://bcc.internal/ns/production/sa/virement-api-serviceaccount
+Exemple : spiffe://corp.internal/ns/production/sa/virement-api-serviceaccount
 ```
 
 **Attestation et échange mTLS avec SPIFFE/SPIRE :**

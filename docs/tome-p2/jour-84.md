@@ -11,7 +11,7 @@
 
 ### 📖 Narration/Intuition
 
-Un seul serveur Web ou API représente un point de défaillance unique (SPOF - Single Point of Failure). Si le serveur tombe ou nécessite une maintenance, l'ensemble des services de la BCC s'arrête. 
+Un seul serveur Web ou API représente un point de défaillance unique (SPOF - Single Point of Failure). Si le serveur tombe ou nécessite une maintenance, l'ensemble des services de l'application s'arrête. 
 
 **HAProxy** est le répartiteur de charge (Load Balancer) le plus rapide et le plus fiable du monde Open Source. Il agit comme un chef d'orchestre devant un pool de serveurs d'arrière-plan (Backend Servers) : il distribue les requêtes entrantes, surveille l'état de santé des serveurs (Health Checks) et retire automatiquement du pool tout serveur défaillant en moins d'une seconde.
 
@@ -57,11 +57,11 @@ listen stats
     stats enable
     stats uri /
     stats refresh 5s
-    stats auth admin:BCC_HAProxy_Stats_2024!
+    stats auth admin:HAProxy_Stats_2024!
 
 # ─── Frontend HTTPS (Port 443) ────────────────────────────────────────────────
 frontend ft_bcc_https
-    bind 10.0.10.100:443 ssl crt /etc/haproxy/certs/bcc-bundle.pem alpn h2,http/1.1
+    bind 10.0.10.100:443 ssl crt /etc/haproxy/certs/app-bundle.pem alpn h2,http/1.1
     mode http
 
     # En-têtes de sécurité et IP réelle transmise aux backends

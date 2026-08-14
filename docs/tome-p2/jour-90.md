@@ -11,7 +11,7 @@
 
 ### 📖 Narration/Intuition
 
-Vous êtes l'Ingénieur en Chef Sécurité & Infrastructure de la Banque Centrale du Congo (BCC). Suite à une mise en demeure des régulateurs financiers et à l'augmentation des menaces réseau en Afrique Centrale, vous devez finaliser la mise en production de la **Nouvelle Plateforme Interbancaire de Paiement (NPIP)**.
+Vous êtes l'Ingénieur en Chef Sécurité & Infrastructure d'une grande institution financière. Suite à une mise en demeure des régulateurs et à l'augmentation des menaces réseau, vous devez finaliser la mise en production de la **Nouvelle Plateforme de Paiement Critique (NPC)**.
 
 Cette plateforme doit être :
 1. **Conforme** aux normes ISO 27001, PCI-DSS v4.0 et aux recommandations CIS Level 2.
@@ -91,14 +91,14 @@ def run_command(cmd, description):
 
 def main():
     print("=================================================================")
-    print("  DÉPLOIEMENT & VERIFICATION DE CONFORMITÉ — PROJET J90 (BCC)   ")
+    print("  DÉPLOIEMENT & VERIFICATION DE CONFORMITÉ — PROJET J90   ")
     print("=================================================================")
 
     steps = [
         ("ansible-playbook -i inventory/prod.yml playbooks/cis_hardening.yml", 
          "1. Application du durcissement système CIS Level 2 (Ansible)"),
         
-        ("sysctl -p /etc/sysctl.d/99-bcc-hardening.conf", 
+         ("sysctl -p /etc/sysctl.d/99-hardening.conf", 
          "2. Application des paramètres noyau sysctl de sécurité"),
         
         ("docker compose -f docker-compose-keycloak.yml up -d", 
