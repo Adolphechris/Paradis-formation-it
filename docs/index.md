@@ -1,6 +1,6 @@
 ---
-title: PARADIS IT — Masterclass 600 Jours
-description: Plateforme d'autoformation IT de niveau Master — 600 jours, 12 semestres, du Bachelor au niveau Expert Cybersécurité. Linux, Réseaux, Cloud, Kubernetes, Pentest, Cryptographie, DevSecOps, GRC & Architecture Zero-Trust.
+title: PARADIS IT — Masterclass 600 Jours | Bachelor & Master Cybersécurité
+description: Plateforme d'autoformation IT d'élite — 600 jours, 12 semestres, du débutant absolu jusqu'au niveau Master Architecte Cybersécurité & Cloud Native. Linux, Réseaux, Python, SQL, Cloud AWS/Azure, Kubernetes, Pentest, EDR, Cryptographie PQC & Architecture Zero-Trust.
 ---
 
 <div class="paradis-hero-section">
@@ -13,16 +13,16 @@ description: Plateforme d'autoformation IT de niveau Master — 600 jours, 12 se
   <div class="paradis-hero-content">
     <div class="paradis-hero-badge">
       <span class="badge-dot"></span>
-      IT Masterclass · Bachelor → Master Expert Cybersécurité
+      IT Masterclass · Bachelor BIT (Bac+3) & Master Cybersécurité (Bac+5)
     </div>
 
     <h1 class="paradis-hero-title">
-      Devenez Expert IT<br>
-      <span class="paradis-hero-title-accent">en 600 Jours</span>
+      Devenez Expert IT & Architecte<br>
+      <span class="paradis-hero-title-accent">en 600 Jours d'Élite</span>
     </h1>
 
     <p class="paradis-hero-subtitle">
-      La plateforme d'autoformation IT la plus complète — <strong>12 Semestres progressifs</strong> du socle Linux jusqu'à l'Architecture Zero-Trust, la Cryptographie Post-Quantique et la Gouvernance d'Entreprise.
+      La plateforme d'autoformation universelle — <strong>12 Semestres progressifs</strong> du socle matériel et Linux jusqu'à l’Architecture Zero-Trust (NIST 800-207), le Hardening CIS et la Cryptographie Post-Quantique (FIPS 203/204).
     </p>
 
     <div class="paradis-hero-actions">
@@ -39,22 +39,22 @@ description: Plateforme d'autoformation IT de niveau Master — 600 jours, 12 se
     <div class="paradis-hero-stats">
       <div class="hero-stat">
         <span class="hero-stat-number">600</span>
-        <span class="hero-stat-label">Jours de formation</span>
+        <span class="hero-stat-label">Jours de Formation</span>
       </div>
       <div class="hero-stat-divider"></div>
       <div class="hero-stat">
         <span class="hero-stat-number">12</span>
-        <span class="hero-stat-label">Semestres progressifs</span>
+        <span class="hero-stat-label">Semestres d'Élite</span>
       </div>
       <div class="hero-stat-divider"></div>
       <div class="hero-stat">
-        <span class="hero-stat-number">8 400</span>
-        <span class="hero-stat-label">Heures de formation</span>
+        <span class="hero-stat-number">3 300</span>
+        <span class="hero-stat-label">Heures d'Ingénierie</span>
       </div>
       <div class="hero-stat-divider"></div>
       <div class="hero-stat">
         <span class="hero-stat-number">100%</span>
-        <span class="hero-stat-label">Hors-ligne disponible</span>
+        <span class="hero-stat-label">Hors-Ligne PWA</span>
       </div>
     </div>
   </div>
@@ -62,35 +62,94 @@ description: Plateforme d'autoformation IT de niveau Master — 600 jours, 12 se
 
 ---
 
-<div class="paradis-progress-section">
-  <h2 class="paradis-section-title">📊 Votre Progression</h2>
-  <div id="progress-widget" class="paradis-progress-widget">
-    <div class="progress-loading">
-      <div class="progress-loading-spinner"></div>
-      <p>Chargement de votre progression...</p>
+## ⚡ Démo Interactive — Essayez le Terminal & l'Évaluation
+
+<div class="paradis-demo-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin: 24px 0;">
+
+  <!-- Widget Terminal interactif -->
+  <div style="background: #0f172a; border: 1px solid #1e293b; border-radius: 12px; padding: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.4);">
+    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 14px; border-bottom: 1px solid #334155; padding-bottom: 10px;">
+      <span style="width: 12px; height: 12px; border-radius: 50%; background: #ef4444; display: inline-block;"></span>
+      <span style="width: 12px; height: 12px; border-radius: 50%; background: #f59e0b; display: inline-block;"></span>
+      <span style="width: 12px; height: 12px; border-radius: 50%; background: #10b981; display: inline-block;"></span>
+      <span style="color: #94a3b8; font-family: monospace; font-size: 0.85rem; margin-left: auto;">bash — 80x24</span>
+    </div>
+    <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.88rem; color: #38bdf8;">
+      <p style="margin: 0 0 6px 0;"><span style="color: #4ade80;">student@paradis-srv</span>:<span style="color: #818cf8;">~</span>$ lscpu | grep "Model name"</p>
+      <p style="color: #94a3b8; margin: 0 0 10px 0;">Model name: Intel(R) Xeon(R) Gold 6330 CPU @ 2.00GHz</p>
+
+      <p style="margin: 0 0 6px 0;"><span style="color: #4ade80;">student@paradis-srv</span>:<span style="color: #818cf8;">~</span>$ free -h</p>
+      <p style="color: #94a3b8; margin: 0 0 10px 0;">Mem: 32Gi total, 2.4Gi used, 29.6Gi free</p>
+
+      <p style="margin: 0 0 6px 0;"><span style="color: #4ade80;">student@paradis-srv</span>:<span style="color: #818cf8;">~</span>$ <span class="blinking-cursor" style="background: #38bdf8; color: #0f172a; padding: 0 4px;">echo "Bienvenue sur PARADIS IT !"</span></p>
     </div>
   </div>
+
+  <!-- Widget QCM Démo -->
+  <div style="background: linear-gradient(135deg, rgba(30, 41, 59, 0.7), rgba(15, 23, 42, 0.9)); border: 1px solid rgba(6, 182, 212, 0.3); border-radius: 12px; padding: 20px;">
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+      <span style="color: #06b6d4; font-weight: 700; font-size: 0.85rem; text-transform: uppercase;">❓ Aperçu QCM d'Évaluation</span>
+      <span style="background: rgba(16, 185, 129, 0.2); color: #34d399; font-size: 0.75rem; padding: 2px 8px; border-radius: 10px;">Seuil : 75%</span>
+    </div>
+    <h4 style="color: #f8fafc; font-size: 1rem; margin: 0 0 12px 0;">Quel est le rôle du processeur (CPU) ?</h4>
+    <div style="display: flex; flex-direction: column; gap: 8px;">
+      <div style="background: rgba(255,255,255,0.05); padding: 8px 12px; border-radius: 6px; color: #94a3b8; font-size: 0.85rem;">A) Conserver les fichiers hors tension</div>
+      <div style="background: rgba(6, 182, 212, 0.2); border: 1px solid #06b6d4; padding: 8px 12px; border-radius: 6px; color: #38bdf8; font-size: 0.85rem; font-weight: 600;">✓ B) Exécuter les instructions logiques et calculs</div>
+      <div style="background: rgba(255,255,255,0.05); padding: 8px 12px; border-radius: 6px; color: #94a3b8; font-size: 0.85rem;">C) Transformer le courant 230V</div>
+    </div>
+  </div>
+
 </div>
 
-## 🛤️ Les 12 Semestres — 600 Jours de Masterclass IT
+---
+
+## 🏛️ Pourquoi Choisir la Masterclass PARADIS IT ?
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin: 24px 0;">
+
+  <div style="background: rgba(30, 41, 59, 0.5); border: 1px solid #334155; border-radius: 12px; padding: 20px;">
+    <div style="font-size: 2rem; margin-bottom: 10px;">🏛️</div>
+    <h3 style="color: #f1f5f9; font-size: 1.1rem; margin: 0 0 8px 0;">Université Classique</h3>
+    <p style="color: #94a3b8; font-size: 0.9rem; margin: 0;">Beaucoup de théorie académique passive, peu d'heures de terminal et des coûts d'inscription élevés sans garantie de niveau opérationnel.</p>
+  </div>
+
+  <div style="background: rgba(30, 41, 59, 0.5); border: 1px solid #334155; border-radius: 12px; padding: 20px;">
+    <div style="font-size: 2rem; margin-bottom: 10px;">⚡</div>
+    <h3 style="color: #f1f5f9; font-size: 1.1rem; margin: 0 0 8px 0;">Bootcamps 3 Mois</h3>
+    <p style="color: #94a3b8; font-size: 0.9rem; margin: 0;">Formation ultra-rapide et superficielle. Laisse de grands trous de connaissance sur les réseaux bas niveau, le Noyau Linux et la sécurité.</p>
+  </div>
+
+  <div style="background: linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(15, 23, 42, 0.9)); border: 1px solid #06b6d4; border-radius: 12px; padding: 20px; box-shadow: 0 8px 24px rgba(6, 182, 212, 0.2);">
+    <div style="font-size: 2rem; margin-bottom: 10px;">🏆</div>
+    <h3 style="color: #38bdf8; font-size: 1.1rem; margin: 0 0 8px 0;">PARADIS IT Masterclass</h3>
+    <p style="color: #cbd5e1; font-size: 0.9rem; margin: 0;"><strong>600 jours dosés (3 300h)</strong>. Découverte pas-à-pas, pratique quotidienne dans le terminal, double diplôme certifié Bachelor & Master.</p>
+  </div>
+
+</div>
+
+---
+
+## 🛤️ Les 12 Semestres & Milestones — 600 Jours de Masterclass IT
 
 <div class="paradis-curriculum-grid">
 
-  <a href="tome-p0/jour-0a/" class="paradis-tome-card tome-p0" style="border-color: #06b6d4; background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(15, 23, 42, 0.9));">
+  <!-- SEMESTRE 0 -->
+  <a href="tome-p0/jour-0a/" class="paradis-tome-card tome-p0" style="border-color: #06b6d4; background: linear-gradient(135deg, rgba(6, 182, 212, 0.12), rgba(15, 23, 42, 0.95)); grid-column: 1 / -1;">
     <div class="tome-card-icon">🚀</div>
     <div class="tome-card-body">
-      <div class="tome-card-phase" style="color: #06b6d4;">Semestre 0 · J0a–J0o</div>
-      <h3 class="tome-card-title">Initiation & Socle Pré-requis</h3>
-      <p class="tome-card-desc">Découverte ludique : Hardware, Binaire, OS, Réseau, Métiers IT, Outils & Grand Examen Massif d'Entrée</p>
+      <div class="tome-card-phase" style="color: #06b6d4;">Semestre 0 · J0a–J0v (22 Leçons)</div>
+      <h3 class="tome-card-title">Initiation Informatique, OS, Réseaux & Sas de Transition S0→S1</h3>
+      <p class="tome-card-desc">Découverte complète pour débutants absolus : Hardware, Binaire, Noyau, CLI, Outils IT & Examen de Validation d'Entrée</p>
       <div class="tome-card-tags">
-        <span class="tome-tag" style="background: rgba(6, 182, 212, 0.2); color: #06b6d4;">Pré-requis</span>
-        <span class="tome-tag" style="background: rgba(16, 185, 129, 0.2); color: #10b981;">Débutant Absolu</span>
-        <span class="tome-tag" style="background: rgba(139, 92, 246, 0.2); color: #a78bfa;">Examen Massif</span>
+        <span class="tome-tag" style="background: rgba(6, 182, 212, 0.2); color: #06b6d4;">Débutant Absolu</span>
+        <span class="tome-tag" style="background: rgba(16, 185, 129, 0.2); color: #10b981;">Sas de Transition</span>
+        <span class="tome-tag" style="background: rgba(139, 92, 246, 0.2); color: #a78bfa;">Examen Massif J0v</span>
       </div>
     </div>
     <div class="tome-card-arrow" style="color: #06b6d4;">→</div>
   </a>
 
+  <!-- SEMESTRE 1 -->
   <a href="tome-p0/" class="paradis-tome-card tome-p0">
     <div class="tome-card-icon">🖥️</div>
     <div class="tome-card-body">
@@ -106,6 +165,7 @@ description: Plateforme d'autoformation IT de niveau Master — 600 jours, 12 se
     <div class="tome-card-arrow">→</div>
   </a>
 
+  <!-- SEMESTRE 2 -->
   <a href="tome-p2/" class="paradis-tome-card tome-p2">
     <div class="tome-card-icon">🌐</div>
     <div class="tome-card-body">
@@ -121,6 +181,7 @@ description: Plateforme d'autoformation IT de niveau Master — 600 jours, 12 se
     <div class="tome-card-arrow">→</div>
   </a>
 
+  <!-- SEMESTRE 3 -->
   <a href="tome-p3/" class="paradis-tome-card tome-p3">
     <div class="tome-card-icon">⚙️</div>
     <div class="tome-card-body">
@@ -136,221 +197,62 @@ description: Plateforme d'autoformation IT de niveau Master — 600 jours, 12 se
     <div class="tome-card-arrow">→</div>
   </a>
 
+  <!-- SEMESTRE 4 -->
   <a href="tome-p4/" class="paradis-tome-card tome-p4">
     <div class="tome-card-icon">☁️</div>
     <div class="tome-card-body">
       <div class="tome-card-phase">Semestre 4 · J151–J200</div>
       <h3 class="tome-card-title">Cloud Computing & IaC</h3>
-      <p class="tome-card-desc">AWS, Azure, GCP, Terraform, Ansible, CI/CD et architectures cloud multi-région</p>
+      <p class="tome-card-desc">AWS, Azure, GCP, Terraform, Ansible, OpenStack et automatisation d'infrastructure</p>
       <div class="tome-card-tags">
         <span class="tome-tag">AWS</span>
         <span class="tome-tag">Terraform</span>
-        <span class="tome-tag">CI/CD</span>
+        <span class="tome-tag">Ansible</span>
       </div>
     </div>
     <div class="tome-card-arrow">→</div>
   </a>
 
-  <a href="tome-p5/" class="paradis-tome-card tome-p5">
-    <div class="tome-card-icon">🐳</div>
+  <!-- MILESTONE J300 BACHELOR -->
+  <a href="milestones/j300-a/" class="paradis-tome-card" style="border-color: #f59e0b; background: linear-gradient(135deg, rgba(245, 158, 11, 0.12), rgba(15, 23, 42, 0.95)); grid-column: 1 / -1;">
+    <div class="tome-card-icon">🎓</div>
     <div class="tome-card-body">
-      <div class="tome-card-phase">Semestre 5 · J201–J250</div>
-      <h3 class="tome-card-title">Kubernetes & Orchestration</h3>
-      <p class="tome-card-desc">Docker, Kubernetes avancé, Helm, Istio, GitOps, Argo CD et service mesh</p>
+      <div class="tome-card-phase" style="color: #f59e0b;">Milestone J300 · Diplôme Bachelor BIT (Bac+3)</div>
+      <h3 class="tome-card-title">Épreuves Certifiantes du Bachelor in Information Technology</h3>
+      <p class="tome-card-desc">Examen Massif de 50 QCM (J300a), Projet d'Architecture Cloud (J300b), Jury Technique & Soutenance (J300c/d)</p>
       <div class="tome-card-tags">
-        <span class="tome-tag">Kubernetes</span>
-        <span class="tome-tag">Helm</span>
-        <span class="tome-tag">GitOps</span>
+        <span class="tome-tag" style="background: rgba(245, 158, 11, 0.2); color: #f59e0b;">Diplôme Bac+3</span>
+        <span class="tome-tag" style="background: rgba(245, 158, 11, 0.2); color: #f59e0b;">Examen 50 QCM</span>
+        <span class="tome-tag" style="background: rgba(245, 158, 11, 0.2); color: #f59e0b;">Jury Technique</span>
       </div>
     </div>
-    <div class="tome-card-arrow">→</div>
+    <div class="tome-card-arrow" style="color: #f59e0b;">→</div>
   </a>
 
-  <a href="tome-p6/" class="paradis-tome-card tome-p6">
-    <div class="tome-card-icon">🎯</div>
+  <!-- MILESTONE J600 MASTER -->
+  <a href="milestones/j600-a/" class="paradis-tome-card" style="border-color: #a855f7; background: linear-gradient(135deg, rgba(168, 85, 247, 0.12), rgba(15, 23, 42, 0.95)); grid-column: 1 / -1;">
+    <div class="tome-card-icon">👑</div>
     <div class="tome-card-body">
-      <div class="tome-card-phase">Semestre 6 · J251–J300</div>
-      <h3 class="tome-card-title">Pentesting & Hacking Éthique</h3>
-      <p class="tome-card-desc">Bug Bounty, exploitation web, Active Directory offensif, Red Team, C2 et OSCP+ prep</p>
+      <div class="tome-card-phase" style="color: #a855f7;">Milestone J600 · Diplôme Master Architecte (Bac+5)</div>
+      <h3 class="tome-card-title">Grand Capstone & Épreuves Certifiantes Master Architecte Cybersécurité</h3>
+      <p class="tome-card-desc">Examen Massif de 60 QCM (J600a), Grand Capstone Zero-Trust (J600b), Soutenance CISO/COMEX (J600c) & Portfolio Final (J600d)</p>
       <div class="tome-card-tags">
-        <span class="tome-tag">OSCP+</span>
-        <span class="tome-tag">Red Team</span>
-        <span class="tome-tag">AD Offensif</span>
+        <span class="tome-tag" style="background: rgba(168, 85, 247, 0.2); color: #c084fc;">Diplôme Bac+5</span>
+        <span class="tome-tag" style="background: rgba(168, 85, 247, 0.2); color: #c084fc;">Examen 60 QCM</span>
+        <span class="tome-tag" style="background: rgba(168, 85, 247, 0.2); color: #c084fc;">Grand Capstone</span>
       </div>
     </div>
-    <div class="tome-card-arrow">→</div>
-  </a>
-
-  <a href="tome-p7/" class="paradis-tome-card tome-p7">
-    <div class="tome-card-icon">🛡️</div>
-    <div class="tome-card-body">
-      <div class="tome-card-phase">Semestre 7 · J301–J350</div>
-      <h3 class="tome-card-title">Application Security & AppSec</h3>
-      <p class="tome-card-desc">OWASP Top 10, sécurité web avancée, reverse engineering mobile, AWS Security Specialty</p>
-      <div class="tome-card-tags">
-        <span class="tome-tag">OWASP</span>
-        <span class="tome-tag">AppSec</span>
-        <span class="tome-tag">CKS</span>
-      </div>
-    </div>
-    <div class="tome-card-arrow">→</div>
-  </a>
-
-  <a href="tome-p8/" class="paradis-tome-card tome-p8">
-    <div class="tome-card-icon">🔐</div>
-    <div class="tome-card-body">
-      <div class="tome-card-phase">Semestre 8 · J351–J400</div>
-      <h3 class="tome-card-title">Hardening & IAM/PAM/EDR</h3>
-      <p class="tome-card-desc">Hardening OS, CIS Benchmarks, Identity Access Management, Privileged Access, EDR/XDR</p>
-      <div class="tome-card-tags">
-        <span class="tome-tag">IAM</span>
-        <span class="tome-tag">PAM</span>
-        <span class="tome-tag">EDR/XDR</span>
-      </div>
-    </div>
-    <div class="tome-card-arrow">→</div>
-  </a>
-
-  <a href="tome-p9/" class="paradis-tome-card tome-p9">
-    <div class="tome-card-icon">🔑</div>
-    <div class="tome-card-body">
-      <div class="tome-card-phase">Semestre 9 · J401–J450</div>
-      <h3 class="tome-card-title">Cryptographie Avancée & PKI</h3>
-      <p class="tome-card-desc">PKI enterprise, TLS 1.3, ZKP, Post-Quantique NIST (ML-KEM/ML-DSA), FHE, HSM & Vault</p>
-      <div class="tome-card-tags">
-        <span class="tome-tag">PQC</span>
-        <span class="tome-tag">ZKP</span>
-        <span class="tome-tag">HSM</span>
-      </div>
-    </div>
-    <div class="tome-card-arrow">→</div>
-  </a>
-
-  <a href="tome-p10/" class="paradis-tome-card tome-p10">
-    <div class="tome-card-icon">🔍</div>
-    <div class="tome-card-body">
-      <div class="tome-card-phase">Semestre 10 · J451–J500</div>
-      <h3 class="tome-card-title">DFIR & Reverse Engineering</h3>
-      <p class="tome-card-desc">SANS PICERL, Volatility 3, Autopsy, Zeek, Ghidra, GDB, Ransomware Analysis & CTF</p>
-      <div class="tome-card-tags">
-        <span class="tome-tag">DFIR</span>
-        <span class="tome-tag">Ghidra</span>
-        <span class="tome-tag">Forensique</span>
-      </div>
-    </div>
-    <div class="tome-card-arrow">→</div>
-  </a>
-
-  <a href="tome-p11/" class="paradis-tome-card tome-p11">
-    <div class="tome-card-icon">🚀</div>
-    <div class="tome-card-body">
-      <div class="tome-card-phase">Semestre 11 · J501–J550</div>
-      <h3 class="tome-card-title">DevSecOps & Cloud Security</h3>
-      <p class="tome-card-desc">Shift-Left, SAST/DAST, SBOM, SLSA L3, CSPM, Kubernetes Security & Supply Chain</p>
-      <div class="tome-card-tags">
-        <span class="tome-tag">DevSecOps</span>
-        <span class="tome-tag">CSPM</span>
-        <span class="tome-tag">SBOM</span>
-      </div>
-    </div>
-    <div class="tome-card-arrow">→</div>
-  </a>
-
-  <a href="tome-p12/" class="paradis-tome-card tome-p12">
-    <div class="tome-card-icon">🏆</div>
-    <div class="tome-card-body">
-      <div class="tome-card-phase">Semestre 12 · J551–J600</div>
-      <h3 class="tome-card-title">Gouvernance GRC & Grand Capstone</h3>
-      <p class="tome-card-desc">ISO 27001:2022, EBIOS RM, RGPD/NIS2/DORA, Zero-Trust Architecture & Grand Capstone Final</p>
-      <div class="tome-card-tags">
-        <span class="tome-tag">GRC</span>
-        <span class="tome-tag">Zero-Trust</span>
-        <span class="tome-tag">CISO</span>
-      </div>
-    </div>
-    <div class="tome-card-arrow">→</div>
+    <div class="tome-card-arrow" style="color: #a855f7;">→</div>
   </a>
 
 </div>
 
 ---
 
-## 🎯 Pourquoi PARADIS IT Masterclass ?
-
-<div class="paradis-features-grid">
-  <div class="paradis-feature-card">
-    <div class="feature-icon">🎓</div>
-    <h3>Du Bachelor au Master Expert</h3>
-    <p>Progression structurée en 12 semestres — du socle Linux jusqu'à l'Architecture Zero-Trust et la Cryptographie Post-Quantique.</p>
-  </div>
-  <div class="paradis-feature-card">
-    <div class="feature-icon">🤖</div>
-    <h3>Tuteur IA Intégré</h3>
-    <p>Un assistant intelligent disponible 24h/24 pour répondre à vos questions sur chaque module du programme.</p>
-  </div>
-  <div class="paradis-feature-card">
-    <div class="feature-icon">📡</div>
-    <h3>100% Hors-ligne</h3>
-    <p>Application PWA installable. Tous les 600 jours de cours sont accessibles sans connexion internet après le premier chargement.</p>
-  </div>
-  <div class="paradis-feature-card">
-    <div class="feature-icon">☁️</div>
-    <h3>Progression Synchronisée</h3>
-    <p>Créez un compte pour retrouver votre progression, notes et résultats QCM sur tous vos appareils en temps réel.</p>
-  </div>
-  <div class="paradis-feature-card">
-    <div class="feature-icon">📝</div>
-    <h3>QCM & Examens Blancs</h3>
-    <p>Banque de QCM par semestre, mode examen blanc chrono 2h, corrections détaillées et grilles de remédiation.</p>
-  </div>
-  <div class="paradis-feature-card">
-    <div class="feature-icon">📊</div>
-    <h3>Radar de Compétences</h3>
-    <p>Suivez votre montée en compétences sur 6 axes avec des graphiques radar, badges employabilité et export de certificats PDF.</p>
-  </div>
-</div>
-
----
-
-## 🔍 Recherche Rapide
-
-<div class="paradis-search-container">
-  <div class="paradis-search-wrapper">
-    <svg class="paradis-search-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-    <input type="text" id="search-input" class="paradis-search-input" placeholder="Rechercher parmi les 600 jours... (Ctrl+K)" />
-    <kbd class="paradis-search-kbd">Ctrl+K</kbd>
-  </div>
-  <div id="search-results" class="paradis-search-results"></div>
-</div>
-
----
-
-## 📱 Accès Multiplateforme
-
-<div class="paradis-platforms-row">
-  <div class="platform-item">
-    <span class="platform-icon">🖥️</span>
-    <strong>Desktop</strong>
-    <span>Chrome, Firefox, Safari, Edge</span>
-  </div>
-  <div class="platform-item">
-    <span class="platform-icon">📱</span>
-    <strong>Mobile & Tablette</strong>
-    <span>Layout adaptatif responsive</span>
-  </div>
-  <div class="platform-item">
-    <span class="platform-icon">📡</span>
-    <strong>Mode Hors-ligne</strong>
-    <span>PWA installable — 600 jours sans connexion</span>
-  </div>
-  <div class="platform-item">
-    <span class="platform-icon">🔄</span>
-    <strong>Multi-appareils</strong>
-    <span>Progression cloud synchronisée partout</span>
-  </div>
-</div>
-
-<div class="paradis-footer-tech">
-  <p>Propulsé par <strong>MkDocs Material</strong> · <strong>IndexedDB</strong> · <strong>Supabase</strong> · <strong>PWA</strong> · <strong>GitHub Pages</strong></p>
-  <p class="paradis-footer-version">Version 6.0 — Août 2026 — PARADIS IT Masterclass 600 Jours</p>
+<div style="text-align: center; margin: 40px 0 20px 0; padding: 30px; background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(15, 23, 42, 0.9)); border: 1px solid #06b6d4; border-radius: 16px;">
+  <h2 style="color: #f8fafc; font-size: 1.6rem; margin: 0 0 10px 0;">Prêt à Relever le Défi des 600 Jours ?</h2>
+  <p style="color: #94a3b8; max-width: 600px; margin: 0 auto 20px auto;">Commencez dès aujourd'hui par le Semestre 0. Aucun prérequis technique requis. Votre progression est automatiquement sauvegardée dans votre navigateur.</p>
+  <a href="tome-p0/jour-0a/" class="paradis-btn-hero-primary" style="background: linear-gradient(135deg, #06b6d4, #0284c7); border: none; padding: 12px 30px; font-size: 1rem;">
+    🚀 Lancer le Jour J0a — Qu'est-ce qu'un Ordinateur ?
+  </a>
 </div>

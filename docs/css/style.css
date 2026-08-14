@@ -1179,3 +1179,22 @@ body {
 
 /* ── Utilitaires ─────────────────────────────────────────────────────────── */
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
+
+/* ── Animation Curseur Terminal & Démo ────────────────────────────────────── */
+@keyframes blinkCursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.blinking-cursor {
+  animation: blinkCursor 1s step-end infinite;
+}
+
+#paradis-pwa-install-btn {
+  transition: all 0.2s ease-in-out;
+}
+#paradis-pwa-install-btn:hover {
+  background: rgba(6, 182, 212, 0.3) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
+}
