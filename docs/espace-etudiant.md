@@ -9,11 +9,20 @@ description: "Votre auditoire virtuel : 600 leçons organisées en 12 semestres.
 
 ---
 
-## 🚀 Commencer par le Semestre 0 — Initiation & Pré-requis Absolus (J0a–J0o)
+## 🚀 Commencer par le Semestre 0 — Initiation & Pré-requis Absolus (J0a–J0v)
 
 > Pour les apprenants débutants sans expérience préalable :  
 > **[▶ Découvrir le Jour J0a — Qu'est-ce qu'un Ordinateur ?](tome-p0/jour-0a.md)**  
-> **[▶ Tenter le Grand Examen Massif & Diagnostic d'Entrée (Jour J0o)](tome-p0/jour-0o.md)**
+> **[▶ Tenter le Grand Examen Massif & Diagnostic d'Entrée (Jour J0o)](tome-p0/jour-0o.md)**  
+> **[▶ Suivre le Module de Transition Vers le Semestre 1 (J0p–J0v)](tome-p0/jour-0p.md)**  
+> **[🏆 Épreuve de Validation Finale S0→S1 (Jour J0v)](tome-p0/jour-0v.md)**
+
+---
+
+## 🏆 Épreuves Certifiantes de Fin de Cycle (Milestones J300 & J600)
+
+> **[🎓 Milestone J300 — Épreuves du Diplôme Bachelor BIT (Bac+3)](milestones/j300-a.md)**  
+> **[👑 Milestone J600 — Épreuves du Diplôme Master Architecte (Bac+5)](milestones/j600-a.md)**
 
 ---
 

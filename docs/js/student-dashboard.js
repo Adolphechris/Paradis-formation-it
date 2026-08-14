@@ -332,14 +332,14 @@
 
     function isDayUnlocked(dayNum, progressMap) {
         if (dayNum <= 1) {
-            // Jour 1 nécessite la validation du Grand Examen Massif (jour-0o)
-            const j0oRec = progressMap['jour-0o'];
-            return Boolean(j0oRec && ((j0oRec.quiz_score ?? 0) >= 75 || j0oRec.is_completed));
+            // Jour 1 nécessite la validation de l'Examen S0→S1 (jour-0v)
+            const j0vRec = progressMap['jour-0v'] || progressMap['jour-0o'];
+            return Boolean(j0vRec && ((j0vRec.quiz_score ?? 0) >= 75 || j0vRec.is_completed));
         }
         return isDayValidated(dayNum - 1, progressMap);
     }
 
-    // Helper Semestre 0 (jour-0a à jour-0o)
+    // Helper Semestre 0 (jour-0a à jour-0v — 22 leçons d'initiation et de transition)
     const S0_DAYS = [
         { id: 'jour-0a', code: 'a', label: 'J0a', title: 'Qu\'est-ce qu\'un Ordinateur ?' },
         { id: 'jour-0b', code: 'b', label: 'J0b', title: 'La Logique Binaire' },
@@ -355,7 +355,14 @@
         { id: 'jour-0l', code: 'l', label: 'Boîte à Outils IT' },
         { id: 'jour-0m', code: 'm', label: 'Méthodologie & Débogage' },
         { id: 'jour-0n', code: 'n', label: 'Masterclass 600 Jours' },
-        { id: 'jour-0o', code: 'o', label: 'Grand Examen Massif' }
+        { id: 'jour-0o', code: 'o', label: 'Grand Examen Massif' },
+        { id: 'jour-0p', code: 'p', label: 'J0p', title: 'Format S1 & Journée Type' },
+        { id: 'jour-0q', code: 'q', label: 'J0q', title: 'Anatomie Système Linux' },
+        { id: 'jour-0r', code: 'r', label: 'J0r', title: 'Terminal comme Outil Pro' },
+        { id: 'jour-0s', code: 's', label: 'J0s', title: 'Installation & Lab Environment' },
+        { id: 'jour-0t', code: 't', label: 'J0t', title: 'Sécurité & Hygiène Numérique' },
+        { id: 'jour-0u', code: 'u', label: 'J0u', title: 'Méthodologie des 600 Jours' },
+        { id: 'jour-0v', code: 'v', label: 'J0v', title: 'Examen Validation S0→S1' }
     ];
 
     function isS0DayValidated(dayId, progressMap) {

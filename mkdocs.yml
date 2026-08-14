@@ -135,7 +135,7 @@ nav:
   - Aperçu du programme: apercu.md
   - Feuille de route: feuille-de-route.md
   - Table des matières (600 jours): table-des-matieres.md
-  - 🚀 SEMESTRE 0 — INITIATION & PRÉ-REQUIS (J0a-J0o):
+  - 🚀 SEMESTRE 0 — INITIATION & PRÉ-REQUIS (J0a-J0v):
       - J0a — Qu'est-ce qu'un Ordinateur ?: tome-p0/jour-0a.md
       - J0b — La Logique Binaire (Bits & Octets): tome-p0/jour-0b.md
       - J0c — Système d'Exploitation vs Applications: tome-p0/jour-0c.md
@@ -151,13 +151,28 @@ nav:
       - J0m — Méthodologie d'Apprentissage & Débogage: tome-p0/jour-0m.md
       - J0n — Présentation de la Masterclass 600 Jours: tome-p0/jour-0n.md
       - J0o — Grand Examen Massif & Diagnostic d'Entrée: tome-p0/jour-0o.md
+      - 🔄 Transition S0→S1 (J0p-J0v):
+          - J0p — Format S1 & Anatomie Journée: tome-p0/jour-0p.md
+          - J0q — Anatomie Système Linux Moderne: tome-p0/jour-0q.md
+          - J0r — Le Terminal comme Outil Pro: tome-p0/jour-0r.md
+          - J0s — Installation & Lab Environment: tome-p0/jour-0s.md
+          - J0t — Sécurité & Hygiène Numérique: tome-p0/jour-0t.md
+          - J0u — Méthodologie des 600 Jours: tome-p0/jour-0u.md
+          - J0v — Examen Validation S0→S1: tome-p0/jour-0v.md
   - 🎓 CYCLE 1 — BACHELOR BIT (Bac+3):
       - Semestre 1 — Socle Système (J001-J050): tome-p0/jour-01.md
+      - J09b — Pont S1/S2 Bash → PowerShell: ponts/j09b.md
       - Semestre 2 — Réseaux & Télécoms (J051-J100): tome-p2/jour-51.md
+      - J100b — Pont S2 Réseaux → Virtualisation: ponts/j100b.md
       - Semestre 3 — Python & Bash (J101-J150): tome-p3/jour-101.md
       - Semestre 4 — Data & SQL (J151-J200): tome-p4/jour-151.md
       - Semestre 5 — Web & APIs REST (J201-J250): tome-p5/jour-201.md
       - Semestre 6 — Cloud, DevOps & Projet Bachelor (J251-J300): tome-p6-intro.md
+      - 🏆 Milestone J300 — Diplôme Bachelor BIT:
+          - J300a — Grand Examen Massif Bachelor (50 QCM): milestones/j300-a.md
+          - J300b — Projet Synthétique Architecture Cloud: milestones/j300-b.md
+          - J300c — Soutenance Oral & Jury Technique: milestones/j300-c.md
+          - J300d — Cahier des Charges & Grille d'Évaluation: milestones/j300-d.md
   - 🛡️ CYCLE 2 — MASTER CYBERSÉCURITÉ (Bac+5):
       - Semestre 6 — Cybersécurité Avancée Expert (J251-J300):
           - Vue d'ensemble S6: tome-p6-intro.md
@@ -509,6 +524,12 @@ nav:
           - "J598 — Synthèse Ultime — 600 Jours en Revue (Timeline, Compétences & Croissance)": tome-p12/jour-598.md
           - "J599 — Dernière Masterclass — L'Ingénieur IT de Demain (Vision, Mission & Legacy)": tome-p12/jour-599.md
           - "J600 — GRAND PROJET INTÉGRATEUR FINAL (PARADIS IT MASTERCLASS ULTIMATE CAPSTONE)": tome-p12/jour-600.md
+          - "J580b — Pont S12 Technique → Gouvernance Zero-Trust": ponts/j580b.md
+      - 🏆 Milestone J600 — Diplôme Master Architecte:
+          - J600a — Grand Examen Massif Master (60 QCM): milestones/j600-a.md
+          - J600b — Grand Capstone Synthétique Zero-Trust: milestones/j600-b.md
+          - J600c — Soutenance Oral & Jury CISO/COMEX: milestones/j600-c.md
+          - J600d — Portfolio d'Ingénierie & Certificat Master: milestones/j600-d.md
 
   - Exercices et QCM: qcm.md
   - Portfolio & Employabilité: portfolio.md

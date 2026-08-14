@@ -186,7 +186,7 @@
      */
     async function checkLessonLockGatekeeper() {
         const path = window.location.pathname;
-        const matchS0 = path.match(/\/jour-0([a-o])\/?$/i);
+        const matchS0 = path.match(/\/jour-0([a-v])\/?$/i);
         const matchMain = path.match(/\/jour-(\d+)\/?$/i);
 
         if (!window.ParadisStorage || typeof window.ParadisStorage.getAllLocal !== 'function') return;
@@ -198,7 +198,7 @@
 
             const contentInner = document.querySelector('.md-content__inner') || document.querySelector('.md-content');
 
-            // 1. Cas Semestre 0 (jour-0a à jour-0o)
+            // 1. Cas Semestre 0 (jour-0a à jour-0v)
             if (matchS0) {
                 const charCode = matchS0[1].toLowerCase().charCodeAt(0);
                 if (charCode === 97) return; // J0a (97) est toujours déverrouillé
@@ -234,10 +234,10 @@
             if (matchMain) {
                 const dayNum = parseInt(matchMain[1], 10);
 
-                // Pour le Jour 1 : vérification du Grand Examen Massif (jour-0o)
+                // Pour le Jour 1 : vérification de l'Examen S0→S1 (jour-0v ou jour-0o)
                 if (dayNum === 1) {
-                    const j0oRec = progressMap['jour-0o'];
-                    const isJ0oValidated = j0oRec && ((j0oRec.quiz_score ?? 0) >= 75 || j0oRec.is_completed);
+                    const j0vRec = progressMap['jour-0v'] || progressMap['jour-0o'];
+                    const isJ0vValidated = j0vRec && ((j0vRec.quiz_score ?? 0) >= 75 || j0vRec.is_completed);
                     
                     if (!isJ0oValidated && contentInner) {
                         contentInner.innerHTML = `
