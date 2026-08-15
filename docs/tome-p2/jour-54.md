@@ -1,139 +1,289 @@
-# SEMESTRE 2 — Jour 54 (6h) : Commutation L2 & VLANs
+# SEMESTRE 2 — Jour 54 (6h) : Commutation L2, VLANs IEEE 802.1Q, Trunking & Spanning Tree (STP/RSTP)
 
 > [!NOTE]
-> **Objectif de la journée** : Sécuriser et segmenter le réseau local physique avec des commutateurs intelligents, des VLANs 802.1Q et maîtriser la redondance sans boucle via STP.
-> **Compétences visées** : `BIT-04` (Niveau Cible: A) — Commutation & VLANs.
+> **Objectif de la journée** : Sécuriser et segmenter le réseau local physique avec des commutateurs Layer 2, déployer l'étiquetage de trames **VLANs IEEE 802.1Q**, configurer des liens Trunk, et neutraliser les boucles réseau catastrophiques via le protocole **Spanning Tree (STP/RSTP)**.
+> **Compétences visées** : `BIT-04` (Niveau Cible: A) — Commutation L2, VLANs, Trunking et Sécurité des Commutateurs.
 
 ---
 
-## 1) Le Commutateur et la Table MAC (1h30)
+## 🎯 Objectifs de la Leçon
 
-### 📖 1.1 Narration & Intuition
-Si un Hub (concentrateur) était un idiot qui hurle un message dans un haut-parleur (tout le monde entend tout), le Switch (commutateur) est un facteur professionnel. Il lit le nom du destinataire sur l'enveloppe et ne livre le courrier qu'à la bonne porte.
+- 🧠 Comprendre le fonctionnement interne d'un commutateur Layer 2 (Apprentissage, Commutation, Inondation, Table CAM/MAC).
+- 🧱 Séparer les domaines de broadcast grâce aux **VLANs** (*Virtual Local Area Networks*).
+- 🏷️ Différencier les ports **Access** (non-taggués) et les ports **Trunk** (taggués avec l'en-tête **IEEE 802.1Q**).
+- 🌳 Comprendre l'élection du Root Bridge et la prévention des tempêtes de broadcast via **STP (802.1D)** et **RSTP (802.1w)**.
+- 🛡️ Sécuriser les switches contre les attaques par inondation de tables MAC (*MAC Flooding*) et le *VLAN Hopping* (Port Security, BPDU Guard, Native VLAN).
+- 🧪 Manipuler des bridges et sous-interfaces VLAN 802.1Q sous Linux.
 
-### 🔍 1.2 Anatomie Technique
-Le switch maintient en RAM une **Table MAC** (ou CAM Table).
-- **Apprentissage** : Quand PC1 envoie une trame, le switch lit l'adresse MAC source et l'associe au port d'entrée (Ex: `MAC-A -> Port 1`).
-- **Commutation (Forwarding)** : S'il connaît la MAC de destination, il envoie la trame uniquement sur le bon port.
-- **Flooding (Inondation)** : Si la MAC destination est inconnue (ou s'il s'agit d'un broadcast FF:FF:FF:FF:FF:FF), il envoie la trame sur tous les ports (sauf celui d'origine).
+---
 
-### 🛠️ 1.3 Atelier Pratique Hands-on
-Observation du comportement ARP / MAC sous Linux :
-```bash
-# Vider son cache ARP (force l'envoi d'un broadcast sur le LAN)
-sudo ip -s -s neigh flush all
+## 🖼️ Commutation L2 & Segmentation par VLANs
 
-# Faire un ping déclenche une requête ARP
-ping -c 1 192.168.1.254
+![VLANs & Ethernet Switching](https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800)
 
-# Afficher la table ARP locale
-arp -an
-# Sur un Switch Cisco, on taperait : show mac address-table
+---
+
+## 📖 1. Le Commutateur (Switch) L2 & La Table CAM/MAC
+
+### 1.1 Narration & Intuition — Le Facteur vs le Mégaphone
+
+Dans les années 1990, le matériel d'interconnexion réseau principal était le **Hub** (concentrateur). Lorsqu'un PC envoyait un message destiné à une seule machine, le Hub répétait aveuglément le signal électrique sur tous les ports. C'était l'équivalent d'un haut-parleur hurlant le courrier de tout le monde au milieu d'un bureau open space : gaspillage de bande passante, collisions et espionnage facile.
+
+Le **Switch** (commutateur L2) est un facteur intelligent. Il lit l'enveloppe Ethernet (l'**Adresse MAC destination**) et ne transmet la trame **que sur le câble du destinataire**.
+
+### 1.2 Le Triplet Opérationnel du Switch : Apprentissage, Commutation, Inondation
+
+Un switch maintient en mémoire RAM ultra-rapide une table appelée **Table CAM** (*Content Addressable Memory*) ou **Table MAC** :
+
+```
+                        TABLE CAM / MAC DU SWITCH
+                        ┌───────────────────┬─────────┐
+                        │ ADRESSE MAC       │ PORT    │
+                        ├───────────────────┼─────────┤
+                        │ 00:1A:2B:3C:4D:01 │ Port 1  │
+                        │ 00:1A:2B:3C:4D:02 │ Port 2  │
+                        │ 00:1A:2B:3C:4D:03 │ Port 3  │
+                        └───────────────────┴─────────┘
 ```
 
-### 🚑 1.4 Diagnostic & Réflexes Terrain
-**MAC Flooding Attack** : Un attaquant peut saturer la table MAC (qui a une limite en RAM, ex: 8000 entrées) avec des fausses adresses. Le switch, saturé, bascule en mode Hub (inondation continue) permettant le "Sniffing". Parade : Configurer le **Port Security** (limite de MAC par port).
+Le switch applique 3 règles de traitement pour chaque trame reçue :
+
+1. **Apprentissage (*Learning*)** : Le switch lit l'adresse MAC **Source** de la trame entrante et enregistre dans sa table CAM l'association entre cette MAC et le port physique sur lequel la trame est arrivée.
+2. **Commutation (*Forwarding*)** : Si l'adresse MAC **Destination** est déjà connue dans sa table CAM, le switch transmet la trame **uniquement sur le port associé** (Transfert Unicast).
+3. **Inondation (*Flooding*)** : Si l'adresse MAC destination est **inconnue** dans la table, ou s'il s'agit d'une trame de Diffusion générale (**Broadcast** `FF:FF:FF:FF:FF:FF`), le switch duplique et envoie la trame sur **TOUS ses ports** (sauf le port d'origine).
 
 ---
 
-## 2) VLAN (802.1Q) & Trunking (1h30)
+## 📖 2. Les VLANs (802.1Q) & Le Trunking
 
-### 📖 1.1 Narration & Intuition
-Imaginez un grand Open Space (le Switch). C'est bruyant. Pour isoler les départements, on construit des murs virtuels. Le VLAN (Virtual LAN) sépare logiquement un seul switch physique en plusieurs switchs virtuels étanches.
+### 2.1 Pourquoi Segmenter avec des VLANs ?
 
-### 🔍 1.2 Anatomie Technique
-- **Ports Access** : Connectés aux PC/Serveurs. Appartiennent à UN seul VLAN. La machine ne sait pas qu'elle est dans un VLAN.
-- **Ports Trunk (802.1Q)** : Connectés entre Switches ou vers un Routeur. Transportent de multiples VLANs simultanément.
-- **Tag 802.1Q** : Le switch insère 4 octets dans la trame Ethernet pour marquer son appartenance (Ex: VLAN 10).
-- *VTP (VLAN Trunking Protocol)* : Protocole propriétaire Cisco pour propager la création de VLANs à tous les switchs du domaine.
+Un **VLAN** (*Virtual Local Area Network*) permet de découper un switch physique unique en plusieurs switches virtuels isolés.
 
-### 🛠️ 1.3 Atelier Pratique Hands-on
-Créer une interface sous-interface VLAN (Trunk) sous Linux (ex: Router-on-a-Stick) :
+```
+                   SWITCH PHYSIQUE D'ENTREPRISE (24 Ports)
+ ┌───────────────────────────────────┬───────────────────────────────────┐
+ │        VLAN 10 : RH & FINANCE     │       VLAN 20 : DÉVELOPPEURS      │
+ │  Port 1 à 12 (192.168.10.0/24)    │  Port 13 à 24 (192.168.20.0/24)   │
+ └───────────────────────────────────┴───────────────────────────────────┘
+   (Les PC du VLAN 10 et du VLAN 20 sont PHYSIQUEMENT sur le même switch, 
+    mais ils NE PEUVENT PAS communiquer directement sans passer par un Routeur !)
+```
+
+**Bénéfices majeurs :**
+- **Sécurité** : Un attaquant compromettant un poste sur le VLAN Développeurs ne peut pas intercepter les trames du VLAN Finance.
+- **Réduction du Bruit** : Les requêtes Broadcast ARP du VLAN 10 ne sont transmises qu'aux ports du VLAN 10.
+
+### 2.2 Ports Access vs Ports Trunk (Standard IEEE 802.1Q)
+
+Pour interconnecter deux switches ou relier un switch à un routeur, on utilise deux modes d'interfaces :
+
+- **Port Access (Accès)** : Connecté à un équipement terminal (PC, Imprimante, Serveur). Il appartient à **un seul VLAN**. Les trames qui y circulent ne comportent **aucun tag**. La carte réseau du PC ignore l'existence du VLAN.
+- **Port Trunk (Trunking)** : Connecté entre deux switches ou entre un switch et un routeur. Il transporte les trames de **multiples VLANs simultanément** en insérant un tag de 4 octets selon le standard **IEEE 802.1Q**.
+
+```
+                L'EN-TÊTE ETHERNET IEEE 802.1Q (4 OCTETS)
+┌────────────┬────────────┬─────────────────────────────┬──────────┬─────────┐
+│ MAC Dest   │ MAC Source │ TAG 802.1Q (4 octets)       │ Type     │ Données │
+│ (6 octets) │ (6 octets) │ - TPID (0x8100)             │ (2 oct.) │ (Payload│
+│            │            │ - Priorité PCP (3 bits)     │          │         │
+│            │            │ - VLAN ID / VID (12 bits)   │          │         │
+└────────────┴────────────┴─────────────────────────────┴──────────┴─────────┘
+```
+
+> [!NOTE]
+> Le champ **VLAN ID (VID)** fait 12 bits, ce qui permet de créer jusqu'à $2^{12} = 4096$ VLANs distincts sur un réseau (de 1 à 4094).
+
+### 2.3 Le VLAN Natif (Native VLAN)
+
+Sur un lien Trunk 802.1Q, le **VLAN Natif** est le seul VLAN dont les trames circulent **sans tag 802.1Q** (par défaut, le VLAN 1 sur la plupart des switches).
+
+> [!WARNING]
+> **Alerte Sécurité — Native VLAN Mismatch & VLAN Hopping :**  
+> Si le Switch A utilise le VLAN 1 comme VLAN Natif et le Switch B utilise le VLAN 99, les trames non-tagguées du VLAN 1 envoyées par A seront interprétées à l'arrivée par B comme appartenant au VLAN 99 ! Cette faille de configuration permet une attaque de franchissement de VLAN (*VLAN Hopping*).
+> **Bonne Pratique :** Changez toujours le VLAN Natif par défaut (VLAN 1) pour un VLAN inutilisé dédié (ex: VLAN 999) sur tous les liens Trunk.
+
+---
+
+## 📖 3. Le Protocole Spanning Tree (STP 802.1D / RSTP 802.1w)
+
+### 3.1 La Catastrophe des Boucles L2 & Tempêtes de Broadcast
+
+Pour garantir la haute disponibilité, on installe des câbles redondants entre les switches. Malheureusement, l'en-tête Ethernet de Couche 2 ne possède **aucun champ TTL** (*Time To Live*) comme le paquet IP.
+
+Si une boucle physique existe sans protection et qu'une trame Broadcast ARP est émise, les switches vont se transmettre cette trame en boucle infinie à la vitesse de la lumière. En moins de 3 secondes, l'ensemble du réseau s'effondre sous une **Tempête de Broadcast** (*Broadcast Storm*).
+
+```
+                      BOUCLE PHYSIQUE & STP
+                       ┌────────────────┐
+                       │  ROOT BRIDGE   │
+                       │   (Switch A)   │
+                       └───────┬────────┘
+                               │
+                      ┌────────┴────────┐
+                      │                 │
+             ┌────────▼───────┐  BLOCAGE ┌────────▼───────┐
+             │    Switch B    │◄───X───►│    Switch C    │
+             └────────────────┘ (STP)   └────────────────┘
+```
+
+### 3.2 Le Fonctionnement de Spanning Tree (STP)
+
+Le protocole **STP** (*Spanning Tree Protocol* - IEEE 802.1D) résout le problème en calculant l'arbre logique d'interconnexion et en **bloquant stratégiquement les ports redondants** pour éliminer les boucles.
+
+1. **Élection du Root Bridge (Le Switch Maître)** : Les switches s'échangent des messages appelés **BPDU** (*Bridge Protocol Data Units*). Le switch qui possède la **Bridge ID (Priorité + Adresse MAC)** la plus basse est élu Root Bridge.
+2. **Détermination des Rôles de Ports** :
+   - **Root Port (RP)** : Le port de chaque switch qui offre le chemin le plus court vers le Root Bridge.
+   - **Designated Port (DP)** : Le port qui émet le trafic vers le segment réseau.
+   - **Alternate / Blocked Port (AP)** : Le port redondant désactivé logiquement (il n'achemine pas de trafic utilisateur, mais écoute les BPDU).
+
+### 3.3 Différences entre STP (802.1D) et RSTP (802.1w)
+
+| Caractéristique | Old STP (802.1D) | RSTP (802.1w - Rapid Spanning Tree) |
+| :--- | :--- | :--- |
+| **Temps de Convergence** | 30 à 50 secondes (très lent) | Moins d'une seconde (1 à 2s) |
+| **États des Ports** | Blocking → Listening → Learning → Forwarding | Discarding → Learning → Forwarding |
+| **Bypassing PC** | Nécessite la commande `PortFast` | Automatique sur les ports `Edge` |
+
+### 3.4 Sécurité STP : PortFast & BPDU Guard
+
+- **PortFast / Edge Port** : À activer exclusivement sur les ports reliés à des ordinateurs utilisateurs. Il permet au port de passer directement à l'état *Forwarding* en évitant les 30 secondes d'attente STP lors du branchement.
+- **BPDU Guard** : Si un employé branche un petit switch sauvage sur sa prise murale alors que PortFast est actif, le switch d'entreprise reçoit une trame BPDU et la fonction **BPDU Guard désactive immédiatement le port** (`err-disabled`) pour protéger l'infrastructure.
+
+---
+
+## 🧪 Atelier Pratique : VLANs 802.1Q et Bridges sous Linux
+
+Exécutez cette série de commandes réelles sous Linux pour créer des interfaces VLANs et manipuler un pont L2 avec STP :
+
 ```bash
-# S'assurer que le module kernel 8021q est chargé
+# 1. Charger le module noyau 8021q pour la gestion des VLANs
 sudo modprobe 8021q
 
-# Créer l'interface virtuelle liée au VLAN 10
+# 2. Créer une sous-interface VLAN 802.1Q (ID: 10) rattachée à l'interface eth0 (Router-on-a-Stick)
 sudo ip link add link eth0 name eth0.10 type vlan id 10
+
+# 3. Créer une seconde sous-interface VLAN 802.1Q (ID: 20)
+sudo ip link add link eth0 name eth0.20 type vlan id 20
+
+# 4. Attribuer des adresses IP d'administration à chaque sous-interface VLAN
 sudo ip addr add 192.168.10.1/24 dev eth0.10
+sudo ip addr add 192.168.20.1/24 dev eth0.20
+
+# 5. Activer les interfaces virtuellement créées
 sudo ip link set up dev eth0.10
-```
+sudo ip link set up dev eth0.20
 
-### 🚑 1.4 Diagnostic & Réflexes Terrain
-**Native VLAN Mismatch** : Le VLAN "Natif" sur un lien Trunk est le seul VLAN non taggué (souvent le VLAN 1 par défaut). Si le Switch A utilise Native VLAN 1, et le Switch B Native VLAN 99, une fuite de paquets ou le blocage du STP se produira !
+# 6. Vérifier la création des interfaces VLAN
+ip -d link show eth0.10
+# Output attendu: eth0.10@eth0: ... vlan protocol 802.1Q id 10 ...
 
----
+# 7. Créer un Switch Logiciel (Bridge L2) sous Linux avec STP actif
+sudo ip link add name br0 type bridge
+sudo ip link set dev br0 type bridge stp_state 1
 
-## 3) STP (Spanning Tree Protocol) (2h00)
+# 8. Ajouter deux interfaces physiques dans le pont L2
+sudo ip link set dev eth1 master br0 2>/dev/null || true
+sudo ip link set dev eth2 master br0 2>/dev/null || true
+sudo ip link set up dev br0
 
-### 📖 1.1 Narration & Intuition
-Pour assurer la haute disponibilité, les administrateurs mettent deux câbles entre les switchs. Catastrophe ! Une tempête de broadcast (Broadcast Storm) se crée et le réseau s'effondre en 3 secondes. Le **STP (Spanning Tree Protocol)** est le héros qui détecte mathématiquement les boucles et bloque logiquement un port de secours, jusqu'à ce que le câble principal casse.
+# 9. Inspecter la table FDB (Forwarding Database / Table MAC) du bridge Linux
+bridge fdb show dev br0 2>/dev/null || ip neigh show
 
-### 🔍 1.2 Anatomie Technique
-- **BPDU (Bridge Protocol Data Units)** : Les messages d'état que s'échangent les switchs.
-- **Root Bridge** : Le switch élu chef d'orchestre (celui avec la plus petite Priorité, sinon la plus petite adresse MAC).
-- **RSTP (Rapid Spanning Tree - 802.1w)** : Évolution moderne qui converge en moins d'une seconde en cas de panne (contre 50s pour le vieux STP 802.1D).
-- **PortFast / Edge Port** : À activer impérativement sur les ports connectés à des PC pour bypasser les états de calcul du STP et s'allumer instantanément.
-
-### 🛠️ 1.3 Atelier Pratique Hands-on
-En lab virtuel Linux, pour gérer des bridges L2 :
-```bash
-sudo apt install bridge-utils
-# Créer un pont logiciel (Switch)
-sudo brctl addbr br0
-# Activer le STP sur le pont
-sudo brctl stp br0 on
-# Observer l'état STP
-brctl showstp br0
-```
-
-### 🚑 1.4 Diagnostic & Réflexes Terrain
-Ne branchez JAMAIS un switch non manageable grand public sur les prises murales d'une entreprise s'il fait une boucle sur lui-même (un câble entre le port 1 et le port 2). Si le switch d'étage n'est pas protégé par la fonction **BPDU Guard**, tout le réseau d'étage va crasher par une tempête de broadcast.
-
----
-
-## Nouvelles abréviations rencontrées
-- **VLAN** : Virtual Local Area Network
-- **STP/RSTP** : (Rapid) Spanning Tree Protocol
-- **BPDU** : Bridge Protocol Data Unit
-- **MAC** : Media Access Control
-
----
-
-## 🏧️ Exercices Pratiques (Preuves de Portfolio)
-
-### Exercice 1 : Configurer un Bridge L2 avec VLAN sous Linux
-- **Consigne** : Transformez votre machine Linux en un Switch L2 logiciel basique reliant `eth1` et `eth2`, avec STP activé.
-- **Livrables à produire** : Script Bash des commandes.
-- **Corrigé détaillé & Guidé** :
-```bash
-#!/bin/bash
-# Installation si non présent
-apt-get install -y iproute2 bridge-utils
-
-# Création du bridge
-ip link add name br_lan type bridge
-
-# Activation STP (important)
-ip link set dev br_lan type bridge stp_state 1
-
-# Ajout des interfaces physiques (qui perdent leur IP propre)
-ip link set dev eth1 master br_lan
-ip link set dev eth2 master br_lan
-
-# Allumage des interfaces
-ip link set up dev eth1
-ip link set up dev eth2
-ip link set up dev br_lan
+# 10. Supprimer proprement les interfaces de test
+sudo ip link delete eth0.10
+sudo ip link delete eth0.20
+sudo ip link delete br0
 ```
 
 ---
 
-## ❓ Banque de Questions QCM (Évaluation 75% minimum)
-1. QCM: Que fait un switch L2 quand il reçoit une trame pour une adresse MAC qu'il ne connait pas ? A) Il la détruit B) Il l'envoie au routeur C) Il l'inonde sur tous les ports (Flooding) D) Il renvoie une erreur ICMP. **Réponse: C**
-2. QCM: Quelle norme définit l'encapsulation (Tagging) des VLANs sur un lien Trunk ? A) 802.1X B) 802.11 C) 802.1Q D) 802.3. **Réponse: C**
-3. QCM: Quel est le rôle principal du protocole Spanning Tree (STP) ? A) Accélérer le réseau B) Prévenir les boucles réseau de couche 2 C) Fournir des adresses IP dynamiques D) Filtrer les adresses MAC. **Réponse: B**
-4. QCM: Que fait la commande "PortFast" (ou Edge Port) sur un port switch ? A) Augmente le débit à 10Gbps B) Bloque le trafic de test C) Passe le port directement à l'état Forwarding pour un PC D) Force le port en mode Trunk. **Réponse: C**
-5. QCM: Qu'est-ce que le VLAN natif ? A) Le VLAN de management par défaut B) Le seul VLAN dont les trames circulent non-tagguées sur un Trunk C) Le VLAN 1 obligatoirement D) Le réseau virtuel pour la Voix sur IP. **Réponse: B**
+## 🛠️ Diagnostics & Réflexes Terrain
 
-*(Le composant d'évaluation exigeant 75% minimum s'affiche ci-dessous)*
+### 1. Attaque par inondation de table MAC (MAC Flooding Attack)
+- **Principe** : Un outil malveillant comme `macof` génère des milliers d'adresses MAC aléatoires par seconde. La table CAM du switch se sature. N'ayant plus de mémoire, le switch retombe en mode "Hub" et inonde toutes les trames sur tous les ports, permettant à l'attaquant de sniffer le trafic.
+- **Réflexe** : Activez la sécurité de port (**Port Security**) sur tous les switches : `switchport port-security maximum 2` (limite le nombre de MAC autorisées par port) et `switchport port-security violation shutdown`.
+
+### 2. Symptôme "Native VLAN Mismatch"
+- **Symptôme** : Messages de logs répétitifs sur la console Cisco/Linux : `%CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet0/1`.
+- **Réflexe** : Vérifiez la configuration des deux côtés du lien Trunk. Les deux switches doivent impérativement déclarer le même ID de VLAN natif (`switchport trunk native vlan 99`).
+
+---
+
+## ❓ Banque de QCM & Test du Jour (8 Questions)
+
+**Q1 : Quelle table mémoire interne est utilisée par un commutateur Layer 2 pour associer des adresses MAC physiques à des ports réseau ?**
+- A) La Table de Routage IP
+- B) La Table CAM (Content Addressable Memory) / Table MAC
+- C) La Table DNS
+- D) La Table ARP du routeur
+
+*Réponse : B — La table CAM associe les adresses MAC enregistrées lors de la réception des trames avec les ports physiques correspondants.*
+
+**Q2 : Que fait un commutateur Layer 2 lorsqu'il reçoit une trame Unicast destinée à une adresse MAC inconnue dans sa table CAM ?**
+- A) Il jette la trame immédiatement
+- B) Il inonde la trame sur l'intégralité de ses ports actifs à l'exception du port d'origine (*Flooding*)
+- C) Il envoie une erreur ICMP au routeur
+- D) Il éteint le switch
+
+*Réponse : B — Face à une MAC destination inconnue, le switch inonde la trame sur tous ses ports (*Unknown Unicast Flooding*).*
+
+**Q3 : Combien de bytes (octets) l'en-tête de marquage IEEE 802.1Q insère-t-il dans une trame Ethernet sur un lien Trunk ?**
+- A) 2 octets
+- B) 4 octets
+- C) 8 octets
+- D) 64 octets
+
+*Réponse : B — L'en-tête 802.1Q insère 4 octets supplémentaires contenant notamment le VLAN ID (12 bits) et la priorité PCP.*
+
+**Q4 : Quelle est la différence fondamentale entre un port configuré en mode Access et un port en mode Trunk ?**
+- A) Le port Access est 10 fois plus rapide que le port Trunk
+- B) Le port Access véhicule le trafic d'un seul VLAN non-taggué pour un PC, tandis que le port Trunk véhicule les trames de plusieurs VLANs tagguées en 802.1Q
+- C) Le port Access est réservé aux imprimantes
+- D) Le port Trunk est obligatoire pour utiliser le Wi-Fi
+
+*Réponse : B — Le mode Access est destiné aux équipements d'extrémité (non-taggués). Le mode Trunk transporte plusieurs VLANs entre switches.*
+
+**Q5 : Quel est l'objectif principal du protocole Spanning Tree (STP / RSTP) ?**
+- A) Augmenter la vitesse du processeur du switch
+- B) Éliminer les boucles logiques de Couche 2 et prévenir les tempêtes de broadcast en bloquant les ports redondants
+- C) Remplacer les adresses IP par des noms de domaine
+- D) Chiffrer le trafic Wi-Fi
+
+*Réponse : B — STP calcule un arbre sans boucle et désactive logiquement les liens redondants pour éviter les tempêtes de broadcast.*
+
+**Q6 : Quel composant est élu comme le maître central (chef d'orchestre) dans un réseau de switches exécutant Spanning Tree ?**
+- A) Le serveur DNS principal
+- B) Le Root Bridge (le switch possédant la plus petite valeur de Bridge ID / Priorité)
+- C) Le routeur par défaut
+- D) L'ordinateur de l'administrateur
+
+*Réponse : B — Le Root Bridge est le centre de l'arbre Spanning Tree, élu selon la plus basse Bridge ID (Priority + MAC).*
+
+**Q7 : À quoi sert la fonctionnalité "PortFast" (ou Edge Port) sur un commutateur ?**
+- A) À autoriser le piratage du switch
+- B) À permettre à un port connecté à un PC d'éviter les délais de calcul STP (30s) et de passer immédiatement en mode d'acheminement (*Forwarding*)
+- C) À convertir du cuivre en fibre optique
+- D) À fermer le port automatiquement à 18h
+
+*Réponse : B — PortFast évite aux postes de travail d'attendre la phase de convergence STP (Listening/Learning) lors de l'allumage.*
+
+**Q8 : Quelle fonctionnalité de sécurité permet de désactiver automatiquement un port configuré en PortFast s'il reçoit une trame BPDU inattendue ?**
+- A) Port Security
+- B) BPDU Guard
+- C) DHCP Snooping
+- D) Dynamic ARP Inspection
+
+*Réponse : B — BPDU Guard protège le réseau en coupant l'accès si un switch non autorisé ou malveillant est branché sur un port utilisateur.*
+
+---
+
+## 📚 Ressources & Références
+
+- **IEEE 802.1Q Standard (VLAN Tagging)** : https://standards.ieee.org/ieee/802.1Q/
+- **IEEE 802.1w Standard (Rapid Spanning Tree Protocol)** : https://standards.ieee.org/ieee/802.1w/
+- **Cisco Campus Network Design Guide (VLANs & STP)** : https://www.cisco.com/c/en/us/td/docs/solutions/Enterprise/Campus/campusdn.html
+
+---
+
+*Semestre 2 — Réseaux & Télécoms Avancés PARADIS IT Masterclass*

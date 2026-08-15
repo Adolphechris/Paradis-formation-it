@@ -1,115 +1,283 @@
-# Jour J0E — Premiers Pas dans le Terminal & la Ligne de Commande
+# Jour J0E — Premiers Pas dans le Terminal & la Ligne de Commande (CLI)
 
 > [!NOTE]
 > **SEMESTRE 0 — PARCOURS D'INITIATION ET SOCLE DE PRÉ-REQUIS ABSOLUS (J0a–J0o)**  
-> Cette leçon lève l'appréhension de la ligne de commande. Vous allez apprendre à décoder l'invite de commande (Prompt) et exécuter vos premières commandes Unix en toute sécurité.
+> Cette leçon lève définitivement l'appréhension de la ligne de commande. Vous allez comprendre l'architecture du terminal, décoder le Prompt, maîtriser la grammaire Unix, les variables d'environnement, les redirections et les raccourcis clavier des professionnels.
 
 ---
 
 ## 🎯 Objectifs de la Leçon
-- 🖤 Démystifier la fenêtre noire du terminal.
-- 💬 Comprendre la structure d'une commande Unix : `Commande -Options Arguments`.
-- 📍 Identifier qui vous êtes (`whoami`) et où vous vous trouvez (`pwd`).
-- 📅 Utiliser les commandes d'information système (`date`, `cal`, `clear`).
+
+- 🖤 Démystifier la différence entre Émulateur de Terminal, Shell et TTY.
+- 🔍 Décoder l'invite de commande (**Prompt**) et comprendre les statuts d'utilisateur (`$` vs `#`).
+- ✍️ Maîtriser la grammaire universelle d'une commande Unix (`Commande -Options Arguments`).
+- 🔄 Découvrir les flux standards (`stdin`, `stdout`, `stderr`) et les redirections (`>`, `>>`, `|`).
+- ⚡ Employer les raccourcis clavier de productivité (`Tab`, `Ctrl+R`, `Ctrl+C`, `Ctrl+L`).
+- 🧪 Manipuler 15+ commandes de base du système sous Linux.
 
 ---
 
 ## 🖼️ Le Terminal Linux
+
 ![Terminal Linux](https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800)
 
 ---
 
-## 📖 1. L'Invite de Commande (The Prompt)
+## 📖 1. Distinguer Terminal, Shell et Console (TTY)
 
-Lorsque vous ouvrez un terminal sous Linux, vous voyez une ligne de texte appelée le **Prompt** (l'invite de commande). Elle vous donne des informations immédiates :
-
-Exemple : `adolphe@paradis-srv:~$`
-
-- **`adolphe`** : Le nom de l'utilisateur connecté.
-- **`@paradis-srv`** : Le nom de la machine (nom d'hôte / hostname).
-- **`:`** : Séparateur.
-- **`~`** : Le dossier courant (le symbole tilde `~` est un raccourci qui désigne votre dossier personnel `/home/adolphe`).
-- **`$`** : Indique que vous êtes un utilisateur standard (si c'était un `#`, vous seriez l'administrateur suprême `root`).
-
----
-
-## 📖 2. La Structure d'une Commande Unix
-
-Sous Linux, presque toutes les commandes suivent une grammaire très simple à 3 éléments :
+Beaucoup de débutants confondent ces trois notions. Voici leur rôle exact :
 
 ```
-nom_de_commande   -options   arguments
+┌─────────────────────────────────────────────────────────────────────────┐
+│ 1. ÉMULATEUR DE TERMINAL (La Fenêtre Graphique)                         │
+│    Ex: GNOME Terminal, Alacritty, iTerm2, Windows Terminal              │
+│    - Reçoit vos frappes clavier et affiche le texte à l'écran.          │
+├─────────────────────────────────────────────────────────────────────────┤
+│ 2. SHELL / INTERPRÉTEUR (Le Programme Intelligent)                      │
+│    Ex: Bash (/bin/bash), Zsh (/bin/zsh), Fish                           │
+│    - Lit la commande tapée, l'analyse, recherche l'exécutable et        │
+│      transmet la demande au Noyau (Kernel).                             │
+├─────────────────────────────────────────────────────────────────────────┤
+│ 3. CONSOLE VIRTUELLE / TTY (Teletypewriter / Devicename)                │
+│    Ex: /dev/pts/0, /dev/tty1                                            │
+│    - Le canal de communication textuel abstrait entre l'émulateur       │
+│      et le shell.                                                       │
+└─────────────────────────────────────────────────────────────────────────┘
 ```
 
-- **Le Nom** : La commande à exécuter (ex: `ls`).
-- **Les Options (Flags)** : Modifient le comportement de la commande, généralement précédées d'un tiret `-` ou `--` (ex: `-l` pour affichage détaillé).
-- **Les Arguments** : La cible sur laquelle la commande doit agir (ex: le nom d'un dossier `/var/log`).
+---
+
+## 📖 2. Décoder l'Invite de Commande (The Prompt)
+
+Lorsque vous ouvrez un terminal sous Linux, l'invite de commande (*Prompt*) vous affiche un état des lieux instantané avant même de taper une commande :
+
+```
+     adolphe @ paradis-srv : ~ $
+     │       │ │           │ │ │
+     │       │ │           │ │ └─── Statut Privilège ($ = Utilisateur Standard / # = Root)
+     │       │ │           │ └───── Répertoire Courant (~ = /home/adolphe)
+     │       │ │           └─────── Séparateur de chemin
+     │       │ └─────────── Nom de la machine (Hostname)
+     │       └───────────── Séparateur Arobase
+     └───────────────────── Nom de l'utilisateur actuellement connecté
+```
+
+- **Le Symbole Tilde (`~`)** : C'est le raccourci Unix universel pour désigner votre répertoire personnel (ex: `/home/adolphe`).
+- **Le Symbole `$` vs `#`** :
+  - **`$`** : Vous êtes connecté en tant qu'utilisateur standard (sécurisé, sans droits d'administration directe).
+  - **`#`** : Vous êtes connecté en tant que super-utilisateur **root** (administrateur suprême ayant tous les droits de destruction ou de création sur la machine).
 
 ---
 
-## 📖 3. Vos 4 Premières Commandes Indispensables
+## 📖 3. La Grammaire Universelle d'une Commande Unix
 
-1. **`whoami`** (*Who Am I?* / Qui suis-je ?) : Affiche le nom de compte de l'utilisateur actuellement connecté au terminal.
-2. **`pwd`** (*Print Working Directory* / Afficher le répertoire de travail) : Affiche le chemin absolu du dossier exact dans lequel vous vous trouvez.
-3. **`date`** : Affiche la date, l'heure exacte et le fuseau horaire du système.
-4. **`clear`** : Nettoie l'écran du terminal pour repartir sur une page vierge (raccourci clavier : `Ctrl + L`).
+Presque toutes les commandes Unix respectent une structure grammaticale stricte à 3 composants :
+
+```
+  Nom_de_Commande      -Option_Courte / --option-longue      Arguments (Cibles)
+  ───────────────      ────────────────────────────────      ──────────────────
+        ls                         -l  -a                            /var/log
+       grep                      -i --color                        "ERROR" app.log
+```
+
+1. **Le Nom de la Commande** : Le binaire ou la fonction à exécuter (ex: `ls`, `grep`, `cp`).
+2. **Les Options / Flags** : Précédées d'un tiret simple `-` (option courte sur 1 lettre) ou d'un double tiret `--` (option longue explicite). Elles modifient le comportement de la commande.
+   - Exemple : `ls -l` (format long détaillé), `ls -a` (afficher tous les fichiers cachés), `ls -la` (combinaison des deux).
+3. **Les Arguments** : La cible ou les données sur lesquelles la commande doit agir (un fichier, un dossier, une adresse IP, un texte).
 
 ---
 
-## 🧪 2. Atelier Pratique : Exécuter vos Commandes
+## 📖 4. La Philosophie Unix : Flux Standards & Le Pipe (`|`)
 
-Tapez successivement ces 4 commandes dans votre terminal et observez le résultat :
+### 4.1 Les 3 Flux Standards (File Descriptors 0, 1, 2)
+
+Chaque commande Unix ouverte dans le terminal dispose de 3 canaux de communication ouverts par défaut :
+
+```
+                  ┌────────────────────────┐
+                  │ 0 : stdin (Clavier)    │ ────► Entrée des données
+                  └────────────────────────┘
+                              │
+                              ▼
+                   ┌──────────────────────┐
+                   │  COMMANDE UNIX (ex:  │
+                   │    grep / cat / ls)  │
+                   └──────────┬───────────┘
+                              │
+         ┌────────────────────┴────────────────────┐
+         ▼                                         ▼
+┌────────────────────────┐               ┌────────────────────────┐
+│ 1 : stdout (Écran)     │               │ 2 : stderr (Erreurs)   │
+│ Sortie normale du texte│               │ Messages de dysfonc.   │
+└────────────────────────┘               └────────────────────────┘
+```
+
+### 4.2 Les Redirections et le Tube / Pipe (`|`)
+
+Vous pouvez rediriger ces flux avec des opérateurs spéciaux :
+
+- **`>` (Redirection sortante avec écrasement)** : Redirige la sortie normale `stdout` dans un fichier (écrase le contenu existant).
+  - Exemple : `date > aujourdhui.txt`
+- **`>>` (Redirection sortante avec ajout)** : Ajoute le texte à la fin du fichier sans rien effacer.
+  - Exemple : `echo "Nouvelle ligne" >> journal.log`
+- **`2>` (Redirection d'erreur)** : Redirige uniquement les messages d'erreur `stderr` vers un fichier.
+  - Exemple : `ls /dossier_inexistant 2> erreurs.log`
+- **`|` (Le Pipe / Tuyau)** : Connecte directement la sortie `stdout` de la commande A vers l'entrée `stdin` de la commande B.
+  - Exemple : `ps aux | grep nginx` (Affiche tous les processus ET filtre uniquement les lignes contenant "nginx").
+
+---
+
+## 📖 5. Raccourcis Clavier Pro pour le Terminal
+
+Gagnez 10x plus de temps en maîtrisant ces raccourcis dans Bash :
+
+| Raccourci | Action |
+| :--- | :--- |
+| **`Tab`** | **Auto-complétion automatique** du nom de commande ou de fichier. (Tapez 2 fois pour la liste). |
+| **`Ctrl + R`** | **Recherche inversée dans l'historique** des commandes tapées précédemment. |
+| **`Ctrl + C`** | **Interrompt / Annule** la commande en cours d'exécution (Envoie le signal `SIGINT`). |
+| **`Ctrl + L`** | **Nettoie l'écran** du terminal (Équivalent de la commande `clear`). |
+| **`Ctrl + A`** | Déplace le curseur au tout **début de la ligne**. |
+| **`Ctrl + E`** | Déplace le curseur à la **fin de la ligne**. |
+| **`Ctrl + U`** | **Efface tout** le texte situé avant le curseur. |
+| **`Ctrl + D`** | Signale la fin de fichier (EOF) ou déconnecte la session terminal en cours (`exit`). |
+| **`!!`** | **Répète la toute dernière commande**. Exemple puissant : `sudo !!` pour relancer avec sudo ! |
+
+---
+
+## 🧪 Atelier Pratique : Découvrir et Manipuler le Système
+
+Exécutez cette série de 10 commandes réelles dans votre terminal Linux :
 
 ```bash
+# 1. Connaître le nom de votre compte utilisateur actuel
 whoami
+# Output attendu: votre nom d'utilisateur (ex: adolphe)
+
+# 2. Connaître votre identifiant numérique (UID), groupe principal (GID) et groupes secondaires
+id
+# Output attendu: uid=1000(adolphe) gid=1000(adolphe) groups=1000(adolphe),27(sudo),135(docker)...
+
+# 3. Afficher le répertoire de travail exact où vous vous trouvez (Print Working Directory)
 pwd
-date
+# Output attendu: /home/adolphe
+
+# 4. Afficher la date et l'heure système au format ISO
+date --iso-8601=seconds
+# Output attendu: 2024-12-01T14:30:00+02:00
+
+# 5. Afficher un calendrier du mois en cours
+cal
+
+# 6. Écrire du texte dans la sortie standard et créer un fichier
+echo "Bienvenue dans la Masterclass PARADIS IT" > test.txt
+
+# 7. Lire le contenu d'un fichier texte dans le terminal
+cat test.txt
+# Output attendu: Bienvenue dans la Masterclass PARADIS IT
+
+# 8. Afficher les 10 dernières commandes exécutées dans votre historique
+history | tail -10
+
+# 9. Trouver le chemin d'accès binaire d'une commande
+which bash python3 git
+# Output attendu: /usr/bin/bash  /usr/bin/python3  /usr/bin/git
+
+# 10. Nettoyer l'affichage du terminal
 clear
 ```
 
 ---
 
-## ❓ Banque de QCM & Test du Jour (5 Questions)
+## 🛠️ Diagnostics & Réflexes Terrain
 
-**Q1 : Que signifie la commande Unix `pwd` ?**
-- A) Power Down
-- B) Print Working Directory (Afficher le dossier courant)
-- C) Password Change
-- D) Process Windows Data
+### 1. Message d'Erreur : `bash: command not found`
+- **Cause** : Vous avez mal orthographié le nom de la commande, ou le logiciel n'est pas installé sur la machine, ou le répertoire du binaire n'est pas répertorié dans votre variable d'environnement `$PATH`.
+- **Réflexe** : Vérifiez l'orthographe. Tapez `which nom_commande` ou vérifiez si le paquet doit être installé avec `sudo apt install nom_paquet`.
 
-*Réponse : B — `pwd` permet de connaître le chemin exact du répertoire dans lequel on se trouve.*
+### 2. Le terminal semble "bloqué" sans redonner la main
+- **Cause** : Une commande est en train d'exécuter une tâche longue (ex: `ping` sans option `-c`, ou une boucle infinie dans un script).
+- **Réflexe** : Appuyez sur **`Ctrl + C`** pour interrompre immédiatement l'exécution et récupérer le contrôle du Prompt.
 
-**Q2 : Dans l'invite de commande `user@linux-pc:~$`, que signifie le symbole tilde `~` ?**
-- A) Que l'ordinateur est en panne
-- B) Que vous êtes dans votre répertoire personnel d'utilisateur (`/home/user`)
-- C) Que vous êtes connecté à Internet
+### 3. Message d'Erreur : `Permission denied`
+- **Cause** : Vous essayez de lire, modifier un fichier ou lancer une commande exigeant les droits d'administration alors que vous êtes utilisateur standard (`$`).
+- **Réflexe** : Si vous êtes autorisé à administrer la machine, préfixez la commande avec **`sudo`** (ex: `sudo cat /var/log/auth.log`).
+
+---
+
+## ❓ Banque de QCM & Test du Jour (8 Questions)
+
+**Q1 : Dans l'invite de commande `user@serveur:~$`, que signifie le symbole `$` tout à la fin ?**
+- A) Que l'ordinateur nécessite de payer un abonnement
+- B) Que vous êtes connecté en tant qu'utilisateur standard (sans privilèges root)
+- C) Que vous êtes l'administrateur suprême root
 - D) Que le disque dur est plein
 
-*Réponse : B — Le tilde `~` est l'abréviation universelle désignant le dossier personnel de l'utilisateur.*
+*Réponse : B — Le symbole `$` indique un utilisateur standard. Le symbole `#` indique le super-utilisateur root.*
 
-**Q3 : Dans la commande `ls -la /home`, quel élément représente l'option (flag) ?**
+**Q2 : Que fait l'opérateur de redirection simple `>` dans la commande `echo "Test" > fichier.txt` ?**
+- A) Il compare le texte avec le contenu du fichier
+- B) Il redirige la sortie du texte dans le fichier en **écrasant** tout contenu précédent
+- C) Il supprime le fichier
+- D) Il envoie un email
+
+*Réponse : B — `>` redirige la sortie `stdout` vers un fichier et écrase son contenu. Pour ajouter à la fin sans écraser, on utilise `>>`.*
+
+**Q3 : Quel raccourci clavier permet de rechercher instantanément une ancienne commande dans l'historique de votre terminal Bash ?**
+- A) `Ctrl + F`
+- B) `Ctrl + R`
+- C) `Alt + Tab`
+- D) `Ctrl + Z`
+
+*Réponse : B — `Ctrl + R` active la recherche incrémentale inversée dans l'historique des commandes.*
+
+**Q4 : Que signifie le symbole tilde `~` dans un chemin de fichier Linux ?**
+- A) Le répertoire racine du disque `/`
+- B) Le répertoire temporaire `/tmp`
+- C) Le répertoire personnel de l'utilisateur connecté (ex: `/home/utilisateur`)
+- D) Le dossier système `/var/log`
+
+*Réponse : C — Le tilde `~` est le raccourci universel désignant le dossier personnel de l'utilisateur actif ($HOME).*
+
+**Q5 : À quoi sert l'opérateur de tuyau (Pipe `|`) entre deux commandes (ex: `ps aux | grep nginx`) ?**
+- A) À exécuter les deux commandes le jour suivant
+- B) À connecter la sortie standard (`stdout`) de la première commande directement vers l'entrée standard (`stdin`) de la seconde
+- C) À effacer l'écran du terminal
+- D) À redémarrer le serveur
+
+*Réponse : B — Le Pipe `|` enchaîne deux commandes en injectant la sortie de la première comme entrée de la seconde.*
+
+**Q6 : Quelle commande Unix permet d'afficher le chemin d'accès absolu du répertoire exact dans lequel vous vous trouvez ?**
 - A) `ls`
-- B) `-la`
-- C) `/home`
-- D) Le bouton Entrée
+- B) `whoami`
+- C) `pwd` (Print Working Directory)
+- D) `cd`
 
-*Réponse : B — `-la` est l'option qui modifie le comportement de la commande `ls` pour afficher les fichiers cachés et les détails.*
+*Réponse : C — `pwd` récapitule le chemin d'accès absolu du dossier de travail actif.*
 
-**Q4 : Quelle commande permet de connaître le nom exact de l'utilisateur connecté dans le terminal ?**
-- A) `whoami`
-- B) `whoareyou`
-- C) `name`
-- D) `user`
+**Q7 : Que fait la combinaison de touches `sudo !!` dans un terminal Bash ?**
+- A) Elle annule la dernière commande
+- B) Elle réexécute la toute dernière commande tapée mais en lui ajoutant les privilèges d'administration `sudo`
+- C) Elle ferme le terminal
+- D) Elle réinitialise le mot de passe root
 
-*Réponse : A — `whoami` renvoie l'identifiant du compte utilisateur actif.*
+*Réponse : B — `!!` représente la dernière commande tapée. Précédé de `sudo`, il permet de la relancer immédiatement avec les privilèges root sans avoir à la retaper.*
 
-**Q5 : Quel raccourci clavier permet de nettoyer instantanément l'affichage du terminal ?**
-- A) `Alt + F4`
-- B) `Ctrl + L`
-- C) `Ctrl + Alt + Suppr`
-- D) `Espace + Entrée`
+**Q8 : Quel flux standard porte le descripteur de fichier `2` dans le système Linux ?**
+- A) `stdin` (Entrée standard)
+- B) `stdout` (Sortie standard)
+- C) `stderr` (Sortie d'erreur standard)
+- D) `stdnull` (Poubelle système)
 
-*Réponse : B — `Ctrl + L` nettoie immédiatement l'écran du terminal (équivalent de la commande `clear`).*
+*Réponse : C — Descripteur 0 = stdin, 1 = stdout, 2 = stderr.*
+
+---
+
+## 📚 Ressources & Références
+
+- **GNU Bash Reference Manual** : https://www.gnu.org/software/bash/manual/
+- **ss64 Bash Commands Reference** : https://ss64.com/bash/
+- **Explainshell** (décortique le rôle de chaque option d'une commande) : https://explainshell.com
 
 ---
 
