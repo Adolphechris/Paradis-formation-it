@@ -106,6 +106,55 @@ function testMkdocsConsistency() {
     }
 }
 
+// ─── TEST-01bis : Couverture nav = fichiers leçons (anti-régression) ─────────
+function testNavCoverage() {
+    header('TEST-01bis · Couverture navigation (disque ↔ nav)');
+
+    const content = readFile(MKDOCS);
+    if (!content) { fail('T01B-000', 'mkdocs.yml introuvable'); return; }
+
+    // 1) Références de jours dans le nav
+    const navRefs = new Set();
+    for (const m of content.matchAll(/tome-p\d+\/jour-[a-z0-9]+\.md/g)) navRefs.add(m[0]);
+
+    // 2) Fichiers jours sur disque (hors symlink tome-p1 qui duplique p0)
+    const TOMES = ['p0', 'p2', 'p3', 'p4', 'p5', 'p6', 'p7', 'p8', 'p9', 'p10', 'p11', 'p12'];
+    const disk = new Set();
+    for (const t of TOMES) {
+        const dir = path.join(ROOT, 'docs', `tome-${t}`);
+        if (!fs.existsSync(dir)) continue;
+        for (const f of fs.readdirSync(dir)) {
+            if (f.startsWith('jour-') && f.endsWith('.md')) disk.add(`tome-${t}/${f}`);
+        }
+    }
+
+    // 3) Écarts
+    const missing = [...disk].filter(p => !navRefs.has(p)).sort();
+    const ghosts  = [...navRefs].filter(p => !disk.has(p)).sort();
+
+    if (missing.length === 0 && ghosts.length === 0) {
+        pass('T01B', `nav complète : ${disk.size}/${disk.size} leçons référencées`);
+    } else {
+        if (missing.length) {
+            fail('T01B', `${missing.length} leçon(s) absente(s) de la nav`, missing.slice(0, 8).join(', '));
+        }
+        if (ghosts.length) {
+            fail('T01B', `${ghosts.length} référence(s) fantôme(s) dans la nav`, ghosts.slice(0, 8).join(', '));
+        }
+    }
+
+    // 4) Ponts & milestones : chacun référencé au moins une fois
+    const required = [];
+    for (const f of fs.readdirSync(path.join(ROOT, 'docs', 'ponts')).filter(f => f.endsWith('.md'))) required.push(`ponts/${f}`);
+    for (const f of fs.readdirSync(path.join(ROOT, 'docs', 'milestones')).filter(f => f.endsWith('.md'))) required.push(`milestones/${f}`);
+    const orphans = required.filter(p => !content.includes(p));
+    if (orphans.length === 0) {
+        pass('T01B', `ponts & milestones : ${required.length}/${required.length} référencés`);
+    } else {
+        fail('T01B', `référence(s) absente(s) de la nav`, orphans.join(', '));
+    }
+}
+
 // ─── TEST-02 : Syntaxe JS ────────────────────────────────────────────────────
 function testJSSyntax() {
     header('TEST-02 · Syntaxe JavaScript (node --check)');
@@ -260,6 +309,7 @@ console.log(`${C.bold}${C.cyan}║  PARADIS — Suite de Tests Automatisée v1.0
 console.log(`${C.bold}${C.cyan}╚══════════════════════════════════════════════════╝${C.reset}`);
 
 testMkdocsConsistency();
+testNavCoverage();
 testJSSyntax();
 testAPIContracts();
 testNoHardcodedSecrets();
